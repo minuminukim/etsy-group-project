@@ -17,6 +17,9 @@ class Product(db.Model):
     updated_at = db.Column(db.DateTime, default=db.func.now(), nullable=False)
 
     user = db.relationship("User", back_populates="products")
+    purchases = db.relationship("Purchase", back_populates="product")
+    images = db.relationship("ProductImage", back_populates="product")
+
 
     def to_dict(self):
         return {

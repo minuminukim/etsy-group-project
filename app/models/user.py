@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=db.func.now(), nullable=False)
 
     products = db.relationship("Product", back_populates="user")
+    purchases = db.relationship("Purchase", back_populates="user")
 
     @property
     def password(self):
