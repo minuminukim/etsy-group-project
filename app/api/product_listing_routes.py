@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from app.models import Product, ProductImage, Review, db
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.forms import ProductListingForm
+from app.s3_helpers import upload_file_to_s3, allowed_file, get_unique_filename
 
 product_listing_routes = Blueprint("product_listing", __name__)
 
@@ -40,6 +41,39 @@ def get_product_images(id):
     """
     images = ProductImage.query.filter(ProductImage.product_id == id).all()
     return {"images": [image.to_dict() for image in images]}
+
+
+@product_listing_routes.route("/<int:id>/product_images", methods=["POST"])
+# @login_required
+def upload_product_image(id):
+    """
+    Creates a new product image.
+    """
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+
+    if "image_url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    image_url = upload["image_url"]
+    new_image = ProductImage(
+        product_id=id, user_id=current_user.id, image_url=image_url
+    )
+
+    db.session.add(new_image)
+    db.session.commit()
+    return {"image_url": image_url}
 
 
 @product_listing_routes.route("/", methods=["POST"])
