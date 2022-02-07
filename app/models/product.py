@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from .db import db
 
 
@@ -21,6 +22,49 @@ class Product(db.Model):
     images = db.relationship("ProductImage", back_populates="product")
     cart_items = db.relationship("CartItem", back_populates="product")
     reviews = db.relationship("Review", back_populates="product")
+
+    @staticmethod
+    def get_products():
+        """
+        Query for all product listings.
+        """
+        products = Product.query.all()
+        return products
+
+    @staticmethod
+    def get_product_by_id(id):
+        """
+        Returns a product listing by id.
+        """
+        product = Product.query.filter(Product.id == id).first_or_404()
+        return product
+
+    @staticmethod
+    def create(user_id, **kwargs):
+        """
+        Creates a new product listing.
+        """
+        product = Product(
+            user_id=user_id,
+            title=kwargs["title"],
+            description=kwargs["description"],
+            price=kwargs["price"],
+            stock=kwargs["stock"],
+            category=kwargs["category"],
+        )
+
+        return product
+
+    @staticmethod
+    def update(id, **kwargs):
+        """
+        Updates a product listing's information
+        """
+        product = Product.get_product_by_id(id)
+        for key, value in kwargs.items():
+            product[key] = value
+
+        return product
 
     def __repr__(self):
         return (
