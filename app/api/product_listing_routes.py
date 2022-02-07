@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import Product, ProductImage, db
+from app.models import Product, ProductImage, Review, db
 from flask_login import login_required
 from app.forms import ProductListingForm
 
@@ -12,8 +12,6 @@ def get_products():
     Returns all product listings.
     """
     products = Product.query.all()
-    # print('product@@@@@@@@@@@@@@@@@@', products[1])
-    # return "Hello World"
     return {"products": [product.to_dict() for product in products]}
 
 
@@ -31,7 +29,8 @@ def get_product_reviews(id):
     """
     Returns a product's reviews.
     """
-    pass
+    reviews = Review.query.filter(Review.product_id == id).all()
+    return {"reviews": [review.to_dict() for review in reviews]}
 
 
 @product_listing_routes.route("/", methods=["POST"])
@@ -59,3 +58,21 @@ def add_product():
         return product.to_dict()
 
     return {"errors": form.errors}, 401
+
+
+@product_listing_routes.route("/<int:id>", methods=["PUT"])
+@login_required
+def update_product(id):
+    """
+    Updates a product listing's information
+    """
+    pass
+
+
+@product_listing_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_product(id):
+    """
+    Deletes a product listing
+    """
+    pass
