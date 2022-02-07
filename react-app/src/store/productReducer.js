@@ -15,7 +15,7 @@ export const postProduct = (product) => async (dispatch) => {
   });
 
   const data = await response.json();
-  dispatch(addProduct(data.newProduct));
+  dispatch(addProduct(data.product));
 
   return response;
 };
