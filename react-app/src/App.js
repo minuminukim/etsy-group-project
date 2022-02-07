@@ -32,6 +32,7 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <h1>Landing Page</h1>
+          <LoginForm />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />

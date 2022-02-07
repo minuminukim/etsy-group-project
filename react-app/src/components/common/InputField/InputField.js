@@ -20,6 +20,7 @@ const InputField = ({
         onChange={onChange}
         className={error ? 'error-field' : null}
       />
+      {error && <p className="validation-error">{error}</p>}
     </div>
   );
 };

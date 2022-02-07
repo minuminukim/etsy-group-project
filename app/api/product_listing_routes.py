@@ -77,13 +77,14 @@ def upload_product_image(id):
 
 
 @product_listing_routes.route("/", methods=["POST"])
-# @login_required
+@login_required
 def add_product():
     """
     Creates a new product listing.
     """
     form = ProductListingForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    print("@@@@@@@@@@@@@@@@", form.data)
 
     if form.validate_on_submit():
         product = Product.create(
@@ -100,7 +101,7 @@ def add_product():
 
         return product.to_dict()
 
-    return {"errors": form.errors}, 401
+    return {"errors": form.errors}, 400
 
 
 @product_listing_routes.route("/<int:id>", methods=["PUT"])
@@ -128,7 +129,7 @@ def update_product(id):
         db.session.commit()
         return updated_product.to_dict()
 
-    return {"errors": form.errors}, 401
+    return {"errors": form.errors}, 400
 
 
 @product_listing_routes.route("/<int:id>", methods=["DELETE"])

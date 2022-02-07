@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import InputField from '../common/InputField';
+import { postProduct } from '../../store/productReducer';
 
 const ProductListingForm = ({ sessionUser }) => {
   const [title, setTitle] = useState('');
@@ -7,7 +9,9 @@ const ProductListingForm = ({ sessionUser }) => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0.0);
   const [stock, setStock] = useState(0);
+  const [discount, setDiscount] = useState(0);
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +26,13 @@ const ProductListingForm = ({ sessionUser }) => {
       price,
       stock,
     };
+
+    return dispatch(postProduct(params)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) {
+        setErrors(data.errors);
+      }
+    });
   };
 
   const updateTitle = (e) => setTitle(e.target.value);

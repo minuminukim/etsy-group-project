@@ -8,14 +8,25 @@ const addProduct = (product) => ({
 export const postProduct = (product) => async (dispatch) => {
   const { userId, title, category, description, price, stock } = product;
 
-  const response = await fetch('/api/products', {
+  const response = await fetch('/api/products/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: { user_id: userId, title, category, description, price, stock },
+    body: JSON.stringify({
+      user_id: userId,
+      title,
+      category,
+      description,
+      price,
+      stock,
+    }),
   });
 
+  if (response.status >= 400) {
+    throw response;
+  }
+
   const data = await response.json();
-  dispatch(addProduct(data.product));
+  dispatch(addProduct(data));
 
   return response;
 };
