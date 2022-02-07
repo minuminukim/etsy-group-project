@@ -34,7 +34,7 @@ def get_product_reviews(id):
 
 
 @product_listing_routes.route("/<int:id>/product_images")
-def get_product_images_by_id(id):
+def get_product_images(id):
     """
     Returns a product's associated images.
     """
