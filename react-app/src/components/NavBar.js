@@ -25,47 +25,4 @@ const NavBar = () => {
   )
 }
 
-// const NavBar = () => {
-//   return (
-//     <header className="navigation-header">
-//       <div className="qwerty-logo-container">
-//       <NavLink id="logo-font" exact to="/">Qwerty</NavLink>
-//       </div>
-//       <div className="global-search"></div>
-//     </header>
-//   )
-// }
-
-// const NavBar = () => {
-//   return (
-//     <nav>
-//       <ul>
-//         <li>
-//           <NavLink to='/' exact={true} activeClassName='active'>
-//             Home
-//           </NavLink>
-//         </li>
-//         <li>
-//           <NavLink to='/login' exact={true} activeClassName='active'>
-//             Login
-//           </NavLink>
-//         </li>
-//         <li>
-//           <NavLink to='/sign-up' exact={true} activeClassName='active'>
-//             Sign Up
-//           </NavLink>
-//         </li>
-//         <li>
-//           <NavLink to='/users' exact={true} activeClassName='active'>
-//             Users
-//           </NavLink>
-//         </li>
-//         <li>
-//           <LogoutButton />
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// }
-
 export default NavBar;
