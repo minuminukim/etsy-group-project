@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import InputField from '../common/InputField';
 
-const ProductListingForm = (props) => {
+const ProductListingForm = ({ sessionUser }) => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('keyboards');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('0.00');
-  const [stock, setStock] = useState('0');
+  const [price, setPrice] = useState(0.0);
+  const [stock, setStock] = useState(0);
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
@@ -15,6 +15,7 @@ const ProductListingForm = (props) => {
     setErrors({});
 
     const params = {
+      userId: sessionUser.id,
       title,
       category,
       description,
@@ -30,7 +31,7 @@ const ProductListingForm = (props) => {
   const updateStock = (e) => setStock(e.target.value);
 
   return (
-    <form>
+    <form onSubmit={handleSubmit} className="product-listing-form">
       <h2>Listing details</h2>
       <InputField
         label="Title"

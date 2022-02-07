@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
@@ -13,6 +13,7 @@ import { authenticate } from './store/session';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     (async () => {
@@ -39,7 +40,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route exact path="/products/new">
-          <ProductListingForm />
+          <ProductListingForm sessionUser={sessionUser} />
         </Route>
       </Switch>
     </BrowserRouter>
