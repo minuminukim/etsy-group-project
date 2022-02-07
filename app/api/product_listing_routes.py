@@ -33,6 +33,15 @@ def get_product_reviews(id):
     return {"reviews": [review.to_dict() for review in reviews]}
 
 
+@product_listing_routes.route("/<int:id>/product_images")
+def get_product_images_by_id(id):
+    """
+    Returns a product's associated images.
+    """
+    images = ProductImage.query.filter(ProductImage.product_id == id).all()
+    return {"images": [image.to_dict() for image in images]}
+
+
 @product_listing_routes.route("/", methods=["POST"])
 @login_required
 def add_product():
@@ -66,6 +75,9 @@ def update_product(id):
     """
     Updates a product listing's information
     """
+
+    # product = Product.query.get(id)
+
     pass
 
 
