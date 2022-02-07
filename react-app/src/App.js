@@ -31,12 +31,6 @@ function App() {
         <Route path='/' exact={true} >
           <h1>Landing Page</h1>
         </Route>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
