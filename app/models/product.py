@@ -24,7 +24,7 @@ class Product(db.Model):
     reviews = db.relationship("Review", back_populates="product")
 
     @staticmethod
-    def get_products():
+    def get_all():
         """
         Query for all product listings.
         """
@@ -32,7 +32,7 @@ class Product(db.Model):
         return products
 
     @staticmethod
-    def get_product_by_id(id):
+    def get_by_id(id):
         """
         Returns a product listing by id.
         """
@@ -56,15 +56,25 @@ class Product(db.Model):
         return product
 
     @staticmethod
-    def update(id, **kwargs):
+    def update(product, **kwargs):
         """
         Updates a product listing's information
         """
-        product = Product.get_product_by_id(id)
+        print("@@@@@@", product)
         for key, value in kwargs.items():
-            product[key] = value
+            setattr(product, key, value)
+
+        if product.discount:
+            product.apply_discount()
 
         return product
+
+    def apply_discount(self):
+        """
+        Apply a discount and update a product's price.
+        """
+        percentage = self.discount / 100
+        setattr(self, "price", self.price * (1 - percentage))
 
     def __repr__(self):
         return (

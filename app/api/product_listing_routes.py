@@ -11,8 +11,7 @@ def get_products():
     """
     Returns all product listings.
     """
-    # products = Product.query.all()
-    products = Product.get_products()
+    products = Product.get_all()
     return {"products": [product.to_dict() for product in products]}
 
 
@@ -21,7 +20,7 @@ def get_product_by_id(id):
     """
     Returns a product listing by id.
     """
-    product = Product.get_product_by_id(id)
+    product = Product.get_by_id(id)
     return product.to_dict()
 
 
@@ -71,26 +70,42 @@ def add_product():
 
 
 @product_listing_routes.route("/<int:id>", methods=["PUT"])
-@login_required
+# @login_required
 def update_product(id):
     """
     Updates a product listing's information
     """
     form = ProductListingForm()
-    # product = Product.query.get(id)
-    product = Product.get_product_by_id(id)
-    # if product and form.validate_on_submit():
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    product = Product.get_by_id(id)
 
-    # pass
+    if product and form.validate_on_submit():
+        updated_product = Product.update(
+            product=product,
+            title=form.data["title"],
+            description=form.data["description"],
+            price=float(form.data["price"]),
+            discount=form.data["discount"],
+            stock=form.data["stock"],
+            category=form.data["category"],
+        )
+
+        db.session.add(updated_product)
+        db.session.commit()
+        return updated_product.to_dict()
+
+    return {"errors": form.errors}, 401
 
 
 @product_listing_routes.route("/<int:id>", methods=["DELETE"])
-@login_required
+# @login_required
 def delete_product(id):
     """
     Deletes a product listing
     """
-    product = Product.query.filter(Product.id == id).first_or_404()
+    product = Product.get_by_id(id)
+
+    # TODO: implement error handling
 
     if product:
         db.session.delete(product)

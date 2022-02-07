@@ -61,6 +61,8 @@ class ProductListingForm(FlaskForm):
 
     stock = IntegerField("Stock", validators=[DataRequired()])
 
-    # discount = IntegerField("Discount", validators=[])
+    discount = IntegerField(
+        "Discount", validators=[NumberRange(min=0, max=100)], default=0
+    )
 
     submit = SubmitField("Save")
