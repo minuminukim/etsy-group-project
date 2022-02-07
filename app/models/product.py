@@ -41,7 +41,7 @@ class Product(db.Model):
             "user_id": self.user_id,
             "title": self.title,
             "description": self.description,
-            "price": self.price,
+            "price": str(self.price),
             "discount": self.discount,
             "rating": self.rating,
             "stock": self.stock,

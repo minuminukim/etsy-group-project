@@ -11,6 +11,6 @@ def get_products():
     Returns all product listings.
     """
     products = Product.query.all()
-    print('product@@@@@@@@@@@@@@@@@@', products[1])
-    return "Hello World"
-    # return {"products": [product.to_dict() for product in products]}
+    # print('product@@@@@@@@@@@@@@@@@@', products[1])
+    # return "Hello World"
+    return {"products": [product.to_dict() for product in products]}
