@@ -31,7 +31,8 @@ const SearchResult = () => {
 
     return (
         <div>
-            {(products.length>=1) ? productComponents : productNotFound}
+            {(products.length>=1) ? <div>
+                <p>Showing results for {query}</p>{productComponents}</div> : productNotFound}
         </div>
     )
 }
