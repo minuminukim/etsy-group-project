@@ -6,7 +6,6 @@ from wtforms.fields import (
     TextAreaField,
     IntegerField,
     DecimalField,
-    SubmitField,
 )
 
 
@@ -61,4 +60,6 @@ class ProductListingForm(FlaskForm):
 
     stock = IntegerField("Stock", validators=[DataRequired()])
 
-    submit = SubmitField("Save")
+    discount = IntegerField(
+        "Discount", validators=[NumberRange(min=0, max=100)], default=0
+    )

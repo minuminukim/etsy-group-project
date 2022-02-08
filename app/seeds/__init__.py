@@ -1,7 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .products import seed_products, undo_products
-from .reviews  import seed_reviews, undo_reviews
+from .reviews import seed_reviews, undo_reviews
 from .product_images import seed_product_images, undo_product_images
 from .cart_items import seed_cart_items, undo_cart_items
 
