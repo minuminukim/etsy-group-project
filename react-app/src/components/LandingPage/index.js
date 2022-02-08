@@ -1,7 +1,14 @@
+import { NavLink } from "react-router-dom";
 
 const LandingPage = () => {
+
+    const categoryA = "switches"
+
     return (
-        <h1>Landing Page</h1>
+        <div>
+            <h1>Landing Page</h1>
+            <NavLink to={`/category/${categoryA}`}>{categoryA}</NavLink>
+        </div>
     )
 }
 

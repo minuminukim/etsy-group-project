@@ -38,10 +38,10 @@ function App() {
           <LandingPage />
           <LoginForm />
         </Route>
-        <Route path="/search/:category" exact={true}>
+        <Route path="/category/:category" exact={true}>
           <CategoryView />
         </Route>
-        <Route path="/search">
+        <Route path="/search" exact={true}>
           <SearchResult />
         </Route>
         <ProtectedRoute path="/users" exact={true}>

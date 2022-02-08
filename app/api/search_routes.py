@@ -11,8 +11,3 @@ def keyword_search(query):
 
        ## the search is currently case sensitive
 
-@search_routes.route('/<string:category>')
-def category_search(category):
-      print(category)
-      products = Product.get(category)
-      return {"products": [product.to_dict() for product in products]}
