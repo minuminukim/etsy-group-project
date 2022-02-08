@@ -12,6 +12,7 @@ import CreateReview from './components/ReviewForm/Review';
 import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
 import CategoryView from './components/Categories';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,7 +35,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/" exact={true}>
-          <h1>Landing Page</h1>
+          <LandingPage />
           <LoginForm />
         </Route>
         <Route path="/search/:category" exact={true}>
