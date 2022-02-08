@@ -34,7 +34,6 @@ function App() {
         <Route path="/" exact={true}>
           <h1>Landing Page</h1>
           <LoginForm />
-          <CreateReview />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
