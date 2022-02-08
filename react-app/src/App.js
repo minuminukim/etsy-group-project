@@ -8,7 +8,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import CreateReview from './components/Review';
+import ReviewForm from './components/ReviewForm/ReviewForm'
+import Reviews from './components/Reviews/Reviews'
 import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
 
@@ -36,7 +37,7 @@ function App() {
           <h1>Landing Page</h1>
           <LoginForm />
         </Route>
-        <Route path='/search' >
+        <Route path='/search'>
           <SearchResult />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
@@ -47,6 +48,10 @@ function App() {
         </ProtectedRoute>
         <Route exact path="/products/new">
           <ProductListingForm sessionUser={sessionUser} />
+        </Route>
+        <Route exact path="/products/:productId">
+          <ReviewForm />
+          <Reviews />
         </Route>
       </Switch>
     </BrowserRouter>
