@@ -81,3 +81,22 @@ def edit_review(id):
 
 
     # if form.validate_on_submit():
+
+
+@review_routes.route('/<int:id>', methods=['DELETE'])
+def delete_review(id):
+    """
+    Delete a review from a listing.
+    """
+    pass
+    print("IN DELETE")
+    print(id)
+
+    review = Review.query.get(id)
+
+    db.session.delete(review)
+    db.session.commit()
+
+
+
+    return {'IN': 'DELETE'}
