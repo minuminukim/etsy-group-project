@@ -31,14 +31,8 @@ def create_review():
     Create a review for a listing.
     """
 
-    print('INSIDE ROUTE')
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-
-    print(form.data)
-    print('REQUEST', request.json)
-    print(form.data["rating"])
-
 
     if form.validate_on_submit():
         review = Review(
@@ -48,10 +42,7 @@ def create_review():
             body=form.data["body"]
         )
 
-        print("FORM DATA", review)
-
-
         db.session.add(review)
         db.session.commit()
+
         return review.to_dict()
-    # return {"mssg": 'end'}

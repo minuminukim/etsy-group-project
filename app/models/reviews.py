@@ -16,22 +16,6 @@ class Review(db.Model):
     product = db.relationship("Product", back_populates="reviews")
 
 
-    @staticmethod
-    def create(user_id, **kwargs):
-        """
-        Creates a new product listing.
-        """
-        product = Product(
-            user_id=user_id,
-            title=kwargs["title"],
-            description=kwargs["description"],
-            price=kwargs["price"],
-            stock=kwargs["stock"],
-            category=kwargs["category"],
-        )
-
-        return product
-
     def to_dict(self):
         return {
             "id": self.id,
