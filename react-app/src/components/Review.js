@@ -11,9 +11,6 @@ const CreateReview = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        // console.log(rating);
-        // console.log(body)
-        // console.log(currentUser)
 
         const payload = {
             user_id: currentUser.id,
@@ -22,7 +19,6 @@ const CreateReview = () => {
             body,
 
         }
-        console.log(payload)
 
         return dispatch(sessionActions.newReview(payload))
     }
