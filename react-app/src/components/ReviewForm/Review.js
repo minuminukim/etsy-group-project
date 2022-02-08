@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux"
-import * as sessionActions from "../store/review"
+import * as sessionActions from "../../store/review"
+import "./Review.css"
 
 const CreateReview = () => {
     const currentUser = useSelector(state => state.session.user);
     const [rating, setRating] = useState(0)
     const [body, setBody] = useState("")
+    const [displayBtn, setDisplayBtn] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -23,8 +25,34 @@ const CreateReview = () => {
         return dispatch(sessionActions.newReview(payload))
     }
 
+        let btn;
+        if (displayBtn) {
+            btn = (
+                <div id="review_btn_container">
+                    <button className="review-btn" className="btn"
+                        onClick={() => {
+                            setBody("")
+                            setDisplayBtn(false)
+                        }}>Reset</button>
+                    <button className="review-btn" className="btn">Submit</button>
+                </div>
+
+            )
+        } else {
+            btn =(
+                null
+            )
+        }
+
     return (
-        <form onSubmit={onSubmit}>
+        <form id="review_form" onSubmit={onSubmit} value={true}
+        // onBlur={() => {
+        //     setBody("")
+        //     setDisplayBtn(false)
+        // }}
+        onFocus={(e)=> {
+            setDisplayBtn(true)
+        }}>
             <label>Rating</label>
             <select
             value={rating}
@@ -37,16 +65,20 @@ const CreateReview = () => {
                 <option value="3">3</option>
             </select>
 
-            <label>Review</label>
+            {/* <label>Add a public review...</label> */}
             <textarea
+            id="review_body"
+            placeholder="Add a public review..."
+            maxLength="1000"
             value={body}
             onChange={(e) => {
                 setBody(e.target.value)
             }}
             >
             </textarea>
+            {/* <input type="button" value="Clear" onclick="javascript:eraseText();" /> */}
 
-            <button>Submit</button>
+            {btn}
         </form>
     )
 }
