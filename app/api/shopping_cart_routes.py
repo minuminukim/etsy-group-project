@@ -79,10 +79,15 @@ def delete_cart_item():
 
     data = request.json
 
-    for item in range(len(data["items"])):
-        cart_item = CartItem.query.get(int(item).delete()
+    for id in range(len(data["items"])):
+        cart_item = CartItem.query.get(int(id))
+        db.session.delete(cart_item)
         db.session.commit()
 
+
+
+    
+    return {"message": "deleted"}
 
 
 
