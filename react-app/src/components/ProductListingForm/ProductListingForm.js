@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import InputField from '../common/InputField';
 import Textarea from '../common/Textarea';
+import Button from '../common/Button';
 import { postProduct } from '../../store/productReducer';
 import './ProductListingForm.css';
 
@@ -125,7 +126,11 @@ const ProductListingForm = ({ sessionUser }) => {
             automatically until it sells out.
           </p>
         </div>
-        <input type="submit" value="Save and continue" />
+        <Button
+          label="Save and continue"
+          className="submit-button"
+          type="submit"
+        />
       </form>
     </div>
   );
