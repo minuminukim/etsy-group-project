@@ -28,7 +28,7 @@ export const postProduct = (product) => async (dispatch) => {
   const data = await response.json();
   dispatch(addProduct(data));
 
-  return response;
+  return data;
 };
 
 const productReducer = (state = {}, action) => {

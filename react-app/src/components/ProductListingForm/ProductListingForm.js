@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import InputField from '../common/InputField';
 import Textarea from '../common/Textarea';
@@ -14,7 +15,9 @@ const ProductListingForm = ({ sessionUser }) => {
   const [stock, setStock] = useState(1);
   const [discount, setDiscount] = useState(0);
   const [errors, setErrors] = useState({});
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,15 +33,12 @@ const ProductListingForm = ({ sessionUser }) => {
       stock,
     };
 
-    return dispatch(postProduct(params)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) {
+    return dispatch(postProduct(params))
+      .then((data) => history.push(`/products/${data.id}/images/new`))
+      .catch(async (res) => {
+        const data = await res.json();
         setErrors(data.errors);
-      } else {
-        console.log(data);
-      }
-      // else grab product id from response and redirect to product image form
-    });
+      });
   };
 
   const updateTitle = (e) => setTitle(e.target.value);

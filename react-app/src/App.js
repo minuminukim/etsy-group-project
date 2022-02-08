@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
+import ProductImageForm from './components/ProductImageForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -47,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <Route exact path="/products/new">
           <ProductListingForm sessionUser={sessionUser} />
+        </Route>
+        <Route exact path="/products/:productId/images/new">
+          <ProductImageForm />
         </Route>
       </Switch>
     </BrowserRouter>
