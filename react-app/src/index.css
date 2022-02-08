@@ -15,3 +15,7 @@ body {
     'Segoe UI', 'Helvetica', Arial, sans-serif;
   color: #222;
 }
+
+button {
+  cursor: pointer;
+}
