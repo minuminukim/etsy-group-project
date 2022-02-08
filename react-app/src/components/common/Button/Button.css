@@ -1,0 +1,13 @@
+.btn {
+  background-color: #222222;
+  color: #fff;
+  font-family: inherit;
+  border-radius: 3px;
+  border-width: 1px;
+  font-size: 14px;
+  font-weight: 500;
+  height: 38px;
+  line-height: 1.4;
+  padding: 8px 12px;
+  text-align: center;
+}

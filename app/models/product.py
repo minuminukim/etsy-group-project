@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from .db import db
 
 
@@ -21,6 +22,59 @@ class Product(db.Model):
     images = db.relationship("ProductImage", back_populates="product")
     cart_items = db.relationship("CartItem", back_populates="product")
     reviews = db.relationship("Review", back_populates="product")
+
+    @staticmethod
+    def get_all():
+        """
+        Query for all product listings.
+        """
+        products = Product.query.all()
+        return products
+
+    @staticmethod
+    def get_by_id(id):
+        """
+        Returns a product listing by id.
+        """
+        product = Product.query.filter(Product.id == id).first_or_404()
+        return product
+
+    @staticmethod
+    def create(user_id, **kwargs):
+        """
+        Creates a new product listing.
+        """
+        product = Product(
+            user_id=user_id,
+            title=kwargs["title"],
+            description=kwargs["description"],
+            price=kwargs["price"],
+            stock=kwargs["stock"],
+            category=kwargs["category"],
+        )
+
+        return product
+
+    @staticmethod
+    def update(product, **kwargs):
+        """
+        Updates a product listing's information
+        """
+        print("@@@@@@", product)
+        for key, value in kwargs.items():
+            setattr(product, key, value)
+
+        if product.discount:
+            product.apply_discount()
+
+        return product
+
+    def apply_discount(self):
+        """
+        Apply a discount and update a product's price.
+        """
+        percentage = self.discount / 100
+        setattr(self, "price", self.price * (1 - percentage))
 
     def __repr__(self):
         return (
