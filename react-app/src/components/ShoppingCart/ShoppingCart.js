@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { get_cart_items } from "../../store/shoppingCart";
 import CartItem from "./CartItem";
-
+import PurchaseCart from "./PurchaseCart";
 
 const ShoppingCart = () => {
 
@@ -41,8 +41,13 @@ const ShoppingCart = () => {
 
         shoppingCartContent = (
             <>
-                <div id="numberOfItemsText">{valueArray.length} items in your cart</div>
-                {valueArray.map((item) => <CartItem key={item.product_title} cartItem={item} />)}
+                <div className="CartItemsAndPurchaserContainer">
+                    <div className="CartItemSectionContainer">
+                        <div id="numberOfItemsText">{valueArray.length} items in your cart</div>
+                        {valueArray.map((item) => <CartItem key={item.product_title} cartItem={item} />)}
+                    </div>
+                    <PurchaseCart cartItems={valueArray} />
+                </div>
             </>
         )
 

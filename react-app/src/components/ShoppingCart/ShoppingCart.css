@@ -1,6 +1,8 @@
 .cartItemContainer {
     display: flex;
     flex-direction: row;
+    margin-top: 30px;
+    height: 250px
 }
 
 .mainCartContent {
@@ -17,7 +19,75 @@
 #numberOfItemsText{
     font-size: 32px;
     margin-bottom: 50px;
-    margin-top: 50px;
-    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
-    font-weight: 200;
+    font-family: 'Times New Roman', Times, serif;
 }
+
+.CartItemSectionContainer {
+    width: 65%;
+}
+
+.cartItemLineBreaker {
+    border-top: 1px solid rgba(34, 34, 34, 0.15);
+    height: 1px;
+    width: 100%
+}
+
+.CartItemsAndPurchaserContainer {
+    display: flex;
+    margin-top: 50px;
+}
+
+.cartPurchaseContainer {
+    width: 406px;
+    height: 519px;
+    box-shadow: 0 4px 20px rgb(34 34 34 / 15%);
+    border-radius: 18px;
+    margin-top: 90px;
+    margin-left: 100px;
+}
+
+.paymentMethodContainer {
+    margin-top: 30px;
+    margin-left:20px ;
+}
+
+.cartItemImageContainer {
+    width: 200px;
+    height: 100%
+}
+
+.rightDivCartItem {
+    width: 100%;
+    height: 200px;
+    border: 1px solid purple;
+}
+
+.topHalfCartItemSection {
+    width: 100%;
+    height: 80%;
+    border: 1px solid red;
+
+}
+
+.RemoveAndSaleCartItemSection {
+    width: 100%;
+    height: 20%;
+    border: 1px solid green;
+    display: flex;
+}
+
+#removeButtonContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#removeCartItem {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+
