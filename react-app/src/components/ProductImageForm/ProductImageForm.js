@@ -5,7 +5,7 @@ import FileInputWithPreview from './FileInputWithPreview';
 import Button from '../common/Button';
 
 const ProductImageForm = ({ sessionUser }) => {
-  // const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [count, setCount] = useState(1);
@@ -98,18 +98,40 @@ const ProductImageForm = ({ sessionUser }) => {
               </li>
             </ul>
           </div>
-          <input
+          {/* <input
             type="file"
             accept=".png,.jpg,.jpeg,.gif"
             onChange={updateImages}
-          />
-          <FileInputWithPreview
-            index="0"
-            src={previews[0]}
-            onChange={updateImages}
-          />
+          /> */}
+          <div className="image-preview-grid">
+            <FileInputWithPreview
+              index="0"
+              src={previews[0]}
+              onChange={updateImages}
+            />
+            <FileInputWithPreview
+              index="0"
+              src={previews[1]}
+              onChange={updateImages}
+            />
+            <FileInputWithPreview
+              index="0"
+              src={previews[2]}
+              onChange={updateImages}
+            />
+            <FileInputWithPreview
+              index="0"
+              src={previews[3]}
+              onChange={updateImages}
+            />
+            <FileInputWithPreview
+              index="0"
+              src={previews[4]}
+              onChange={updateImages}
+            />
+          </div>
         </div>
-        <div className="image-preview-grid">
+        {/* <div className="image-preview-grid">
           <div className="grid-block grid-block-0">
             <img
               src={previews[0] || null}
@@ -145,7 +167,7 @@ const ProductImageForm = ({ sessionUser }) => {
               alt="Preview image"
             />
           </div>
-        </div>
+        </div> */}
         <Button label="Submit" className="submit-button" type="submit" />
       </form>
     </div>

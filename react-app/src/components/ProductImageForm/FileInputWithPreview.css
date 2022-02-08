@@ -1,0 +1,38 @@
+.grid-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 175px;
+  max-height: 175px;
+  border: 1px solid #e1e3df;
+  border-radius: 3px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.grid-block:hover {
+  cursor: pointer;
+  border-color: #f1641e;
+}
+
+.file-upload-icon {
+  font-size: 30px;
+}
+
+.icon-container .form-label {
+  font-weight: 300;
+}
+
+.preview-image {
+  max-width: 175px;
+  max-height: 175px;
+  height: auto;
+  width: 100%;
+}
+
+.file-input {
+  display: none;
+}
