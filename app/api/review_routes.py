@@ -46,3 +46,38 @@ def create_review():
         db.session.commit()
 
         return review.to_dict()
+
+
+@review_routes.route('/<int:id>', methods=['PATCH'])
+def edit_review(id):
+    """
+    Edit a review for a listing.
+    """
+
+    print('JASON',request.json)
+    print(request.json["body"])
+
+    # query review to edit
+    review = Review.query.get(id)
+
+    # update the body
+    review.body = request.json["body"]
+
+    # profit?
+    db.session.commit()
+    print('THIS IS THE REVIEW', review)
+    print(review.body)
+    print(review.id)
+    print(review)
+
+
+
+
+    return {"hello": f'{id}'}
+
+    # form = ReviewForm()
+    # form["csrf_token"].data = request.cookies("csrf_token")
+
+
+
+    # if form.validate_on_submit():
