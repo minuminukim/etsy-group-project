@@ -1,7 +1,5 @@
-import { useDispatch } from 'react-redux';
 import "./NavBar.css";
-import { searchAllProducts } from '../store/search';
-import React, { useState } from 'react';
+import React from 'react';
 
 const SearchBar = () => {
 

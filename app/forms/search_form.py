@@ -1,7 +1,6 @@
 # from flask_wtf import FlaskForm
-# from wtforms.validators import DataRequired, Length, NumberRange
-# from wtforms.fields import StringField
+# from wtforms import StringField
+# from wtforms.validators import DataRequired
 
 # class SearchForm(FlaskForm):
-
-#     search = StringField("search", [DataRequired()])
+#     search = StringField('search', [DataRequired()])

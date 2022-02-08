@@ -1,15 +1,10 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import Product
-from app.forms.search_form import SearchForm
+
 search_routes = Blueprint("search", __name__)
 
 
-@search_routes.route('/', methods=["GET", "POST"])
-def search():
-    form = SearchForm()
-    query = form.data
-    if form.validate_on_submit():
-        products = Product.query.filter(Product.title.ilike(query))
-        return {"products": [product.to_dict() for product in products]}
-    else:
-        return "No products available"
+@search_routes.route('/<string:query>')
+def search(query):
+       products = Product.query.filter(Product.title.contains(query))
+       return {"products": [product.to_dict() for product in products]}
