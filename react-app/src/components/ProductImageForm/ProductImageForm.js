@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import FileInputWithPreview from './FileInputWithPreview';
 import Button from '../common/Button';
 
 const ProductImageForm = ({ sessionUser }) => {
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [count, setCount] = useState(1);
@@ -101,7 +102,11 @@ const ProductImageForm = ({ sessionUser }) => {
             type="file"
             accept=".png,.jpg,.jpeg,.gif"
             onChange={updateImages}
-            multiple
+          />
+          <FileInputWithPreview
+            index="0"
+            src={previews[0]}
+            onChange={updateImages}
           />
         </div>
         <div className="image-preview-grid">
