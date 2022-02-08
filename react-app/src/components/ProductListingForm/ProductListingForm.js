@@ -34,7 +34,10 @@ const ProductListingForm = ({ sessionUser }) => {
       const data = await res.json();
       if (data && data.errors) {
         setErrors(data.errors);
+      } else {
+        console.log(data);
       }
+      // else grab product id from response and redirect to product image form
     });
   };
 
