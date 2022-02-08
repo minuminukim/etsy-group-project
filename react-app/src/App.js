@@ -50,7 +50,7 @@ function App() {
           <ProductListingForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId/images/new">
-          <ProductImageForm />
+          <ProductImageForm sessionUser={sessionUser} />
         </Route>
       </Switch>
     </BrowserRouter>

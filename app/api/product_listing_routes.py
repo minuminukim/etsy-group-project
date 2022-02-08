@@ -59,7 +59,7 @@ def upload_product_image(id):
 
     image.filename = get_unique_filename(image.filename)
     upload = upload_file_to_s3(image)
-
+    # breaks somewhere after here, upload to s3 works
     if "image_url" not in upload:
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
@@ -67,9 +67,11 @@ def upload_product_image(id):
         return upload, 400
 
     image_url = upload["image_url"]
-    new_image = ProductImage(
-        product_id=id, user_id=current_user.id, image_url=image_url
-    )
+    print("image_urL: ", image_url)
+    # print("@@@@@@@@@@@@@@@@@@@@@", current_user)
+    # print("@@@@@@@@@@", request.data.user_id)
+    new_image = ProductImage(product_id=id, image_url=image_url)
+    print("CHECKPOINT@@@@@@@@@@@@@@@@@@@@@")
 
     db.session.add(new_image)
     db.session.commit()
