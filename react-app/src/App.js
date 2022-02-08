@@ -12,6 +12,8 @@ import ReviewForm from './components/ReviewForm/ReviewForm'
 import Reviews from './components/Reviews/Reviews'
 import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
+import CategoryView from './components/Categories';
+import LandingPage from './components/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,10 +36,13 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/" exact={true}>
-          <h1>Landing Page</h1>
+          <LandingPage />
           <LoginForm />
         </Route>
-        <Route path='/search'>
+        <Route path="/category/:category" exact={true}>
+          <CategoryView />
+        </Route>
+        <Route path="/search" exact={true}>
           <SearchResult />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
