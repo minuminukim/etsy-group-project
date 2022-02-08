@@ -1,0 +1,31 @@
+.form-row {
+  display: grid;
+  grid-template-columns: 246px 528px;
+}
+
+label {
+  grid-column: 1 / 2;
+  padding-right: 18px;
+}
+
+input,
+select {
+  grid-column: 2 / 3;
+  width: 100%;
+  max-width: 528px;
+  padding: 9px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  font-size: 14px;
+  padding-left: 18px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}

@@ -12,7 +12,7 @@ const Textarea = ({
   error,
 }) => {
   return (
-    <div className={`form-row-${size}`}>
+    <div className={`form-row form-row-${size}`}>
       <label className="form-label">{label}</label>
       <textarea
         type={type}
