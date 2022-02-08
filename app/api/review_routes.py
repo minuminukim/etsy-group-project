@@ -20,7 +20,6 @@ def review(id):
     """
     Return all reviews for a listing.
     """
-
     reviews = Review.query.filter_by(product_id=id).all()
     return {'reviews': [review.to_dict() for review in reviews]}
 
@@ -30,7 +29,6 @@ def create_review():
     """
     Create a review for a listing.
     """
-
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
@@ -46,3 +44,29 @@ def create_review():
         db.session.commit()
 
         return review.to_dict()
+
+
+@review_routes.route('/<int:id>', methods=['PATCH'])
+def edit_review(id):
+    """
+    Edit a review for a listing.
+    """
+    review = Review.query.get(id)
+    review.body = request.json["body"]
+
+    db.session.commit()
+
+    return {"hello": f'{id}'}
+
+
+@review_routes.route('/<int:id>', methods=['DELETE'])
+def delete_review(id):
+    """
+    Delete a review from a listing.
+    """
+    review = Review.query.get(id)
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return {'IN': 'DELETE'}
