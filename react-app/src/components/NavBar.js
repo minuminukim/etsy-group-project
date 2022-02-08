@@ -10,14 +10,14 @@ const NavBar = () => {
     <header className="navigation-header">
       <div className="global-navigation">
         <div className="left-container">
-          <NavLink id="logo-font" exact to ="/">Qwerty</NavLink>
+          <NavLink id="logo-font" exact to="/">Qwerty</NavLink>
         </div>
         <div className="search-container">
           <SearchBar />
         </div>
         <div className="right-container">
           <NavLink to='/login' exact={true}><button id="sign-in">Sign in</button></NavLink>
-          <NavLink id="cart-logo" to='/cart'>Cart</NavLink>
+          <NavLink id="cart-logo" to='/mycart'>Cart</NavLink>
         </div>
       </div>
       <div className="secondary-navigation"></div>

@@ -10,7 +10,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import CreateReview from './components/Review';
 import { authenticate } from './store/session';
-import ShoppingCart from './components/ShoppingCart';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
