@@ -1,13 +1,19 @@
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux"
+import { useParams } from "react-router-dom";
 import * as sessionActions from "../../store/review"
-import "./Review.css"
+import "./ReviewForm.css"
 
 const CreateReview = () => {
     const currentUser = useSelector(state => state.session.user);
     const [rating, setRating] = useState(0)
     const [body, setBody] = useState("")
     const [displayBtn, setDisplayBtn] = useState(false)
+    let { productId } = useParams()
+
+
+    console.log('IM IN REVIEWFORM')
+    console.log(currentUser.profile_pic_url)
 
     const dispatch = useDispatch()
 
@@ -16,7 +22,7 @@ const CreateReview = () => {
 
         const payload = {
             user_id: currentUser.id,
-            product_id: 1,
+            product_id: productId,
             rating,
             body,
 
@@ -65,6 +71,10 @@ const CreateReview = () => {
                 <option value="3">3</option>
             </select>
 
+            <div id='review-pic'>
+
+            <img id="profile-pic" src={currentUser.profile_pic_url}></img>
+
             {/* <label>Add a public review...</label> */}
             <textarea
             id="review_body"
@@ -76,6 +86,7 @@ const CreateReview = () => {
             }}
             >
             </textarea>
+            </div>
             {/* <input type="button" value="Clear" onclick="javascript:eraseText();" /> */}
 
             {btn}
