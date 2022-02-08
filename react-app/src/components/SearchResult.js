@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import './SearchResult.css';
 
 const SearchResult = () => {
 
@@ -25,7 +26,7 @@ const SearchResult = () => {
         );
       });
 
-    const productNotFound = <div><h2>We couldn't find any results for {query}</h2><p>Try searching for something else instead?</p></div>
+    const productNotFound = <div className="search-not-found"><h2>We couldn't find any results for {query}</h2><p>Try searching for something else instead?</p></div>
 
 
     return (
@@ -34,6 +35,5 @@ const SearchResult = () => {
         </div>
     )
 }
-
 
 export default SearchResult;
