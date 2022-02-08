@@ -5,17 +5,13 @@ import * as sessionActions from "../../store/review"
 import "./ReviewForm.css"
 
 const CreateReview = () => {
+    const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user);
     const [rating, setRating] = useState(0)
     const [body, setBody] = useState("")
     const [displayBtn, setDisplayBtn] = useState(false)
     let { productId } = useParams()
 
-
-    console.log('IM IN REVIEWFORM')
-    console.log(currentUser.profile_pic_url)
-
-    const dispatch = useDispatch()
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -52,10 +48,6 @@ const CreateReview = () => {
 
     return (
         <form id="review_form" onSubmit={onSubmit} value={true}
-        // onBlur={() => {
-        //     setBody("")
-        //     setDisplayBtn(false)
-        // }}
         onFocus={(e)=> {
             setDisplayBtn(true)
         }}>
@@ -72,22 +64,18 @@ const CreateReview = () => {
             </select>
 
             <div id='review-pic'>
-
-            <img id="profile-pic" src={currentUser.profile_pic_url}></img>
-
-            {/* <label>Add a public review...</label> */}
-            <textarea
-            id="review_body"
-            placeholder="Add a public review..."
-            maxLength="1000"
-            value={body}
-            onChange={(e) => {
-                setBody(e.target.value)
-            }}
-            >
-            </textarea>
+                <img id="profile-pic" src={currentUser.profile_pic_url}></img>
+                <textarea
+                id="review_body"
+                placeholder="Add a public review..."
+                maxLength="1000"
+                value={body}
+                onChange={(e) => {
+                    setBody(e.target.value)
+                }}
+                >
+                </textarea>
             </div>
-            {/* <input type="button" value="Clear" onclick="javascript:eraseText();" /> */}
 
             {btn}
         </form>

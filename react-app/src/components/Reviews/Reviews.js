@@ -8,12 +8,8 @@ const GetReviews = () => {
     const dispatch = useDispatch()
     // TODO - fix state in order to not have to do review.reviews (normalize?)
     const reviews = useSelector(state => state.review.reviews);
-    const user = useSelector(state => state.review.reviews)
+
     let { productId } = useParams()
-    console.log(reviews, '------REVIEWS')
-    // console.log(user)
-    // console.log('REVIEWSREVIEWS')
-    // console.log(productId, '=-=======-=-=')
 
     useEffect(() => {
         dispatch(sessionActions.getReviews(productId))
@@ -26,9 +22,10 @@ const GetReviews = () => {
             {reviews?.reviews.map(review => (
                 < >
                 <li>-----------------------------------</li>
-                <li>USER: {review.user_id}</li>
+                <li>USERNAME: {review.username}</li>
                 <li>RATING: {review.rating}</li>
                 <li>{review.body}</li>
+                <li>{review.updated_at}</li>
                 <li>-----------------------------------</li>
                 </>
             ))}
