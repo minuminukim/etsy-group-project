@@ -10,6 +10,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import CreateReview from './components/ReviewForm/Review';
 import { authenticate } from './store/session';
+import SearchResult from './components/SearchResult';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +35,9 @@ function App() {
         <Route path="/" exact={true}>
           <h1>Landing Page</h1>
           <LoginForm />
+        </Route>
+        <Route path='/search' >
+          <SearchResult />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />

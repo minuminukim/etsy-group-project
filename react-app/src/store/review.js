@@ -32,6 +32,7 @@ export const newReview = (payload) => async (dispatch) => {
 
 
 export default function reviewsReducer(state = initialState, action){
+    // TODO - need to figure out how to update state correctly?
     switch(action.type) {
         case CREATE_REVIEW:
             const newState = { ...state };
