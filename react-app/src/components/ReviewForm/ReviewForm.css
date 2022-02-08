@@ -4,7 +4,7 @@
     align-items: center;
 
     /* background-color: aliceblue; */
-    width: 500px;
+    width: 550px;
 }
 
 #review_body {
@@ -31,4 +31,19 @@
 
 #review_btn_container {
     align-self: flex-end;
+}
+
+#review-pic {
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+
+}
+
+#profile-pic {
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }

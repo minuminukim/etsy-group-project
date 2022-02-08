@@ -8,7 +8,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import CreateReview from './components/ReviewForm/Review';
+import ReviewForm from './components/ReviewForm/ReviewForm'
+import Reviews from './components/Reviews/Reviews'
 import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
 import CategoryView from './components/Categories';
@@ -52,6 +53,10 @@ function App() {
         </ProtectedRoute>
         <Route exact path="/products/new">
           <ProductListingForm sessionUser={sessionUser} />
+        </Route>
+        <Route exact path="/products/:productId">
+          <ReviewForm />
+          <Reviews />
         </Route>
       </Switch>
     </BrowserRouter>
