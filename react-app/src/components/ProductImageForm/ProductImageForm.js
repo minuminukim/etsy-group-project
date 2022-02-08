@@ -16,15 +16,10 @@ const ProductImageForm = ({ sessionUser }) => {
   const product = useSelector((state) => state.products[productId]);
 
   useEffect(() => {
-    if (images && images[0]) {
-      setPreviews([]);
-      console.log('previews', previews);
-      console.log('images', images);
-      const objectURLs = images.reduce((acc, img) => {
-        return [...acc, URL.createObjectURL(img)];
-      }, []);
-      console.log('objectURLs', objectURLs);
-      setPreviews([...previews, ...objectURLs]);
+    if (images.length) {
+      const current = images[images.length - 1];
+      const objectURL = URL.createObjectURL(current);
+      setPreviews([...previews, objectURL]);
     }
   }, [images]);
 
@@ -39,7 +34,9 @@ const ProductImageForm = ({ sessionUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('image', image);
+    if (images && images.length) {
+      images.forEach((image) => formData.append('images', image));
+    }
 
     setImageLoading(true);
 
@@ -55,7 +52,7 @@ const ProductImageForm = ({ sessionUser }) => {
     } else {
       setImageLoading(false);
       const data = await res.json();
-
+      console.log('data', data);
       console.log('error');
     }
   };
@@ -66,14 +63,7 @@ const ProductImageForm = ({ sessionUser }) => {
   //   setImage(file);
   // };
 
-  const updateImages = (e) => {
-    setImages([]);
-    const files = [...e.target.files];
-    console.log('files', files);
-    const userImages = files.reduce((acc, f) => [...acc, f], []);
-    console.log('userImages', userImages);
-    setImages([...userImages]);
-  };
+  const updateImages = (e) => setImages([...images, e.target.files[0]]);
 
   return (
     <div className="container">
@@ -105,22 +95,22 @@ const ProductImageForm = ({ sessionUser }) => {
               onChange={updateImages}
             />
             <FileInputWithPreview
-              index="0"
+              index="1"
               src={previews[1]}
               onChange={updateImages}
             />
             <FileInputWithPreview
-              index="0"
+              index="2"
               src={previews[2]}
               onChange={updateImages}
             />
             <FileInputWithPreview
-              index="0"
+              index="3"
               src={previews[3]}
               onChange={updateImages}
             />
             <FileInputWithPreview
-              index="0"
+              index="4"
               src={previews[4]}
               onChange={updateImages}
             />
