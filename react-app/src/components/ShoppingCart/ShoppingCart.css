@@ -1,0 +1,23 @@
+.cartItemContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainCartContent {
+    width: 1328px;
+    min-height: fit-content;
+}
+
+.ShoppingCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#numberOfItemsText{
+    font-size: 32px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
+    font-weight: 200;
+}

@@ -25,5 +25,6 @@ class CartItem(db.Model):
             "product_description": str(self.product.description),
             "product_price": str(self.product.price),
             "product_discount": str(self.product.discount),
-            "product_stock": str(self.product.stock)
+            "product_stock": str(self.product.stock),
+            "product_image": self.product.images[0].image_url
         }

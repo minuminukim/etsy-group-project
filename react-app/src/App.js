@@ -11,6 +11,8 @@ import User from './components/User';
 import CreateReview from './components/Review';
 import { authenticate } from './store/session';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import { get_cart_items } from './store/shoppingCart';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,10 +21,17 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate());
+      await dispatch(authenticate())
       setLoaded(true);
     })();
   }, [dispatch]);
+
+
+  useEffect(() => {
+
+
+    if (loaded) dispatch(get_cart_items(sessionUser.id))
+  }, [loaded, dispatch])
 
   if (!loaded) {
     return null;
