@@ -98,11 +98,6 @@ const ProductImageForm = ({ sessionUser }) => {
               </li>
             </ul>
           </div>
-          {/* <input
-            type="file"
-            accept=".png,.jpg,.jpeg,.gif"
-            onChange={updateImages}
-          /> */}
           <div className="image-preview-grid">
             <FileInputWithPreview
               index="0"
@@ -131,43 +126,6 @@ const ProductImageForm = ({ sessionUser }) => {
             />
           </div>
         </div>
-        {/* <div className="image-preview-grid">
-          <div className="grid-block grid-block-0">
-            <img
-              src={previews[0] || null}
-              className="preview-image"
-              alt="Preview image"
-            />
-          </div>
-          <div className="grid-block grid-block-1">
-            <img
-              src={previews[1] || null}
-              className="preview-image"
-              alt="Preview image"
-            />
-          </div>
-          <div className="grid-block grid-block-2">
-            <img
-              src={previews[2] || null}
-              className="preview-image"
-              alt="Preview image"
-            />
-          </div>
-          <div className="grid-block grid-block-3">
-            <img
-              src={previews[3] || null}
-              className="preview-image"
-              alt="Preview image"
-            />
-          </div>
-          <div className="grid-block grid-block-4">
-            <img
-              src={previews[4] || null}
-              className="preview-image"
-              alt="Preview image"
-            />
-          </div>
-        </div> */}
         <Button label="Submit" className="submit-button" type="submit" />
       </form>
     </div>

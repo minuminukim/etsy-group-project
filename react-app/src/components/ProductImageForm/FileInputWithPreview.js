@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { FaCamera } from 'react-icons/fa';
 import './FileInputWithPreview.css';
+import Button from '../common/Button';
+import Badge from '../common/Badge';
 
 const FileInputWithPreview = ({ index, src, onChange }) => {
   const hiddenInput = useRef(null);
@@ -14,12 +16,13 @@ const FileInputWithPreview = ({ index, src, onChange }) => {
 
   return (
     <div className={`grid-block grid-block-${index}`} style={gridBlockStyle}>
-      <div className="icon-container" onClick={handleClick}>
+      {+index === 0 && <Badge text="Primary" className="badge-black badge-small" />}
+      {!src && <div className="icon-container" onClick={handleClick}>
         <div className="icon file-upload-icon">
           <FaCamera />
         </div>
         <p className="form-label">Add a photo</p>
-      </div>
+      </div>}
       <input
         type="file"
         accept=".png,.jpg,.jpeg,.gif"
