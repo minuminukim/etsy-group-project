@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import CreateReview from './components/Comment';
+import CreateReview from './components/Review';
 import { authenticate } from './store/session';
 
 function App() {
@@ -31,6 +31,8 @@ function App() {
       <Switch>
         <Route path='/' exact={true} >
           <h1>Landing Page</h1>
+          <CreateReview />
+          <LoginForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
