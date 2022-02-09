@@ -4,6 +4,14 @@ import { useParams } from "react-router-dom";
 import * as sessionActions from "../../store/review"
 import "./Reviews.css"
 
+import { BsStarFill, BsCart4 } from "react-icons/bs"
+
+const displayRating = (num) => {
+    if (num === 1) return {
+        
+    }
+}
+
 const GetReviews = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user);
@@ -49,6 +57,14 @@ const GetReviews = () => {
 
                     <div id="review-row2">
                         <li>RATING:{review.rating}</li>
+                        {/* <li>{Array(review.rating).fill(1).map((el, i) => {
+                            <>
+                            <BsStarFill />
+                            </>
+                        })}</li> */}
+                        {/* {/* <li>{review.rating <= 2 ? <><BsStarFill /> <BsStarFill /> </>: null}</li> */}
+                        {/* <li>{review.rating == 10 ? <><BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /></></li> */}
+
                         <li>{review.body}</li>
                     </div>
                     {/* Only display deleteBtn for a review by currentUser */}

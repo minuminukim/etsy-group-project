@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom";
 import * as sessionActions from "../../store/review"
 import "./ReviewForm.css"
+
+import { BsStarFill, BsCart4 } from "react-icons/bs"
 
 const CreateReview = () => {
     const dispatch = useDispatch()
@@ -44,68 +46,77 @@ const CreateReview = () => {
     }
     console.log("ERROR MESSAGE HERE ---", errors)
 
-        let btn;
-        if (displayBtn) {
-            btn = (
-                <div id="review_btn_container">
-                    <button className="review-btn" className="btn"
-                        onClick={() => {
-                            setErrors([])
-                            setBody("")
-                            setDisplayBtn(false)
-                        }}>Reset</button>
-                    <button className="review-btn" className="btn">Submit</button>
-                </div>
+    let btn;
+    if (displayBtn) {
+        btn = (
+            <div id="review_btn_container">
+                <button className="review-btn" className="btn"
+                    onClick={() => {
+                        setErrors([])
+                        setBody("")
+                        setDisplayBtn(false)
+                    }}>Reset</button>
+                <button className="review-btn" className="btn">Submit</button>
+            </div>
 
-            )
-        } else {
-            btn =(
-                null
-            )
-        }
+        )
+    } else {
+        btn = (
+            null
+        )
+    }
 
-        useEffect(() => {
-            dispatch(sessionActions.getReviews(productId))
-        }, [dispatch])
+    useEffect(() => {
+        dispatch(sessionActions.getReviews(productId))
+    }, [dispatch])
 
 
     return (
         <form id="review_form" onSubmit={onSubmit} value={true}
-        onFocus={(e)=> {
-            setDisplayBtn(true)
-        }}>
-                  <div>
-        {/* {errors?.body?.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))} */}
-            {errors.body}
-        <div>
+            onFocus={(e) => {
+                setDisplayBtn(true)
+            }}>
+            <div>
+                {errors.body}
+                <div>
 
-        {errors.rating}
+                    {errors.rating}
+                </div>
             </div>
-      </div>
-            <label>Rating</label>
-            <select
-            value={rating}
-            onChange={(e) => {
-                setRating(e.target.value);
-            }}
-            id="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
+            {/* <label>Rating</label> */}
+            <div>
+                <BsStarFill
+                    onClick={(e) => {
+                        setRating(1);
+                    }} />
+                <BsStarFill
+                    onClick={(e) => {
+                        setRating(4);
+                    }} />
+                <BsStarFill
+                    onClick={(e) => {
+                        setRating(6);
+                    }} />
+                <BsStarFill
+                    onClick={(e) => {
+                        setRating(8);
+                    }} />
+                <BsStarFill
+                    onClick={(e) => {
+                        setRating(10);
+                    }} />
+            </div>
 
             <div id='review-pic'>
                 <img className="profile-pic" src={currentUser.profile_pic_url} />
                 <textarea
-                id="review_body"
-                placeholder="Add a public review..."
-                maxLength="1000"
-                value={body}
-                onChange={(e) => {
-                    setBody(e.target.value)
-                }}
+                    id="review_body"
+                    placeholder="Add a public review..."
+                    maxLength="1000"
+                    value={body}
+                    onChange={(e) => {
+                        setBody(e.target.value)
+                    }}
                 >
                 </textarea>
             </div>
