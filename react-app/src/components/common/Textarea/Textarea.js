@@ -1,21 +1,9 @@
 import './Textarea.css';
 
-const Textarea = ({
-  label,
-  type,
-  id,
-  placeholder,
-  rows,
-  size,
-  value,
-  onChange,
-  error,
-}) => {
+const Textarea = ({ id, placeholder, rows, value, onChange, error }) => {
   return (
-    <div className={`form-row form-row-${size}`}>
-      <label className="form-label">{label}</label>
+    <div className="form-input">
       <textarea
-        type={type}
         name={id}
         id={id}
         placeholder={placeholder}
@@ -31,7 +19,6 @@ const Textarea = ({
 
 Textarea.defaultProps = {
   label: null,
-  type: 'text',
   placeholder: null,
   error: null,
   rows: '3',

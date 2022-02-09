@@ -3,11 +3,6 @@
   grid-template-columns: 246px 528px;
 }
 
-label {
-  grid-column: 1 / 2;
-  padding-right: 18px;
-}
-
 input,
 select {
   grid-column: 2 / 3;
@@ -29,3 +24,18 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.error-field {
+  background-color: #fddcd8;
+  border-color: #b23545;
+}
+
+.validation-error {
+  color: #A61A2E;
+  margin-top: 6px;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  transition: opacity 200ms ease-in;
+}
+

@@ -1,18 +1,8 @@
 import './InputField.css';
 
-const InputField = ({
-  label,
-  type,
-  id,
-  size,
-  placeholder,
-  value,
-  onChange,
-  error,
-}) => {
+const InputField = ({ type, id, placeholder, value, onChange, error }) => {
   return (
-    <div className={`form-row form-row-${size}`}>
-      <label className="form-label">{label}</label>
+    <div className="form-input">
       <input
         type={type}
         name={id}
@@ -28,7 +18,7 @@ const InputField = ({
 };
 
 InputField.defaultProps = {
-  label: null,
+  // label: null,
   type: 'text',
   placeholder: null,
   error: null,

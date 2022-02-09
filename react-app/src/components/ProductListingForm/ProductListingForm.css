@@ -23,10 +23,6 @@
   grid-template-rows: auto auto;
 }
 
-.input-field-details {
-  grid-column: 1 / 2;
-}
-
 .page-heading {
   font-size: 26px;
   font-weight: 500;
@@ -46,14 +42,4 @@
   font-size: 14px;
   font-weight: 400;
   margin: 0 0 24px 0;
-}
-
-.form-label {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.input-field-details {
-  color: #595959;
-  font-size: 12px;
 }

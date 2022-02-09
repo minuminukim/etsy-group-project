@@ -49,33 +49,35 @@ def upload_product_image(id):
     """
     Creates a new product image.
     """
-    if "image" not in request.files:
-        return {"errors": "image required"}, 400
+    image_urls = []
 
-    image = request.files["image"]
+    if "images" not in request.files:
+        return {"errors": "Image required."}, 400
 
-    if not allowed_file(image.filename):
-        return {"errors": "file type not permitted"}, 400
+    images = request.files.getlist("images")
 
-    image.filename = get_unique_filename(image.filename)
-    upload = upload_file_to_s3(image)
-    # breaks somewhere after here, upload to s3 works
-    if "image_url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-        return upload, 400
+    for image in images:
+        if not allowed_file(image.filename):
+            return {"errors": "File type not permitted."}
 
-    image_url = upload["image_url"]
-    print("image_urL: ", image_url)
-    # print("@@@@@@@@@@@@@@@@@@@@@", current_user)
-    # print("@@@@@@@@@@", request.data.user_id)
-    new_image = ProductImage(product_id=id, image_url=image_url)
-    print("CHECKPOINT@@@@@@@@@@@@@@@@@@@@@")
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
 
-    db.session.add(new_image)
-    db.session.commit()
-    return {"image_url": image_url}
+        if "image_url" not in upload:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
+
+        image_url = upload["image_url"]
+        new_image = ProductImage(product_id=id, image_url=image_url)
+
+        db.session.add(new_image)
+        db.session.commit()
+
+        image_urls.append(image_url)
+
+    return {id: {"image_url": image_urls}}
 
 
 @product_listing_routes.route("/", methods=["POST"])
