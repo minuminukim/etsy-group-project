@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { get_cart_items } from "../../store/shoppingCart";
 import CartItem from "./CartItem";
 import PurchaseCart from "./PurchaseCart";
+import { NavLink } from "react-router-dom";
 
 const ShoppingCart = () => {
 
@@ -19,6 +20,13 @@ const ShoppingCart = () => {
 
 
     let areThereCartItems;
+
+    useEffect(() => {
+
+
+        dispatch(get_cart_items(session.user.id))
+
+    }, [dispatch])
 
 
     useEffect(() => {
@@ -54,7 +62,12 @@ const ShoppingCart = () => {
 
 
     let noCartItems = (
-        <h1 style={{ marginTop: "300px", color: "red" }}>Your Cart is Empty.</h1>
+        <>
+            <div className="cartIsEmpty">
+                <h1 id="emptyCartText"> Your Cart is empty.</h1>
+                <NavLink id="uniqueCartText" exact to="/"> Discover something unique to fill it up</NavLink>
+            </div>
+        </>
     )
 
 

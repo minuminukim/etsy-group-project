@@ -1,9 +1,9 @@
 import "./ShoppingCart.css"
-
-
+import { deleteCartItems } from "../../store/shoppingCart";
+import { useDispatch } from "react-redux";
 
 const CartItem = ({ cartItem }) => {
-
+    const dispatch = useDispatch();
 
     let onSale;
 
@@ -12,20 +12,17 @@ const CartItem = ({ cartItem }) => {
     }
 
     const removeItem = () => {
+        dispatch(deleteCartItems([cartItem.id]))
+    }
 
+    let quantityOptions = () => {
 
-        /*
-        
-        import remove car item thunk and dispatch it in here passing in the item
-        id of the item to be removed.
+        let quantityArray = []
 
-        Redux store:
-
-        -make remove Items thunk that removes each item in array.
-        - make action creator with type and payload.
-        - make reducer.
-        
-        */
+        for (let i = 1; i <= parseInt(cartItem.product_stock, 10); i++)
+            return (
+            
+        )
     }
 
 
@@ -38,6 +35,18 @@ const CartItem = ({ cartItem }) => {
                 </div>
                 <div className="rightDivCartItem">
                     <div className="topHalfCartItemSection" >
+                        <div className="cartItemTitleContainer"> Text</div>
+                        <div className="cartItemQuantityAndPriceSection">
+                            <div className="quantityAndPriceTextSection">
+                                <div className="quantityContainer">
+                                    <select name="quantity" id="quantitySelect">
+                                        {one()}
+                                    </select>
+                                </div>
+                                <div className="priceCartItemContainer"></div>
+                            </div>
+                            <div className="quantityAvailableText"></div>
+                        </div>
                     </div>
                     <div className="RemoveAndSaleCartItemSection">
                         <div id="removeButtonContainer">

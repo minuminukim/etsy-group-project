@@ -79,6 +79,8 @@ def delete_cart_item():
 
     data = request.json
 
+    print(data, "111<><><><><><><><><><><><>")
+
     for id in data["items"]:
         
         cart_item = CartItem.query.get(int(id))

@@ -14,6 +14,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    
 }
 
 #numberOfItemsText{
@@ -59,20 +61,21 @@
 .rightDivCartItem {
     width: 100%;
     height: 200px;
-    border: 1px solid purple;
+
 }
 
 .topHalfCartItemSection {
     width: 100%;
     height: 80%;
-    border: 1px solid red;
-
+    background-color: blue;
+    display:flex;
+    flex-direction: row;
 }
 
 .RemoveAndSaleCartItemSection {
     width: 100%;
     height: 20%;
-    border: 1px solid green;
+    background-color: aqua;
     display: flex;
 }
 
@@ -89,5 +92,62 @@
     cursor: pointer;
 }
 
+.cartIsEmpty {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+    align-items: center; 
+    padding-bottom: 80px;  
+    flex-direction: column;
+}
 
+#emptyCartText {
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+}
 
+#uniqueCartText {
+    color: black;
+}
+
+.cartItemTitleContainer {
+    width: 50%;
+    height: 100%;
+    background-color: chartreuse;
+}
+
+.cartItemQuantityAndPriceSection {
+    width: 50%;
+    height: 100%;
+    background-color:rgb(34, 178, 99);
+    display: flex;
+    flex-direction: column;
+}
+
+.quantityAndPriceTextSection{
+    width: 100%;
+    height: 60%;
+    background-color: rgb(147, 33, 33);
+    display: flex;
+    flex-direction: row;
+}
+
+.quantityAvailableText {
+    width: 100%;
+    height: 40%;
+    background-color: white;
+}
+
+.quantityContainer {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(215, 36, 231);
+}
+
+.priceCartItemContainer {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(27, 133, 227);
+}

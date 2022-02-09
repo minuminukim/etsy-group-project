@@ -27,12 +27,12 @@ function App() {
   }, [dispatch]);
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
 
-    if (loaded) dispatch(get_cart_items(sessionUser.id))
+  //   if (loaded) dispatch(get_cart_items(sessionUser.id))
 
-  }, [loaded, dispatch])
+  // }, [loaded, dispatch])
 
   if (!loaded) {
     return null;

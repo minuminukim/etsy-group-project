@@ -69,28 +69,29 @@ export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
 
     const response = await fetch("/api/mycart/delete", {
         method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({
             items: itemstoDelete
         })
     })
 
-    if (response.message === "deleted") {
+    console.log(response, "990909090909")
 
-        console.log("deleted", "11111111111")
+    if (response.ok) {
+
+        if (itemstoDelete.length === 1) {
+            dispatch(deleteOneCartItem(itemstoDelete[0]))
+        } else if (itemstoDelete.length > 1) {
+            dispatch(deleteAllCartItems())
+        }
+
+
     } else {
-        console.log()
+        console.log("failed said face!!!")
     }
-
-
-
-
 }
-
-
-
-
-
-
 
 
 /*--------------------------------------------------------------------*/
