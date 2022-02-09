@@ -100,4 +100,10 @@ class Product(db.Model):
             "rating": self.rating,
             "stock": self.stock,
             "category": self.category,
+            "images": [image.image_url for image in self.images],
+            "user": {
+                "username": self.user.username,
+                "profile_picture_url": self.user.profile_picture_url,
+                "rating": self.user.rating,
+            },
         }

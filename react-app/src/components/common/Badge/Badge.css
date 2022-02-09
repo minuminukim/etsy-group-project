@@ -1,0 +1,18 @@
+.badge {
+  border-radius: 100px;
+  font-size: 80%;
+  font-weight: 300;
+  line-height: 1;
+  min-width: 18px;
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.badge-black {
+  color: #fff;
+  background-color: #222;
+}
+
+.badge-small {
+  font-size: 11px;
+}

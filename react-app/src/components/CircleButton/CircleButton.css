@@ -1,0 +1,20 @@
+.circle-btn {
+  background-color: #fff;
+  border: 0;
+  border-radius: 50%;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.1s;
+}
+
+.circle-btn:hover {
+  opacity: 0.9;
+}
+
+.circle-btn-medium {
+  height: 48px;
+  width: 48px;
+  font-size: 18px;
+}

@@ -17,7 +17,7 @@ class ProductListingForm(FlaskForm):
             Length(
                 min=1,
                 max=255,
-                message=f"Title must be between {min} and {max} characters long.",
+                message="Title must be between %(min)s and %(max)s characters long.",
             ),
         ],
     )
@@ -38,9 +38,9 @@ class ProductListingForm(FlaskForm):
         validators=[
             DataRequired(),
             Length(
-                min=1,
+                min=0,
                 max=4000,
-                message=f"Description must be between {min} and {max} characters long.",
+                message="Description cannot be longer than %(max)s characters.",
             ),
         ],
     )
@@ -53,12 +53,18 @@ class ProductListingForm(FlaskForm):
             NumberRange(
                 min=0.00,
                 max=9999.99,
-                message=f"Price must be between ${min} and ${max}.",
+                message="Price must be between $%(min)s0 and $%(max)s.",
             ),
         ],
     )
 
-    stock = IntegerField("Stock", validators=[DataRequired()])
+    stock = IntegerField(
+        "Stock",
+        validators=[
+            DataRequired(),
+            NumberRange(min=1, message="Stock must be at least %(min)s"),
+        ],
+    )
 
     discount = IntegerField(
         "Discount", validators=[NumberRange(min=0, max=100)], default=0
