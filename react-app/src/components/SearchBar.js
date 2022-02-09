@@ -1,17 +1,19 @@
 import "./NavBar.css";
 import React from 'react';
+import { AiOutlineSearch } from "react-icons/ai"
+
 
 const SearchBar = () => {
 
     return (
-        <form action="/search" method="get">
-        <input id="search-field"
-            type="text"
-            placeholder="Search for anything"
-            name="q"
-        />
-        <button type="submit">S</button>
-    </form>
+        <form action="/search" method="get" id="searchForm">
+            <input id="search-field"
+                type="text"
+                placeholder="Search for anything"
+                name="q"
+            />
+            <button type="submit"><AiOutlineSearch className="searchIcon" /></button>
+        </form >
     )
 }
 
