@@ -46,6 +46,7 @@ const ProductDetails = ({ product }) => {
           {discount > 0 && (
             <p className="discount">{`You save $${saving} (${discount}%)`}</p>
           )}
+          {/* TODO in stock, out of stock, low stock */}
         </div>
       </div>
     </div>
