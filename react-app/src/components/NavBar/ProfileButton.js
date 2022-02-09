@@ -41,7 +41,7 @@ function ProfileButton({ user }) {
     <>
      <div className="logged-in-nav">
       <button id="logged-in-menu" onClick={openMenu}>
-          <HiUser/>
+          <img src={user.profile_pic_url} className="menu-icons"/>
           <AiFillCaretDown />
       </button>
       {showMenu && (

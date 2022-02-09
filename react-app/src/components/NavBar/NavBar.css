@@ -199,12 +199,22 @@ body {
 }
 
 #logged-in-menu {
-    border-radius: 100%;
-    width: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
     height: 50px;
-    background-color: purple;
+    background-color: transparent;
     box-shadow: none;
     border: none;
+}
+
+#logged-in-menu:hover {
+    background-color:rgb(208, 208, 208)
 }
 
 .profile-dropdown {
@@ -229,6 +239,7 @@ body {
 }
 
 .dropdown-containers {
+    width: 100%;
     line-height: 1.4px;
     font-weight: 500;
     padding-left: 18px;
@@ -238,10 +249,20 @@ body {
     cursor: pointer;
 }
 
+.dropdown-containers:hover {
+    background-color: rgb(208, 208, 208);;
+}
+
 .dropdown-icons {
     height: 25px;
     width: 25px;
     margin-right: 18px;
+}
+
+.menu-icons {
+    height: 25px;
+    width: 25px;
+
 }
 
 .logout-button {
