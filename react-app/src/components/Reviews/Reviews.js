@@ -26,6 +26,7 @@ const GetReviews = () => {
     const currentUser = useSelector(state => state.session.user);
     // TODO - fix state in order to not have to do review.reviews (normalize?)
     const reviews = useSelector(state => state.review.reviews);
+    const [test, setTest] = useState(false)
 
 
     const [deleteId, setDeleteId] = useState(0)
@@ -37,6 +38,7 @@ const GetReviews = () => {
        e.preventDefault();
 
        const res = dispatch(sessionActions.deleteReview(id))
+       setTest(!test)
        if (res.id) return 'asdflasjfasdkl'
     }
 
@@ -48,7 +50,12 @@ const GetReviews = () => {
     useEffect(() => {
         dispatch(sessionActions.getReviews(productId))
 
-    }, [dispatch])
+    }, [dispatch, test])
+
+    useEffect(() => {
+        dispatch(sessionActions.getReviews(productId))
+
+    }, [dispatch, test])
 
     return (
         // TODO - clean up code, get rid of warnings if possible
