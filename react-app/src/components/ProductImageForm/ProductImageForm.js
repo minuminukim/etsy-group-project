@@ -12,6 +12,8 @@ const ProductImageForm = ({ sessionUser }) => {
   const history = useHistory();
   const { productId } = useParams();
 
+  // TODO: error handling
+
   useEffect(() => {
     if (images.length) {
       const current = images[images.length - 1];
@@ -50,8 +52,19 @@ const ProductImageForm = ({ sessionUser }) => {
   const deleteOnClick = (e, i) => {
     e.preventDefault();
     e.stopPropagation();
-    setPreviews([...previews.slice(0, i), ...previews.slice(i + 1)]);
-    setImages([...images.slice(0, i), ...images.slice(i + 1)]);
+    // setPreviews([...previews.slice(0, i), ...previews.slice(i + 1)]);
+    // setImages([...images.slice(0, i), ...images.slice(i + 1)]);
+    setPreviews([...previews].splice(i, 1))
+    setImages([...images].splice(i, 1))
+  };
+
+  const handleDelete = (e, i) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const filteredPreviews = previews.filter((_item, index) => i !== index);
+    const filteredImages = images.filter((_item, index) => i !== index);
+    setPreviews(filteredPreviews);
+    setImages(filteredImages);
   };
 
   return (
@@ -79,31 +92,31 @@ const ProductImageForm = ({ sessionUser }) => {
           </div>
           <div className="image-preview-grid">
             <FileInputWithPreview
-              index="0"
+              index={0}
               src={previews[0]}
               onChange={updateImages}
-              onClick={deleteOnClick}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="1"
+              index={1}
               src={previews[1]}
               onChange={updateImages}
-              onClick={deleteOnClick}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="2"
+              index={2}
               src={previews[2]}
               onChange={updateImages}
-              onClick={deleteOnClick}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="3"
+              index={3}
               src={previews[3]}
               onChange={updateImages}
               // onClick={deleteOnClick(3)}
             />
             <FileInputWithPreview
-              index="4"
+              index={4}
               src={previews[4]}
               onChange={updateImages}
               // onClick={deleteOnClick(4)}

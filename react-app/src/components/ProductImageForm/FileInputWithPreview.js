@@ -12,6 +12,7 @@ const FileInputWithPreview = ({
   error = null,
 }) => {
   // TODO: error handling
+
   const [isVisible, setIsVisible] = useState(false);
 
   const hiddenInput = useRef(null);
@@ -23,13 +24,6 @@ const FileInputWithPreview = ({
     backgroundImage: `url(${src})`,
   };
 
-  // const deleteOnClick = (e) => {};
-  const test = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log('test');
-  };
-
   return (
     <div
       className={`grid-block grid-block-${index}`}
@@ -37,7 +31,7 @@ const FileInputWithPreview = ({
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
-      {+index === 0 && (
+      {index === 0 && (
         <Badge text="Primary" className="badge-black badge-small" />
       )}
       {!src && (
