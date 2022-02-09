@@ -7,7 +7,7 @@ import "./ReviewForm.css"
 const CreateReview = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user);
-    const [rating, setRating] = useState(null)
+    const [rating, setRating] = useState(0)
     const [body, setBody] = useState("")
     const [displayBtn, setDisplayBtn] = useState(false)
     const [errors, setErrors] = useState([])
@@ -35,8 +35,14 @@ const CreateReview = () => {
         //     return null
         // }
 
-        return dispatch(sessionActions.newReview(payload))
+        return dispatch(sessionActions.newReview(payload)).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) {
+                setErrors(data.errors);
+            }
+        })
     }
+    console.log("ERROR MESSAGE HERE ---", errors)
 
         let btn;
         if (displayBtn) {
@@ -57,11 +63,21 @@ const CreateReview = () => {
             )
         }
 
+        useEffect(() => {
+            dispatch(sessionActions.getReviews(productId))
+        }, [dispatch])
+
+
     return (
         <form id="review_form" onSubmit={onSubmit} value={true}
         onFocus={(e)=> {
             setDisplayBtn(true)
         }}>
+                  <div>
+        {errors?.body?.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
             <label>Rating</label>
             <select
             value={rating}
