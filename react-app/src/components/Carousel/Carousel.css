@@ -1,0 +1,28 @@
+.carousel {
+  display: flex;
+  padding-left: 30px;
+}
+
+.carousel-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 560px;
+  height: 375px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+
+.carousel-slides {
+  margin-right: 7px;
+}
+
+.carousel-buttons {
+  display: flex;
+  padding: 0 12px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}

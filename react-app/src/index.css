@@ -27,3 +27,7 @@ a {
 a:visited {
   color: #222;
 }
+
+.page-container {
+  padding-top: 30px;
+}

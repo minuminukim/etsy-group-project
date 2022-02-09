@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleProduct } from '../../store/productReducer';
 import ProductDetails from '../ProductDetails';
+import Carousel from '../Carousel';
 
 const ProductListing = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,19 +17,17 @@ const ProductListing = () => {
       .then((res) => setProduct(res))
       .then(() => setIsLoading(false))
       .catch(async (res) => {
-        console.log('res', res);
         const data = await res.json();
         if (data && data.errors) {
           console.log('errors', data.errors);
         }
       });
   }, [dispatch]);
-  console.log('loading', isLoading);
-  return isLoading ? (
-    null
-  ) : (
+
+  return isLoading ? null : (
     <div className="page-container">
       <ProductDetails product={product} />
+      <Carousel images={product.images} alt={product.title} />
     </div>
   );
   // return 'hello';

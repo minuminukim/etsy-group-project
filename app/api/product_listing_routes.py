@@ -40,7 +40,7 @@ def get_product_images(id):
     Returns a product's associated images.
     """
     images = ProductImage.query.filter(ProductImage.product_id == id).all()
-    return {"images": [image.to_dict() for image in images]}
+    return {"images": [image.image_url for image in images]}
 
 
 @product_listing_routes.route("/<int:id>/product_images", methods=["POST"])

@@ -11,17 +11,12 @@ const ProductDetails = ({ product }) => {
     title,
     price,
     // discount,
-    rating,
     stock,
     user,
   } = product;
-  let discount = 10;
 
-  // const calculateOriginalPrice = (discounted) => {
-  //   const original = discounted / (1 - discount / 100);
-  //   const difference = original - price;
-  //   return { original: original.toFixed(2), saving: difference.toFixed(2) };
-  // };
+  // currently hardcoded, cause no seed data with discount yet
+  let discount = 10;
 
   const { original, saving } = calculateOriginalPrice(price, discount);
 
