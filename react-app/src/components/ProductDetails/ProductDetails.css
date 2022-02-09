@@ -9,7 +9,8 @@
   /* font-family: Ch'Guardian-EgypTT', Charter, 'Charter Bitstream', Cambria,
     'Noto Serif Light', 'Droid Serif', Georgia, serif; */
   /* font-family: Cambria, 'Droid Serif', Georgia, serif; */
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Merriweather', Cambria, Cochin, Georgia, Times,
+    'Times New Roman', serif;
   font-size: 26px;
   font-weight: 300;
 }
