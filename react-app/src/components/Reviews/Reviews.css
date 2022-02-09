@@ -1,0 +1,65 @@
+#review-container {
+    /* background-color: red; */
+    margin: 50px;
+    padding: 0;
+    width: 750px;
+}
+
+#review-container > * {
+    list-style: none;
+}
+
+#review-row1 {
+    /* background-color: gray; */
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    /* justify-content: flex-end; */
+}
+
+#review-author {
+    font-size: 10px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    /* line-height: 18px; */
+    /* background-color: blue; */
+    margin:  0 10px 0 15px;
+    color: #595959;
+    border-bottom: .5px lightgray solid;
+    /* background-color: red; */
+    /* width: 50px; */
+
+}
+
+/* #revview- */
+
+#review-date {
+    font-size: 10px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #595959;
+
+    border-bottom:none !important;
+    padding-bottom: 1.5px;
+}
+
+#review-row2 {
+    margin-left: 40px;
+}
+
+#deleteReviewBtn {
+    /* not sure why this doesn't work */
+    /* align-self: flex-end !important; */
+    float: right;
+}
+
+.review-pic {
+    margin-right: 0px !important;
+    margin-right: -5px !important;
+
+}
