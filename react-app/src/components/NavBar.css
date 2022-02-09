@@ -24,7 +24,7 @@ body {
 }
 
 .secondary-navigation {
-    height: 14px;
+    height: 0px;
     display: flex;
     background-color:white;
     width: 100%;
@@ -91,8 +91,7 @@ body {
     background: none;
     display: flex;
     align-items: center;
-    padding-top: 15px;
-    
+    margin-top: 5px;
 }
 
 #sign-in:hover {
@@ -104,7 +103,7 @@ body {
     display: flex;
     background-color: rgb(208, 208, 208);
     align-items: center;
-    padding-top: 15px;
+    margin-top: 5px;
 }
 
 #cart-logo {
