@@ -19,10 +19,15 @@ const CartItem = ({ cartItem }) => {
 
         let quantityArray = []
 
-        for (let i = 1; i <= parseInt(cartItem.product_stock, 10); i++)
-            return (
-            
-        )
+        for (let i = 1; i <= parseInt(cartItem.product_stock, 10); i++) {
+            quantityArray.push(i)
+        }
+
+        return quantityArray
+    }
+
+    let changeQuantity = () => {
+        console.log("hello")
     }
 
 
@@ -39,8 +44,11 @@ const CartItem = ({ cartItem }) => {
                         <div className="cartItemQuantityAndPriceSection">
                             <div className="quantityAndPriceTextSection">
                                 <div className="quantityContainer">
-                                    <select name="quantity" id="quantitySelect">
-                                        {one()}
+                                    <select name="quantity" id="quantitySelect" value={cartItem.quantity} onChange={changeQuantity}>
+                                        {quantityOptions().map((number) => {
+
+                                            return <option key={number.toString()} value={number.toString()}>{number}</option>
+                                        })}
                                     </select>
                                 </div>
                                 <div className="priceCartItemContainer"></div>
