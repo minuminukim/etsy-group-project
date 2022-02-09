@@ -44,8 +44,8 @@ const CreateReview = () => {
                 setErrors(data.errors);
             }
         })
-
         setTest(!test)
+
     }
 
     let btn;
@@ -71,7 +71,7 @@ const CreateReview = () => {
     useEffect(() => {
         console.log('inside useeffect')
         dispatch(sessionActions.getReviews(productId))
-    }, [])
+    }, [dispatch, test])
 
     useEffect(() => {
         // dispatch(sessionActions.newReview(productId))
