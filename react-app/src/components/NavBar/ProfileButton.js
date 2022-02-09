@@ -40,34 +40,37 @@ function ProfileButton({ user }) {
   return (
     <>
      <div className="logged-in-nav">
-      <button id="logged-in-menu" onClick={openMenu}><HiUser /><AiFillCaretDown /></button>
+      <button id="logged-in-menu" onClick={openMenu}>
+          <HiUser/>
+          <AiFillCaretDown />
+      </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <NavLink to={`/users/${user.id}`}>
+          <NavLink to={`/users/${user.id}`} className="dropdown-containers">
               <div>
-              <img src={user.profile_pic_url}/>
+              <img src={user.profile_pic_url} className="dropdown-icons"/>
               </div>
               <div>
                 <p>{user.username}</p>
                 <p>View your profile</p>
               </div>
           </NavLink>
-          <div>
+          <div className="dropdown-containers">
               <div>
-                <MdOutlineSell />
+                <MdOutlineSell className="dropdown-icons" />
               </div>
               <div>
                 <p>List an item</p>
               </div>
           </div>
-          <div>
+          <button className="logout-button" onClick={logout}>
               <div>
-                <RiLogoutBoxLine />
+                <RiLogoutBoxLine className="dropdown-icons" />
               </div>
               <div>
-                <button id="profile-logout-button" onClick={logout}>Sign out</button>
+                <p>Sign out</p>
               </div>
-          </div>
+          </button>
         </ul>
       )}
       </div>
