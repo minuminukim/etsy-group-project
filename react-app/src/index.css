@@ -20,3 +20,10 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #222;
+}

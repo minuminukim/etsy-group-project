@@ -56,6 +56,9 @@ def upload_product_image(id):
 
     images = request.files.getlist("images")
 
+    if len(images) > 5:
+        return {"errors": "Upload cannot exceed five images per listing."}, 400
+
     for image in images:
         if not allowed_file(image.filename):
             return {"errors": "File type not permitted."}

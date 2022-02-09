@@ -1,0 +1,35 @@
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid orange;
+}
+
+.product-heading {
+  /* font-family: Ch'Guardian-EgypTT', Charter, 'Charter Bitstream', Cambria,
+    'Noto Serif Light', 'Droid Serif', Georgia, serif; */
+  /* font-family: Cambria, 'Droid Serif', Georgia, serif; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.price-with-discount {
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 500;
+}
+
+.price-before-discount {
+  color: #595959;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 300;
+  text-decoration: line-through;
+}
+
+.discount {
+  font-size: 13px;
+  font-weight: 300;
+  color: #258635;
+}
