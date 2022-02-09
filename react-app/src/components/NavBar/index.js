@@ -19,7 +19,7 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <nav className="login-signup">
-       <NavLink to='/login' exact={true}><button id="sign-in">Sign in</button></NavLink>
+       <NavLink to='/login' id="signIn" exact={true}><button id="sign-in">Sign in</button></NavLink>
       </nav>
     );
   }
@@ -36,7 +36,7 @@ const NavBar = () => {
         <div className="right-container">
           {sessionLinks}
           {/* <NavLink to='/login' exact={true}><button id="sign-in">Sign in</button></NavLink> */}
-          <NavLink id="cart-logo" to='/cart'><BsCart4/></NavLink>
+          <NavLink id="cart-logo" to='/cart'><BsCart4 className="cartIcon"/></NavLink>
         </div>
       </div>
       <div className="secondary-navigation"></div>

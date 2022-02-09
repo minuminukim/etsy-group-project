@@ -6,6 +6,7 @@ import LogoutButton from "../auth/LogoutButton";
 import { HiUser } from 'react-icons/hi';
 import { MdOutlineSell } from 'react-icons/md'
 import { RiLogoutBoxLine } from 'react-icons/ri'
+import { AiFillCaretDown } from 'react-icons/ai'
 
 function ProfileButton({ user }) {
 
@@ -39,7 +40,7 @@ function ProfileButton({ user }) {
   return (
     <>
      <div className="logged-in-nav">
-      <button id="logged-in-menu" onClick={openMenu}><HiUser /></button>
+      <button id="logged-in-menu" onClick={openMenu}><HiUser /><AiFillCaretDown /></button>
       {showMenu && (
         <ul className="profile-dropdown">
           <NavLink to={`/users/${user.id}`}>
