@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/review"
 import "./ReviewForm.css"
 
 import { BsStarFill, BsCart4 } from "react-icons/bs"
 
 const CreateReview = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user);
     const [rating, setRating] = useState(0)
     const [body, setBody] = useState("")
     const [displayBtn, setDisplayBtn] = useState(false)
     const [errors, setErrors] = useState([])
-
+    const [test, setTest] = useState(false)
+    const reviews = useSelector(state => state.review.reviews);
     let { productId } = useParams()
 
 
@@ -21,6 +23,7 @@ const CreateReview = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        // setTest(!test)
 
         const payload = {
             user_id: currentUser.id,
@@ -30,12 +33,19 @@ const CreateReview = () => {
 
         }
 
-        return dispatch(sessionActions.newReview(payload)).catch(async (res) => {
+        dispatch(sessionActions.newReview(payload)).catch(async (res) => {
+            // dispatch(sessionActions.getReviews(productId))
+
+
+            console.log(res)
             const data = await res.json();
-            if (data && data.errors) {
+            console.log('THIS IS DATA ----', data)
+            if (data.errors) {
                 setErrors(data.errors);
             }
         })
+
+        setTest(!test)
     }
 
     let btn;
@@ -59,9 +69,14 @@ const CreateReview = () => {
     }
 
     useEffect(() => {
-        dispatch(sessionActions.newReview(productId))
+        console.log('inside useeffect')
         dispatch(sessionActions.getReviews(productId))
-    }, [dispatch])
+    }, [])
+
+    useEffect(() => {
+        // dispatch(sessionActions.newReview(productId))
+        dispatch(sessionActions.getReviews(productId))
+    }, [dispatch, test])
 
 
     return (

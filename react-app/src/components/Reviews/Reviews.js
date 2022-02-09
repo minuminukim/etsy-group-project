@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/review"
 import "./Reviews.css"
 
-import { BsStarFill, BsCart4 } from "react-icons/bs"
+// import { BsStarFill, BsCart4 } from "react-icons/bs"
 
 let stars;
 const displayRating = (num) => {
@@ -17,14 +17,16 @@ const displayRating = (num) => {
         return stars
 }
 
-console.log(displayRating(10), 'HEREHERHEHERE')
-console.log(displayRating(5), 'HEREHERHEHERE')
+// console.log(displayRating(10), 'HEREHERHEHERE')
+// console.log(displayRating(5), 'HEREHERHEHERE')
 
 const GetReviews = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user);
     // TODO - fix state in order to not have to do review.reviews (normalize?)
     const reviews = useSelector(state => state.review.reviews);
+
 
     const [deleteId, setDeleteId] = useState(0)
 
@@ -45,8 +47,7 @@ const GetReviews = () => {
 
     useEffect(() => {
         dispatch(sessionActions.getReviews(productId))
-        dispatch(sessionActions.deleteReview(deleteId))
-        // dispatch(sessionActions.deleteReview(deleteId))
+
     }, [dispatch])
 
     return (
