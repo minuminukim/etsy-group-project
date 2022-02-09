@@ -30,13 +30,6 @@ const CreateReview = () => {
 
         }
 
-        // if (rating == null) setErrors('You must give a rating.')
-        // if (!body.length) setErrors('Write something')
-
-        // if (errors.length >= 1) {
-        //     return null
-        // }
-
         return dispatch(sessionActions.newReview(payload)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) {
@@ -44,7 +37,6 @@ const CreateReview = () => {
             }
         })
     }
-    console.log("ERROR MESSAGE HERE ---", errors)
 
     let btn;
     if (displayBtn) {
@@ -67,6 +59,7 @@ const CreateReview = () => {
     }
 
     useEffect(() => {
+        dispatch(sessionActions.newReview(productId))
         dispatch(sessionActions.getReviews(productId))
     }, [dispatch])
 

@@ -6,11 +6,19 @@ import "./Reviews.css"
 
 import { BsStarFill, BsCart4 } from "react-icons/bs"
 
+let stars;
 const displayRating = (num) => {
-    if (num === 1) return {
-        
-    }
+    let whole = parseInt(num) / 2;
+    let half = num % 2;
+
+    stars = (
+        <div className={`stars-${whole}`}></div>
+    )
+        return stars
 }
+
+console.log(displayRating(10), 'HEREHERHEHERE')
+console.log(displayRating(5), 'HEREHERHEHERE')
 
 const GetReviews = () => {
     const dispatch = useDispatch()
@@ -18,13 +26,13 @@ const GetReviews = () => {
     // TODO - fix state in order to not have to do review.reviews (normalize?)
     const reviews = useSelector(state => state.review.reviews);
 
-    const [deleteId, setDeleteId] = useState(null)
+    const [deleteId, setDeleteId] = useState(0)
 
     let { productId } = useParams()
 
+
     const handleDelete = (e, id) => {
        e.preventDefault();
-
 
        const res = dispatch(sessionActions.deleteReview(id))
        if (res.id) return 'asdflasjfasdkl'
@@ -38,6 +46,7 @@ const GetReviews = () => {
     useEffect(() => {
         dispatch(sessionActions.getReviews(productId))
         dispatch(sessionActions.deleteReview(deleteId))
+        // dispatch(sessionActions.deleteReview(deleteId))
     }, [dispatch])
 
     return (
@@ -56,14 +65,10 @@ const GetReviews = () => {
                     {/* TODO - start rating system */}
 
                     <div id="review-row2">
-                        <li>RATING:{review.rating}</li>
-                        {/* <li>{Array(review.rating).fill(1).map((el, i) => {
-                            <>
-                            <BsStarFill />
-                            </>
-                        })}</li> */}
-                        {/* {/* <li>{review.rating <= 2 ? <><BsStarFill /> <BsStarFill /> </>: null}</li> */}
-                        {/* <li>{review.rating == 10 ? <><BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /></></li> */}
+                        {/* <div className="stars-1"></div> */}
+
+                        <span className={`stars stars-${review.rating}`}></span>
+
 
                         <li>{review.body}</li>
                     </div>
