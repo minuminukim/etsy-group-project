@@ -18,3 +18,26 @@
   width: 48px;
   font-size: 18px;
 }
+
+.square-btn {
+  background-color: #fff;
+  color: #222;
+  border-radius: 3px;
+  border: 1px solid #e1e3df;
+}
+
+.square-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* .square-b */
+
+.square-btn-small {
+  height: 45px;
+  width: 45px;
+  padding: 4px;
+  position: absolute;
+  bottom: 5px;
+  left: 122px;
+  z-index: 10000;
+}

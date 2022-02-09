@@ -1,4 +1,5 @@
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import { AiFillDelete } from 'react-icons/ai';
 import './ButtonWithIcon.css';
 
 const buttonReducer = (action) => {
@@ -7,6 +8,8 @@ const buttonReducer = (action) => {
       return <GrNext />;
     case 'previous':
       return <GrPrevious />;
+    case 'delete':
+      return <AiFillDelete />;
     default:
       return null;
   }

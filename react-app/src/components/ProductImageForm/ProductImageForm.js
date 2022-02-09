@@ -20,14 +20,6 @@ const ProductImageForm = ({ sessionUser }) => {
     }
   }, [images]);
 
-  const generateImageURL = (title) => {
-    const split = title.trim().toLowerCase().split(' ');
-    split.push(count);
-    setCount(count + 1);
-    // count += 1;
-    return split.join('-');
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -55,6 +47,12 @@ const ProductImageForm = ({ sessionUser }) => {
   };
 
   const updateImages = (e) => setImages([...images, e.target.files[0]]);
+  const deleteOnClick = (e, i) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setPreviews([...previews.slice(0, i), ...previews.slice(i + 1)]);
+    setImages([...images.slice(0, i), ...images.slice(i + 1)]);
+  };
 
   return (
     <div className="container">
@@ -84,26 +82,31 @@ const ProductImageForm = ({ sessionUser }) => {
               index="0"
               src={previews[0]}
               onChange={updateImages}
+              onClick={deleteOnClick}
             />
             <FileInputWithPreview
               index="1"
               src={previews[1]}
               onChange={updateImages}
+              onClick={deleteOnClick}
             />
             <FileInputWithPreview
               index="2"
               src={previews[2]}
               onChange={updateImages}
+              onClick={deleteOnClick}
             />
             <FileInputWithPreview
               index="3"
               src={previews[3]}
               onChange={updateImages}
+              // onClick={deleteOnClick(3)}
             />
             <FileInputWithPreview
               index="4"
               src={previews[4]}
               onChange={updateImages}
+              // onClick={deleteOnClick(4)}
             />
           </div>
         </div>
