@@ -39,21 +39,25 @@ const GetReviews = () => {
         <h1>REVIEWS</h1>
         <ul>
             {reviews?.reviews.map(review => (
-                < >
-                <li>-----------------------------------</li>
-                <img className="profile-pic" src={review.profile_picture_url} />
-                <li>{review.username}</li>
-                <li>{review.rating}</li>
-                <li>{review.body}</li>
-                <li>{review.updated_at}</li>
-                {/* Only display deleteBtn for a review by currentUser */}
-                <li>{review.id} ID</li>
+                <div id="review-container">
+                    <div id="review-row1">
+                        <img className="profile-pic review-pic" src={review.profile_picture_url} />
+                        <li id="review-author">{review.username}</li>
+                        <li id="review-date">{review.updated_at}</li>
+                    </div>
+
+                    {/* TODO - start rating system */}
+
+                    <div id="review-row2">
+                        <li>RATING:{review.rating}</li>
+                        <li>{review.body}</li>
+                    </div>
+                    {/* Only display deleteBtn for a review by currentUser */}
 
                     { review.user_id == currentUser.id ?
-                     <button onClick={(e) => handleDelete(e, review.id)} value={review.id}>Delete</button>
+                     <button  className="btn" id="deleteReviewBtn" onClick={(e) => handleDelete(e, review.id)} value={review.id}>Delete</button>
                      : null }
-                <li>-----------------------------------</li>
-                </>
+                </div>
             ))}
         </ul>
         </>
