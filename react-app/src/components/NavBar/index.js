@@ -2,10 +2,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css';
 import SearchBar from '../Search/SearchBar';
 import ProfileButton from './ProfileButton';
+import { BsCart4 } from 'react-icons/bs'
 
 const NavBar = () => {
 
@@ -36,7 +36,7 @@ const NavBar = () => {
         <div className="right-container">
           {sessionLinks}
           {/* <NavLink to='/login' exact={true}><button id="sign-in">Sign in</button></NavLink> */}
-          <NavLink id="cart-logo" to='/cart'>Cart</NavLink>
+          <NavLink id="cart-logo" to='/cart'><BsCart4/></NavLink>
         </div>
       </div>
       <div className="secondary-navigation"></div>

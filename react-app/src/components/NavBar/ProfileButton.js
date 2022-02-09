@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
-import { HiUser } from 'react-icons/hi'
+import { HiUser } from 'react-icons/hi';
+import { MdOutlineSell } from 'react-icons/md'
+import { RiLogoutBoxLine } from 'react-icons/ri'
 
 function ProfileButton({ user }) {
 
@@ -37,19 +39,34 @@ function ProfileButton({ user }) {
   return (
     <>
      <div className="logged-in-nav">
-      <button id="logged-in-menu" onClick={openMenu}>
-        {/* <i className="fas fa-camera-retro" /> */}
-        <img className="heart-logo small" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
-      </button>
+      <button id="logged-in-menu" onClick={openMenu}><HiUser /></button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <p>Hei! Now you know how to </p>
-          <p>greet people in Norwegian.</p>3
-          <li>{user.name}</li>
-          <li>{user.email}</li>
-          <li>
-            <button id="profile-logout-button" onClick={logout}>Log Out</button>
-          </li>
+          <NavLink to={`/users/${user.id}`}>
+              <div>
+              <img src={user.profile_pic_url}/>
+              </div>
+              <div>
+                <p>{user.username}</p>
+                <p>View your profile</p>
+              </div>
+          </NavLink>
+          <div>
+              <div>
+                <MdOutlineSell />
+              </div>
+              <div>
+                <p>List an item</p>
+              </div>
+          </div>
+          <div>
+              <div>
+                <RiLogoutBoxLine />
+              </div>
+              <div>
+                <button id="profile-logout-button" onClick={logout}>Sign out</button>
+              </div>
+          </div>
         </ul>
       )}
       </div>
