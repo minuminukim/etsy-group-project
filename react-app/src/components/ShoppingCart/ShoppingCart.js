@@ -35,8 +35,6 @@ const ShoppingCart = () => {
     }
 
 
-
-
     let shoppingCartContent;
     if (areThereCartItems) {
 
