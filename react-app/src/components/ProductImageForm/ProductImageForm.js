@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import FileInputWithPreview from './FileInputWithPreview';
 import Button from '../common/Button';
 
 const ProductImageForm = ({ sessionUser }) => {
-  const [image, setImage] = useState(null);
   const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [count, setCount] = useState(1);
@@ -13,7 +11,6 @@ const ProductImageForm = ({ sessionUser }) => {
   const [imageLoading, setImageLoading] = useState(false);
   const history = useHistory();
   const { productId } = useParams();
-  const product = useSelector((state) => state.products[productId]);
 
   useEffect(() => {
     if (images.length) {
@@ -48,7 +45,7 @@ const ProductImageForm = ({ sessionUser }) => {
     if (res.ok) {
       await res.json();
       setImageLoading(false);
-      history.push('/');
+      history.push('/products/:productId');
     } else {
       setImageLoading(false);
       const data = await res.json();
@@ -56,12 +53,6 @@ const ProductImageForm = ({ sessionUser }) => {
       console.log('error');
     }
   };
-
-  // const updateImage = (e) => {
-  //   const file = e.target.files[0];
-  //   console.log('@@@@@@@@@@@@@@@@', e.target.files);
-  //   setImage(file);
-  // };
 
   const updateImages = (e) => setImages([...images, e.target.files[0]]);
 
@@ -71,8 +62,8 @@ const ProductImageForm = ({ sessionUser }) => {
       <form onSubmit={handleSubmit} className="product-image-form">
         <h2 className="form-heading">Photos</h2>
         <div className="form-row">
-          <div className="input-field-details">
-            <p className="input-field-details">
+          <div className="form-label-details">
+            <p className="form-label-details">
               Use up to five photos to show your item's most important
               qualities.
               <br /> Tips:

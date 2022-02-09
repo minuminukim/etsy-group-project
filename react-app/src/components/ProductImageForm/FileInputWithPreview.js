@@ -5,6 +5,8 @@ import Button from '../common/Button';
 import Badge from '../common/Badge';
 
 const FileInputWithPreview = ({ index, src, onChange, error = null }) => {
+  // TODO: error handling
+
   const hiddenInput = useRef(null);
   const handleClick = (e) => {
     hiddenInput.current.click();
