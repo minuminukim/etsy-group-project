@@ -50,6 +50,7 @@ const CreateReview = () => {
                 <div id="review_btn_container">
                     <button className="review-btn" className="btn"
                         onClick={() => {
+                            setErrors([])
                             setBody("")
                             setDisplayBtn(false)
                         }}>Reset</button>
@@ -74,9 +75,14 @@ const CreateReview = () => {
             setDisplayBtn(true)
         }}>
                   <div>
-        {errors?.body?.map((error, ind) => (
+        {/* {errors?.body?.map((error, ind) => (
           <div key={ind}>{error}</div>
-        ))}
+        ))} */}
+            {errors.body}
+        <div>
+
+        {errors.rating}
+            </div>
       </div>
             <label>Rating</label>
             <select
