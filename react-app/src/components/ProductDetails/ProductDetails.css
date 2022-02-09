@@ -6,13 +6,19 @@
 }
 
 .product-heading {
-  /* font-family: Ch'Guardian-EgypTT', Charter, 'Charter Bitstream', Cambria,
-    'Noto Serif Light', 'Droid Serif', Georgia, serif; */
-  /* font-family: Cambria, 'Droid Serif', Georgia, serif; */
-  font-family: 'Merriweather', Cambria, Cochin, Georgia, Times,
-    'Times New Roman', serif;
+  font-family: 'Neuton', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+    serif;
   font-size: 26px;
   font-weight: 300;
+}
+
+.seller-details-link {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.seller-details-link:hover {
+  text-decoration: underline;
 }
 
 .price-with-discount {

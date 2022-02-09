@@ -23,7 +23,9 @@ const ProductDetails = ({ product }) => {
   return (
     <div className="product-details">
       <div className="seller-details">
-        <Link to={`/users/${userId}`}>{user.username}</Link>
+        <Link to={`/users/${userId}`} className={'seller-details-link'}>
+          {user.username}
+        </Link>
         <div>
           {/* TODO render stars for rating */}
           <span>Rating</span>
