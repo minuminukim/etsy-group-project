@@ -1,0 +1,14 @@
+.product-listing {
+  display: flex;
+}
+
+.product-listing-main {
+  max-width: 616px;
+  border: 1px solid purple;
+  padding-left: 30px;
+}
+
+.product-listing-side {
+  max-width: 288px;
+  border: 1px solid green;
+}

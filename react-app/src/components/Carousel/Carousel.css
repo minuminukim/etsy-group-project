@@ -1,6 +1,6 @@
 .carousel {
   display: flex;
-  padding-left: 30px;
+  width: 100%;
 }
 
 .carousel-main {

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getSingleProduct } from '../../store/productReducer';
 import ProductDetails from '../ProductDetails';
 import Carousel from '../Carousel';
+import './ProductListing.css';
 
 const ProductListing = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,9 +26,13 @@ const ProductListing = () => {
   }, [dispatch]);
 
   return isLoading ? null : (
-    <div className="page-container">
-      <ProductDetails product={product} />
-      <Carousel images={product.images} alt={product.title} />
+    <div className="page-container product-listing">
+      <div className="product-listing-main">
+        <Carousel images={product.images} alt={product.title} />
+      </div>
+      <div className="product-listing-side">
+        <ProductDetails product={product} />
+      </div>
     </div>
   );
   // return 'hello';
