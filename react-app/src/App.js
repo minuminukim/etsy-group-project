@@ -5,7 +5,6 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
 import ProductImageForm from './components/ProductImageForm';
-import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -14,9 +13,10 @@ import PageNotFound from './components/PageNotFound';
 import ReviewForm from './components/ReviewForm/ReviewForm';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
-import SearchResult from './components/SearchResult';
+import SearchResult from './components/Search/SearchResult';
 import CategoryView from './components/Categories';
 import LandingPage from './components/LandingPage';
+import NavBar from './components/NavBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
