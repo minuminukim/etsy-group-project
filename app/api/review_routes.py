@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.forms import ReviewForm
-from app.models import db, Review
+from app.models import db, Review, User
 
 review_routes = Blueprint('reviews', __name__)
 
@@ -15,12 +15,15 @@ review_routes = Blueprint('reviews', __name__)
 #     return {'reviews': [review.to_dict() for review in reviews]}
 
 
-@review_routes.route('/<id>')
+@review_routes.route('/<int:id>')
 def review(id):
     """
     Return all reviews for a listing.
     """
-    reviews = Review.query.filter_by(product_id=id).all()
+    reviews = Review.query.order_by(Review.updated_at.desc()).join(User).filter(
+        Review.product_id == (id) and Review.user_id == (User.id)
+    ).all()
+
     return {'reviews': [review.to_dict() for review in reviews]}
 
 
