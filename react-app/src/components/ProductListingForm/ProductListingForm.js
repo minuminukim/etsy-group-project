@@ -25,7 +25,7 @@ const ProductListingForm = ({
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    // if product is passed in as a prop, form is for PUT
+    // if product is passed in as a prop, form is for PUT request
     // so we set state to it
     if (product !== null) {
       setTitle(product.title);
@@ -56,7 +56,14 @@ const ProductListingForm = ({
     const actionToDispatch = action === 'post' ? postProduct : updateProduct;
 
     return dispatch(actionToDispatch(params))
-      .then((data) => history.push(`/products/${data.id}/images/new`))
+      .then((data) => {
+        if (action === 'post') {
+          history.push(`/products/${data.id}/images/new`);
+        } else {
+          history.push(`/products/${data.id}`);
+        }
+      })
+      // .then((data) => history.push(`/products/${data.id}/images/new`))
       .catch(async (res) => {
         const data = await res.json();
         setErrors(data.errors);
