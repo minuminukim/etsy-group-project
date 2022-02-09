@@ -35,14 +35,18 @@ const ProductDetails = ({ product }) => {
       <div>
         <h1 className="product-heading">{title}</h1>
       </div>
-      <div>
-        <p className="price-with-discount">{`$${price}`}</p>
-        {discount > 0 && (
-          <>
-            <p className="price-before-discount">{`$${original}`}</p>
+      <div className="product-price-details">
+        <div className="product-price-details-top">
+          <p className="price-with-discount">{`$${price}`}</p>
+          {discount > 0 && (
+            <span className="price-before-discount">{`$${original}`}</span>
+          )}
+        </div>
+        <div className="product-price-details-bottom">
+          {discount > 0 && (
             <p className="discount">{`You save $${saving} (${discount}%)`}</p>
-          </>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

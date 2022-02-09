@@ -21,10 +21,17 @@
   text-decoration: underline;
 }
 
+.product-price-details {
+  display: flex;
+  flex-direction: column;
+}
+
 .price-with-discount {
   font-size: 28px;
   line-height: 38px;
   font-weight: 500;
+  width: fit-content;
+  margin: 0 !important;
 }
 
 .price-before-discount {
@@ -33,6 +40,8 @@
   line-height: 18px;
   font-weight: 300;
   text-decoration: line-through;
+  width: fit-content;
+  margin: 0 !important;
 }
 
 .discount {
