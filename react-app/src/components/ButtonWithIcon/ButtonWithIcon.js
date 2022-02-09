@@ -1,4 +1,4 @@
-import { GrNext, GrPrevious } from 'react-icons/gr';
+import { GrNext, GrPrevious, GrEdit } from 'react-icons/gr';
 import { AiFillDelete } from 'react-icons/ai';
 import './ButtonWithIcon.css';
 
@@ -8,6 +8,8 @@ const buttonReducer = (action) => {
       return <GrNext />;
     case 'previous':
       return <GrPrevious />;
+    case 'edit':
+      return <GrEdit />;
     case 'delete':
       return <AiFillDelete />;
     default:

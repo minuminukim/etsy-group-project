@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import ButtonWithIcon from '../ButtonWithIcon';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 import './ProductDetails.css';
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({ product, sessionId }) => {
   const {
     user_id: userId,
     title,
@@ -17,6 +18,7 @@ const ProductDetails = ({ product }) => {
 
   // currently hardcoded, cause no seed data with discount yet
   let discount = 10;
+  const isCurrentUser = sessionId === userId;
 
   const { original, saving } = calculateOriginalPrice(price, discount);
 
@@ -42,12 +44,28 @@ const ProductDetails = ({ product }) => {
             <span className="price-before-discount">{`$${original}`}</span>
           )}
         </div>
-        <div className="product-price-details-bottom">
+        <div className="product-price-details-botton">
           {discount > 0 && (
             <p className="discount">{`You save $${saving} (${discount}%)`}</p>
           )}
           {/* TODO in stock, out of stock, low stock */}
         </div>
+        {isCurrentUser && (
+          <div className="product-details-btns">
+            <ButtonWithIcon
+              className="edit-btn"
+              size="medium"
+              action="edit"
+              shape="square"
+            />
+            <ButtonWithIcon
+              className="delete-btn"
+              size="medium"
+              action="delete"
+              shape="square"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
