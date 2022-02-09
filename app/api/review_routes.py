@@ -5,6 +5,18 @@ from app.models import db, Review, User
 review_routes = Blueprint('reviews', __name__)
 
 
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
 # @review_routes.route('/')
 # def reviews():
 #     """
@@ -36,6 +48,7 @@ def create_review():
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
+        print("VALIDATED")
         review = Review(
             user_id=request.json["user_id"],
             product_id=request.json["product_id"],
@@ -47,6 +60,11 @@ def create_review():
         db.session.commit()
 
         return review.to_dict()
+    print("FAILED")
+    print(form.errors)
+
+    return {'errors': form.errors}, 400
+
 
 
 @review_routes.route('/<int:id>', methods=['PATCH'])

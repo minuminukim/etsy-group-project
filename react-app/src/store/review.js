@@ -19,7 +19,10 @@ const deleteAReview = (id) => ({
 
 const initialState = { reviews: null};
 
+
 export const newReview = (payload) => async (dispatch) => {
+    // console.log('INSIDE THUNK')
+
     const response = await fetch("/api/reviews/", {
         method: "POST",
         headers: {
@@ -32,11 +35,22 @@ export const newReview = (payload) => async (dispatch) => {
             body: payload.body
         })
     });
+    console.log('INSIDE THUNK')
+    console.log(response)
+    console.log(response.errors)
+
+    if (response.status >= 400) {
+        throw response;
+    }
+
 
     if (response.ok) {
         const createdReview = await response.json();
+        // if (createdReview.errors) {
+        //     // console.log('INSIDE THUNK')
+        //     return createdReview.errors;
+        // }
         dispatch(createReview(createdReview))
-        return null;
     }
 }
 
@@ -70,13 +84,16 @@ export default function reviewsReducer(state = initialState, action){
         case CREATE_REVIEW:
             const newState = { ...state };
             newState.reviews = action.payload
-            return { ...state, reviews: action.payload }
+            return newState
             case DELETE_REVIEW:
                 const one = {...state}
                 // console.log(action)
-                const newReviews = one.reviews.filter(review => review.id !== +action.payload)
+                console.log('STATE', state)
+                console.log(state.reviews.reviews[0])
+                const newReviews = one.reviews.reviews.filter(review => review.id !== +action.payload)
                 // console.log(newNotes)
-                one.reviews = newReviews;
+                one.reviews.reviews = newReviews;
+            return one
         default:
             return state
     }
