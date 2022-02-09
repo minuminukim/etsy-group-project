@@ -45,7 +45,7 @@ const ProductImageForm = ({ sessionUser }) => {
     if (res.ok) {
       await res.json();
       setImageLoading(false);
-      history.push('/products/:productId');
+      history.push(`/products/${productId}`);
     } else {
       setImageLoading(false);
       const data = await res.json();

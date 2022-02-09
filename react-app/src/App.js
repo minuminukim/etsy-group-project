@@ -9,12 +9,9 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-<<<<<<< HEAD
-import CreateReview from './components/ReviewForm/Review';
-=======
-import ReviewForm from './components/ReviewForm/ReviewForm'
-import Reviews from './components/Reviews/Reviews'
->>>>>>> dev
+import ProductListing from './components/ProductListing';
+import ReviewForm from './components/ReviewForm/ReviewForm';
+import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
 import CategoryView from './components/Categories';
@@ -63,6 +60,7 @@ function App() {
           <ProductImageForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId">
+          <ProductListing />
           <ReviewForm />
           <Reviews />
         </Route>

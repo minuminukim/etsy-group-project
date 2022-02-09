@@ -1,9 +1,22 @@
+const LOAD_PRODUCTS = 'product/loadProduct';
 const ADD_PRODUCT = 'product/addProduct';
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
   product,
 });
+
+export const getSingleProduct = (productId) => async (dispatch) => {
+  const response = await fetch(`/api/products/${productId}`);
+
+  if (response.status >= 400) {
+    throw response;
+  }
+
+  const data = await response.json();
+  dispatch(addProduct(data));
+  return data;
+};
 
 export const postProduct = (product) => async (dispatch) => {
   const { userId, title, category, description, price, stock } = product;
@@ -27,7 +40,6 @@ export const postProduct = (product) => async (dispatch) => {
 
   const data = await response.json();
   dispatch(addProduct(data));
-
   return data;
 };
 
