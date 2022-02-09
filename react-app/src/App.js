@@ -31,6 +31,7 @@ function App() {
 
 
     if (loaded) dispatch(get_cart_items(sessionUser.id))
+
   }, [loaded, dispatch])
 
   if (!loaded) {

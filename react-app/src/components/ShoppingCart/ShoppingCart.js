@@ -14,26 +14,27 @@ const ShoppingCart = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
 
-
     let shoppingCart = useSelector(state => state.shoppingCart);
     let valueArray = Object.values(shoppingCart);
 
 
     let areThereCartItems;
 
-    // useEffect(() => {
 
-    //     dispatch(get_cart_items(session.user.id))
-
-
-    // }, [dispatch])
-
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoaded(true)
+        }, 100);
+        return () => clearTimeout(timer);
+    });
 
     if (valueArray.length > 0) {
         areThereCartItems = true
     } else {
         areThereCartItems = false;
     }
+
+
 
 
     let shoppingCartContent;
@@ -55,16 +56,23 @@ const ShoppingCart = () => {
 
 
     let noCartItems = (
-        <h1>Your Cart is Empty.</h1>
+        <h1 style={{ marginTop: "300px", color: "red" }}>Your Cart is Empty.</h1>
+    )
+
+
+    let cartItems = (
+        <>
+            <div className="mainCartContent">
+                {Object.values(shoppingCart).length > 0 ? shoppingCartContent : noCartItems}
+
+            </div>
+        </>
     )
 
 
     return (
         <div className="ShoppingCart">
-            <div className="mainCartContent">
-                {areThereCartItems ? shoppingCartContent : noCartItems}
-
-            </div>
+            {isLoaded ? cartItems : null}
         </div>
     )
 }
