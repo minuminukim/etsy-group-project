@@ -21,6 +21,7 @@ class Review(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "username": self.user.username,
+            "profile_picture_url": self.user.profile_picture_url,
             "product_id": self.product_id,
             "rating": self.rating,
             "body": self.body,

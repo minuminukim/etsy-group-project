@@ -40,8 +40,8 @@
 
 }
 
-#profile-pic {
-    height: 35px;
+.profile-pic {
+    height: 30px;
     margin: 0;
     padding: 0;
     margin-right: 10px;
