@@ -5,6 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
 import ProductImageForm from './components/ProductImageForm';
+import ProductListingEdit from './components/ProductListingEdit';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -56,6 +57,9 @@ function App() {
         </ProtectedRoute>
         <Route exact path="/products/new">
           <ProductListingForm sessionUser={sessionUser} />
+        </Route>
+        <Route exact path="/products/:productId/edit">
+          <ProductListingEdit sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId/images/new">
           <ProductImageForm sessionUser={sessionUser} />

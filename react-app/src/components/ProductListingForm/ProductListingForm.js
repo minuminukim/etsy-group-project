@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import InputField from '../common/InputField';
@@ -6,10 +6,16 @@ import FormLabel from '../common/FormLabel';
 import FormLabelDetails from '../common/FormLabelDetails';
 import Textarea from '../common/Textarea';
 import Button from '../common/Button';
-import { postProduct } from '../../store/productReducer';
+import { postProduct, updateProduct } from '../../store/productReducer';
 import './ProductListingForm.css';
 
-const ProductListingForm = ({ sessionUser }) => {
+const ProductListingForm = ({
+  sessionUser,
+  product = null,
+  action = 'post',
+}) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('keyboards');
   const [description, setDescription] = useState('');
@@ -18,8 +24,18 @@ const ProductListingForm = ({ sessionUser }) => {
   const [discount, setDiscount] = useState(0);
   const [errors, setErrors] = useState({});
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+  useEffect(() => {
+    // if product is passed in as a prop, form is for PUT
+    // so we set state to it
+    if (product !== null) {
+      setTitle(product.title);
+      setCategory(product.category);
+      setDescription(product.description);
+      setPrice(product.price);
+      setStock(product.stock);
+      setDiscount(product.discount);
+    }
+  }, [product]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,14 +44,18 @@ const ProductListingForm = ({ sessionUser }) => {
 
     const params = {
       userId: sessionUser.id,
+      id: product?.id,
       title,
       category,
       description,
       price,
       stock,
+      discount,
     };
 
-    return dispatch(postProduct(params))
+    const actionToDispatch = action === 'post' ? postProduct : updateProduct;
+
+    return dispatch(actionToDispatch(params))
       .then((data) => history.push(`/products/${data.id}/images/new`))
       .catch(async (res) => {
         const data = await res.json();
@@ -48,6 +68,7 @@ const ProductListingForm = ({ sessionUser }) => {
   const updateDescription = (e) => setDescription(e.target.value);
   const updatePrice = (e) => setPrice(e.target.value);
   const updateStock = (e) => setStock(e.target.value);
+  const updateDiscount = (e) => setDiscount(e.target.value);
 
   return (
     <div className="container">
@@ -158,6 +179,23 @@ const ProductListingForm = ({ sessionUser }) => {
               />
             </div>
           </div>
+          {action === 'put' && (
+            <div className="form-input-group">
+              <div className="form-input-group-left">
+                <FormLabel label="Discount" />
+                <FormLabelDetails details="Apply a discount to your product." />
+              </div>
+              <div className="form-input-group-right">
+                <InputField
+                  id="discount"
+                  type="number"
+                  value={discount}
+                  onChange={updateDiscount}
+                  error={errors.discount}
+                />
+              </div>
+            </div>
+          )}
         </div>
         <Button
           label="Save and continue"

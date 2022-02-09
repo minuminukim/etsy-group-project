@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../ButtonWithIcon';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
@@ -8,6 +7,7 @@ import './ProductDetails.css';
 
 const ProductDetails = ({ product, sessionId }) => {
   const {
+    id,
     user_id: userId,
     title,
     price,
@@ -52,12 +52,14 @@ const ProductDetails = ({ product, sessionId }) => {
         </div>
         {isCurrentUser && (
           <div className="product-details-btns">
-            <ButtonWithIcon
-              className="edit-btn"
-              size="medium"
-              action="edit"
-              shape="square"
-            />
+            <Link to={`/products/${id}/edit`}>
+              <ButtonWithIcon
+                className="edit-btn"
+                size="medium"
+                action="edit"
+                shape="square"
+              />
+            </Link>
             <ButtonWithIcon
               className="delete-btn"
               size="medium"
