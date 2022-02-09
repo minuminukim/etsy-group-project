@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
+import { HiUser } from 'react-icons/hi'
 
 function ProfileButton({ user }) {
 
@@ -43,7 +44,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <p>Hei! Now you know how to </p>
-          <p>greet people in Norwegian.</p>
+          <p>greet people in Norwegian.</p>3
           <li>{user.name}</li>
           <li>{user.email}</li>
           <li>
