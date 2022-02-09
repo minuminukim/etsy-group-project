@@ -13,6 +13,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #faf9f5;
+  position: relative;
 }
 
 .grid-block:hover {
@@ -42,3 +43,11 @@
 .file-input {
   display: none;
 }
+
+/* .grid-block-icons {
+  display: flex;
+}
+
+.hidden-div {
+  display: none;
+} */

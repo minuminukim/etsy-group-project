@@ -5,28 +5,13 @@ import Button from '../common/Button';
 
 const ProductImageForm = ({ sessionUser }) => {
   const [images, setImages] = useState([]);
-  const [previews, setPreviews] = useState([]);
-  const [count, setCount] = useState(1);
   const [errors, setErrors] = useState({});
   const [imageLoading, setImageLoading] = useState(false);
   const history = useHistory();
   const { productId } = useParams();
 
-  useEffect(() => {
-    if (images.length) {
-      const current = images[images.length - 1];
-      const objectURL = URL.createObjectURL(current);
-      setPreviews([...previews, objectURL]);
-    }
-  }, [images]);
-
-  const generateImageURL = (title) => {
-    const split = title.trim().toLowerCase().split(' ');
-    split.push(count);
-    setCount(count + 1);
-    // count += 1;
-    return split.join('-');
-  };
+  // TODO: error handling
+  // TODO: refactor render func to map, maybe set images def length to five
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +39,14 @@ const ProductImageForm = ({ sessionUser }) => {
     }
   };
 
+  const toObjectURL = (file) => URL.createObjectURL(file);
   const updateImages = (e) => setImages([...images, e.target.files[0]]);
+  const handleDelete = (e, i) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const filtered = images.filter((_item, index) => i !== index);
+    setImages(filtered);
+  };
 
   return (
     <div className="container">
@@ -81,29 +73,34 @@ const ProductImageForm = ({ sessionUser }) => {
           </div>
           <div className="image-preview-grid">
             <FileInputWithPreview
-              index="0"
-              src={previews[0]}
+              index={0}
+              src={images.length > 0 ? toObjectURL(images[0]) : null}
               onChange={updateImages}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="1"
-              src={previews[1]}
+              index={1}
+              src={images.length > 1 ? toObjectURL(images[1]) : null}
               onChange={updateImages}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="2"
-              src={previews[2]}
+              index={2}
+              src={images.length > 2 ? toObjectURL(images[2]) : null}
               onChange={updateImages}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="3"
-              src={previews[3]}
+              index={3}
+              src={images.length > 3 ? toObjectURL(images[3]) : null}
               onChange={updateImages}
+              onClick={handleDelete}
             />
             <FileInputWithPreview
-              index="4"
-              src={previews[4]}
+              index={4}
+              src={images.length > 4 ? toObjectURL(images[4]) : null}
               onChange={updateImages}
+              onClick={handleDelete}
             />
           </div>
         </div>

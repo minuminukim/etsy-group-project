@@ -1,11 +1,19 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { FaCamera } from 'react-icons/fa';
 import './FileInputWithPreview.css';
-import Button from '../common/Button';
+import ButtonWithIcon from '../ButtonWithIcon';
 import Badge from '../common/Badge';
 
-const FileInputWithPreview = ({ index, src, onChange, error = null }) => {
+const FileInputWithPreview = ({
+  index,
+  src,
+  onChange,
+  onClick,
+  error = null,
+}) => {
   // TODO: error handling
+
+  const [isVisible, setIsVisible] = useState(false);
 
   const hiddenInput = useRef(null);
   const handleClick = (e) => {
@@ -17,8 +25,13 @@ const FileInputWithPreview = ({ index, src, onChange, error = null }) => {
   };
 
   return (
-    <div className={`grid-block grid-block-${index}`} style={gridBlockStyle}>
-      {+index === 0 && (
+    <div
+      className={`grid-block grid-block-${index}`}
+      style={gridBlockStyle}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      {index === 0 && (
         <Badge text="Primary" className="badge-black badge-small" />
       )}
       {!src && (
@@ -29,11 +42,22 @@ const FileInputWithPreview = ({ index, src, onChange, error = null }) => {
           <p className="form-label">Add a photo</p>
         </div>
       )}
+      {isVisible && (
+        <div className="grid-block-icons">
+          <ButtonWithIcon
+            className="file-input-btn"
+            size="small"
+            action="delete"
+            shape="square"
+            onClick={(e) => onClick(e, +index)}
+          />
+        </div>
+      )}
       <input
         type="file"
         accept=".png,.jpg,.jpeg,.gif"
         onChange={onChange}
-        className="file-input"
+        className="file-input hidden-btn"
         ref={hiddenInput}
       />
       {error && <p className="validation-error">{error}</p>}
