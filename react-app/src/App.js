@@ -61,7 +61,7 @@ function App() {
           <ProductImageForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId">
-          {/* <ProductListing sessionId={sessionUser.id} /> */}
+          <ProductListing sessionId={sessionUser?.id} />
           <ReviewForm />
           <Reviews />
         </Route>
