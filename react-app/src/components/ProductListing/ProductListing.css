@@ -1,0 +1,20 @@
+.product-listing {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.product-listing-main {
+  /* min-width: 616px; */
+  max-width: 795px;
+  height: auto;
+  width: 100%;
+  /* min-height: 370px; */
+  border: 1px solid purple;
+  padding-left: 30px;
+}
+
+.product-listing-side {
+  /* min-width: 288px; */
+  border: 1px solid green;
+  padding-right: 30px;
+}

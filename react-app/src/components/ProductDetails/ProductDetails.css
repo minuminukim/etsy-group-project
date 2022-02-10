@@ -1,0 +1,58 @@
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid orange;
+}
+
+.product-heading {
+  font-family: 'Neuton', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+    serif;
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.seller-details-link {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.seller-details-link:hover {
+  text-decoration: underline;
+}
+
+.product-price-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-price-details-top {
+  display: flex;
+  width: 100%;
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+}
+
+.price-with-discount {
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 500;
+  width: fit-content;
+  margin: 0 !important;
+}
+
+.price-before-discount {
+  color: #595959;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 300;
+  text-decoration: line-through;
+  width: fit-content;
+  margin: 0 !important;
+}
+
+.discount {
+  font-size: 13px;
+  font-weight: 300;
+  color: #258635;
+}
