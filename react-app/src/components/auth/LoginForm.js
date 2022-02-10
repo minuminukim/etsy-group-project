@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import "./auth.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -31,14 +32,20 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form className="login-form" onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div className="signin-register-container">
+        <p className="sign-in-font">Sign in</p>
+        <button className="register-button">Register</button>
+      </div>
+        <div>
+          <label htmlFor='email'>Email</label>
+        </div>
+        <div>
         <input
           name='email'
           type='text'
@@ -46,9 +53,11 @@ const LoginForm = () => {
           value={email}
           onChange={updateEmail}
         />
-      </div>
-      <div>
+        </div>
+        <div>
         <label htmlFor='password'>Password</label>
+        </div>
+        <div>
         <input
           name='password'
           type='password'
@@ -56,8 +65,14 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
-      </div>
+        </div>
+        <div>
+          <button className="login-button" type='submit'>Sign in</button>
+        </div>
+        <hr></hr>
+        <div>
+          <p className="signin-policy">By clicking Sign in, you agree to Qwerty's Terms of Use and Privacy Policy, which does not exist. Qwerty will not send you communications. We'll never post without your permission; in fact we'll never post anything, ever.</p>
+        </div>
     </form>
   );
 };
