@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/review"
 import "./ReviewForm.css"
 
-import { BsStarFill, BsCart4 } from "react-icons/bs"
+import { BsStarFill } from "react-icons/bs"
 
 const CreateReview = () => {
     const history = useHistory()
