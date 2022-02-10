@@ -1,0 +1,220 @@
+.cartItemContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    height: 250px
+}
+
+.mainCartContent {
+    width: 1328px;
+    min-height: fit-content;
+}
+
+.ShoppingCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    
+}
+
+#numberOfItemsText{
+    font-size: 32px;
+    margin-bottom: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.CartItemSectionContainer {
+    width: 65%;
+}
+
+.cartItemLineBreaker {
+    border-top: 1px solid rgba(34, 34, 34, 0.15);
+    height: 1px;
+    width: 100%
+}
+
+.CartItemsAndPurchaserContainer {
+    display: flex;
+    margin-top: 50px;
+}
+
+.cartPurchaseContainer {
+    width: 456px;
+    height: 419px;
+    box-shadow: 0 4px 20px rgb(34 34 34 / 15%);
+    border-radius: 18px;
+    margin-top: 90px;
+    margin-left: 100px;
+}
+
+.paymentMethodContainer {
+    margin-top: 30px;
+    margin-left:20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartItemImageContainer {
+    width: 200px;
+    height: 100%
+}
+
+.rightDivCartItem {
+    width: 100%;
+    height: 200px;
+
+}
+
+.topHalfCartItemSection {
+    width: 100%;
+    height: 80%;
+ 
+    display:flex;
+    flex-direction: row;
+}
+
+.RemoveAndSaleCartItemSection {
+    width: 100%;
+    height: 20%;
+  
+    display: flex;
+}
+
+#removeButtonContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#removeCartItem {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.cartIsEmpty {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+    align-items: center; 
+    padding-bottom: 80px;  
+    flex-direction: column;
+}
+
+#emptyCartText {
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: lighter;
+}
+
+#uniqueCartText {
+    color: black;
+}
+
+.cartItemTitleContainer {
+    width: 30%;
+    height: 100%;
+    margin-left: 30px;
+    margin-right: 50px;
+
+}
+
+.cartItemQuantityAndPriceSection {
+    width: 50%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.quantityAndPriceTextSection{
+    width: 100%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.quantityAvailableText {
+    width: 100%;
+    height: 40%;
+}
+
+.quantityContainer {
+    width: 50%;
+    height: 100%;
+    
+}
+
+.priceCartItemContainer {
+    width: 50%;
+    height: 100%;
+    
+}
+
+#quantitySelect {
+    border-radius: 4px;
+    width: 45px;
+    height: 25px
+}
+
+.cartItemTitleParentContainer{
+    padding-left: 30px;
+    width:fit-content
+}
+
+.howYouPayText {
+    font-weight: 700;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.paymentInput {
+    width: 25px;
+    height: 25px;
+    color: black;
+}
+
+.cartPriceContainer {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    margin-left:20px;
+}
+
+.shippingCostText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.freeText {
+    margin-right: 15px;
+    color: green;
+
+}
+
+.cartPriceTotal {
+    display: flex;
+    justify-content: space-between;
+}
+
+#totalPriceText {
+    margin-right: 15px;
+}
+
+.shippingCostText {
+    margin-top: 15px;
+}
+
+.purchaseButtonContainer {
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
