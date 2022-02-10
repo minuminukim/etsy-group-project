@@ -5,7 +5,7 @@ const MULTIPLE_DELETE = "shoppingCart/MULTIPLE_DELETE"
 const UPDATE_QUANTITY = "shoppingCart/UPDATE_QUANTITY"
 
 /*--------------------------------------------------------------------*/
-//Action Creators 
+//Action Creators
 
 const loadCartItems = (cartItems) => ({
     type: LOAD_CART,
@@ -56,10 +56,10 @@ export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
 
 
     /*
-    
+
     pass in an object as body of request that looks like this
 
-    { 
+    {
         items: [1, 3, 5]
     }
 
@@ -119,7 +119,7 @@ export const updateQuantity = (quantity, cartItemId, userId) => async (dispatch)
 }
 
 /*--------------------------------------------------------------------*/
-// REDUCER 
+// REDUCER
 
 const initialState = {
 

@@ -116,6 +116,7 @@ const ProductListingForm = ({
                 value={category}
                 onChange={updateCategory}
                 error={errors.category}
+                className="form-input"
               >
                 <option value="keyboards">Keyboards</option>
                 <option value="switches">Switches</option>
