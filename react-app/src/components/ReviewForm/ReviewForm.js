@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux"
 import * as sessionActions from "../../store/review"
 import { useParams } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs"
+import { AiOutlineStar } from "react-icons/ai"
+
 import "./ReviewForm.css"
 
-const CreateReview = () => {
+const CreateReview = ({setUserLeftReview}) => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
   // const reviews = useSelector(state => state.review.reviews);
@@ -41,9 +43,11 @@ const CreateReview = () => {
       const data = await res.json();
       if (data.errors) {
         setErrors(data.errors);
+      } else {
       }
     })
     setDisplayReviewForm(false)
+    setUserLeftReview(true)
     setTest(!test)
   }
 
@@ -91,23 +95,33 @@ const CreateReview = () => {
             </div>
           </div>
           <div>
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
+              className="s1"
               onClick={(e) => {
                 setRating(1);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
+              className="s2"
               onClick={(e) => {
                 setRating(4);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
+              className="s3"
               onClick={(e) => {
                 setRating(6);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
+              className="s4"
               onClick={(e) => {
                 setRating(8);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
+              className="s5"
               onClick={(e) => {
                 setRating(10);
               }} />

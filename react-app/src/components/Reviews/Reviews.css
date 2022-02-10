@@ -63,3 +63,13 @@
     margin-right: -5px !important;
 
 }
+
+/* TESTING STARS */
+
+.s1:hover {
+    background-color: black;
+}
+
+.s3:hover ~ .s1 {
+    background-color: black;
+}

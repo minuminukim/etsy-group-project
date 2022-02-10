@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as sessionActions from "../../store/review"
-import { BsStarFill } from "react-icons/bs"
+// import { BsStarFill } from "react-icons/bs"
+import { AiOutlineStar } from "react-icons/ai"
 import "./Reviews.css"
+import ReviewForm from '../ReviewForm/ReviewForm'
 
 
 const GetReviews = () => {
@@ -15,27 +17,48 @@ const GetReviews = () => {
   const [edit, setEdit] = useState(true)
   const [rating, setRating] = useState(0)
   const [body, setBody] = useState("")
-  const [test2, setTest2] = useState(0)
+  const [editReviewId, setEditReviewId] = useState(0)
   const [rerender, setRerender] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
+  const [userLeftReview, setUserLeftReview] = useState(true)
   const [errors, setErrors] = useState([])
+  const [work, setWork] = useState(false)
   let { productId } = useParams()
 
 
+
+  const reviewExists = () => {
+    reviews?.reviews.forEach(review => {
+      if (review?.user_id === currentUser?.id) {
+        return setUserLeftReview(true)
+      }
+    })
+    // setUserLeftReview(false)
+  }
+
+
+  // useEffect(() => {
+  //   reviewExists()
+
+  // }, [dispatch])
+
   const handleDelete = (e, id) => {
     e.preventDefault();
+    // setDisplayReviewForm(true)
     dispatch(sessionActions.deleteReview(id))
     setTest(!test)
+    setUserLeftReview(false)
   }
 
   const handleEdit = (e) => {
+    e.preventDefault()
     setDisplayEdit(true)
   }
 
   const handleEditSubmit = (e) => {
     e.preventDefault()
 
-    setRerender(!rerender)
+    setTest(!rerender)
     setEdit(true)
 
     if (body.length && rating > 0) setDisplayEdit(false)
@@ -45,7 +68,7 @@ const GetReviews = () => {
       product_id: productId,
       rating,
       body,
-      review_id: test2
+      review_id: editReviewId
     }
 
     dispatch(sessionActions.editForm(payload)).catch(async (res) => {
@@ -65,25 +88,30 @@ const GetReviews = () => {
         <form id="review_form" onSubmit={handleEditSubmit}>
           <h4>Update Review</h4>
 
-          <div>
+          <div id="star-con">
 
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
               onClick={(e) => {
-                setRating(1);
+                setRating(2);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
               onClick={(e) => {
                 setRating(4);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
               onClick={(e) => {
                 setRating(6);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
               onClick={(e) => {
                 setRating(8);
               }} />
-            <BsStarFill
+            <AiOutlineStar
+              id="testing123"
               onClick={(e) => {
                 setRating(10);
               }} />
@@ -97,7 +125,6 @@ const GetReviews = () => {
           <textarea
             id="review_body"
             value={body}
-            // required
             placeholder="Add a public review..."
             onChange={(e) => {
               setBody(e.target.value)
@@ -118,16 +145,19 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
-
-  }, [dispatch, test, rerender])
+    reviewExists()
+  }, [dispatch, test, rerender, work])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
+    reviewExists()
 
-  }, [dispatch, test, rerender])
+  }, [dispatch, test, rerender, work])
 
   return (
     <>
+
+      { userLeftReview ? <ReviewForm setUserLeftReview={setUserLeftReview}/> : null}
       {reviews?.reviews?.map(review => (
         <div key={`review-container-${review?.id}`} id="review-container">
           <div id="review-row1">
@@ -144,7 +174,10 @@ const GetReviews = () => {
           </div>
 
           {/* Only display deleteBtn for a review by currentUser */}
-          {review.user_id === currentUser?.id && displayEdit ? editForm : null}
+          {review.user_id === currentUser?.id  ? editForm : null}
+          {/* {review.user_id === currentUser?.id ? setDisplayReviewForm(true) : setDisplayReviewForm(false)} */}
+          {/* remove ReviewForm if review from user exists */}
+          {}
 
           {review.user_id === currentUser?.id && edit === true ?
             <button
@@ -152,8 +185,8 @@ const GetReviews = () => {
               id="deleteReviewBtn"
               value={review.id}
               onClick={(e) => {
-                setTest2(e.target.value)
-                handleEdit()
+                setEditReviewId(e.target.value)
+                handleEdit(e)
                 setEdit(false)
               }}>
               Edit
@@ -167,7 +200,6 @@ const GetReviews = () => {
             : null}
         </div>
       ))}
-
     </>
   )
 }

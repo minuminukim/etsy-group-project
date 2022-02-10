@@ -62,7 +62,7 @@ function App() {
         </Route>
         <Route exact path="/products/:productId">
           <ProductListing />
-          <ReviewForm />
+          {/* <ReviewForm /> */}
           <Reviews />
         </Route>
         <Route>
