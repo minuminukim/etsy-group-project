@@ -1,3 +1,5 @@
+import { AiOutlineConsoleSql } from "react-icons/ai";
+
 const CREATE_REVIEW = 'session/CREATE_REVIEW';
 const GET_REVIEWS = 'session/GET_REVIEWS';
 const DELETE_REVIEW = 'session/DELETE_REVIEW'
@@ -21,7 +23,6 @@ const initialState = { reviews: null};
 
 
 export const newReview = (payload) => async (dispatch) => {
-    // console.log('INSIDE THUNK')
 
     const response = await fetch("/api/reviews/", {
         method: "POST",
@@ -35,22 +36,25 @@ export const newReview = (payload) => async (dispatch) => {
             body: payload.body
         })
     });
-    console.log('INSIDE THUNK')
-    console.log(response)
-    console.log(response.errors)
+    console.log('INSIDE THUNK RES', response)
 
     if (response.status >= 400) {
+        console.log('INSIDE THUNK 400')
+
         throw response;
     }
 
 
     if (response.ok) {
+        console.log('INSIDE THUNK')
         const createdReview = await response.json();
         // if (createdReview.errors) {
         //     // console.log('INSIDE THUNK')
         //     return createdReview.errors;
         // }
         dispatch(createReview(createdReview))
+
+        return createReview;
     }
 }
 
@@ -82,14 +86,19 @@ export default function reviewsReducer(state = initialState, action){
         case GET_REVIEWS:
             return {...state, reviews: action.payload}
         case CREATE_REVIEW:
+            console.log(action.payload)
             const newState = { ...state };
-            newState.reviews = action.payload
+            newState.reviews.reviews.unshift(action.payload)
             return newState
+            // return { ...newState, review: { reviews: [action.payload, ...newState.review.reviews.reviews] } }
+
+            // return { ...newState, review: { reviews: { reviews: [...action.payload, ...review.reviews.reviews] } } }
+
             case DELETE_REVIEW:
                 const one = {...state}
                 // console.log(action)
-                console.log('STATE', state)
-                console.log(state.reviews.reviews[0])
+                // console.log('STATE', state)
+                // console.log(state.reviews.reviews[0])
                 const newReviews = one.reviews.reviews.filter(review => review.id !== +action.payload)
                 // console.log(newNotes)
                 one.reviews.reviews = newReviews;

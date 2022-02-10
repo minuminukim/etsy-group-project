@@ -47,3 +47,63 @@
     margin-right: 10px;
     margin-bottom: 5px;
 }
+
+
+/* TESTING STARS GRANTS*/
+.stars {
+    /* display: inline-block; */
+    font-size: 18px;
+    /* font-family: Times;
+    line-height: 1;
+    justify-content: center; */
+  }
+
+  /* .stars::before {
+    --percent: calc(var(--rating) / 5 * 100%);
+      content: '★★★★★';
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #fc0 var(--percent), #D3D3D3 var(--percent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+  } */
+
+  /* unicode for half stars not working */
+  .stars-1::after {
+    content:'\2605';
+  }
+  .stars-2::after {
+    content: '★';
+  }
+  .stars-3::after {
+    content: '★★';
+  }
+  .stars-4::after {
+    content: '★★';
+  }
+  .stars-5::after {
+    content: '★★★';
+  }
+  .stars-6::after {
+    content: '★★★';
+  }
+  .stars-7::after {
+    content: '★★★★';
+  }
+  .stars-8::after {
+    content: '★★★★';
+  }
+  .stars-9::after {
+    content: '★★★★★';
+  }
+  .stars-10::after {
+    content: '★★★★★';
+  }
+
+
+
+
+
+  .starHalfFill {
+    background: linear-gradient(to right, orange 50%, grey 50%);
+  }

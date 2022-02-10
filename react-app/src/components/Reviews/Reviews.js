@@ -1,32 +1,44 @@
 import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/review"
 import "./Reviews.css"
 
-import { BsStarFill, BsCart4 } from "react-icons/bs"
+// import { BsStarFill, BsCart4 } from "react-icons/bs"
 
+let stars;
 const displayRating = (num) => {
-    if (num === 1) return {
-        
-    }
+    let whole = parseInt(num) / 2;
+    let half = num % 2;
+
+    stars = (
+        <div className={`stars-${whole}`}></div>
+    )
+        return stars
 }
 
+// console.log(displayRating(10), 'HEREHERHEHERE')
+// console.log(displayRating(5), 'HEREHERHEHERE')
+
 const GetReviews = () => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user);
     // TODO - fix state in order to not have to do review.reviews (normalize?)
     const reviews = useSelector(state => state.review.reviews);
+    const [test, setTest] = useState(false)
 
-    const [deleteId, setDeleteId] = useState(null)
+
+    const [deleteId, setDeleteId] = useState(0)
 
     let { productId } = useParams()
+
 
     const handleDelete = (e, id) => {
        e.preventDefault();
 
-
        const res = dispatch(sessionActions.deleteReview(id))
+       setTest(!test)
        if (res.id) return 'asdflasjfasdkl'
     }
 
@@ -37,8 +49,13 @@ const GetReviews = () => {
 
     useEffect(() => {
         dispatch(sessionActions.getReviews(productId))
-        dispatch(sessionActions.deleteReview(deleteId))
-    }, [dispatch])
+
+    }, [dispatch, test])
+
+    useEffect(() => {
+        dispatch(sessionActions.getReviews(productId))
+
+    }, [dispatch, test])
 
     return (
         // TODO - clean up code, get rid of warnings if possible
@@ -56,14 +73,10 @@ const GetReviews = () => {
                     {/* TODO - start rating system */}
 
                     <div id="review-row2">
-                        <li>RATING:{review.rating}</li>
-                        {/* <li>{Array(review.rating).fill(1).map((el, i) => {
-                            <>
-                            <BsStarFill />
-                            </>
-                        })}</li> */}
-                        {/* {/* <li>{review.rating <= 2 ? <><BsStarFill /> <BsStarFill /> </>: null}</li> */}
-                        {/* <li>{review.rating == 10 ? <><BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /> <BsStarFill /></></li> */}
+                        {/* <div className="stars-1"></div> */}
+
+                        <span className={`stars stars-${review.rating}`}></span>
+
 
                         <li>{review.body}</li>
                     </div>
