@@ -190,9 +190,31 @@
 .shippingCostText {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .freeText {
-    margin-left: 10px;
+    margin-right: 15px;
     color: green;
+
+}
+
+.cartPriceTotal {
+    display: flex;
+    justify-content: space-between;
+}
+
+#totalPriceText {
+    margin-right: 15px;
+}
+
+.shippingCostText {
+    margin-top: 15px;
+}
+
+.purchaseButtonContainer {
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
 }

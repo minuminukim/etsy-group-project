@@ -63,8 +63,6 @@ const CartItem = ({ cartItem }) => {
                         <div id="removeButtonContainer">
                             <button onClick={removeItem} id="removeCartItem"> Remove </button>
                         </div>
-
-                        <div> {onSale ? <p>{onSale} sale!!</p> : null}</div>
                     </div>
                 </div>
 
