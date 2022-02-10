@@ -145,21 +145,14 @@ def delete_product(id):
     """
     'Deletes', or rather, archives a product listing.
     """
-    print("@@@@@@@@@@@@@@@@@@@", id)
-    # TODO: currently erroring on delete req because of dependent
-    # product images... fix this,,,,
-    # cascade deletes without removing records of purchases?
     product = Product.get_by_id(id)
-    print("product", product)
 
     # TODO: implement error handling
 
     if product:
         archived = Product.archive(product)
-        # db.session.delete(product)
 
         db.session.add(archived)
         db.session.commit()
 
         return {"message": "You have successfully deleted your listing."}, 204
-        # return archived.to_dict()
