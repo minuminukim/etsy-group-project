@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import './NavBar.css';
 import SearchBar from '../Search/SearchBar';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from '../auth/LoginFormModal';
 import { BsCart4 } from 'react-icons/bs'
 
 const NavBar = () => {
@@ -19,7 +20,8 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <nav className="login-signup">
-       <NavLink to='/login' id="signIn" exact={true}><button id="sign-in">Sign in</button></NavLink>
+       <LoginFormModal/>
+       {/* <NavLink to='/login' id="signIn" exact={true}><button id="sign-in">Sign in</button></NavLink> */}
       </nav>
     );
   }

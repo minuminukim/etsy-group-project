@@ -43,7 +43,6 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <LandingPage />
-          <LoginForm />
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
