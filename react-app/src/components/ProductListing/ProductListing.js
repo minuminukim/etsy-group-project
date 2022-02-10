@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getSingleProduct } from '../../store/productReducer';
 import ProductDetails from '../ProductDetails';
 import Carousel from '../Carousel';
-import ButtonWithIcon from '../ButtonWithIcon';
 import './ProductListing.css';
 
 const ProductListing = ({ sessionId }) => {
@@ -13,7 +12,8 @@ const ProductListing = ({ sessionId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { productId } = useParams();
-  // const product = useSelector((state) => state.products[productId]);
+
+  // TODO: product description component/seciton
 
   useEffect(() => {
     return dispatch(getSingleProduct(productId))
@@ -38,7 +38,6 @@ const ProductListing = ({ sessionId }) => {
       </div>
     </div>
   );
-  // return 'hello';
 };
 
 export default ProductListing;

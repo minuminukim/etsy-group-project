@@ -5,7 +5,7 @@ import Button from '../common/Button';
 
 const ProductImageForm = ({ sessionUser }) => {
   const [images, setImages] = useState([]);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const [imageLoading, setImageLoading] = useState(false);
   const history = useHistory();
   const { productId } = useParams();
@@ -34,8 +34,9 @@ const ProductImageForm = ({ sessionUser }) => {
     } else {
       setImageLoading(false);
       const data = await res.json();
-      console.log('data', data);
-      console.log('error');
+      if (data && data.errors) {
+        setErrors([...errors, ...data.errors]);
+      }
     }
   };
 
@@ -106,6 +107,7 @@ const ProductImageForm = ({ sessionUser }) => {
         </div>
         <Button label="Submit" className="submit-button" type="submit" />
       </form>
+      {errors.length > 0 && errors.map((e) => e)}
     </div>
   );
 };
