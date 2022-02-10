@@ -18,6 +18,8 @@ import CategoryView from './components/Categories';
 import LandingPage from './components/LandingPage';
 import DeleteWarning from './components/DeleteWarning';
 import NavBar from './components/NavBar';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import { get_cart_items } from './store/shoppingCart';
 
 
 function App() {
@@ -45,6 +47,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/mycart' exact={true} >
+          <ShoppingCart />
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
@@ -78,8 +83,8 @@ function App() {
         <Route>
           <PageNotFound />
         </Route>
-      </Switch>
-    </BrowserRouter>
+      </Switch >
+    </BrowserRouter >
   );
 }
 

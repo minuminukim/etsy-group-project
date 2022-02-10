@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ButtonWithIcon from '../ButtonWithIcon';
 import Modal from '../ModalWrapper/Modal.js';
 import DeleteWarning from '../DeleteWarning';
@@ -9,8 +9,9 @@ import { deleteProduct } from '../../store/productReducer';
 import './ProductDetails.css';
 
 const ProductDetails = ({ product, sessionId }) => {
-  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
   const {
     id,
     user_id: userId,
@@ -32,8 +33,8 @@ const ProductDetails = ({ product, sessionId }) => {
     e.preventDefault();
     e.stopPropagation();
     dispatch(deleteProduct(id)).catch(async (res) => {
-      console.log('id', id);
       const data = await res.json();
+      history.push('/');
       return data;
     });
   };

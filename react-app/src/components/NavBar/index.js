@@ -23,6 +23,7 @@ const NavBar = () => {
       <nav className="login-signup">
        <AuthModals/>
        {/* <NavLink to='/login' id="signIn" exact={true}><button id="sign-in">Sign in</button></NavLink> */}
+
       </nav>
     );
   }
@@ -31,7 +32,7 @@ const NavBar = () => {
     <header className="navigation-header">
       <div className="global-navigation">
         <div className="left-container">
-          <NavLink id="logo-font" exact to ="/">Qwerty</NavLink>
+          <NavLink id="logo-font" exact to="/">Qwerty</NavLink>
         </div>
         <div className="search-container">
           <SearchBar />
@@ -39,7 +40,7 @@ const NavBar = () => {
         <div className="right-container">
           {sessionLinks}
           {/* <NavLink to='/login' exact={true}><button id="sign-in">Sign in</button></NavLink> */}
-          <NavLink id="cart-logo" to='/cart'><BsCart4 className="cartIcon"/></NavLink>
+          <NavLink id="cart-logo" to='/mycart'><BsCart4 className="cartIcon" /></NavLink>
         </div>
       </div>
       <div className="secondary-navigation"></div>

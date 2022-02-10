@@ -180,6 +180,27 @@ def seed_product_images():
         image_url="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-numpad-keyboard-4.jpeg",
     )
 
+    chinese_drum_keyboard_image1 = ProductImage(
+        product_id=19,
+        image_url="https://qwerty-project-bucket.s3.amazonaws.com/product_images/chinese_drum_keyboard-1.jpeg",
+    )
+    chinese_drum_keyboard_image2 = ProductImage(
+        product_id=19,
+        image_url="https://qwerty-project-bucket.s3.amazonaws.com/product_images/chinese_drum_keyboard_2.jpeg",
+    )
+    chinese_drum_keyboard_image3 = ProductImage(
+        product_id=19,
+        image_url="https://qwerty-project-bucket.s3.amazonaws.com/product_images/chinese_drum_keyboard_3.jpeg",
+    )
+    chinese_drum_keyboard_image4 = ProductImage(
+        product_id=19,
+        image_url="https://qwerty-project-bucket.s3.amazonaws.com/product_images/chinese_drum_keyboard_4.jpeg",
+    )
+    chinese_drum_keyboard_image5 = ProductImage(
+        product_id=19,
+        image_url="https://qwerty-project-bucket.s3.amazonaws.com/product_images/chinese_drum_keyboard_5.jpeg",
+    )
+
     # DIY KITS
     kbdpad_diy_kit_image1 = ProductImage(
         product_id=16,
@@ -284,7 +305,14 @@ def seed_product_images():
     db.session.add(tofu84_diy_kit_image2)
     db.session.add(tofu84_diy_kit_image3)
 
+    db.session.add(chinese_drum_keyboard_image1)
+    db.session.add(chinese_drum_keyboard_image2)
+    db.session.add(chinese_drum_keyboard_image3)
+    db.session.add(chinese_drum_keyboard_image4)
+    db.session.add(chinese_drum_keyboard_image5)
+
     db.session.commit()
+
 
 def undo_product_images():
     db.session.execute("TRUNCATE product_images RESTART IDENTITY CASCADE;")
