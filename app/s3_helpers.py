@@ -40,3 +40,6 @@ def upload_file_to_s3(file, acl="public-read"):
 
     # return file url if successful
     return {"image_url": f"{S3_LOCATION}{file.filename}"}
+
+
+# def upload_multiple_files_to_s3(files):

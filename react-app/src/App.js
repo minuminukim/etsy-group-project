@@ -4,12 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
-import NavBar from './components/NavBar';
+import ProductImageForm from './components/ProductImageForm';
+import ProductListingEdit from './components/ProductListingEdit';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import CreateReview from './components/Review';
+import ProductListing from './components/ProductListing';
+import PageNotFound from './components/PageNotFound';
+import ReviewForm from './components/ReviewForm/ReviewForm';
+import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
+import SearchResult from './components/Search/SearchResult';
+import CategoryView from './components/Categories';
+import LandingPage from './components/LandingPage';
+import DeleteWarning from './components/DeleteWarning';
+import NavBar from './components/NavBar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import { get_cart_items } from './store/shoppingCart';
 
@@ -21,18 +30,10 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate())
+      await dispatch(authenticate());
       setLoaded(true);
     })();
   }, [dispatch]);
-
-
-  // useEffect(() => {
-
-
-  //   if (loaded) dispatch(get_cart_items(sessionUser.id))
-
-  // }, [loaded, dispatch])
 
   if (!loaded) {
     return null;
@@ -43,11 +44,17 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/" exact={true}>
-          <h1>Landing Page</h1>
+          <LandingPage />
           <LoginForm />
         </Route>
         <Route path='/mycart' exact={true} >
           <ShoppingCart />
+        </Route>
+        <Route path="/category/:category" exact={true}>
+          <CategoryView />
+        </Route>
+        <Route path="/search" exact={true}>
+          <SearchResult />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -58,8 +65,25 @@ function App() {
         <Route exact path="/products/new">
           <ProductListingForm sessionUser={sessionUser} />
         </Route>
-      </Switch>
-    </BrowserRouter>
+        <Route exact path="/products/:productId/edit">
+          <ProductListingEdit sessionUser={sessionUser} />
+        </Route>
+        <Route exact path="/products/:productId/images/new">
+          <ProductImageForm sessionUser={sessionUser} />
+        </Route>
+        <Route exact path="/products/:productId">
+          <ProductListing sessionId={sessionUser?.id} />
+          <ReviewForm />
+          <Reviews />
+        </Route>
+        <Route exact path="/testing">
+          <DeleteWarning />
+        </Route>
+        <Route>
+          <PageNotFound />
+        </Route>
+      </Switch >
+    </BrowserRouter >
   );
 }
 

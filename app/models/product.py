@@ -19,9 +19,11 @@ class Product(db.Model):
 
     user = db.relationship("User", back_populates="products")
     purchases = db.relationship("Purchase", back_populates="product")
-    images = db.relationship("ProductImage", back_populates="product")
     cart_items = db.relationship("CartItem", back_populates="product")
     reviews = db.relationship("Review", back_populates="product")
+    images = db.relationship(
+        "ProductImage", back_populates="product", cascade="all, delete-orphan"
+    )
 
     @staticmethod
     def get_all():
@@ -100,4 +102,10 @@ class Product(db.Model):
             "rating": self.rating,
             "stock": self.stock,
             "category": self.category,
+            "images": [image.image_url for image in self.images],
+            "user": {
+                "username": self.user.username,
+                "profile_picture_url": self.user.profile_picture_url,
+                "rating": self.user.rating,
+            },
         }
