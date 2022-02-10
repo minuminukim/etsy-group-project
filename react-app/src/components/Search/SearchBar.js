@@ -1,4 +1,4 @@
-import "./NavBar.css";
+import "../NavBar/NavBar.css";
 import React from 'react';
 import { AiOutlineSearch } from "react-icons/ai"
 

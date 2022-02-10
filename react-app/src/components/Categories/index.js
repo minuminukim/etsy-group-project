@@ -27,7 +27,8 @@ const CategoryView = () => {
 
   return (
     <div>
-      <p>Showing products in {category}</p>
+      <h2>Shop by interest</h2>
+      <p>{category}</p>
       <div>{productComponents}</div>
       <ProductGrid products={products} />
     </div>

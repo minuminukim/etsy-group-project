@@ -6,7 +6,6 @@ import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
 import ProductImageForm from './components/ProductImageForm';
 import ProductListingEdit from './components/ProductListingEdit';
-import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -15,10 +14,12 @@ import PageNotFound from './components/PageNotFound';
 import ReviewForm from './components/ReviewForm/ReviewForm';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
-import SearchResult from './components/SearchResult';
+import SearchResult from './components/Search/SearchResult';
 import CategoryView from './components/Categories';
 import LandingPage from './components/LandingPage';
 import DeleteWarning from './components/DeleteWarning';
+import NavBar from './components/NavBar';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,7 +67,7 @@ function App() {
           <ProductImageForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId">
-          <ProductListing sessionId={sessionUser.id} />
+          <ProductListing sessionId={sessionUser?.id} />
           <ReviewForm />
           <Reviews />
         </Route>
