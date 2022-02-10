@@ -2,7 +2,7 @@
 const LOAD_CART = "shoppingCart/LOAD_CART"
 const SINGLE_DELETE = "shoppingCart/SINGLE_DELETE"
 const MULTIPLE_DELETE = "shoppingCart/MULTIPLE_DELETE"
-
+const UPDATE_QUANTITY = "shoppingCart/UPDATE_QUANTITY"
 
 /*--------------------------------------------------------------------*/
 //Action Creators 
@@ -23,9 +23,10 @@ const deleteAllCartItems = () => ({
     type: MULTIPLE_DELETE,
 })
 
-
-
-
+const updateCartQuantity = (quantity) => ({
+    type: UPDATE_QUANTITY,
+    payload: quantity
+})
 
 
 
@@ -93,6 +94,29 @@ export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
     }
 }
 
+
+export const updateQuantity = (quantity, cartItemId, userId) => async (dispatch) => {
+
+
+    const response = await fetch(`/api/mycart/${cartItemId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            quantity: quantity
+        })
+    })
+
+    if (response.ok) {
+
+        dispatch(get_cart_items(userId))
+
+
+        return "it should have worked"
+
+    }
+}
 
 /*--------------------------------------------------------------------*/
 // REDUCER 

@@ -40,8 +40,8 @@
 }
 
 .cartPurchaseContainer {
-    width: 406px;
-    height: 519px;
+    width: 456px;
+    height: 419px;
     box-shadow: 0 4px 20px rgb(34 34 34 / 15%);
     border-radius: 18px;
     margin-top: 90px;
@@ -50,7 +50,10 @@
 
 .paymentMethodContainer {
     margin-top: 30px;
-    margin-left:20px ;
+    margin-left:20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .cartItemImageContainer {
@@ -67,7 +70,7 @@
 .topHalfCartItemSection {
     width: 100%;
     height: 80%;
-    background-color: blue;
+ 
     display:flex;
     flex-direction: row;
 }
@@ -75,7 +78,7 @@
 .RemoveAndSaleCartItemSection {
     width: 100%;
     height: 20%;
-    background-color: aqua;
+  
     display: flex;
 }
 
@@ -90,6 +93,7 @@
     border: none;
     background-color: white;
     cursor: pointer;
+    margin-right: 50px;
 }
 
 .cartIsEmpty {
@@ -113,15 +117,17 @@
 }
 
 .cartItemTitleContainer {
-    width: 50%;
+    width: 30%;
     height: 100%;
-    background-color: chartreuse;
+    margin-left: 30px;
+    margin-right: 50px;
+
 }
 
 .cartItemQuantityAndPriceSection {
     width: 50%;
     height: 100%;
-    background-color:rgb(34, 178, 99);
+    
     display: flex;
     flex-direction: column;
 }
@@ -129,7 +135,7 @@
 .quantityAndPriceTextSection{
     width: 100%;
     height: 60%;
-    background-color: rgb(147, 33, 33);
+
     display: flex;
     flex-direction: row;
 }
@@ -137,17 +143,56 @@
 .quantityAvailableText {
     width: 100%;
     height: 40%;
-    background-color: white;
 }
 
 .quantityContainer {
     width: 50%;
     height: 100%;
-    background-color: rgb(215, 36, 231);
+    
 }
 
 .priceCartItemContainer {
     width: 50%;
     height: 100%;
-    background-color: rgb(27, 133, 227);
+    
+}
+
+#quantitySelect {
+    border-radius: 4px;
+    width: 45px;
+    height: 25px
+}
+
+.cartItemTitleParentContainer{
+    padding-left: 30px;
+    width:fit-content
+}
+
+.howYouPayText {
+    font-weight: 700;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.paymentInput {
+    width: 25px;
+    height: 25px;
+    color: black;
+}
+
+.cartPriceContainer {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    margin-left:20px;
+}
+
+.shippingCostText {
+    display: flex;
+    flex-direction: row;
+}
+
+.freeText {
+    margin-left: 10px;
+    color: green;
 }

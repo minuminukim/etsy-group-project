@@ -23,7 +23,6 @@ const ShoppingCart = () => {
 
     useEffect(() => {
 
-
         dispatch(get_cart_items(session.user.id))
 
     }, [dispatch])

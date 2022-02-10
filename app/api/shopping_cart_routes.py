@@ -21,6 +21,9 @@ def get_cart_items_by_userId(id):
 @shopping_cart_routes.route("/<int:id>", methods=["PATCH"])
 def update_cart_items(id):
 
+    # Is a number!!!!!!!!
+    print(type(id))
+
     data = request.json
 
     new_quantity = int(data["quantity"])

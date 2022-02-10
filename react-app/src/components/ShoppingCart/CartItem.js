@@ -1,8 +1,11 @@
 import "./ShoppingCart.css"
 import { deleteCartItems } from "../../store/shoppingCart";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateQuantity } from "../../store/shoppingCart";
 
 const CartItem = ({ cartItem }) => {
+    let session = useSelector(state => state.session)
+
     const dispatch = useDispatch();
 
     let onSale;
@@ -26,8 +29,8 @@ const CartItem = ({ cartItem }) => {
         return quantityArray
     }
 
-    let changeQuantity = () => {
-        console.log("hello")
+    let changeQuantity = (e) => {
+        dispatch(updateQuantity(parseInt(e.target.value, 10), cartItem.id, session.user.id))
     }
 
 
@@ -40,18 +43,18 @@ const CartItem = ({ cartItem }) => {
                 </div>
                 <div className="rightDivCartItem">
                     <div className="topHalfCartItemSection" >
-                        <div className="cartItemTitleContainer"> Text</div>
+                        <div className="cartItemTitleContainer"> {cartItem.product_title}</div>
                         <div className="cartItemQuantityAndPriceSection">
                             <div className="quantityAndPriceTextSection">
                                 <div className="quantityContainer">
-                                    <select name="quantity" id="quantitySelect" value={cartItem.quantity} onChange={changeQuantity}>
+                                    <select name="quantity" id="quantitySelect" defaultValue={cartItem.quantity} onChange={changeQuantity}>
                                         {quantityOptions().map((number) => {
 
                                             return <option key={number.toString()} value={number.toString()}>{number}</option>
                                         })}
                                     </select>
                                 </div>
-                                <div className="priceCartItemContainer"></div>
+                                <div className="priceCartItemContainer"> ${cartItem.product_price}</div>
                             </div>
                             <div className="quantityAvailableText"></div>
                         </div>
