@@ -116,11 +116,6 @@ const GetReviews = () => {
   }
 
 
-  let deleteBtn;
-  deleteBtn = (
-    <button onClick={handleDelete}>Delete</button>
-  )
-
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
 
@@ -134,9 +129,9 @@ const GetReviews = () => {
   return (
     <>
       {reviews?.reviews?.map(review => (
-        <div id="review-container" value="review-container">
+        <div key={`review-container-${review?.id}`} id="review-container">
           <div id="review-row1">
-            <img className="profile-pic review-pic" src={review.profile_picture_url} />
+            <img className="profile-pic review-pic" src={review.profile_picture_url} alt={`${review.username}-profile-pic`} />
             <div key={review.user} id="review-author">{review.username}</div>
             <div key={review.updated_at} id="review-date">{`${review.updated_at.split(' ')[2]} ${review.updated_at.split(' ')[1]}, ${review.updated_at.split(' ')[3]}`}</div>
           </div>
@@ -149,9 +144,9 @@ const GetReviews = () => {
           </div>
 
           {/* Only display deleteBtn for a review by currentUser */}
-          {review.user_id === currentUser.id && displayEdit ? editForm : null}
+          {review.user_id === currentUser?.id && displayEdit ? editForm : null}
 
-          {review.user_id === currentUser.id && edit === true ?
+          {review.user_id === currentUser?.id && edit === true ?
             <button
               className="btn"
               id="deleteReviewBtn"
@@ -165,7 +160,7 @@ const GetReviews = () => {
             </button>
             : null}
 
-          {review.user_id === currentUser.id ?
+          {review.user_id === currentUser?.id ?
             <button className="btn" id="deleteReviewBtn" onClick={(e) => {
               handleDelete(e, review.id)
             }} value={review.id}>Delete</button>

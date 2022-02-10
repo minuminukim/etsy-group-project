@@ -8,7 +8,7 @@ import "./ReviewForm.css"
 const CreateReview = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
-  const reviews = useSelector(state => state.review.reviews);
+  // const reviews = useSelector(state => state.review.reviews);
   const [rating, setRating] = useState(0)
   const [body, setBody] = useState("")
   const [displayBtn, setDisplayBtn] = useState(false)
@@ -24,12 +24,6 @@ const CreateReview = () => {
   //     return (review?.user_id === currentUser.id)
   //   })
   // }
-
-  console.log(reviews?.reviews)
-
-  // reviewExists() === true ? setDisplayReviewForm(true) : setDisplayReviewForm(false)
-
-  console.log(displayReviewForm)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -57,13 +51,13 @@ const CreateReview = () => {
   if (displayBtn) {
     btn = (
       <div id="review_btn_container">
-        <button className="review-btn" className="btn"
+        <button className="review-btn btn"
           onClick={() => {
             setErrors([])
             setBody("")
             setDisplayBtn(false)
           }}>Cancel</button>
-        <button className="review-btn" className="btn">Submit</button>
+        <button className="review-btn btn">Submit</button>
       </div>
 
     )
@@ -84,7 +78,7 @@ const CreateReview = () => {
 
   return (
     <>
-      {displayReviewForm ?
+      {displayReviewForm && currentUser?.id ?
         <form id="review_form" onSubmit={onSubmit} value={true}
           onFocus={(e) => {
             setDisplayBtn(true)
