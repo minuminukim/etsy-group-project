@@ -4,14 +4,15 @@ import { login } from '../../store/session';
 import "./auth.css";
 import { Modal } from '../../context/Modal';
 import SignUpForm from './SignUpForm';
+import LoginFormModal from './LoginFormModal';
 
-const LoginForm = () => {
+const LoginForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const [showModal, setShowModal] = useState(false);
+  const [showRegisterModal, setRegisterShowModal] = useState(false);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -43,9 +44,11 @@ const LoginForm = () => {
       <div className="signin-register-container">
         <p className="sign-in-font">Sign in</p>
         <div>
-        <button className="register-button" onClick={() => setShowModal(true)}>Register</button>
-        {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <button className="register-button" onClick={() => setRegisterShowModal(true)}>Register</button>
+        {showRegisterModal && (
+        <Modal onClose={() => {
+          setRegisterShowModal(false)
+        }}>
           <SignUpForm/>
         </Modal>
       )}
