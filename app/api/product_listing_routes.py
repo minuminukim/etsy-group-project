@@ -145,7 +145,11 @@ def delete_product(id):
     """
     Deletes a product listing
     """
+    print("@@@@@@@@@@@@@@@@@@@", id)
+    # TODO: currently erroring on delete req because of dependent
+    # product images... fix this,,,,
     product = Product.get_by_id(id)
+    print("product", product)
 
     # TODO: implement error handling
 

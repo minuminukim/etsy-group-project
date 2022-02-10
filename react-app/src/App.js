@@ -18,6 +18,7 @@ import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
 import CategoryView from './components/Categories';
 import LandingPage from './components/LandingPage';
+import DeleteWarning from './components/DeleteWarning';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +69,9 @@ function App() {
           <ProductListing sessionId={sessionUser.id} />
           <ReviewForm />
           <Reviews />
+        </Route>
+        <Route exact path="/testing">
+          <DeleteWarning />
         </Route>
         <Route>
           <PageNotFound />
