@@ -92,6 +92,15 @@ class Product(db.Model):
         percentage = self.discount / 100
         setattr(self, "price", self.price * (1 - percentage))
 
+    def purchase(self, quantity):
+        """
+        Updates a product's stock on purchase.
+        """
+        if self.stock - quantity < 0:
+            setattr(self, "stock", 0)
+        else:
+            setattr(self, "stock", self.stock - quantity)
+
     def __repr__(self):
         return (
             f"<Product (id: {self.id},\n"
