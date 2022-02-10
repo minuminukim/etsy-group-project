@@ -76,18 +76,21 @@ class Product(db.Model):
 
         return product
 
+    @staticmethod
+    def archive(product):
+        """
+        Removes a listing by setting archived flag to True.
+        """
+        setattr(product, "stock", 0)
+        setattr(product, "archived", True)
+        return product
+
     def apply_discount(self):
         """
         Apply a discount and update a product's price.
         """
         percentage = self.discount / 100
         setattr(self, "price", self.price * (1 - percentage))
-
-    def archive(self):
-        """
-        Removes a listing by setting self.archived to True.
-        """
-        setattr(self, "archived", True)
 
     def __repr__(self):
         return (
