@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css';
-import SearchBar from './SearchBar';
+import SearchBar from './Search/SearchBar';
 
 const NavBar = () => {
   return (
