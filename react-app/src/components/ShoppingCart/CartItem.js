@@ -62,6 +62,7 @@ const CartItem = ({ cartItem }) => {
                   <select
                     name="quantity"
                     id="quantitySelect"
+                    // value={quantity}
                     defaultValue={cartItem.quantity}
                     onChange={changeQuantity}
                   >

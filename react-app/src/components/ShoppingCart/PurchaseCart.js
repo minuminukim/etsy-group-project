@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaCcMastercard } from 'react-icons/fa';
 import { FaCcVisa } from 'react-icons/fa';
 import { SiAmericanexpress } from 'react-icons/si';
@@ -7,6 +8,7 @@ import { FaCcDiscover } from 'react-icons/fa';
 import Button from '../common/Button/Button';
 
 const PurchaseCart = ({ cartItems }) => {
+  const [errors, setErrors] = useState({});
   let totalPrice = 0;
 
   for (let i = 0; i < cartItems.length; i++) {
@@ -23,6 +25,25 @@ const PurchaseCart = ({ cartItems }) => {
     the quantity for the item is still available and the item is still being sold.
 
     */
+  const handleClick = () => {
+    const postRequest = async () => {
+      const response = await fetch(`/api/purchases/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ purchases: cartItems }),
+      });
+
+      const data = await response.json();
+
+      if (data && data.errors) {
+        // TODO: error handling
+        console.log(data.errors)
+      }
+
+      // else dispatch clear cart
+    };
+    postRequest();
+  };
 
   return (
     <div className="cartPurchaseContainer">
@@ -138,7 +159,11 @@ const PurchaseCart = ({ cartItems }) => {
         </div>
       </div>
       <div className="purchaseButtonContainer">
-        <Button label={'But it now'} className="purchaseCart" />
+        <Button
+          label={'Buy it now'}
+          className="purchaseCart"
+          onClick={handleClick}
+        />
       </div>
     </div>
   );
