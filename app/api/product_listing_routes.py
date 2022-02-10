@@ -148,6 +148,7 @@ def delete_product(id):
     print("@@@@@@@@@@@@@@@@@@@", id)
     # TODO: currently erroring on delete req because of dependent
     # product images... fix this,,,,
+    # cascade deletes without removing records of purchases?
     product = Product.get_by_id(id)
     print("product", product)
 
