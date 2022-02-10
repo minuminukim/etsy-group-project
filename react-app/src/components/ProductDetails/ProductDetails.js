@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ButtonWithIcon from '../ButtonWithIcon';
+import Modal from '../ModalWrapper/Modal.js';
+import DeleteWarning from '../DeleteWarning';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
+import { deleteProduct } from '../../store/productReducer';
 import './ProductDetails.css';
 
 const ProductDetails = ({ product, sessionId }) => {
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
   const {
+    id,
     user_id: userId,
     title,
     price,
@@ -21,6 +26,17 @@ const ProductDetails = ({ product, sessionId }) => {
   const isCurrentUser = sessionId === userId;
 
   const { original, saving } = calculateOriginalPrice(price, discount);
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+  const handleDelete = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(deleteProduct(id)).catch(async (res) => {
+      console.log('id', id);
+      const data = await res.json();
+      return data;
+    });
+  };
 
   return (
     <div className="product-details">
@@ -52,18 +68,29 @@ const ProductDetails = ({ product, sessionId }) => {
         </div>
         {isCurrentUser && (
           <div className="product-details-btns">
-            <ButtonWithIcon
-              className="edit-btn"
-              size="medium"
-              action="edit"
-              shape="square"
-            />
+            <Link to={`/products/${id}/edit`}>
+              <ButtonWithIcon
+                className="edit-btn"
+                size="medium"
+                action="edit"
+                shape="square"
+              />
+            </Link>
             <ButtonWithIcon
               className="delete-btn"
               size="medium"
               action="delete"
               shape="square"
+              onClick={openModal}
             />
+            {showModal && (
+              <Modal onClose={closeModal}>
+                <DeleteWarning
+                  cancelOnClick={closeModal}
+                  deleteOnClick={handleDelete}
+                />
+              </Modal>
+            )}
           </div>
         )}
       </div>

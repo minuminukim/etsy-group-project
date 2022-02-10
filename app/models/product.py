@@ -19,9 +19,11 @@ class Product(db.Model):
 
     user = db.relationship("User", back_populates="products")
     purchases = db.relationship("Purchase", back_populates="product")
-    images = db.relationship("ProductImage", back_populates="product")
     cart_items = db.relationship("CartItem", back_populates="product")
     reviews = db.relationship("Review", back_populates="product")
+    images = db.relationship(
+        "ProductImage", back_populates="product", cascade="all, delete-orphan"
+    )
 
     @staticmethod
     def get_all():
