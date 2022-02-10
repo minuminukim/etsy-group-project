@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 import "./auth.css";
+import { Modal } from '../../context/Modal';
+import SignUpForm from './SignUpForm';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  // const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -27,9 +29,9 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <form className="login-form" onSubmit={onLogin}>
@@ -40,15 +42,22 @@ const LoginForm = () => {
       </div>
       <div className="signin-register-container">
         <p className="sign-in-font">Sign in</p>
-        <button className="register-button">Register</button>
+        <div>
+        <button className="register-button" onClick={() => setShowModal(true)}>Register</button>
+        {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <SignUpForm/>
+        </Modal>
+      )}
+        </div>
       </div>
         <div>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='email'>Email address</label>
         </div>
         <div>
         <input
           name='email'
-          type='text'
+          type='text'd
           placeholder='Email'
           value={email}
           onChange={updateEmail}
