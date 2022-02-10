@@ -14,13 +14,18 @@ class Product(db.Model):
     rating = db.Column(db.Integer, default=0)
     stock = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String(100), nullable=False)
+    archived = db.Column(db.Boolean, default=False, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, default=db.func.now(), nullable=False)
 
     user = db.relationship("User", back_populates="products")
     purchases = db.relationship("Purchase", back_populates="product")
-    cart_items = db.relationship("CartItem", back_populates="product")
-    reviews = db.relationship("Review", back_populates="product")
+    cart_items = db.relationship(
+        "CartItem", back_populates="product", cascade="all, delete-orphan"
+    )
+    reviews = db.relationship(
+        "Review", back_populates="product", cascade="all, delete-orphan"
+    )
     images = db.relationship(
         "ProductImage", back_populates="product", cascade="all, delete-orphan"
     )
