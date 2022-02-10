@@ -83,6 +83,12 @@ class Product(db.Model):
         percentage = self.discount / 100
         setattr(self, "price", self.price * (1 - percentage))
 
+    def archive(self):
+        """
+        Removes a listing by setting self.archived to True.
+        """
+        setattr(self, "archived", True)
+
     def __repr__(self):
         return (
             f"<Product (id: {self.id},\n"
