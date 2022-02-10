@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getSingleProduct } from '../../store/productReducer';
 import ProductDetails from '../ProductDetails';
 import Carousel from '../Carousel';
@@ -11,17 +11,19 @@ const ProductListing = ({ sessionId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
   const { productId } = useParams();
   // const product = useSelector((state) => state.products[productId]);
 
   useEffect(() => {
     return dispatch(getSingleProduct(productId))
+      .then((res) => (res.archived ? history.push('/page-not-found') : null))
       .then((res) => setProduct(res))
       .then(() => setIsLoading(false))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
-          console.log('errors', data.errors);
+          history.push('/page-not-found');
         }
       });
   }, [dispatch]);

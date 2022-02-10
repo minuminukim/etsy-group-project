@@ -32,11 +32,14 @@ const ProductDetails = ({ product, sessionId }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(deleteProduct(id)).catch(async (res) => {
-      const data = await res.json();
-      history.push('/');
-      return data;
-    });
+    return dispatch(deleteProduct(id))
+      .then(() => history.push('/'))
+      .catch(async (res) => {
+        const data = await res.json();
+        console.log('data', data);
+        // history.push('/');
+        // return data;
+      });
   };
 
   return (
