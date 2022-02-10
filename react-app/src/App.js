@@ -17,7 +17,9 @@ import { authenticate } from './store/session';
 import SearchResult from './components/Search/SearchResult';
 import CategoryView from './components/Categories';
 import LandingPage from './components/LandingPage';
+import DeleteWarning from './components/DeleteWarning';
 import NavBar from './components/NavBar';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
