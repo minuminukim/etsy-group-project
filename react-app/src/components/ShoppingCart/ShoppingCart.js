@@ -18,6 +18,7 @@ const ShoppingCart = () => {
     let shoppingCart = useSelector(state => state.shoppingCart);
     let valueArray = Object.values(shoppingCart);
 
+    console.log(valueArray, "idufviudfbnvidfbvujdfnvjkd")
 
     let areThereCartItems;
 
@@ -50,7 +51,7 @@ const ShoppingCart = () => {
                 <div className="CartItemsAndPurchaserContainer">
                     <div className="CartItemSectionContainer">
                         <div id="numberOfItemsText">{valueArray.length} items in your cart</div>
-                        {valueArray.map((item) => <CartItem key={item.product_title} cartItem={item} />)}
+                        {valueArray.map((item) => <CartItem key={`${item.id}`} cartItem={item} />)}
                     </div>
                     <PurchaseCart cartItems={valueArray} />
                 </div>

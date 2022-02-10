@@ -13,7 +13,7 @@ const PurchaseCart = ({ cartItems }) => {
 
 
     for (let i = 0; i < cartItems.length; i++) {
-        totalPrice = totalPrice + parseFloat(cartItems[i].product_price)
+        totalPrice = totalPrice + parseFloat(cartItems[i].product_price * cartItems[i].quantity)
     }
 
 
@@ -21,18 +21,6 @@ const PurchaseCart = ({ cartItems }) => {
         style: 'currency',
         currency: 'USD',
     });
-
-
-    /*
-    onClick of pruchase button I dispatch a thunk that clears all items in cart only if 
-    the quantity for the item is still available and the item is still being sold.
-
-    */
-
-
-
-
-
 
 
 

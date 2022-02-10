@@ -6,6 +6,8 @@ import ProductDetails from '../ProductDetails';
 import Carousel from '../Carousel';
 import ButtonWithIcon from '../ButtonWithIcon';
 import './ProductListing.css';
+import AddToCart from '../ShoppingCart/AddToCart';
+
 
 const ProductListing = ({ sessionId }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +35,7 @@ const ProductListing = ({ sessionId }) => {
       </div>
       <div className="product-listing-side">
         <ProductDetails product={product} sessionId={sessionId} />
+        <AddToCart product={product} />
       </div>
     </div>
   );
