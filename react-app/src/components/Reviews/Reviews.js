@@ -24,28 +24,13 @@ const GetReviews = () => {
   const [userLeftReview, setUserLeftReview] = useState(true)
   const [errors, setErrors] = useState([])
   const [work, setWork] = useState(false)
+  const [hover, setHover] = useState(0);
   let { productId } = useParams()
 
 
 
-  const reviewExists = () => {
-    reviews?.reviews.forEach(review => {
-      if (review?.user_id === currentUser?.id) {
-        return setUserLeftReview(true)
-      }
-    })
-    // setUserLeftReview(false)
-  }
-
-
-  // useEffect(() => {
-  //   reviewExists()
-
-  // }, [dispatch])
-
   const handleDelete = (e, id) => {
     e.preventDefault();
-    // setDisplayReviewForm(true)
     dispatch(sessionActions.deleteReview(id))
     setTest(!test)
     setUserLeftReview(false)
@@ -89,34 +74,27 @@ const GetReviews = () => {
         <form id="review_form" onSubmit={handleEditSubmit}>
           <h4>Update Review</h4>
 
-          <div id="star-con">
 
-            <AiOutlineStar
-              id="testing123"
-              onClick={(e) => {
-                setRating(2);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              onClick={(e) => {
-                setRating(4);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              onClick={(e) => {
-                setRating(6);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              onClick={(e) => {
-                setRating(8);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              onClick={(e) => {
-                setRating(10);
-              }} />
-          </div>
+          <div id="star-rating-container">
+      {[...Array(5)].map((star, index) => {
+        index += 1;
+        return (
+          <button
+            type="button"
+            key={index}
+            // highlight prev stars including hovered
+            className={index <= (hover || rating) ? "on" : "off"}
+            onClick={() => setRating(index)}
+            onMouseEnter={() => setHover(index)}
+            onMouseLeave={() => setHover(rating)}
+          >
+            <span className="stars">★</span>
+          </button>
+        );
+      })}
+    </div>
+
+
           <div>
             {errors.body}
             <div>
@@ -146,13 +124,10 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-    reviewExists()
   }, [dispatch, test, rerender, work, edit])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-    reviewExists()
-
   }, [dispatch, test, rerender, work, edit])
 
   return (
