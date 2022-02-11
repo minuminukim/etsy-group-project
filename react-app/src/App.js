@@ -45,9 +45,6 @@ function App() {
         <Route path="/" exact={true}>
           <LandingPage />
         </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
         <Route path='/mycart' exact={true} >
           <ShoppingCart />
         </Route>

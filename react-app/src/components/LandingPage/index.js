@@ -31,23 +31,23 @@ const LandingPage = () => {
                 <div className="category-list">
                     <ul className="category-list">
                         <div className="category-list-item">
-                            <img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"/>
+                            <NavLink to={`/category/${categoryA}`}><img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"/></NavLink>
                             <li><NavLink to={`/category/${categoryA}`}>Switches</NavLink></li>
                         </div>
                         <div className="category-list-item">
-                            <img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/pbt-chalk-keycaps-1.jpeg"/>
+                            <NavLink to={`/category/${categoryB}`}><img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/pbt-chalk-keycaps-1.jpeg"/></NavLink>
                             <li><NavLink to={`/category/${categoryB}`}>Keycaps</NavLink></li>
                         </div>
                         <div className="category-list-item">
-                            <img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-numpad-keyboard-4.jpeg"/>
+                            <NavLink to={`/category/${categoryC}`}><img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-numpad-keyboard-4.jpeg"/></NavLink>
                             <li><NavLink to={`/category/${categoryC}`}>Keyboards</NavLink></li>
                         </div>
                         <div className="category-list-item">
-                            <img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-diy-kit-2.jpeg"/>
+                            <NavLink to={`/category/${categoryD}`}><img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-diy-kit-2.jpeg"/></NavLink>
                             <li><NavLink to={`/category/${categoryD}`}>DIY kits</NavLink></li>
                         </div>
                         <div className="category-list-item">
-                            <img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"/>
+                            <NavLink to={`/category/sale`}><img className="category-image" src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"/></NavLink>
                             <li><NavLink to={`/category/sale`}>Sale</NavLink></li>
                         </div>
                     </ul> 
