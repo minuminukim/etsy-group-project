@@ -79,7 +79,8 @@ span.out-of-stock,
   color: #b23545;
 }
 
-.in-stock-icon, .out-of-stock-icon {
+.in-stock-icon,
+.out-of-stock-icon {
   margin-right: 3px;
   position: relative;
   top: 2px;
