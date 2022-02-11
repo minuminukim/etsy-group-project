@@ -7,10 +7,11 @@ body {
 
 .navigation-header {
     display: flex;
-    height: 106px;
+    height: 86px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 12px;
 }
 
 .global-navigation {
@@ -26,9 +27,8 @@ body {
 .secondary-navigation {
     height: 0px;
     display: flex;
-    background-color:white;
     width: 100%;
-    border-bottom: 1px solid rgba(34, 34, 34, 0.15);
+    border-bottom: 2px solid rgba(34, 34, 34, 0.15);
 }
 
 #logo-font {
