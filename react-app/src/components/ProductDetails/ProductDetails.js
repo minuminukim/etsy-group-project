@@ -62,7 +62,7 @@ const ProductDetails = ({ product, sessionId }) => {
         <div className="product-price-details-top">
           <p className="price-with-discount">{`$${price}`}</p>
           {discount > 0 && (
-            <span className="price-before-discount">{`$${original}`}</span>
+            <span className="price-before-discount-details">{`$${original}`}</span>
           )}
         </div>
         <div className="product-price-details-botton">
