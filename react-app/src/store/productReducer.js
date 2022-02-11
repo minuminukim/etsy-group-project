@@ -36,7 +36,7 @@ export const getSingleProduct = (productId) => async (dispatch) => {
 };
 
 export const getAllProducts = () => async (dispatch) => {
-  const response = await fetch(`/api/products`);
+  const response = await fetch(`/api/products/`);
 
   if (response.status >= 400) {
     throw response;
