@@ -12,6 +12,7 @@ import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
 import ReviewForm from './components/ReviewForm/ReviewForm';
+import UserProfile from './components/UserProfile/User';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
 import SearchResult from './components/SearchResult';
@@ -62,8 +63,10 @@ function App() {
         </Route>
         <Route exact path="/products/:productId">
           <ProductListing />
-          {/* <ReviewForm /> */}
           <Reviews />
+        </Route>
+        <Route exact path="/user/:userId">
+          <UserProfile />
         </Route>
         <Route>
           <PageNotFound />
