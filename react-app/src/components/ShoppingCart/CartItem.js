@@ -2,9 +2,26 @@ import './ShoppingCart.css';
 import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../store/shoppingCart';
+import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
+import { useEffect, useState } from 'react';
+
 
 const CartItem = ({ cartItem }) => {
   let session = useSelector((state) => state.session);
+  // let cartItemErrors = useSelector((state) => state.session.shoppingCart);
+  // const [hasLoadedCart, setHasLoadedCart] = useState(false)
+  // const [quantityError, setQuantityError] = useState(false)
+
+  // console.log(cartItemErrors, "fvdfvdf")
+
+
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setHasLoadedCart(true);
+  //   }, 100);
+  //   return () => clearTimeout(timer);
+  // });
 
   const dispatch = useDispatch();
 
@@ -34,6 +51,17 @@ const CartItem = ({ cartItem }) => {
     );
   };
 
+
+  let discountInfo = calculateOriginalPrice(parseInt(cartItem.product_price, 10), parseInt(cartItem.product_discount, 10))
+
+  // const checkErrors = () => {
+
+  //   if (cartItemErrors) {
+  //     return <p>You got errors bro.</p>
+  //   }
+  // }
+
+
   return (
     <>
       <div className="cartItemLineBreaker"></div>
@@ -53,12 +81,13 @@ const CartItem = ({ cartItem }) => {
         <div className="rightDivCartItem">
           <div className="topHalfCartItemSection">
             <div className="cartItemTitleContainer">
-              {' '}
               {cartItem.product_title}
             </div>
             <div className="cartItemQuantityAndPriceSection">
               <div className="quantityAndPriceTextSection">
                 <div className="quantityContainer">
+                  {/* {hasLoadedCart ? checkErrors() : null} */}
+                  {/* {hasLoadedCart && cartItemErrors[cartItem.id].errors ? <p>{cartItemErrors[cartItem.id]["error"]}</p> : null} */}
                   <select
                     name="quantity"
                     id="quantitySelect"
@@ -79,8 +108,8 @@ const CartItem = ({ cartItem }) => {
                   </select>
                 </div>
                 <div className="priceCartItemContainer">
-                  {' '}
                   ${cartItem.product_price}
+                  {parseInt(cartItem.product_discount, 10) > 0 ? <p>This item was ${discountInfo.original}. You Saved ${discountInfo.saving}</p> : null}
                 </div>
               </div>
               <div className="quantityAvailableText"></div>

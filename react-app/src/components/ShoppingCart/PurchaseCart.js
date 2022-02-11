@@ -8,9 +8,13 @@ import { FaCcDiscover } from 'react-icons/fa';
 import Button from '../common/Button/Button';
 import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
+import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
+import { updateItemErrors } from '../../store/shoppingCart';
 
 
 const PurchaseCart = ({ cartItems, setWasPurchased }) => {
+
+  console.log(cartItems, "fvdfvdfv")
 
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
@@ -19,6 +23,8 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
   for (let i = 0; i < cartItems.length; i++) {
     totalPrice = totalPrice + parseFloat(cartItems[i].product_price * cartItems[i].quantity)
   }
+
+
 
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -48,23 +54,29 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
         // TODO: error handling
         console.log(data.errors)
 
+        dispatch(updateItemErrors([data.errors[0], data.errors[1]]))
+
+      } else {
+
+        // else dispatch clear cart
+        let cartItemIds = []
+
+        for (let i = 0; i < cartItems.length; i++) {
+          cartItemIds.push(cartItems[i].id)
+          console.log(cartItems[i].id)
+        }
+        dispatch(deleteCartItems(cartItemIds))
+
+
+        setWasPurchased(true)
+
+        setTimeout(() => {
+          setWasPurchased(false)
+        }, 5000)
+
       }
 
-      // else dispatch clear cart
-      let cartItemIds = []
 
-      for (let i = 0; i < cartItems.length; i++) {
-        cartItemIds.push(cartItems[i].id)
-        console.log(cartItems[i].id)
-      }
-      dispatch(deleteCartItems(cartItemIds))
-
-
-      setWasPurchased(true)
-
-      setTimeout(() => {
-        setWasPurchased(false)
-      }, 5000)
     };
 
 
