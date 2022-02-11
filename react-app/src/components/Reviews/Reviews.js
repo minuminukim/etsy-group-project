@@ -146,13 +146,13 @@ const GetReviews = () => {
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
     reviewExists()
-  }, [dispatch, test, rerender, work])
+  }, [dispatch, test, rerender, work, edit])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
     reviewExists()
 
-  }, [dispatch, test, rerender, work])
+  }, [dispatch, test, rerender, work, edit])
 
   return (
     <>

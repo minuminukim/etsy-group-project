@@ -66,10 +66,27 @@
 
 /* TESTING STARS */
 
-.s1:hover {
+/* .s1:hover + .s2 , */
+/* .s1:hover + .s3 {
+    --percent: calc(var(4) / 5 * 100%);
     background-color: black;
-}
+} */
 
-.s3:hover ~ .s1 {
+/* .s2:hover ~ .s1 {
     background-color: black;
-}
+} */
+
+
+
+#star-rating-container > button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .highlight {
+    color: black;
+  }
+  .off {
+    color: lightgray;
+  }

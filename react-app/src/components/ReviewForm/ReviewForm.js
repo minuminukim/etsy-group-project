@@ -19,6 +19,8 @@ const CreateReview = ({setUserLeftReview}) => {
   const [displayReviewForm, setDisplayReviewForm] = useState(true)
   let { productId } = useParams()
 
+  const [rating1, setRating1] = useState(0);
+  const [hover, setHover] = useState(0);
 
   // TODO - fix review form display on refresh when review for use already exists
   // const reviewExists = () => {
@@ -42,12 +44,14 @@ const CreateReview = ({setUserLeftReview}) => {
 
       const data = await res.json();
       if (data.errors) {
-        setErrors(data.errors);
-      } else {
+        return setErrors(data.errors);
       }
-    })
-    setDisplayReviewForm(false)
-    setUserLeftReview(true)
+    }
+    )
+    if (body && rating > 0) {
+      setDisplayReviewForm(false)
+    }
+    // setUserLeftReview(true)
     setTest(!test)
   }
 
@@ -94,38 +98,36 @@ const CreateReview = ({setUserLeftReview}) => {
               {errors.rating}
             </div>
           </div>
-          <div>
-            <AiOutlineStar
-              id="testing123"
-              className="s1"
-              onClick={(e) => {
-                setRating(1);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              className="s2"
-              onClick={(e) => {
-                setRating(4);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              className="s3"
-              onClick={(e) => {
-                setRating(6);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              className="s4"
-              onClick={(e) => {
-                setRating(8);
-              }} />
-            <AiOutlineStar
-              id="testing123"
-              className="s5"
-              onClick={(e) => {
-                setRating(10);
-              }} />
-          </div>
+
+
+
+
+
+
+          <div id="star-rating-container">
+      {[...Array(5)].map((star, index) => {
+        index += 1;
+        return (
+          <button
+            type="button"
+            key={index}
+            // highlight prev stars including hovered
+            className={index <= (hover || rating) ? "on" : "off"}
+            onClick={() => setRating(index)}
+            onMouseEnter={() => setHover(index)}
+            onMouseLeave={() => setHover(rating)}
+          >
+            <span className="stars">★</span>
+          </button>
+        );
+      })}
+    </div>
+
+
+
+
+
+
 
           <div id='review-pic'>
             <img className="profile-pic" src={currentUser?.profile_pic_url} alt="profile-pic" />
