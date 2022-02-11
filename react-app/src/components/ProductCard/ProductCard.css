@@ -13,18 +13,18 @@
   height: 252px;
   object-fit: cover;
   border-radius: 3px;
-  /* max-width: 317px;
-  max-height: 251px; */
 }
 
 .product-card-img:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .product-card-title {
   font-size: 14px;
   font-weight: 300;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .product-card-price-details {
