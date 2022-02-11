@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
 import ProductImageForm from './components/ProductImageForm';
@@ -12,6 +11,7 @@ import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
 import ReviewForm from './components/ReviewForm/ReviewForm';
+import UserProfile from './components/UserProfile/User';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
 import SearchResult from './components/Search/SearchResult';
@@ -21,7 +21,7 @@ import DeleteWarning from './components/DeleteWarning';
 import NavBar from './components/NavBar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import { get_cart_items } from './store/shoppingCart';
-
+import SignInRequiredForCart from './components/ShoppingCart/signInRequiredForCart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,10 +45,10 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <LandingPage />
-          <LoginForm />
         </Route>
         <Route path='/mycart' exact={true} >
-          <ShoppingCart />
+          {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
+
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
