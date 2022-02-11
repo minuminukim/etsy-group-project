@@ -1,0 +1,13 @@
+img.product-image {
+  object-fit: cover;
+}
+
+img.product-image-square {
+  width: 318px;
+  height: 318px;
+}
+
+img.product-image-landscape {
+  width: 318px;
+  height: 212px;
+}
