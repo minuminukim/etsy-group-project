@@ -1,3 +1,7 @@
+.category-page {
+    display: flex;
+}
+
 .category-header {
     width: 100%;
     height: 270px;
@@ -107,4 +111,8 @@
     font-size: 13px;
     padding: 0px;
     margin: 0px;
+}
+
+.product-grid {
+    margin-top: 24px;
 }
