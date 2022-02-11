@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   max-height: 317px;
-  max-width: 375px;
+  max-width: 250px;
   color: #222222;
   padding: 9px;
   text-overflow: ellipsis;
@@ -11,10 +11,11 @@
 }
 
 .product-card-img {
-  height: auto;
-  width: 100%;
-  max-width: 317px;
-  max-height: 251px;
+  height: 142px;
+  width: 250px;
+  object-fit: cover;
+  /* max-width: 317px;
+  max-height: 251px; */
 }
 
 .product-card-title {
@@ -25,6 +26,7 @@
 
 .product-card-price-details {
   display: flex;
+  align-items: center;
 }
 
 .price-after-discount {
@@ -32,9 +34,14 @@
   font-weight: 600;
 }
 
+.price-before-discount {
+  text-decoration: line-through;
+}
+
 .price-before-discount,
 .discount-value {
   font-size: 12px;
   font-weight: 300;
   color: #258635;
+  margin-left: 3px;
 }
