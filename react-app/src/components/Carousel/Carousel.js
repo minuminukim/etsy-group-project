@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProductThumbnail from '../ProductThumbnail';
 import './Carousel.css';
-import CircleButton from '../CircleButton';
+import ButtonWithIcon from '../ButtonWithIcon';
 
 const Carousel = ({ images, alt }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,16 +41,18 @@ const Carousel = ({ images, alt }) => {
       </div>
       <div className="carousel-main" style={carouselMainStyle}>
         <div className="carousel-buttons">
-          <CircleButton
+          <ButtonWithIcon
             className="nav-btn nav-btn-previous"
             size="medium"
-            iconType="previous"
+            action="previous"
+            shape="circle"
             onClick={handlePrevious}
           />
-          <CircleButton
+          <ButtonWithIcon
             className="nav-btn nav-btn-next"
             size="medium"
-            iconType="next"
+            action="next"
+            shape="circle"
             onClick={handleNext}
           />
         </div>

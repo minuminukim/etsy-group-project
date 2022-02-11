@@ -4,9 +4,10 @@ import { useParams } from 'react-router-dom';
 import { getSingleProduct } from '../../store/productReducer';
 import ProductDetails from '../ProductDetails';
 import Carousel from '../Carousel';
+import ButtonWithIcon from '../ButtonWithIcon';
 import './ProductListing.css';
 
-const ProductListing = () => {
+const ProductListing = ({ sessionId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const ProductListing = () => {
         <Carousel images={product.images} alt={product.title} />
       </div>
       <div className="product-listing-side">
-        <ProductDetails product={product} />
+        <ProductDetails product={product} sessionId={sessionId} />
       </div>
     </div>
   );

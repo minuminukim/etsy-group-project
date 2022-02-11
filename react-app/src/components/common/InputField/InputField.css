@@ -3,8 +3,7 @@
   grid-template-columns: 246px 528px;
 }
 
-input,
-select {
+.form-input {
   grid-column: 2 / 3;
   width: 100%;
   max-width: 528px;
@@ -15,13 +14,13 @@ select {
   padding-left: 18px;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.form-input::-webkit-outer-spin-button,
+.form-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type='number'] {
+.form-input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -31,11 +30,10 @@ input[type='number'] {
 }
 
 .validation-error {
-  color: #A61A2E;
+  color: #a61a2e;
   margin-top: 6px;
   font-size: 16px;
   line-height: 28px;
   font-weight: 400;
   transition: opacity 200ms ease-in;
 }
-
