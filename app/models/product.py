@@ -1,5 +1,6 @@
 from multiprocessing.sharedctypes import Value
 from .db import db
+from . import Review
 
 
 class Product(db.Model):
@@ -100,6 +101,17 @@ class Product(db.Model):
             setattr(self, "stock", 0)
         else:
             setattr(self, "stock", self.stock - quantity)
+
+    def update_rating(self, new_rating):
+        """
+        Updates a product's rating.
+        """
+        reviews = Review.query.filter(Review.product_id == id).all()
+        ratings = [review.rating for review in reviews]
+        total = sum(ratings)
+        count = len(reviews)
+
+        return (total + new_rating) // (count + 1)
 
     def __repr__(self):
         return (
