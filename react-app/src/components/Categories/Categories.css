@@ -35,7 +35,7 @@
     padding: 6px 9px;
     background-color: white;
     height: 30x;
-    width: 63px;
+    width: 70px;
     text-align: center;
     margin-left: 20px;
     border-radius: 15px;
@@ -43,6 +43,7 @@
     font-weight: 700;
     letter-spacing: .1px;
     cursor: pointer;
+    justify-content: center;
 }
 
 .category-product-price:hover {
