@@ -12,6 +12,7 @@ const GetReviews = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
   const reviews = useSelector(state => state.review.reviews);
+  const userExists = useSelector(state => state.review.reviewExists);
   // TODO - rename state hooks
   const [test, setTest] = useState(false)
   const [edit, setEdit] = useState(true)
@@ -144,20 +145,20 @@ const GetReviews = () => {
 
 
   useEffect(() => {
-    dispatch(sessionActions.getReviews(productId))
+    dispatch(sessionActions.getReviews(productId, currentUser?.id))
     reviewExists()
   }, [dispatch, test, rerender, work, edit])
 
   useEffect(() => {
-    dispatch(sessionActions.getReviews(productId))
+    dispatch(sessionActions.getReviews(productId, currentUser?.id))
     reviewExists()
 
   }, [dispatch, test, rerender, work, edit])
 
   return (
     <>
+      { userExists ? null : <ReviewForm />}
 
-      { userLeftReview ? <ReviewForm setUserLeftReview={setUserLeftReview}/> : null}
       {reviews?.reviews?.map(review => (
         <div key={`review-container-${review?.id}`} id="review-container">
           <div id="review-row1">

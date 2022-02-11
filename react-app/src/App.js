@@ -73,7 +73,7 @@ function App() {
         </Route>
         <Route exact path="/products/:productId">
           <ProductListing sessionId={sessionUser?.id} />
-          <ReviewForm />
+          {/* <ReviewForm /> */}
           <Reviews />
         </Route>
         <Route exact path="/testing">

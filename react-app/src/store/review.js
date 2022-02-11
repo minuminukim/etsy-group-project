@@ -8,9 +8,10 @@ const createReview = (review) => ({
     payload: review
 })
 
-const fetchReviews = (reviews) =>({
+const fetchReviews = (reviews, haveuserleftreview) =>({
     type: GET_REVIEWS,
-    payload: reviews
+    payload: reviews,
+    reviewExists: haveuserleftreview
 })
 
 const deleteAReview = (id) => ({
@@ -77,12 +78,19 @@ export const editForm = (payload) => async (dispatch) => {
 }
 
 
-export const getReviews = (product_id) => async (dispatch) => {
+export const getReviews = (product_id, user_id) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${product_id}`, {
         method: "GET"
     })
     const data = await response.json()
-    dispatch(fetchReviews(data))
+    let haveuserleftreview = false
+
+    data.reviews.forEach(review => {
+        if (review.user_id === user_id) {
+            haveuserleftreview = true
+        }
+    })
+    dispatch(fetchReviews(data, haveuserleftreview))
 }
 
 
@@ -99,12 +107,10 @@ export const deleteReview = (review_id) => async (dispatch) => {
 
 
 export default function reviewsReducer(state = initialState, action){
-    // TODO - need to figure out how to update state correctly?
     switch(action.type) {
         case GET_REVIEWS:
-            return {...state, reviews: action.payload}
+            return {...state, reviews: action.payload, reviewExists: action.reviewExists}
         case CREATE_REVIEW:
-            console.log(action.payload)
             const newState = { ...state };
             newState.reviews.reviews.unshift(action.payload)
             return newState
