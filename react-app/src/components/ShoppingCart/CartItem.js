@@ -2,6 +2,8 @@ import './ShoppingCart.css';
 import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../store/shoppingCart';
+import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
+
 
 const CartItem = ({ cartItem }) => {
   let session = useSelector((state) => state.session);
@@ -33,6 +35,12 @@ const CartItem = ({ cartItem }) => {
       updateQuantity(parseInt(e.target.value, 10), cartItem.id, session.user.id)
     );
   };
+
+
+  let discountInfo = calculateOriginalPrice(parseInt(cartItem.product_price, 10), parseInt(cartItem.product_discount, 10))
+
+  console.log(discountInfo)
+
 
   return (
     <>
@@ -79,8 +87,9 @@ const CartItem = ({ cartItem }) => {
                   </select>
                 </div>
                 <div className="priceCartItemContainer">
-                  {' '}
+
                   ${cartItem.product_price}
+                  {parseInt(cartItem.product_discount, 10) > 0 ? <p>This item was ${discountInfo.original}. You Saved ${discountInfo.saving}</p> : null}
                 </div>
               </div>
               <div className="quantityAvailableText"></div>

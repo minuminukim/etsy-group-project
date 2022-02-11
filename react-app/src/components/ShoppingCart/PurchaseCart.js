@@ -8,9 +8,11 @@ import { FaCcDiscover } from 'react-icons/fa';
 import Button from '../common/Button/Button';
 import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
-
+import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 
 const PurchaseCart = ({ cartItems, setWasPurchased }) => {
+
+  console.log(cartItems, "fvdfvdfv")
 
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
@@ -18,7 +20,13 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
 
   for (let i = 0; i < cartItems.length; i++) {
     totalPrice = totalPrice + parseFloat(cartItems[i].product_price * cartItems[i].quantity)
+
+    // if (parseInt(cartItems[i].product_discount, 10) > 0) {
+    //   cartItems[i]["original_price"] = calculateOriginalPrice(parseInt(cartItems[i].product_price, 10), parseInt(cartItems[i].product_discount, 10))
+    // }
   }
+
+
 
 
   const formatter = new Intl.NumberFormat('en-US', {
