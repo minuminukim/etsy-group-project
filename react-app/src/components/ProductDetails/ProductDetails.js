@@ -29,6 +29,7 @@ const ProductDetails = ({ product, sessionId }) => {
   const { original, saving } = calculateOriginalPrice(price, discount);
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+
   const handleDelete = (e) => {
     e.preventDefault();
     e.stopPropagation();

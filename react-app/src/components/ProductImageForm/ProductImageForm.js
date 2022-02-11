@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FileInputWithPreview from './FileInputWithPreview';
 import Button from '../common/Button';
+import './ProductImageForm.css';
 
 const ProductImageForm = ({ sessionUser }) => {
   const [images, setImages] = useState([]);
