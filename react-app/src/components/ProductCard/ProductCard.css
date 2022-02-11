@@ -14,8 +14,13 @@
   height: 142px;
   width: 250px;
   object-fit: cover;
+  border-radius: 3px;
   /* max-width: 317px;
   max-height: 251px; */
+}
+
+.product-card-img:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .product-card-title {
