@@ -3,7 +3,8 @@
   grid-template-columns: 246px 528px;
 }
 
-.form-input {
+input.form-input,
+select.form-input {
   grid-column: 2 / 3;
   width: 100%;
   max-width: 528px;
@@ -14,13 +15,13 @@
   padding-left: 18px;
 }
 
-.form-input::-webkit-outer-spin-button,
-.form-input::-webkit-inner-spin-button {
+input.form-input::-webkit-outer-spin-button,
+input.form-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.form-input[type='number'] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 

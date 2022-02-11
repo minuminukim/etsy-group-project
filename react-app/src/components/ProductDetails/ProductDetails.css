@@ -29,6 +29,7 @@
 .product-price-details-top {
   display: flex;
   width: 100%;
+  align-items: center;
   /* flex-direction: row; */
   /* justify-content: space-between; */
 }
@@ -38,10 +39,10 @@
   line-height: 38px;
   font-weight: 500;
   width: fit-content;
-  margin: 0 !important;
+  margin: 0 5px 0 0 !important;
 }
 
-.price-before-discount {
+.price-before-discount-details {
   color: #595959;
   font-size: 13px;
   line-height: 18px;
