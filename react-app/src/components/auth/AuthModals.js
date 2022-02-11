@@ -147,7 +147,7 @@ const AuthModals = () => {
         </div>
         <div>
           <p className="sign-in-font">Create your account</p>
-          <p>Register is easy.</p>
+          <p>Registration is easy.</p>
         </div>
         <div>
           <div>
