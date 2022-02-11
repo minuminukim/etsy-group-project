@@ -29,14 +29,18 @@ const ProductDetails = ({ product, sessionId }) => {
   const { original, saving } = calculateOriginalPrice(price, discount);
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+
   const handleDelete = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(deleteProduct(id)).catch(async (res) => {
-      const data = await res.json();
-      history.push('/');
-      return data;
-    });
+    return dispatch(deleteProduct(id))
+      .then(() => history.push('/'))
+      .catch(async (res) => {
+        const data = await res.json();
+        console.log('data', data);
+        // history.push('/');
+        // return data;
+      });
   };
 
   return (
@@ -58,7 +62,7 @@ const ProductDetails = ({ product, sessionId }) => {
         <div className="product-price-details-top">
           <p className="price-with-discount">{`$${price}`}</p>
           {discount > 0 && (
-            <span className="price-before-discount">{`$${original}`}</span>
+            <span className="price-before-discount-details">{`$${original}`}</span>
           )}
         </div>
         <div className="product-price-details-botton">

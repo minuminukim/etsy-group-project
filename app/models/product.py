@@ -125,6 +125,7 @@ class Product(db.Model):
             "rating": self.rating,
             "stock": self.stock,
             "category": self.category,
+            "archived": self.archived,
             "images": [image.image_url for image in self.images],
             "user": {
                 "username": self.user.username,

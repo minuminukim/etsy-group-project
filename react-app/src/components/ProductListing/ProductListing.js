@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 import { getSingleProduct } from '../../store/productReducer';
 import ProductDetails from '../ProductDetails';
 import Carousel from '../Carousel';
-import ButtonWithIcon from '../ButtonWithIcon';
+import Accordion from '../Accordion';
+import splitStringToArray from '../../utils/splitStringToArray';
 import './ProductListing.css';
 import AddToCart from '../ShoppingCart/AddToCart';
 
@@ -13,17 +14,24 @@ const ProductListing = ({ sessionId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
   const { productId } = useParams();
-  // const product = useSelector((state) => state.products[productId]);
+
+  console.log('product', product);
+  // TODO: product description component/seciton
+
+  // const list = splitStringToArray(product?.description, ',');
 
   useEffect(() => {
     return dispatch(getSingleProduct(productId))
+      .then((res) => (res.archived ? history.push('/page-not-found') : res))
       .then((res) => setProduct(res))
       .then(() => setIsLoading(false))
       .catch(async (res) => {
+        console.log('res', res);
         const data = await res.json();
         if (data && data.errors) {
-          console.log('errors', data.errors);
+          history.push('/page-not-found');
         }
       });
   }, [dispatch]);
@@ -36,10 +44,15 @@ const ProductListing = ({ sessionId }) => {
       <div className="product-listing-side">
         <ProductDetails product={product} sessionId={sessionId} />
         <AddToCart product={product} />
+        <Accordion
+          label="Description"
+          content={splitStringToArray(product?.description, ',')}
+          // content={product.description}
+          list={true}
+        />
       </div>
     </div>
   );
-  // return 'hello';
 };
 
 export default ProductListing;
