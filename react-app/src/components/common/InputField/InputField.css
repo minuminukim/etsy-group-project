@@ -3,8 +3,7 @@
   grid-template-columns: 246px 528px;
 }
 
-.form-input,
-select {
+.form-input {
   grid-column: 2 / 3;
   width: 100%;
   max-width: 528px;

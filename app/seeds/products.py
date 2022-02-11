@@ -155,6 +155,16 @@ def seed_products():
         category="keyboards",
     )
 
+    chinese_drum_keyboard = Product(
+        user_id=1,
+        title="Chinese Characters Drum Keyboard",
+        description="Exclusive 500% Layout Chinese Character Drumpad Keyboard. One of One. Party Like A Rockstar 🤩",
+        price=9999.99,
+        rating=10,
+        stock=1,
+        category="keyboards",
+    )
+
     # DIY KITS
     kbdpad_diy_kit = Product(
         user_id=3,
@@ -191,11 +201,13 @@ def seed_products():
     db.session.add(cherry_blue_switch)
     db.session.add(cherry_black_switch)
     db.session.add(cherry_silver_switch)
+
     db.session.add(pbt_chalk_keycaps)
     db.session.add(enjoypbt_green_keycaps)
     db.session.add(enjoypbt_black_keycaps)
     db.session.add(artisan_bear_esc_keycap)
     db.session.add(holyoops_game_console_keycap)
+
     db.session.add(keychron_k2_keyboard)
     db.session.add(keychron_c2_keyboard)
     db.session.add(keychron_k14_keyboard)
@@ -205,7 +217,10 @@ def seed_products():
     db.session.add(kbd67_diy_kit)
     db.session.add(tofu84_diy_kit)
 
+    db.session.add(chinese_drum_keyboard)
+
     db.session.commit()
+
 
 def undo_products():
     db.session.execute("TRUNCATE products RESTART IDENTITY CASCADE;")
