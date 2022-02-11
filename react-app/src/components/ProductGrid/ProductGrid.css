@@ -1,3 +1,11 @@
-.product-grid {
+.grid-container {
   display: flex;
+  justify-content: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 330px);
+  grid-template-rows: 1fr;
+  margin: 90px auto 0 auto;
 }
