@@ -124,7 +124,6 @@ def seed_products():
         price=11.80,
         rating=3,
         stock=6,
-        archived=True,
         category="switches",
     )
 
@@ -186,7 +185,6 @@ def seed_products():
         price=39.99,
         rating=4,
         discount=10,
-        archived=True,
         stock=22,
         category="keycaps",
     )
@@ -242,7 +240,6 @@ def seed_products():
         price=32.90,
         rating=4,
         stock=0,
-        archived=True,
         category="keycaps",
     )
 
@@ -253,11 +250,8 @@ def seed_products():
         price=32.90,
         rating=4,
         stock=0,
-        archived=True,
         category="keycaps",
     )
-
-
 
     # KEYBOARDS
     keychron_k2_keyboard = Product(
@@ -352,7 +346,7 @@ def seed_products():
         category="keyboards",
     )
 
-    custom_wood_keyboard= Product(
+    custom_wood_keyboard = Product(
         user_id=4,
         title="Fully Assembled Wood Custom Keyboard",
         description="Wood case + WristRest; DZ60 V2 Soldered Flex Cut PCD (Update: 2022/1/3); USB-C; QMK Firmware; Dye-sub Keycaps cherry Profile + NPKC CMYK. NOTE: Please select the switches and pay together at the checkout, the fully-assembled keyboard does not support return requests, by the way, the case is organic wood made, it is a normal phenomenon if there exits the little gouge or little stripe, please do not add it to your cart if you care about it, thank you.",
@@ -362,7 +356,7 @@ def seed_products():
         category="keyboards",
     )
 
-    mountain_ergo_keyboard= Product(
+    mountain_ergo_keyboard = Product(
         user_id=5,
         title="[RESTOCK] Mountain Ergo Keyboard",
         description="Color options: Aluminum Black, E-white; Typing Angle: Left 5°, right 3°, case 7°; Structure: Top mount; Weight: Around 2.2 kg; Tmk firmware, programmable, http://www.ydkb.io; Aluminum Top and Bottom case; bottom weight: E-white or Alu Black; Plate: Aluminum material; Ergonomic design, PCB and Plate are split. PCB : solder version and hot-swap version; Type-C interface; Both versions do not support LED, only indicating caplock light support. Including the WOOD WRIST REST; Mac,Windows,Linux compatible - Design by Wei",
@@ -372,13 +366,12 @@ def seed_products():
         category="keyboards",
     )
 
-    azio_retro_keyboard= Product(
+    azio_retro_keyboard = Product(
         user_id=6,
         title="Azio MK Retro Classic Artisan Backlit Bluetooth USB Keyboard - Azio Typelit Key Switch",
         description=" Inspired by vintage typewriters and crafted with ultramodern features, the Azio Retro Classic is the perfect amalgam of past, present and future. A backlit mechanical keyboard with round key caps that evoke nostalgia of yesteryear complemented with a durable zinc alloy frame.",
         price=219.00,
         rating=3,
-        archived=True,
         stock=22,
         category="keyboards",
     )
@@ -443,7 +436,6 @@ def seed_products():
         price=63.00,
         rating=3,
         stock=72,
-        archived=True,
         category="diy_kits",
     )
 
@@ -484,7 +476,6 @@ def seed_products():
         description="The YUNZII Macaron 84 keyboard is inspired from happy tint of bright colors of macaron, it can cheer you up when you start working or gaming. The keycaps of Macaron 84 applies top-grade 85% PBT with high-contrast dye-sublimated legends, which generally last longer than ABS equivalents. The Dye-Sub PBT keycaps of Macaron 84 enhances the overall durability with water and dust resistance.",
         price=95.00,
         rating=4,
-        archived=True,
         stock=0,
         category="diy_kits",
     )
@@ -508,9 +499,6 @@ def seed_products():
         stock=1,
         category="diy_kits",
     )
-
-
-
 
     db.session.add(cherry_red_switch)
     db.session.add(cherry_brown_switch)
@@ -567,9 +555,6 @@ def seed_products():
     db.session.add(yunzii_macaron_diy_kit)
     db.session.add(yunzii_rainbow_diy_kit)
     db.session.add(yunzii_mint_diy_kit)
-
-
-    
 
     db.session.commit()
 
