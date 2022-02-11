@@ -11,6 +11,7 @@ import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
 import ReviewForm from './components/ReviewForm/ReviewForm';
+import UserProfile from './components/UserProfile/User';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
 import SearchResult from './components/Search/SearchResult';
@@ -71,12 +72,20 @@ function App() {
           <ProductImageForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId">
+<<<<<<< HEAD
+          <ProductListing />
+          <Reviews />
+        </Route>
+        <Route exact path="/user/:userId">
+          <UserProfile />
+=======
           <ProductListing sessionId={sessionUser?.id} />
           <ReviewForm />
           <Reviews />
         </Route>
         <Route exact path="/testing">
           <DeleteWarning />
+>>>>>>> dev
         </Route>
         <Route>
           <PageNotFound />
