@@ -20,7 +20,7 @@ import DeleteWarning from './components/DeleteWarning';
 import NavBar from './components/NavBar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import { get_cart_items } from './store/shoppingCart';
-
+import SignInRequiredForCart from './components/ShoppingCart/signInRequiredForCart';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,7 +49,8 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/mycart' exact={true} >
-          <ShoppingCart />
+          {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
+
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />

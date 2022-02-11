@@ -9,6 +9,9 @@ import { NavLink } from 'react-router-dom';
 const ShoppingCart = () => {
     let session = useSelector((state) => state.session);
 
+
+    const [wasPurchased, setWasPurchased] = useState(false)
+
     const dispatch = useDispatch();
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -18,9 +21,12 @@ const ShoppingCart = () => {
 
     let areThereCartItems;
 
+
     useEffect(() => {
         dispatch(get_cart_items(session.user.id));
+
     }, [dispatch]);
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -48,7 +54,7 @@ const ShoppingCart = () => {
                             <CartItem key={item.product_title} cartItem={item} />
                         ))}
                     </div>
-                    <PurchaseCart cartItems={valueArray} />
+                    <PurchaseCart cartItems={valueArray} setWasPurchased={setWasPurchased} />
                 </div>
             </>
         );
@@ -76,7 +82,15 @@ const ShoppingCart = () => {
         </>
     );
 
-    return <div className="ShoppingCart">{isLoaded ? cartItems : null}</div>;
+
+    return (
+
+        <>
+
+            {wasPurchased ? <h1>Thanks for purchasing!!</h1> : <div className="ShoppingCart">{isLoaded ? cartItems : null}</div>}
+
+        </>
+    )
 };
 
 export default ShoppingCart;
