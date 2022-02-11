@@ -18,16 +18,8 @@ const CreateReview = ({setUserLeftReview}) => {
   const [test, setTest] = useState(false)
   const [displayReviewForm, setDisplayReviewForm] = useState(true)
   let { productId } = useParams()
-
-  const [rating1, setRating1] = useState(0);
   const [hover, setHover] = useState(0);
 
-  // TODO - fix review form display on refresh when review for use already exists
-  // const reviewExists = () => {
-  //   reviews?.reviews?.some(review => {
-  //     return (review?.user_id === currentUser.id)
-  //   })
-  // }
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +43,6 @@ const CreateReview = ({setUserLeftReview}) => {
     if (body && rating > 0) {
       setDisplayReviewForm(false)
     }
-    // setUserLeftReview(true)
     setTest(!test)
   }
 

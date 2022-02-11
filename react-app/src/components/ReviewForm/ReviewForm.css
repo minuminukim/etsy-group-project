@@ -34,7 +34,6 @@
 }
 
 #review-pic {
-    /* background-color: red; */
     display: flex;
     align-items: center;
 
@@ -44,8 +43,6 @@
     height: 30px;
     margin: 0;
     padding: 0;
-    margin-right: 10px;
-    margin-bottom: 5px;
 }
 
   .stars-1::after {
@@ -62,4 +59,18 @@
   }
   .stars-5::after {
     content: '★★★★★';
+  }
+
+  #star-rating-container > button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .highlight {
+    color: black;
+  }
+  .off {
+    color: lightgray;
   }
