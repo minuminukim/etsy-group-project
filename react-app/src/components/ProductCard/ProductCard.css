@@ -1,8 +1,6 @@
 .product-card {
-  height: 395px;
+  height: 377px;
   width: 318px;
-  padding: 9px;
-  color: #222222;
   padding: 9px;
   text-overflow: ellipsis;
   overflow: hidden;

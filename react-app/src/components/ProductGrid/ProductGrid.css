@@ -5,7 +5,29 @@
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 330px);
-  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, minmax(145px, 318px));
+  grid-template-rows: repeat(3, minmax(262px, 395px));
   margin: 90px auto 0 auto;
 }
+
+@media screen and (max-width: 1300px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(145px, 318px));
+    grid-template-rows: repeat(4, minmax(262px, 395px));
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(145px, 318px));
+    grid-template-rows: repeat(6, minmax(262px, 395px));
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .product-grid {
+    grid-template-columns: repeat(1, minmax(145px, 318px));
+    grid-template-rows: repeat(12, minmax(262px, 395px));
+  }
+}
+
