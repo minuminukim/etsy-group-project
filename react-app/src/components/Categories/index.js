@@ -27,6 +27,9 @@ const CategoryView = () => {
 
   return (
     <div>
+      <div className="category-header">
+
+      </div>
       <h2>Shop by interest</h2>
       <p>{category}</p>
       <div>{productComponents}</div>
