@@ -4,6 +4,7 @@ const SINGLE_DELETE = "shoppingCart/SINGLE_DELETE"
 const MULTIPLE_DELETE = "shoppingCart/MULTIPLE_DELETE"
 const UPDATE_QUANTITY = "shoppingCart/UPDATE_QUANTITY"
 const ADD_TO_CART = "shoppingCart/ADD_TO_CART"
+const ITEM_ERRORS = "shoppingCart/ITEM_ERRORS"
 /*--------------------------------------------------------------------*/
 //Action Creators
 
@@ -33,6 +34,10 @@ const addToCart = (item) => ({
     payload: item
 })
 
+export const updateItemErrors = (itemErrors) => ({
+    type: ITEM_ERRORS,
+    payload: itemErrors
+})
 
 /*--------------------------------------------------------------------*/
 //THUNKS
@@ -160,6 +165,7 @@ export const addToCartThunk = (productId, quantity, userId) => async (dispatch) 
 
 
 
+
 /*--------------------------------------------------------------------*/
 // REDUCER
 
@@ -204,6 +210,21 @@ const shoppingCartReducer = (state = initialState, action) => {
             newState[action.payload.id] = action.payload
 
             return newState
+
+        case ITEM_ERRORS:
+
+            const newStateAgain = { ...state }
+
+            // console.log(action.payload[0], "-------------")
+
+            let oldObject = newStateAgain[`${action.payload[0]}`]
+
+            newStateAgain[`${action.payload[0]}`] = {
+                ...oldObject,
+                errors: action.payload[1]
+            }
+
+            return newStateAgain
 
         default:
             return state;

@@ -20,11 +20,12 @@ def add_purchase():
         product_id = item["product_id"]
         title = item["product_title"]
         quantity = item["quantity"]
+        cart_id = item["id"]
 
         product = Product.get_by_id(product_id)
 
         if product.archived:
-            return {"errors": {product_id: "Product is no longer for sale."}}, 400
+            return {"errors": [cart_id, "Product is no longer for sale."]}, 400
 
         if product.stock - quantity >= 0:
             product.purchase(quantity)
@@ -35,12 +36,16 @@ def add_purchase():
 
             db.session.add(new_purchase)
             db.session.commit()
+        elif product.stock == 0:
+            return {
+                "errors": [cart_id, f"Invalid purchase: This item is out of stock. Please remove this item from cart before proceeding"]
+   
+            }, 400
         else:
             return {
-                "errors": {
-                    product_id: f"Invalid purchase: Only {product.stock} available of {title}."
-                }
+                "errors": [cart_id, f"Invalid purchase: There is only {product.stock} left of this item. Select less than or equal to {product.stock} items "]
             }, 400
+
         purchases.append(new_purchase)
 
     return {"purchases": [purchase.to_dict() for purchase in purchases]}
