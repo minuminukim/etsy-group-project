@@ -1,0 +1,30 @@
+.category-header {
+    width: 100%;
+    height: 270px;
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+}
+
+.header-elements-container {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header-images{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header-pic {
+    max-height: 270px;
+    max-width: 340px;
+    display: flex;
+    padding: 0 1px;
+}
