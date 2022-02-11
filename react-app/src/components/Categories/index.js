@@ -72,10 +72,9 @@ const CategoryView = () => {
             <p className="category-explore">Explore extra-special ways to express your keyboard.</p>
           </div>
       </div>
-      <h2>Shop by interest</h2>
-      <p>{category}</p>
-      <div>{productComponents}</div>
-      <ProductGrid products={products} />
+      <div className="product-grid">
+        <ProductGrid products={products} />
+      </div>
     </div>
   );
 };
