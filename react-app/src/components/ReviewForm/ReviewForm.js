@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux"
 import * as sessionActions from "../../store/review"
 import { useParams } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs"
+import { AiOutlineStar } from "react-icons/ai"
+
 import "./ReviewForm.css"
 
-const CreateReview = () => {
+const CreateReview = ({setUserLeftReview}) => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
   // const reviews = useSelector(state => state.review.reviews);
@@ -16,14 +18,8 @@ const CreateReview = () => {
   const [test, setTest] = useState(false)
   const [displayReviewForm, setDisplayReviewForm] = useState(true)
   let { productId } = useParams()
+  const [hover, setHover] = useState(0);
 
-
-  // TODO - fix review form display on refresh when review for use already exists
-  // const reviewExists = () => {
-  //   reviews?.reviews?.some(review => {
-  //     return (review?.user_id === currentUser.id)
-  //   })
-  // }
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -40,10 +36,13 @@ const CreateReview = () => {
 
       const data = await res.json();
       if (data.errors) {
-        setErrors(data.errors);
+        return setErrors(data.errors);
       }
-    })
-    setDisplayReviewForm(false)
+    }
+    )
+    if (body && rating > 0) {
+      setDisplayReviewForm(false)
+    }
     setTest(!test)
   }
 
@@ -90,28 +89,36 @@ const CreateReview = () => {
               {errors.rating}
             </div>
           </div>
-          <div>
-            <BsStarFill
-              onClick={(e) => {
-                setRating(1);
-              }} />
-            <BsStarFill
-              onClick={(e) => {
-                setRating(4);
-              }} />
-            <BsStarFill
-              onClick={(e) => {
-                setRating(6);
-              }} />
-            <BsStarFill
-              onClick={(e) => {
-                setRating(8);
-              }} />
-            <BsStarFill
-              onClick={(e) => {
-                setRating(10);
-              }} />
-          </div>
+
+
+
+
+
+
+          <div id="star-rating-container">
+      {[...Array(5)].map((star, index) => {
+        index += 1;
+        return (
+          <button
+            type="button"
+            key={index}
+            // highlight prev stars including hovered
+            className={index <= (hover || rating) ? "on" : "off"}
+            onClick={() => setRating(index)}
+            onMouseEnter={() => setHover(index)}
+            onMouseLeave={() => setHover(rating)}
+          >
+            <span className="stars">★</span>
+          </button>
+        );
+      })}
+    </div>
+
+
+
+
+
+
 
           <div id='review-pic'>
             <img className="profile-pic" src={currentUser?.profile_pic_url} alt="profile-pic" />

@@ -15,7 +15,7 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
     return errorMessages
-    
+
 
 @review_routes.route('/<int:id>')
 def review(id):
@@ -90,3 +90,6 @@ def delete_review(id):
     db.session.commit()
 
     return {'IN': 'DELETE'}
+
+
+
