@@ -1,10 +1,13 @@
 .search-not-found {
     margin-top: 0px;
+    max-width: 1400px;
     height: 405px;
-    background-image: url(https://docs.google.com/drawings/d/e/2PACX-1vRzEQ6XGm2CIlQ36IfNEwf3boC0x82dc0hvFTpVUjKUMcSUVHkEMWee9Z20I5mDEMZnsVRJLLq6tQqB/pub?w=1440&h=405);
-    background-repeat: none;
+    background-color: rgb(250, 236, 213);
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 36px;
+    padding: 18px;
 }
-
 .search-not-found h2 {
     font-size: 42px;
     font-weight: 100;
@@ -16,6 +19,16 @@
 
 .search-not-found p {
     font-size: 16px;
-    padding-top: 26px;
+    padding-top: 12px;
     margin-left: 34px;
 }
+
+/* .funky-shape {
+    height: 0;
+    width: 0;
+    border-left: 100px solid red;
+    border-right: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-top: 100px solid transparent;
+    position: absolute;
+} */
