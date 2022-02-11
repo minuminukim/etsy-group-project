@@ -3,7 +3,7 @@ const LOAD_CART = "shoppingCart/LOAD_CART"
 const SINGLE_DELETE = "shoppingCart/SINGLE_DELETE"
 const MULTIPLE_DELETE = "shoppingCart/MULTIPLE_DELETE"
 const UPDATE_QUANTITY = "shoppingCart/UPDATE_QUANTITY"
-
+const ADD_TO_CART = "shoppingCart/ADD_TO_CART"
 /*--------------------------------------------------------------------*/
 //Action Creators
 
@@ -28,6 +28,10 @@ const updateCartQuantity = (quantity) => ({
     payload: quantity
 })
 
+const addToCart = (item) => ({
+    type: ADD_TO_CART,
+    payload: item
+})
 
 
 /*--------------------------------------------------------------------*/
@@ -78,7 +82,7 @@ export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
         })
     })
 
-    console.log(response, "990909090909")
+
 
     if (response.ok) {
 
@@ -118,6 +122,44 @@ export const updateQuantity = (quantity, cartItemId, userId) => async (dispatch)
     }
 }
 
+
+
+export const addToCartThunk = (productId, quantity, userId) => async (dispatch) => {
+
+    console.log(productId, quantity, userId)
+
+    const response = await fetch(`/api/mycart/new`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            quantity: quantity,
+            user_id: userId,
+            product_id: productId
+        })
+    })
+
+    const data = await response.json()
+
+    if (data.errors) {
+        console.log("you have some errors.")
+        return "you have some errors."
+    } else {
+        dispatch(addToCart(data))
+
+        return "Success"
+    }
+
+
+}
+
+
+
+
+
+
+
 /*--------------------------------------------------------------------*/
 // REDUCER
 
@@ -154,6 +196,14 @@ const shoppingCartReducer = (state = initialState, action) => {
             delete updateState[`${action.payload}`]
 
             return updateState;
+
+        case ADD_TO_CART:
+
+            const newState = { ...state }
+
+            newState[action.payload.id] = action.payload
+
+            return newState
 
         default:
             return state;

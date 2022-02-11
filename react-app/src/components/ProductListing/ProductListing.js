@@ -7,6 +7,8 @@ import Carousel from '../Carousel';
 import Accordion from '../Accordion';
 import splitStringToArray from '../../utils/splitStringToArray';
 import './ProductListing.css';
+import AddToCart from '../ShoppingCart/AddToCart';
+
 
 const ProductListing = ({ sessionId }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +43,7 @@ const ProductListing = ({ sessionId }) => {
       </div>
       <div className="product-listing-side">
         <ProductDetails product={product} sessionId={sessionId} />
+        <AddToCart product={product} />
         <Accordion
           label="Description"
           content={splitStringToArray(product?.description, ',')}

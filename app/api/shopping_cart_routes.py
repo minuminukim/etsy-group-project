@@ -52,11 +52,34 @@ def add_cart_item():
     """ 
     data = request.json
 
+    # print(data, "-----------------------------------------------------")
+
     product_id = int(data["product_id"])
 
     quantity = int(data["quantity"])
 
     user_id = int(data["user_id"])
+
+
+
+    existing_cart_item = CartItem.query.filter(CartItem.user_id == user_id, CartItem.product_id == product_id ).first()
+
+    print(existing_cart_item, "+++++++++++++++++++++")
+
+
+    if(existing_cart_item != None):
+        current_quantity = existing_cart_item.quantity
+        existing_cart_item.quantity = existing_cart_item.quantity + quantity
+        db.session.add(existing_cart_item)
+        db.session.commit()
+
+        cart_item_new_existing = CartItem.query.filter(CartItem.user_id == user_id, CartItem.product_id == product_id, CartItem.quantity == quantity + current_quantity)
+
+        if(cart_item_new_existing):
+            return {"message": "success"}
+        else:
+            return {"message": "failure"}
+    
 
 
     cart_item = CartItem(user_id = user_id, product_id = product_id, quantity = quantity)
