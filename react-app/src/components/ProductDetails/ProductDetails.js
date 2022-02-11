@@ -65,7 +65,7 @@ const ProductDetails = ({ product, sessionId }) => {
             <span className="price-before-discount-details">{`$${original}`}</span>
           )}
         </div>
-        <div className="product-price-details-botton">
+        <div className="product-price-details-bottom">
           {discount > 0 && (
             <p className="discount">{`You save $${saving} (${discount}%)`}</p>
           )}
