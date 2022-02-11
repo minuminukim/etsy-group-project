@@ -31,11 +31,11 @@ const Footer = () => {
             <td>CSS</td>
           </div>
           <div>
-            <th className="row3-headers">Something</th>
-
-            <td>Something</td>
-            <td>Something</td>
-            <td>Something</td>
+            <th className="row3-headers">Linkedin</th>
+            <a className='footer-link'  href='https://www.linkedin.com/in/steve-correa/' target="_blank">Steve Correa</a>
+            <a className='footer-link'  href='https://www.linkedin.com/in/minu-kim-911bbb192/' target="_blank">Minu Kim</a>
+            <a className='footer-link'  href='https://www.linkedin.com/in/grant-ellis-russell' target="_blank">Grant Russell</a>
+            <a className='footer-link'  href='https://www.linkedin.com/in/eddie-verdusco/' target="_blank">Eddie Verdusco</a>
           </div>
           <div>
             <th className="row3-headers">GitHub</th>
@@ -43,6 +43,7 @@ const Footer = () => {
             <a className='footer-link'  href='https://github.com/minuminukim' target="_blank">Minu Kim</a>
             <a className='footer-link'  href='https://github.com/grantongrant' target="_blank">Grant Russell</a>
             <a className='footer-link'  href='https://github.com/verduscos' target="_blank">Eddie Verdusco</a>
+
           </div>
         </table>
       </div>
