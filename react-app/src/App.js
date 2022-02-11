@@ -72,20 +72,12 @@ function App() {
           <ProductImageForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId">
-<<<<<<< HEAD
-          <ProductListing />
-          <Reviews />
-        </Route>
-        <Route exact path="/user/:userId">
-          <UserProfile />
-=======
           <ProductListing sessionId={sessionUser?.id} />
           <ReviewForm />
           <Reviews />
         </Route>
         <Route exact path="/testing">
           <DeleteWarning />
->>>>>>> dev
         </Route>
         <Route>
           <PageNotFound />
