@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import OutOfStock from './OutOfStock';
+import InStock from './InStock';
 import ButtonWithIcon from '../ButtonWithIcon';
 import Modal from '../ModalWrapper/Modal.js';
 import DeleteWarning from '../DeleteWarning';
@@ -60,12 +62,17 @@ const ProductDetails = ({ product, sessionId }) => {
       </div>
       <div className="product-price-details">
         <div className="product-price-details-top">
-          <p className="price-with-discount">{`$${price}`}</p>
-          {discount > 0 && (
-            <span className="price-before-discount-details">{`$${original}`}</span>
-          )}
+          <div className="product-price-details-top-left">
+            <p className="price-with-discount">{`$${price}`}</p>
+            {discount > 0 && (
+              <span className="price-before-discount-details">{`$${original}`}</span>
+            )}
+          </div>
+          <div className="product-price-details-top-right">
+            {stock ? <InStock /> : <OutOfStock />}
+          </div>
         </div>
-        <div className="product-price-details-botton">
+        <div className="product-price-details-bottom">
           {discount > 0 && (
             <p className="discount">{`You save $${saving} (${discount}%)`}</p>
           )}

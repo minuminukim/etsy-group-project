@@ -1,7 +1,12 @@
-const LOAD_PRODUCTS = 'product/loadProduct';
+const LOAD_PRODUCTS = 'product/loadProducts';
 const ADD_PRODUCT = 'product/addProduct';
 const EDIT_PRODUCT = 'product/editProduct';
 const REMOVE_PRODUCT = 'product/removeProduct';
+
+const loadProducts = (products) => ({
+  type: LOAD_PRODUCTS,
+  products,
+});
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
@@ -27,6 +32,19 @@ export const getSingleProduct = (productId) => async (dispatch) => {
 
   const data = await response.json();
   dispatch(addProduct(data));
+  return data;
+};
+
+export const getAllProducts = () => async (dispatch) => {
+  const response = await fetch(`/api/products`);
+
+  if (response.status >= 400) {
+    throw response;
+  }
+
+  const data = await response.json();
+  console.log('data in reducer', data);
+  dispatch(loadProducts(data.products));
   return data;
 };
 
@@ -88,6 +106,15 @@ export const deleteProduct = (productId) => async (dispatch) => {
 
 const productReducer = (state = {}, action) => {
   switch (action.type) {
+    case LOAD_PRODUCTS:
+      const productsObject = action.products.reduce((acc, p) => {
+        acc[p.id] = p;
+        return acc;
+      });
+      return {
+        ...state,
+        ...productsObject,
+      };
     case ADD_PRODUCT:
       return {
         ...state,
