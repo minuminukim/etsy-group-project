@@ -19,13 +19,12 @@ const ProductDetails = ({ product, sessionId }) => {
     user_id: userId,
     title,
     price,
-    // discount,
+    discount,
     stock,
     user,
   } = product;
 
   // currently hardcoded, cause no seed data with discount yet
-  let discount = 10;
   const isCurrentUser = sessionId === userId;
 
   const { original, saving } = calculateOriginalPrice(price, discount);
