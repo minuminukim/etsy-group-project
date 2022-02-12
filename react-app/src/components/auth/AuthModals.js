@@ -53,8 +53,8 @@ const AuthModals = () => {
 
           <div className="sign-in-font">Sign in</div>
           <div>
-            <button className="demoUserButton" onClick={demoUserLogin}>Demo User</button>
-            <button className="register-button" onClick={() => SetRegisterModal(true)}>Register</button>
+            <button type="button" className="demoUserButton" onClick={demoUserLogin}>Demo User</button>
+            <button type="button" className="register-button" onClick={() => SetRegisterModal(true)}>Register</button>
             {RegisterModal && (
               <Modal onClose={() => {
                 SetRegisterModal(false)

@@ -1,12 +1,14 @@
 .search-not-found {
     margin-top: 0px;
-    max-width: 1400px;
+    width: 98%;
     height: 405px;
-    background-color: rgb(250, 236, 213);
+    background-image: url(./404-Search-Not-Found.svg);
     margin-left: 18px;
     margin-right: 18px;
     margin-top: 36px;
     padding: 18px;
+    background-size: cover;
+    display: flex;
 }
 .search-not-found h2 {
     font-size: 42px;
@@ -23,12 +25,28 @@
     margin-left: 34px;
 }
 
-/* .funky-shape {
-    height: 0;
-    width: 0;
-    border-left: 100px solid red;
-    border-right: 100px solid transparent;
-    border-bottom: 100px solid transparent;
-    border-top: 100px solid transparent;
-    position: absolute;
-} */
+.isLoading {
+    width: 100%;
+    background-color: white;
+    height: 600px;
+}
+
+.search-page {
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.results-text {
+    width:fit-content;
+    border-radius: 96px;
+    padding: 12px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+    border: 2px solid black;
+    margin-left: 9px;
+}
+
+.product-grid-search-page {
+    justify-content: center;
+}
