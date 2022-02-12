@@ -166,7 +166,6 @@ const GetReviews = () => {
               {review.user_id === currentUser?.id && edit === true ?
                 <button
                   className="btn"
-                  id="deleteReviewBtn"
                   value={review.id}
                   onClick={(e) => {
                     setEditReviewId(e.target.value)
