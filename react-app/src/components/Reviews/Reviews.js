@@ -76,20 +76,19 @@ const GetReviews = () => {
 
 
           <div id="star-rating-container">
-            {[...Array(5)].map((star, index) => {
-              index += 1;
+            {[...Array(5)].map((s, i) => {
+              i += 1;
               return (
-                <button
-                  type="button"
-                  key={index}
-                  // highlight prev stars including hovered
-                  className={index <= (hover || rating) ? "highlight" : "off"}
-                  onClick={() => setRating(index)}
-                  onMouseEnter={() => setHover(index)}
+                <span
+
+                  key={i}
+                  className={i <= (hover || rating) ? "highlight" : "off"}
+                  onClick={() => setRating(i)}
+                  onMouseEnter={() => setHover(i)}
                   onMouseLeave={() => setHover(rating)}
                 >
                   <span className="stars">★</span>
-                </button>
+                </span>
               );
             })}
           </div>

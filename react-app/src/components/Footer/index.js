@@ -8,9 +8,9 @@ import logo3 from './footer-img3.PNG'
 const Footer = () => {
   return (
     <footer>
-      <img src={logo3} id="row-img" />
-        <img src={logo2} id="row-img" />
-        <img src={logo} id="row-img" />
+      <img src={logo3} id="row-img" alt="footer-bg" />
+      <img src={logo2} id="row-img" alt="footer-bg" />
+      <img src={logo} id="row-img" alt="footer-bg" />
       <div id="row2">
         <BsGlobe size={23} />
         <p className="underline-text">
@@ -32,17 +32,17 @@ const Footer = () => {
           </div>
           <div>
             <p className="row3-headers">Linkedin</p>
-            <a className='footer-link'  href='https://www.linkedin.com/in/steve-correa/' target="_blank">Steve Correa</a>
-            <a className='footer-link'  href='https://www.linkedin.com/in/minu-kim-911bbb192/' target="_blank">Minu Kim</a>
-            <a className='footer-link'  href='https://www.linkedin.com/in/grant-ellis-russell' target="_blank">Grant Russell</a>
-            <a className='footer-link'  href='https://www.linkedin.com/in/eddie-verdusco/' target="_blank">Eddie Verdusco</a>
+            <a className='footer-link' href='https://www.linkedin.com/in/steve-correa/' target="_blank" rel="noreferrer">Steve Correa</a>
+            <a className='footer-link' href='https://www.linkedin.com/in/minu-kim-911bbb192/' target="_blank" rel="noreferrer">Minu Kim</a>
+            <a className='footer-link' href='https://www.linkedin.com/in/grant-ellis-russell' target="_blank" rel="noreferrer">Grant Russell</a>
+            <a className='footer-link' href='https://www.linkedin.com/in/eddie-verdusco/' target="_blank" rel="noreferrer">Eddie Verdusco</a>
           </div>
           <div>
             <p className="row3-headers">GitHub</p>
-            <a className='footer-link'  href='https://github.com/scorrea310' target="_blank">Steve Correa</a>
-            <a className='footer-link'  href='https://github.com/minuminukim' target="_blank">Minu Kim</a>
-            <a className='footer-link'  href='https://github.com/grantongrant' target="_blank">Grant Russell</a>
-            <a className='footer-link'  href='https://github.com/verduscos' target="_blank">Eddie Verdusco</a>
+            <a className='footer-link' href='https://github.com/scorrea310' target="_blank" rel="noreferrer">Steve Correa</a>
+            <a className='footer-link' href='https://github.com/minuminukim' target="_blank" rel="noreferrer">Minu Kim</a>
+            <a className='footer-link' href='https://github.com/grantongrant' target="_blank" rel="noreferrer">Grant Russell</a>
+            <a className='footer-link' href='https://github.com/verduscos' target="_blank" rel="noreferrer">Eddie Verdusco</a>
 
           </div>
         </div>

@@ -10,7 +10,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
-import ReviewForm from './components/ReviewForm/ReviewForm';
 import UserProfile from './components/UserProfile/User';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
