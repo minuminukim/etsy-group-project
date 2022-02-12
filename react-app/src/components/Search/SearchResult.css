@@ -45,6 +45,24 @@
     margin-bottom: 12px;
     border: 2px solid black;
     margin-left: 9px;
+    font-size: 13px;
+}
+
+.filter-button {
+    width:fit-content;
+    border-radius: 96px;
+    padding: 12px;
+    border: 2px solid black;
+    margin-left: 9px;
+    font-size: 13px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    box-shadow: none;
+    box-shadow: 0 4px 10px rgb(34 34 34 / 20%);
+    transform: scale(1.01);
 }
 
 .product-grid-search-page {
