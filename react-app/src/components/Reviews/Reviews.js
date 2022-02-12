@@ -83,7 +83,7 @@ const GetReviews = () => {
                   type="button"
                   key={index}
                   // highlight prev stars including hovered
-                  className={index <= (hover || rating) ? "on" : "off"}
+                  className={index <= (hover || rating) ? "highlight" : "off"}
                   onClick={() => setRating(index)}
                   onMouseEnter={() => setHover(index)}
                   onMouseLeave={() => setHover(rating)}

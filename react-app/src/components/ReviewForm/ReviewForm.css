@@ -68,8 +68,9 @@
     cursor: pointer;
     font-size: 20px;
   }
+  /* star highligh color not working */
   .highlight {
-    color: black;
+    color: rgb(190, 29, 29);
   }
   .off {
     color: lightgray;
