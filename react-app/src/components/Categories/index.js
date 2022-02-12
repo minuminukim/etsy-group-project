@@ -102,7 +102,7 @@ const CategoryView = () => {
           </p>
         </div>
       </div>
-      <div className="product-grid">
+      <div className="grid-container">
         <ProductGrid products={products} />
       </div>
     </div>
