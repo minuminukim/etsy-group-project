@@ -9,28 +9,31 @@ const Footer = () => {
   return (
     <footer>
       <img src={logo3} id="row-img" />
-      <div id='story-row'>
-        <div id="story-row-inner">
+      {/* <div id='story-row'>
+        <div className="story-row-inner">
           <h1 id="footer-title">What is Qwerty</h1>
         </div>
-        <div id="story-row-inner">
+        <div className="story-row-inner">
           <div>
-            <p>A community doing good</p>
+            <p className="story-headers">A community doing good</p>
+            <p className="footer-stories">Etsy is a global online marketplace, where people come together to make, sell, buy, and collect unique items. We’re also a community pushing for positive change for small businesses, people, and the planet. <span className="underline-text">Here are some of the ways we’re making a positive impact, together.</span></p>
           </div>
           <div>
-            <p>Support independent creators</p>
+            <p className="story-headers">Support independent creators</p>
+            <p className="footer-stories">There’s no Etsy warehouse – just millions of people selling the things they love. We make the whole process easy, helping you connect directly with makers to find something extraordinary.</p>
           </div>
           <div>
-            <p>Peace of mind</p>
+            <p className="story-headers">Peace of mind</p>
+            <p className="footer-stories">Your privacy is the highest priority of our dedicated team. And if you ever need assistance, we are always ready to step in for support.</p>
           </div>
         </div>
-      </div>
+      </div> */}
         <img src={logo2} id="row-img" />
         <img src={logo} id="row-img" />
       <div id="row2">
         <BsGlobe size={23} />
-        <p>
-          Etsy is powered by 100% renewable electricity.
+        <p className="underline-text">
+          Qwerty is powered by 100% renewable electricity.
         </p>
       </div>
       <div id="row3">
