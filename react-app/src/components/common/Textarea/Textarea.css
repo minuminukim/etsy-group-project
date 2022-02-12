@@ -4,4 +4,5 @@ textarea {
   font-family: apple-system, BlinkMacSystemFont, 'Roboto', 'Droid Sans',
     'Segoe UI', 'Helvetica', Arial, sans-serif;
   font-size: 14px;
+  border-radius: 3px;
 }

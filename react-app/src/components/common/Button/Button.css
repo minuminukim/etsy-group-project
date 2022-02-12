@@ -26,3 +26,38 @@
 .delete-btn:hover {
 
 } */
+
+.btn.purchaseCart {
+  height: 48px;
+  width: 340px;
+  border-radius: 24px;
+  font-size: 16px;
+}
+
+.btn.purchaseCart:hover {
+  height: 48px;
+  width: 340px;
+  border-radius: 24px;
+  font-size: 16px;
+  background-color: #353434;
+  cursor: pointer;
+}
+
+.btn.addToCart {
+  height: 48px;
+  width: 378px;
+  border-radius: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.btn.addToCart:hover {
+  height: 48px;
+  width: 378px;
+  border-radius: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #353434;
+   margin-top: 30px;
+}

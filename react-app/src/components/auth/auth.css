@@ -1,0 +1,144 @@
+.login-form {
+    max-width: 384px;
+    padding: 30px;
+    box-shadow: 0 6px 36px rgb(34 34 34 / 33%);
+    background: transparent;
+    border-radius: 24px;
+    height: 460px
+}
+
+.register-button {
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 36px;
+    min-width: 36px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 24px;
+    background-color: white;
+    color:#222222;
+    text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #222222;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.demoUserButton {
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 36px;
+    min-width: 36px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 24px;
+    background-color: black;
+    color:white;
+    text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #222222;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.demoUserButton:hover {
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 36px;
+    min-width: 36px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 24px;
+    background-color: black;
+    color:white;
+    text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #222222;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+
+.sign-in-font {
+    font-size: 20px;
+}
+
+.signin-register-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: column;
+}
+
+.login-button {
+    cursor: pointer;
+    border-radius: 24px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    min-height: 48px;
+    min-width: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 10;
+    background-color: #222222;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #222222;
+    width: 100%;
+}
+
+.signin-policy {
+    font-size: 13px;
+    line-height: 18px;
+    color:  #595959;
+}
+
+#loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginInputBar{
+    width: 320px;
+    height: 40px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.loginLabelTextContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 320px;
+    margin-bottom: 5px; 
+}

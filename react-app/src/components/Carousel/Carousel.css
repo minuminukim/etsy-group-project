@@ -1,17 +1,13 @@
 .carousel {
   display: flex;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .carousel-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 560px;
-  height: 375px; */
-  min-width: 560px;
-  min-height: 350px;
   width: 100%;
   height: auto;
   border: 1px solid yellow;

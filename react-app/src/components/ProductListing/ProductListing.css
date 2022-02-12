@@ -1,13 +1,17 @@
 .product-listing {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  min-height: 60vh;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }
 
 .product-listing-main {
-  /* min-width: 616px; */
-  max-width: 795px;
-  height: auto;
+  grid-column: 1 / 2;
   width: 100%;
+  height: auto;
   /* min-height: 370px; */
   border: 1px solid purple;
   padding-left: 30px;
@@ -15,6 +19,7 @@
 
 .product-listing-side {
   /* min-width: 288px; */
+  grid-column: 2 / 3;
   border: 1px solid green;
   padding-right: 30px;
 }

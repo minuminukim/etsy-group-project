@@ -1,41 +1,91 @@
-#review-container {
+#reviews-main-container {
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin: 15px 0 15px 0; */
     /* background-color: red; */
-    margin: 50px;
-    padding: 0;
-    width: 750px;
+    margin: 25px auto 0px auto;
+    transform: translate(-40%);
 }
 
+#reviews-title {
+    width: 100%;
+    font-weight: lighter;
+    font-size: 15px;
+    letter-spacing: .5px;
+    border-bottom: 2px solid lightgray;
+    margin: 0 0 15px 0;
+}
+
+#reviews-title > p {
+    margin: 0 0 10px 0;
+}
+
+#total-reviews-num {
+    background-color: #EAEAEA;
+    padding: 3px 13px 3px 13px;
+    border-radius: 50px;
+    font-size: 12px;
+    line-height: 1px;
+}
+
+#review-form-container {
+    margin: 0;
+}
+
+#reviews-container {
+
+}
+
+#review-row1 {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: 30px;
+}
+
+#review {
+    margin: 5px 0 10px 0;
+     font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+#review-row2 {
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+/* Container for an individual review in side of the reviews-container div */
+#review-container {
+    margin-top: 35px;
+}
 #review-container > * {
     list-style: none;
 }
 
-#review-row1 {
-    /* background-color: gray; */
+
+/* Edit and Delete btn for a review */
+#review-row3 {
     display: flex;
-    align-items: center;
-    /* background-color: red; */
-    padding: 0;
-    margin: 0;
-    height: 30px;
-    /* justify-content: flex-end; */
+    justify-content: flex-end;
 }
+
 
 #review-author {
     font-size: 10px;
-    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
-    font-weight: 400;
-    font-size: 13px;
-    /* line-height: 18px; */
-    /* background-color: blue; */
-    margin:  0 10px 0 15px;
+    /* font-weight: 500; */
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     color: #595959;
     border-bottom: .5px lightgray solid;
-    /* background-color: red; */
-    /* width: 50px; */
 
 }
-
-/* #revview- */
 
 #review-date {
     font-size: 10px;
@@ -43,23 +93,5 @@
     font-weight: 400;
     font-size: 13px;
     color: #595959;
-
     border-bottom:none !important;
-    padding-bottom: 1.5px;
-}
-
-#review-row2 {
-    margin-left: 40px;
-}
-
-#deleteReviewBtn {
-    /* not sure why this doesn't work */
-    /* align-self: flex-end !important; */
-    float: right;
-}
-
-.review-pic {
-    margin-right: 0px !important;
-    margin-right: -5px !important;
-
 }
