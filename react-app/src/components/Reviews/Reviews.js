@@ -45,9 +45,13 @@ const GetReviews = () => {
     e.preventDefault()
 
     setTest(!rerender)
-    setEdit(true)
+    // setEdit(true)
 
-    if (body.length && rating > 0) setDisplayEdit(false)
+    if (body.length > 1 && rating > 0){
+      setDisplayEdit(false)
+      setEdit(true)
+      setErrors([])
+    }
 
     const payload = {
       user_id: currentUser.id,
@@ -80,7 +84,6 @@ const GetReviews = () => {
               i += 1;
               return (
                 <span
-
                   key={i}
                   className={i <= (hover || rating) ? "highlight" : "off"}
                   onClick={() => setRating(i)}
@@ -108,7 +111,9 @@ const GetReviews = () => {
               setBody(e.target.value)
             }}
           ></textarea>
-          <button className="btn">Update</button>
+          <button className="btn" onClick={(e) => {
+            setRerender(!rerender)
+          }}>Update</button>
 
         </form>
 

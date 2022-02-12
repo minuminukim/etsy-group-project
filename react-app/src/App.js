@@ -54,6 +54,7 @@ function App() {
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
+          <Footer />
         </Route>
         <Route path="/search" exact={true}>
           <SearchResult />
