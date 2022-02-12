@@ -18,8 +18,10 @@ const AuthModals = () => {
 
     const onLogin = async (e) => {
       e.preventDefault();
+      e.stopPropagation()
       const data = await dispatch(login(email, password));
       if (data) {
+        console.log(data, "1111111111111")
         setErrors(data);
       }
     };
@@ -38,6 +40,7 @@ const AuthModals = () => {
       const data = await dispatch(login("demo@aa.io", "demopassword"));
 
       if (data) {
+
         setErrors(data);
       }
     }
@@ -114,11 +117,17 @@ const AuthModals = () => {
 
     const onSignUp = async (e) => {
       e.preventDefault();
+      e.stopPropagation()
       if (password === repeatPassword) {
+
         const data = await dispatch(signUp(username, email, password));
+
         if (data) {
+
           setErrors(data)
         }
+      } else {
+        setErrors(["Password and Confirm password must match."])
       }
     };
 
@@ -145,9 +154,9 @@ const AuthModals = () => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+
+        <div id="createAccountText">
           <p className="sign-in-font">Create your account</p>
-          <p>Registration is easy.</p>
         </div>
         <div>
           <div>
@@ -158,6 +167,8 @@ const AuthModals = () => {
             name='username'
             onChange={updateUsername}
             value={username}
+            required={true}
+            className="signupInout"
           ></input>
         </div>
         <div>
@@ -169,6 +180,8 @@ const AuthModals = () => {
             name='email'
             onChange={updateEmail}
             value={email}
+            required={true}
+            className="signupInout"
           ></input>
         </div>
         <div>
@@ -180,6 +193,8 @@ const AuthModals = () => {
             name='password'
             onChange={updatePassword}
             value={password}
+            required={true}
+            className="signupInout"
           ></input>
         </div>
         <div>
@@ -192,10 +207,11 @@ const AuthModals = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            className="signupInout"
           ></input>
         </div>
         <div>
-          <button className="login-button" type='submit'>Register</button>
+          <button className="signup-button" type='submit'>Register</button>
         </div>
         <hr></hr>
         <div>

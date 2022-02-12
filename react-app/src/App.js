@@ -49,7 +49,6 @@ function App() {
         </Route>
         <Route path='/mycart' exact={true} >
           {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
-
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
@@ -84,7 +83,6 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch >
-      <Footer />
     </BrowserRouter >
   );
 }

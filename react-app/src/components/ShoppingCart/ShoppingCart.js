@@ -5,6 +5,7 @@ import { get_cart_items } from '../../store/shoppingCart';
 import CartItem from './CartItem';
 import PurchaseCart from './PurchaseCart';
 import { NavLink } from 'react-router-dom';
+import CartFooter from "./CartFooter";
 
 const ShoppingCart = () => {
     let session = useSelector((state) => state.session);
@@ -31,7 +32,7 @@ const ShoppingCart = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoaded(true);
-        }, 100);
+        }, 300);
         return () => clearTimeout(timer);
     });
 
@@ -87,7 +88,8 @@ const ShoppingCart = () => {
 
         <>
 
-            {wasPurchased ? <h1>Thanks for purchasing!!</h1> : <div className="ShoppingCart">{isLoaded ? cartItems : null}</div>}
+            {wasPurchased ? <h1>Thanks for purchasing!!</h1> : <div className="ShoppingCart">{isLoaded ? cartItems : <div id='loadingCart' > Loading</div>}</div>}
+            <CartFooter />
 
         </>
     )
