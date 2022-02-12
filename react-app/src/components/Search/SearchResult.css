@@ -32,3 +32,25 @@
     border-top: 100px solid transparent;
     position: absolute;
 } */
+
+.isLoading {
+    width: 100%;
+    background-color: white;
+    height: 600px;
+}
+
+.search-page {
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.results-text {
+    width:fit-content;
+    border-radius: 96px;
+    padding: 12px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+    border: 2px solid black;
+    margin-left: 9px;
+}
