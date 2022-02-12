@@ -7,6 +7,7 @@ footer {
 #story-row {
     background-color: #fdebd2;
     width: 100%;
+    height: 250px;
 }
 
 #story-row-inner {
@@ -60,6 +61,11 @@ footer {
     flex-direction: column;
 }
 
+#row3-inner > div > p {
+    margin: 0;
+    padding: 0;
+}
+
 .footer-link {
     color: rgb(218, 218, 218) !important;
     transition-duration: .2s;
@@ -87,4 +93,9 @@ footer {
 
 #row4-inner > p {
     font-size: 12px;
+}
+
+#row-img {
+    width: 100%;
+    margin-bottom: -10px;
 }
