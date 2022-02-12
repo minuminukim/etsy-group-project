@@ -31,3 +31,9 @@ a:visited {
 .page-container {
   padding-top: 30px;
 }
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}

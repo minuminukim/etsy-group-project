@@ -1,0 +1,19 @@
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gray;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 24px;
+}
+
+.trigger:hover {
+  background-color: #f3f3f3;
+}
+
+.trigger-text {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 500;
+}

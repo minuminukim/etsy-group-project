@@ -24,9 +24,9 @@ body {
 }
 
 .secondary-navigation {
-    height: 0px;
+    height: 10px;
     display: flex;
-    background-color:white;
+    background-color:purple;
     width: 100%;
     border-bottom: 1px solid rgba(34, 34, 34, 0.15);
 }

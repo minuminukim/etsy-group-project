@@ -17,16 +17,6 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-# @review_routes.route('/')
-# def reviews():
-#     """
-#     Fetch all reviews in db. Will not be using this route in app, just testing seeds.
-#     """
-
-#     reviews = Review.query.all()
-#     return {'reviews': [review.to_dict() for review in reviews]}
-
-
 @review_routes.route('/<int:id>')
 def review(id):
     """
@@ -48,7 +38,6 @@ def create_review():
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
-        print("VALIDATED")
         review = Review(
             user_id=request.json["user_id"],
             product_id=request.json["product_id"],
@@ -60,9 +49,6 @@ def create_review():
         db.session.commit()
 
         return review.to_dict()
-    print("FAILED")
-    print(form.errors)
-
     return {'errors': form.errors}, 400
 
 
@@ -72,12 +58,25 @@ def edit_review(id):
     """
     Edit a review for a listing.
     """
-    review = Review.query.get(id)
-    review.body = request.json["body"]
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
 
-    db.session.commit()
+    if form.validate_on_submit():
+        review = Review(
+            user_id=request.json["user_id"],
+            product_id=request.json["product_id"],
+            rating=form.data["rating"],
+            body=form.data["body"]
+        )
+        review = Review.query.get(int(request.json["review_id"]))
 
-    return {"hello": f'{id}'}
+        review.body = request.json["body"]
+        review.rating = request.json["rating"]
+
+        db.session.commit()
+
+        return review.to_dict()
+    return {'errors': form.errors}, 400
 
 
 @review_routes.route('/<int:id>', methods=['DELETE'])
@@ -91,3 +90,6 @@ def delete_review(id):
     db.session.commit()
 
     return {'IN': 'DELETE'}
+
+
+

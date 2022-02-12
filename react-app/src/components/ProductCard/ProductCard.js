@@ -7,26 +7,14 @@ const ProductCard = ({ product }) => {
   // right now they don't have fallback, so they error
   // maybe build loading spinner component?
 
-  const {
-    id,
-    title,
-    price,
-    // discount,
-    stock,
-    user,
-    rating,
-    images,
-  } = product;
-
-  // currently hardcoded, cause no seed data with discount yet
-  let discount = 10;
+  const { id, title, price, discount, stock, user, rating, images } = product;
 
   const { original } = calculateOriginalPrice(price, discount);
 
   return (
     <Link className="product-card-wrapper" to={`/products/${id}`}>
       <div className="product-card">
-        <div>
+        <div className="product-card-img-wrapper">
           <img className="product-card-img" src={images[0]} alt={title} />
         </div>
         <div>

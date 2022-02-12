@@ -45,12 +45,13 @@ const FileInputWithPreview = ({
       {isVisible && (
         <div className="grid-block-icons">
           <ButtonWithIcon
-            className="file-input-btn"
+            className={'file-input-btn' + (error ? 'error-field' : "")}
             size="small"
             action="delete"
             shape="square"
             onClick={(e) => onClick(e, +index)}
           />
+          {error && <p className="validation-error">{error}</p>}
         </div>
       )}
       <input
