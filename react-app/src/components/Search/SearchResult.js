@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './SearchResult.css';
 import ProductGrid from '../ProductGrid';
+import { AiFillCaretDown } from "react-icons/ai";
 
 const SearchResult = () => {
 
@@ -14,7 +15,7 @@ const SearchResult = () => {
     const [topRated, setTopRated] = useState(false);
     const [relevancy, setRelevancy] = useState(true);
     const [showFilter, setShowFilter] = useState(false);
-    const [filterName, setFilterName] = useState("Relevancy");
+    const [filterName, setFilterName] = useState(" Relevancy");
 
     const openFilter = () => {
       if (showFilter) return;
@@ -67,7 +68,7 @@ const SearchResult = () => {
       setDescending(false)
       setTopRated(false)
       setRelevancy(true);
-      setFilterName("Relevancy");
+      setFilterName(" Relevancy");
     }
 
     const sortByLowestPrice = () => {
@@ -75,7 +76,7 @@ const SearchResult = () => {
       setTopRated(false);
       setDescending(false);
       setAscending(true);
-      setFilterName("Lowest Price");
+      setFilterName(" Lowest Price");
     }
 
     const sortByHighestPrice = () => {
@@ -83,7 +84,7 @@ const SearchResult = () => {
       setRelevancy(false);
       setTopRated(false);
       setDescending(true);
-      setFilterName("Highest Price");
+      setFilterName(" Highest Price");
     }
 
     const sortByRating = () => {
@@ -91,7 +92,7 @@ const SearchResult = () => {
       setRelevancy(false);
       setDescending(false);
       setTopRated(true);
-      setFilterName("Top Customer Reviews");
+      setFilterName(" Top Customer Reviews");
     }
 
     const isLoading = 
@@ -107,10 +108,11 @@ const SearchResult = () => {
 
     const SearchFilterMenu =
       <ul className="search-dropdown">
-        <li onClick={sortByRelevancy}>Relevancy</li>
-        <li onClick={sortByLowestPrice}>Lowest Price</li>
-        <li onClick={sortByHighestPrice}>Highest Price</li>
-        <li onClick={sortByRating}>Top Customer Reviews</li>
+        <li className="main-filter-item">Sort by: {filterName}<div id="dropdown-icon"><AiFillCaretDown /></div></li>
+        <li className="filter-item" onClick={sortByRelevancy}>Relevancy</li>
+        <li className="filter-item" onClick={sortByLowestPrice}>Lowest Price</li>
+        <li className="filter-item" onClick={sortByHighestPrice}>Highest Price</li>
+        <li className="filter-item" onClick={sortByRating}>Top Customer Reviews</li>
       </ul>
 
     const loadPage = 
