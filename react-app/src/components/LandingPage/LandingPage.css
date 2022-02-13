@@ -9,7 +9,7 @@
 
 .category-container {
     width: 100%;
-    height: 280px;
+    height: 325px;
     margin-top: -20px;
     display:flex;
     flex-direction: column;
@@ -48,6 +48,10 @@
     cursor: pointer;
 }
 
+.landing-page-links >  a {
+    color: rgb(43, 43, 43);
+}
+
 .category-list-item:hover {
     border-bottom: 2px solid gray;
     color: gray;
@@ -65,4 +69,3 @@
     border-radius: 50%;
     box-shadow: 0 4px 20px rgb(34 34 34 / 20%);
 }
-
