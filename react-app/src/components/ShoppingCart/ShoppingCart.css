@@ -305,7 +305,7 @@
     font-size: 13px;
 }
 
-.merchantIsText {
+.merchantIsTextAndLinkedins {
     height: 90%;
     display: flex;
     justify-content: center;
@@ -314,4 +314,11 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 18px;
+    flex-direction: column;
+}
+
+.cartLinkedinContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
 }

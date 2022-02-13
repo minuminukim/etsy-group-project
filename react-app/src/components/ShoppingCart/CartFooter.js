@@ -15,7 +15,17 @@ const CartFooter = () => {
                 </div>
 
             </div>
-            <div className="merchantIsText">Merchant is Qwerty, Inc. (USA) or Qwerty Mars (Planet Mars), depending on the currency (and planet) in which the Seller transacts. </div>
+            <div className="merchantIsTextAndLinkedins">
+                <div>Merchant is Qwerty, Inc. (USA) or Qwerty Mars (Planet Mars), depending on the currency (and planet) in which the Seller transacts.</div>
+                <div className="cartLinkedinContainer">
+                    <div className="gitHubCartText">Linked: </div>
+                    <a className='footer-link-Cart' href='https://www.linkedin.com/in/steve-correa/' target="_blank" rel="noreferrer">Steve Correa</a>
+                    <a className='footer-link-Cart' href='https://www.linkedin.com/in/minu-kim-911bbb192/' target="_blank" rel="noreferrer">Minu Kim</a>
+                    <a className='footer-link-Cart' href='https://www.linkedin.com/in/grant-ellis-russell' target="_blank" rel="noreferrer">Grant Russell</a>
+                    <a className='footer-link-Cart' href='https://www.linkedin.com/in/eddie-verdusco/' target="_blank" rel="noreferrer">Eddie Verdusco</a>
+                </div>
+            </div>
+
         </div>
     )
 }
