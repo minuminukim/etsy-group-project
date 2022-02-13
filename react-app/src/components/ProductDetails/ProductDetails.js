@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import OutOfStock from './OutOfStock';
 import InStock from './InStock';
@@ -16,7 +16,6 @@ const ProductDetails = ({ product, sessionId }) => {
   const [showModal, setShowModal] = useState(false);
   const { id, user_id: userId, title, price, discount, stock, user } = product;
 
-  // currently hardcoded, cause no seed data with discount yet
   const isCurrentUser = sessionId === userId;
 
   const { original, saving } = calculateOriginalPrice(price, discount);

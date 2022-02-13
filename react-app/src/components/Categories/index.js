@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ProductGrid from '../ProductGrid';
-import ProductGridBlock from '../ProductCard';
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './Categories.css';
 import '../ButtonWithIcon/ButtonWithIcon.css';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 const CategoryView = () => {
   const [products, setProducts] = useState([]);
@@ -40,7 +38,11 @@ const CategoryView = () => {
             <div>
               <li className="header-images">
                 <NavLink to={`/products/${products[0]?.id}`}>
-                  <img className="header-pic" src={products[0]?.images[0]} />
+                  <img
+                    className="header-pic"
+                    src={products[0]?.images[0]}
+                    alt="switches"
+                  />
                 </NavLink>
               </li>
               <div className="category-product-price">
@@ -50,7 +52,11 @@ const CategoryView = () => {
             <div>
               <li className="header-images">
                 <NavLink to={`/products/${products[1]?.id}`}>
-                  <img className="header-pic" src={products[1]?.images[0]} />
+                  <img
+                    className="header-pic"
+                    src={products[1]?.images[0]}
+                    alt="keycaps"
+                  />
                 </NavLink>
               </li>
               <div className="category-product-price">
@@ -60,7 +66,11 @@ const CategoryView = () => {
             <div>
               <li className="header-images">
                 <NavLink to={`/products/${products[2]?.id}`}>
-                  <img className="header-pic" src={products[2]?.images[0]} />
+                  <img
+                    className="header-pic"
+                    src={products[2]?.images[0]}
+                    alt="keyboards"
+                  />
                 </NavLink>
               </li>
               <div className="category-product-price">
@@ -70,7 +80,11 @@ const CategoryView = () => {
             <div>
               <li className="header-images">
                 <NavLink to={`/products/${products[3]?.id}`}>
-                  <img className="header-pic" src={products[3]?.images[0]} />
+                  <img
+                    className="header-pic"
+                    src={products[3]?.images[0]}
+                    alt="DIY kits"
+                  />
                 </NavLink>
               </li>
               <div className="category-product-price">
