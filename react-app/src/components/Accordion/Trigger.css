@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid gray;
   width: 100%;
   cursor: pointer;
   border-radius: 24px;
+  transition: background-color 0.1s;
 }
 
 .trigger:hover {
