@@ -7,7 +7,7 @@ import { AiOutlineStar } from "react-icons/ai"
 
 import "./ReviewForm.css"
 
-const CreateReview = ({setUserLeftReview}) => {
+const CreateReview = ({ setUserLeftReview }) => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
   // const reviews = useSelector(state => state.review.reviews);
@@ -19,6 +19,7 @@ const CreateReview = ({setUserLeftReview}) => {
   const [displayReviewForm, setDisplayReviewForm] = useState(true)
   let { productId } = useParams()
   const [hover, setHover] = useState(0);
+  const [displayStars, setDisplayStars] = useState(false)
 
 
   const onSubmit = async (e) => {
@@ -55,6 +56,7 @@ const CreateReview = ({setUserLeftReview}) => {
             setErrors([])
             setBody("")
             setDisplayBtn(false)
+            setDisplayStars(false)
           }}>Cancel</button>
         <button className="review-btn btn">Submit</button>
       </div>
@@ -81,6 +83,7 @@ const CreateReview = ({setUserLeftReview}) => {
         <form id="review_form" onSubmit={onSubmit} value={true}
           onFocus={(e) => {
             setDisplayBtn(true)
+            setDisplayStars(true)
           }}>
           <div>
             {errors.body}
@@ -94,25 +97,26 @@ const CreateReview = ({setUserLeftReview}) => {
 
 
 
+          {displayStars ?
 
-          <div id="star-rating-container">
-      {[...Array(5)].map((star, index) => {
-        index += 1;
-        return (
-          <button
-            type="button"
-            key={index}
-            // highlight prev stars including hovered
-            className={index <= (hover || rating) ? "on" : "off"}
-            onClick={() => setRating(index)}
-            onMouseEnter={() => setHover(index)}
-            onMouseLeave={() => setHover(rating)}
-          >
-            <span className="stars">★</span>
-          </button>
-        );
-      })}
-    </div>
+            <div id="star-rating-container">
+              {[...Array(5)].map((s, i) => {
+                i += 1;
+                return (
+                  <span
+
+                    key={i}
+                    className={i <= (hover || rating) ? "highlight" : "off"}
+                    onClick={() => setRating(i)}
+                    onMouseEnter={() => setHover(i)}
+                    onMouseLeave={() => setHover(rating)}
+                  >
+                    <span className="stars">★</span>
+                  </span>
+                );
+              })}
+            </div>
+            : null}
 
 
 

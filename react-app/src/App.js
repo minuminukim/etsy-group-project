@@ -10,7 +10,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
-import ReviewForm from './components/ReviewForm/ReviewForm';
 import UserProfile from './components/UserProfile/User';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
@@ -20,6 +19,7 @@ import LandingPage from './components/LandingPage';
 import DeleteWarning from './components/DeleteWarning';
 import NavBar from './components/NavBar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import FooterHome from './components/Footer/FooterHome';
 import Footer from './components/Footer';
 import { get_cart_items } from './store/shoppingCart';
 import SignInRequiredForCart from './components/ShoppingCart/signInRequiredForCart';
@@ -46,6 +46,7 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <LandingPage />
+          <FooterHome />
         </Route>
         <Route path='/mycart' exact={true} >
           {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
@@ -53,9 +54,11 @@ function App() {
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
+          <Footer />
         </Route>
         <Route path="/search" exact={true}>
           <SearchResult />
+          <Footer />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -68,14 +71,15 @@ function App() {
         </Route>
         <Route exact path="/products/:productId/edit">
           <ProductListingEdit sessionUser={sessionUser} />
+          <Footer />
         </Route>
         <Route exact path="/products/:productId/images/new">
           <ProductImageForm sessionUser={sessionUser} />
         </Route>
         <Route exact path="/products/:productId">
           <ProductListing sessionId={sessionUser?.id} />
-          {/* <ReviewForm /> */}
           <Reviews />
+          <Footer />
         </Route>
         <Route exact path="/testing">
           <DeleteWarning />
@@ -84,7 +88,6 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch >
-      <Footer />
     </BrowserRouter >
   );
 }
