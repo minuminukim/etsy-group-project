@@ -43,7 +43,9 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "profile_pic_url": self.profile_picture_url,
+            "profile_picture_url": self.profile_picture_url,
             "bio": self.bio,
             "rating": self.rating,
+            "products": [product.to_dict() for product in self.products],
+            "purchases": [purchase.to_dict() for purchase in self.purchases],
         }
