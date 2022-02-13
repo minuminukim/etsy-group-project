@@ -1,13 +1,40 @@
-img.product-image {
-  object-fit: cover;
+
+.product-image:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
-img.product-image-square {
+/* img.product-image-square {
   width: 318px;
   height: 318px;
+  border-radius: 5px;
 }
 
 img.product-image-landscape {
   width: 318px;
   height: 212px;
+  border-radius: 5px;
+} */
+
+.product-image-square {
+  min-width: 181px;
+  min-height: 181px;
+  max-width: 318px;
+  max-height: 318px;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 100%;
+}
+
+.product-image-landscape {
+  min-height: 121px;
+  min-width: 181px;
+  max-width: 318px;
+  max-height: 212px;
+  border-radius: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 56.25%;
 }
