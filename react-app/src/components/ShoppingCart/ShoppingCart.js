@@ -6,6 +6,7 @@ import CartItem from './CartItem';
 import PurchaseCart from './PurchaseCart';
 import { NavLink } from 'react-router-dom';
 import CartFooter from "./CartFooter";
+import { v4 as uuidv4 } from 'uuid';
 
 const ShoppingCart = () => {
     let session = useSelector((state) => state.session);
@@ -52,7 +53,7 @@ const ShoppingCart = () => {
                             {valueArray.length} items in your cart
                         </div>
                         {valueArray.map((item) => (
-                            <CartItem key={item.product_title} cartItem={item} />
+                            <CartItem key={uuidv4().toString()} cartItem={item} />
                         ))}
                     </div>
                     <PurchaseCart cartItems={valueArray} setWasPurchased={setWasPurchased} />

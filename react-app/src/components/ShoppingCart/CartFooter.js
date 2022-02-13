@@ -3,8 +3,19 @@ const CartFooter = () => {
 
 
     return (
-        <div>
-            <div> footer coming soon lol</div>
+        <div className="shoppingCartFooter">
+            <div className="gitHubCartFooterDiv">
+                <div className="usCartLanguageText">United States   |   English (US)   |   $ (USD)</div>
+                <div className="cartGithubContainer">
+                    <div className="gitHubCartText">Githubs: </div>
+                    <a className='footer-link-Cart' href='https://github.com/scorrea310' target="_blank" rel="noreferrer">Steve Correa</a>
+                    <a className='footer-link-Cart' href='https://github.com/minuminukim' target="_blank" rel="noreferrer">Minu Kim</a>
+                    <a className='footer-link-Cart' href='https://github.com/grantongrant' target="_blank" rel="noreferrer">Grant Russell</a>
+                    <a className='footer-link-Cart' href='https://github.com/verduscos' target="_blank" rel="noreferrer">Eddie Verdusco</a>
+                </div>
+
+            </div>
+            <div className="merchantIsText">Merchant is Qwerty, Inc. (USA) or Qwerty Mars (Planet Mars), depending on the currency (and planet) in which the Seller transacts. </div>
         </div>
     )
 }

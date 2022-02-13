@@ -46,6 +46,7 @@
     border-radius: 18px;
     margin-top: 90px;
     margin-left: 100px;
+    margin-bottom: 50px;
 }
 
 .paymentMethodContainer {
@@ -241,7 +242,7 @@
 
 .signInRequired {
     width: 100%;
-    height: 400px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,4 +261,57 @@
     padding-bottom: 80px;  
     flex-direction: column;
     font-size: 30px;
+}
+
+.shoppingCartFooter {
+    display: flex;
+    width: 100%;
+    height: 290px;
+    flex-direction: column;
+}
+
+.gitHubCartFooterDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+
+}
+
+.cartGithubContainer {
+    display: flex;
+    flex-direction: row;
+    margin-right: 60px;
+}
+
+.usCartLanguageText {
+    margin-left: 60px;
+    font-size: 13px;
+}
+
+.gitHubCartText{
+    margin-right: 10px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    color: #595959;
+    font-size: 13px;
+}
+
+.footer-link-Cart {
+    margin-right: 10px;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    color: #595959;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.merchantIsText {
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
 }
