@@ -7,6 +7,7 @@ import PurchaseCart from './PurchaseCart';
 import { NavLink } from 'react-router-dom';
 import CartFooter from "./CartFooter";
 import { v4 as uuidv4 } from 'uuid';
+import { AiOutlineClose } from "react-icons/ai"
 
 const ShoppingCart = () => {
     let session = useSelector((state) => state.session);
@@ -84,12 +85,28 @@ const ShoppingCart = () => {
         </>
     );
 
+    let thanksForPurchase = (
+
+        <>
+            <div id="thanksPurchaseDivSection">
+                <div className='thanksForPurchaseModalContainer'>
+
+                    <div id="thanksForPurchaseCloseButton"><AiOutlineClose id="closeModalButton" onClick={() => setWasPurchased(false)} /></div>
+
+                    <div className='thanksForPurchaseModal'>
+                        <div>Thanks for the purchase.</div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+
 
     return (
 
         <>
 
-            {wasPurchased ? <h1>Thanks for purchasing!!</h1> : <div className="ShoppingCart">{isLoaded ? cartItems : <div id='loadingCart' > Loading</div>}</div>}
+            {wasPurchased ? thanksForPurchase : <div className="ShoppingCart">{isLoaded ? cartItems : <div id='loadingCart' > Loading</div>}</div>}
             <CartFooter />
 
         </>
