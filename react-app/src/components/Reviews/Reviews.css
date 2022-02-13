@@ -95,3 +95,7 @@
     color: #595959;
     border-bottom:none !important;
 }
+
+#deleteReviewBtn {
+    margin-left: 10px;
+}

@@ -26,7 +26,7 @@
 
 .review-btn {
     align-self: flex-end !important;
-    margin: 10px;
+    margin: 5px;
 }
 
 #review_btn_container {
@@ -70,7 +70,7 @@
   }
   /* star highligh color not working */
   .highlight {
-    color: rgb(190, 29, 29);
+    color: rgb(49, 45, 45);
   }
   .off {
     color: lightgray;
