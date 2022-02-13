@@ -18,7 +18,6 @@ const InputField = ({ type, id, placeholder, value, onChange, error }) => {
 };
 
 InputField.defaultProps = {
-  // label: null,
   type: 'text',
   placeholder: null,
   error: null,

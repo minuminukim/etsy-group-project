@@ -13,7 +13,6 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const productsObject = useSelector((state) => state.products);
   const allProducts = Object.values(productsObject);
-  console.log('allProducts', allProducts);
   const sorted = sortByRating(allProducts);
 
   useEffect(() => {
@@ -21,8 +20,6 @@ const LandingPage = () => {
       .then(() => setIsLoading(false))
       .catch((response) => response);
   }, [dispatch]);
-
-  console.log('sorted', sorted);
 
   const categoryA = 'switches';
   const categoryB = 'keycaps';

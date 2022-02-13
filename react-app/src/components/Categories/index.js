@@ -36,7 +36,6 @@ const CategoryView = () => {
     <div>
       <div className="category-header">
         <div className="header-elements">
-          {/* <div id="slideLeft" className="circle-btn circle-btn-medium"><AiOutlineArrowLeft/></div> */}
           <ul className="header-elements-container">
             <div>
               <li className="header-images">
@@ -47,7 +46,6 @@ const CategoryView = () => {
               <div className="category-product-price">
                 ${products[0]?.price}
               </div>
-              {/* <p>{products[0]?.description}</p> */}
             </div>
             <div>
               <li className="header-images">
@@ -90,7 +88,6 @@ const CategoryView = () => {
               </div>
             </div>
           </ul>
-          {/* <div id="slideRight" className="circle-btn circle-btn-medium"><AiOutlineArrowRight/></div> */}
         </div>
       </div>
       <div className="category-content-header">

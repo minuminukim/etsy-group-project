@@ -14,15 +14,7 @@ const ProductDetails = ({ product, sessionId }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
-  const {
-    id,
-    user_id: userId,
-    title,
-    price,
-    discount,
-    stock,
-    user,
-  } = product;
+  const { id, user_id: userId, title, price, discount, stock, user } = product;
 
   // currently hardcoded, cause no seed data with discount yet
   const isCurrentUser = sessionId === userId;
@@ -38,9 +30,7 @@ const ProductDetails = ({ product, sessionId }) => {
       .then(() => history.push('/'))
       .catch(async (res) => {
         const data = await res.json();
-        console.log('data', data);
-        // history.push('/');
-        // return data;
+        return data;
       });
   };
 
@@ -75,7 +65,6 @@ const ProductDetails = ({ product, sessionId }) => {
           {discount > 0 && (
             <p className="discount">{`You save $${saving} (${discount}%)`}</p>
           )}
-          {/* TODO in stock, out of stock, low stock */}
         </div>
         {isCurrentUser && (
           <div className="product-details-btns">

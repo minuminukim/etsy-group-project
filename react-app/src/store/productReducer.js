@@ -96,7 +96,6 @@ export const deleteProduct = (productId) => async (dispatch) => {
   });
 
   if (response.status >= 400) {
-    console.log('productId', productId);
     throw response;
   }
 
