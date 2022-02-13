@@ -23,6 +23,14 @@
   font-weight: 500;
   padding: 5px 9px 5px 9px;
   position: relative;
+  left: 5px;
+}
+
+.product-image-landscape .price-badge {
   bottom: 12px;
   left: 5px;
+}
+
+.product-image-square .price-badge {
+  bottom: 30px;
 }

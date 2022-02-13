@@ -31,7 +31,7 @@ const UserProfile = () => {
         <div className="user-page-top">
           <UserDetails
             username={user.username}
-            profilePhoto={user.profile_picture_url}
+            profilePhoto={user.profile_pic_url}
             bio={user.bio}
           />
         </div>
