@@ -45,6 +45,69 @@
     margin-bottom: 12px;
     border: 2px solid black;
     margin-left: 9px;
+    font-size: 13px;
+}
+
+.filter-button {
+    width:fit-content;
+    border-radius: 96px;
+    padding: 12px;
+    border: 2px solid black;
+    margin-left: 9px;
+    font-size: 13px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    box-shadow: none;
+    box-shadow: 0 4px 10px rgb(34 34 34 / 20%);
+    transform: scale(1.01);
+}
+
+.search-dropdown {
+    display: flex;
+    margin-top: -43px;
+    flex-direction: column;
+    width: 225px;
+    background-color: white;
+    font-size: 13px;
+    padding: 0px;
+    border-radius: 12px;
+    border: 1px rgba(34, 34, 34, 0.15) solid;
+    box-shadow: 0 4px 10px rgb(34 34 34 / 20%);
+    min-width: 160px;
+    max-width: 300px;
+    position: absolute;
+    padding-bottom: 12px !important;
+    padding-top: 12px !important;
+    list-style: none;
+    /* padding-left: 18px; */
+    margin-left: 9px;
+}
+
+.main-filter-item {
+   width: 100%;
+   display: flex;
+   padding-bottom: 12px;
+   padding-left: 18px;
+}
+
+.filter-item {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 18px;
+    width: 100%;
+}
+
+.filter-item:hover {
+    background-color: rgb(208, 208, 208);;
+}
+
+#dropdown-icon {
+    margin-left: 5px;
+    font-size: 10px;
+    margin-top: 4px;
 }
 
 .product-grid-search-page {
