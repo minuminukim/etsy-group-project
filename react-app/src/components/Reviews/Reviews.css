@@ -75,6 +75,11 @@
     justify-content: flex-end;
 }
 
+#review-form-container {
+    display: flex;
+    justify-content: center;
+}
+
 
 #review-author {
     font-size: 10px;
@@ -98,4 +103,16 @@
 
 #deleteReviewBtn {
     margin-left: 10px;
+}
+
+#edit-form-btns {
+    display: flex;
+}
+
+#edit-form-btns > * {
+    margin: 0 5px;
+}
+
+#review_form {
+    margin-bottom: 25px;
 }
