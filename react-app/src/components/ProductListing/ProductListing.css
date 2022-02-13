@@ -18,3 +18,10 @@
   grid-column: 2 / 3;
   padding-right: 30px;
 }
+
+@media screen and (max-width: 900px) {
+  .product-listing {
+    display: flex;
+    flex-direction: column;
+  }
+}
