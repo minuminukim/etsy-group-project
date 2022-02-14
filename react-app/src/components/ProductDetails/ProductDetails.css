@@ -83,3 +83,21 @@ span.out-of-stock,
   position: relative;
   top: 2px;
 }
+
+
+
+.stars-1::after {
+  content:'★';
+}
+.stars-2::after {
+  content: '★★';
+}
+.stars-3::after {
+  content: '★★★';
+}
+.stars-4::after {
+  content: '★★★★';
+}
+.stars-5::after {
+  content: '★★★★★';
+}
