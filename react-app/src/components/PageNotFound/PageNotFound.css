@@ -1,0 +1,21 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-caption {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+a.error-redirect {
+  margin-top: 24px;
+  color: #39a3c1;
+}
+
+a.error-redirect:hover {
+  text-decoration: underline;
+}

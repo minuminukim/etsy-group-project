@@ -2,7 +2,6 @@ import ProductImage from '../ProductImage';
 import './TwoRowGallery.css';
 
 const TwoRowGallery = ({ products, isLoading }) => {
-  const isEven = (i) => i % 2 === 0;
   const toLandscape = (i) => {
     switch (i) {
       case 0:

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import SignUpForm from './components/auth/SignUpForm';
 import ProductListingForm from './components/ProductListingForm';
 import ProductImageForm from './components/ProductImageForm';
 import ProductListingEdit from './components/ProductListingEdit';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
-import ReviewForm from './components/ReviewForm/ReviewForm';
 import UserProfile from './components/UserProfile/UserProfile';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
@@ -22,7 +19,6 @@ import NavBar from './components/NavBar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import FooterHome from './components/Footer/FooterHome';
 import Footer from './components/Footer';
-import { get_cart_items } from './store/shoppingCart';
 import SignInRequiredForCart from './components/ShoppingCart/signInRequiredForCart';
 
 function App() {

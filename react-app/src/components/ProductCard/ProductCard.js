@@ -3,7 +3,7 @@ import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
-  const { id, title, price, discount, stock, user, rating, images } = product;
+  const { id, title, price, discount, rating, images } = product;
 
   const { original } = calculateOriginalPrice(price, discount);
 

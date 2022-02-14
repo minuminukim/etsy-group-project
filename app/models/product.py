@@ -68,7 +68,6 @@ class Product(db.Model):
         """
         Updates a product listing's information
         """
-        print("@@@@@@", product)
         for key, value in kwargs.items():
             setattr(product, key, value)
 
@@ -106,7 +105,6 @@ class Product(db.Model):
         """
         Updates a product's rating.
         """
-        # reviews = Review.query.filter(Review.product_id == id).all()
         reviews = self.reviews
         ratings = [review.rating for review in reviews]
         total = sum(ratings)

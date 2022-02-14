@@ -1,19 +1,6 @@
-
 .product-image:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
-
-/* img.product-image-square {
-  width: 318px;
-  height: 318px;
-  border-radius: 5px;
-}
-
-img.product-image-landscape {
-  width: 318px;
-  height: 212px;
-  border-radius: 5px;
-} */
 
 .product-image-square {
   min-width: 181px;
