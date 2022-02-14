@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import './NavBar.css';
 import SearchBar from '../Search/SearchBar';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../auth/LoginFormModal';
 import { BsCart4 } from 'react-icons/bs';
 import AuthModals from '../auth/AuthModals';
 

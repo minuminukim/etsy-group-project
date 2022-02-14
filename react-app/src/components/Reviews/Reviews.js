@@ -21,9 +21,7 @@ const GetReviews = () => {
   const [editReviewId, setEditReviewId] = useState(0)
   const [rerender, setRerender] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
-  const [userLeftReview, setUserLeftReview] = useState(true)
   const [errors, setErrors] = useState([])
-  const [work, setWork] = useState(false)
   const [hover, setHover] = useState(0);
   const [displayDelete, setDisplayDelete] = useState(true)
   let { productId } = useParams()
@@ -34,7 +32,6 @@ const GetReviews = () => {
     e.preventDefault();
     dispatch(sessionActions.deleteReview(id))
     setTest(!test)
-    setUserLeftReview(false)
   }
 
   const handleEdit = (e) => {
@@ -46,7 +43,6 @@ const GetReviews = () => {
     e.preventDefault()
 
     setTest(!rerender)
-    // setEdit(true)
 
     if (body.length > 1 && rating > 0) {
       setDisplayEdit(false)
@@ -137,11 +133,11 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, work, edit])
+  }, [dispatch, test, rerender, edit, productId])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, work, edit])
+  }, [dispatch, test, rerender, edit, productId])
 
   return (
     <div id="reviews-main-container">
