@@ -51,7 +51,7 @@ const ShoppingCart = () => {
                 <div className="CartItemsAndPurchaserContainer">
                     <div className="CartItemSectionContainer">
                         <div id="numberOfItemsText">
-                            {valueArray.length} items in your cart
+                            {valueArray.length} item(s) in your cart
                         </div>
                         {valueArray.map((item) => (
                             <CartItem key={uuidv4().toString()} cartItem={item} />
