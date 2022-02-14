@@ -21,7 +21,7 @@ const UserProfile = () => {
     }
 
     fetchUserData();
-  }, []);
+  }, [userId]);
 
   return (
     isLoaded && (
