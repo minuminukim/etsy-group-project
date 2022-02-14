@@ -7,7 +7,7 @@ purchase_routes = Blueprint("purchase", __name__)
 
 
 @purchase_routes.route("/", methods=["POST"])
-# @login_required
+@login_required
 def add_purchase():
     """
     Creates new purchases.
@@ -39,7 +39,7 @@ def add_purchase():
         elif product.stock == 0:
             return {
                 "errors": [cart_id, f"Invalid purchase: This item is out of stock. Please remove this item from cart before proceeding"]
-   
+
             }, 400
         else:
             return {

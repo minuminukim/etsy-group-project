@@ -11,8 +11,6 @@ const FileInputWithPreview = ({
   onClick,
   error = null,
 }) => {
-  // TODO: error handling
-
   const [isVisible, setIsVisible] = useState(false);
 
   const hiddenInput = useRef(null);
@@ -45,7 +43,7 @@ const FileInputWithPreview = ({
       {isVisible && (
         <div className="grid-block-icons">
           <ButtonWithIcon
-            className={'file-input-btn' + (error ? 'error-field' : "")}
+            className={'file-input-btn' + (error ? 'error-field' : '')}
             size="small"
             action="delete"
             shape="square"

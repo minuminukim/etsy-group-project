@@ -7,7 +7,6 @@ import './UserProfile.css';
 const UserProfile = () => {
   const { userId } = useParams();
   const [products, setProducts] = useState([]);
-  const [purchases, setPurchases] = useState([]);
   const [user, setUser] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -16,7 +15,6 @@ const UserProfile = () => {
       const response = await fetch(`/api/users/${userId}`);
       // waits until the request completes...
       const data = await response.json();
-      console.log('data', data);
       setUser(data);
       setProducts(data.products);
       setIsLoaded(true);
