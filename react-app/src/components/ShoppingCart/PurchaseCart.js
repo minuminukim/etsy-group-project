@@ -8,9 +8,12 @@ import Button from '../common/Button/Button';
 import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch } from 'react-redux';
 import { updateItemErrors } from '../../store/shoppingCart';
+import { useState } from 'react';
 
 const PurchaseCart = ({ cartItems, setWasPurchased }) => {
   const dispatch = useDispatch();
+
+  let [errors, setErrors] = useState(false)
 
   let totalPrice = 0;
 
@@ -41,7 +44,8 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
       const data = await response.json();
 
       if (data && data.errors) {
-        dispatch(updateItemErrors([data.errors[0], data.errors[1]]));
+        // dispatch(updateItemErrors([data.errors[0], data.errors[1]]));
+        setErrors([data.errors[0], data.errors[1]])
       } else {
         // else dispatch clear cart
         let cartItemIds = [];
@@ -59,127 +63,130 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
   };
 
   return (
-    <div className="cartPurchaseContainer">
-      <div className="paymentMethodContainer">
-        <p className="howYouPayText"> How you'll Pay</p>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            marginBottom: '10px',
-            alignItems: 'center',
-          }}
-        >
-          <input
-            className="paymentInput"
-            type="radio"
-            value="Male"
-            name="gender"
-            defaultChecked
-          />
+    <>
+      {errors ? <div> {shoppingCart[`${errors[0]}`].product_title} {errors[1]}</div> : null}
+      <div className="cartPurchaseContainer">
+        <div className="paymentMethodContainer">
+          <p className="howYouPayText"> How you'll Pay</p>
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
-              marginLeft: '10px',
+              marginBottom: '10px',
+              alignItems: 'center',
             }}
           >
-            <FaCcMastercard style={{ fontSize: '40px', marginRight: '10px' }} />
-            <FaCcVisa style={{ fontSize: '40px', marginRight: '10px' }} />
-            <SiAmericanexpress
-              style={{
-                color: '#2671B9',
-                fontSize: '35px',
-                marginRight: '10px',
-                height: '32px',
-                marginTop: '4px',
-                borderRadius: '2px',
-              }}
+            <input
+              className="paymentInput"
+              type="radio"
+              value="Male"
+              name="gender"
+              defaultChecked
             />
-            <FaCcDiscover
+            <div
               style={{
-                color: '#F58220',
-                fontSize: '40px',
-                marginRight: '10px',
+                display: 'flex',
+                flexDirection: 'row',
+                marginLeft: '10px',
               }}
-            />
+            >
+              <FaCcMastercard style={{ fontSize: '40px', marginRight: '10px' }} />
+              <FaCcVisa style={{ fontSize: '40px', marginRight: '10px' }} />
+              <SiAmericanexpress
+                style={{
+                  color: '#2671B9',
+                  fontSize: '35px',
+                  marginRight: '10px',
+                  height: '32px',
+                  marginTop: '4px',
+                  borderRadius: '2px',
+                }}
+              />
+              <FaCcDiscover
+                style={{
+                  color: '#F58220',
+                  fontSize: '40px',
+                  marginRight: '10px',
+                }}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            marginBottom: '10px',
-            alignItems: 'center',
-          }}
-        >
-          <input
-            className="paymentInput"
-            type="radio"
-            value="Female"
-            name="gender"
-          />
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
-              marginLeft: '10px',
+              marginBottom: '10px',
+              alignItems: 'center',
             }}
           >
-            <FaCcPaypal
-              style={{
-                fontSize: '40px',
-                marginRight: '10px',
-                color: '#0079C1',
-              }}
+            <input
+              className="paymentInput"
+              type="radio"
+              value="Female"
+              name="gender"
             />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginLeft: '10px',
+              }}
+            >
+              <FaCcPaypal
+                style={{
+                  fontSize: '40px',
+                  marginRight: '10px',
+                  color: '#0079C1',
+                }}
+              />
+            </div>
           </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            marginBottom: '10px',
-            alignItems: 'center',
-          }}
-        >
-          <input
-            className="paymentInput"
-            type="radio"
-            value="Other"
-            name="gender"
-          />
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
-              marginLeft: '10px',
+              marginBottom: '10px',
+              alignItems: 'center',
             }}
           >
-            <SiKlarna
-              style={{ fontSize: '30px', marginRight: '10px', color: 'pink' }}
+            <input
+              className="paymentInput"
+              type="radio"
+              value="Other"
+              name="gender"
             />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginLeft: '10px',
+              }}
+            >
+              <SiKlarna
+                style={{ fontSize: '30px', marginRight: '10px', color: 'pink' }}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="cartPriceContainer">
-        <div className="cartPriceTotal">
-          <div>Item(s) total:</div>
-          <div id="totalPriceText">{`${formatter.format(totalPrice)}`}</div>
+        <div className="cartPriceContainer">
+          <div className="cartPriceTotal">
+            <div>Item(s) total:</div>
+            <div id="totalPriceText">{`${formatter.format(totalPrice)}`}</div>
+          </div>
+          <div className="shippingCostText">
+            <div>Shipping:</div>
+            <div className="freeText">FREE</div>
+          </div>
         </div>
-        <div className="shippingCostText">
-          <div>Shipping:</div>
-          <div className="freeText">FREE</div>
+        <div className="purchaseButtonContainer">
+          <Button
+            label={'Buy it now'}
+            className="purchaseCart"
+            onClick={handleClick}
+          />
         </div>
       </div>
-      <div className="purchaseButtonContainer">
-        <Button
-          label={'Buy it now'}
-          className="purchaseCart"
-          onClick={handleClick}
-        />
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -12,6 +12,8 @@ import { AiOutlineClose } from "react-icons/ai"
 const ShoppingCart = () => {
     let session = useSelector((state) => state.session);
 
+    let [errors, setErrors] = useState(false)
+
 
     const [wasPurchased, setWasPurchased] = useState(false)
 
