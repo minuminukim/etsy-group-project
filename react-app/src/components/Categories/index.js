@@ -36,7 +36,7 @@ const CategoryView = () => {
       <div className="category-header">
         <div className="header-elements">
           <ul className="header-elements-container">
-            <div><NavLink to={`/products/${products[2]?.id}`}>
+            <div><NavLink to={`/products/${products[2]?.id}`}> </NavLink>
               <li className="header-images">
                 <NavLink to={`/products/${products[0]?.id}`}>
                   <img
@@ -63,7 +63,7 @@ const CategoryView = () => {
               <div className="category-product-price">
                 ${products[4]?.price}
               </div>
-            </NavLink></div>
+            </div>
             <div><NavLink to={`/products/${products[6]?.id}`}>
               <li className="header-images">
                 <NavLink to={`/products/${products[2]?.id}`}>
@@ -94,7 +94,7 @@ const CategoryView = () => {
             </NavLink></div>
             <div><NavLink to={`/products/${products[10]?.id}`}>
               <li className="header-images">
-                  <img className="header-pic" src={products[10]?.images[0]} />
+                <img className="header-pic" src={products[10]?.images[0]} />
               </li>
               <div className="category-product-price">
                 ${products[10]?.price}
@@ -102,7 +102,7 @@ const CategoryView = () => {
             </NavLink></div>
           </ul>
         </div>
-      </div>
+      </div >
       <div className="category-content-header">
         <div className="content-container">
           <p className="by-interest">SHOP BY INTEREST</p>
@@ -115,7 +115,7 @@ const CategoryView = () => {
       <div className="grid-container">
         <ProductGrid products={products} />
       </div>
-    </div>
+    </div >
   );
 };
 
