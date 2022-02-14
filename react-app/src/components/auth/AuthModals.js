@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login, signUp } from '../../store/session';
 import "./auth.css";
 import { Modal } from '../../context/Modal';
@@ -225,7 +225,7 @@ const AuthModals = () => {
 
   return (
     <div>
-      <button id="signIn" id="sign-in" onClick={() => SetSigninModal(true)}>Sign In</button>
+      <button className="signIn" id="sign-in" onClick={() => SetSigninModal(true)}>Sign In</button>
       {SigninModal && (
         <Modal onClose={() => SetSigninModal(false)}><SigninForm /></Modal>
       )}

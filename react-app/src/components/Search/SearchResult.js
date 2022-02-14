@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import './SearchResult.css';
 import ProductGrid from '../ProductGrid';
 import { AiFillCaretDown } from "react-icons/ai";
@@ -53,7 +52,7 @@ const SearchResult = () => {
       }
       }
       fetchData();
-    }, [query, descending, ascending, relevancy]);
+    }, [query, descending, ascending, relevancy, topRated, search]);
 
 
     useEffect(() => {
