@@ -8,7 +8,7 @@ import logo3 from './footer-img3.PNG'
 const Footer = () => {
   return (
     <footer>
-      <img src={logo3} id="row-img" />
+      <img src={logo3} id="row-img" alt="footer-bg"/>
       <div id='story-row'>
         <div className="story-row-inner">
           <h1 id="footer-title">What is Qwerty?</h1>
@@ -28,8 +28,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-        <img src={logo2} id="row-img" />
-        <img src={logo} id="row-img" />
+        <img src={logo2} id="row-img" alt="footer-bg"/>
+        <img src={logo} id="row-img" alt="footer-bg"/>
       <div id="row2">
         <BsGlobe size={23} />
         <p className="underline-text">
