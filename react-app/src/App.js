@@ -88,7 +88,6 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch>
-      <Footer />
     </BrowserRouter>
   );
 }

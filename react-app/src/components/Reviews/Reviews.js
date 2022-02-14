@@ -25,6 +25,7 @@ const GetReviews = () => {
   const [errors, setErrors] = useState([])
   const [work, setWork] = useState(false)
   const [hover, setHover] = useState(0);
+  const [displayDelete, setDisplayDelete] = useState(true)
   let { productId } = useParams()
 
 
@@ -47,10 +48,12 @@ const GetReviews = () => {
     setTest(!rerender)
     // setEdit(true)
 
-    if (body.length > 1 && rating > 0){
+    if (body.length > 1 && rating > 0) {
       setDisplayEdit(false)
+      setDisplayDelete(true)
       setEdit(true)
       setErrors([])
+
     }
 
     const payload = {
@@ -111,16 +114,22 @@ const GetReviews = () => {
               setBody(e.target.value)
             }}
           ></textarea>
-          <button className="btn" onClick={(e) => {
-            setRerender(!rerender)
-          }}>Update</button>
-
+          <div id="edit-form-btns">
+            <button className="btn" onClick={(e) => {
+              setRerender(!rerender)
+            }}>Update</button>
+            <button onClick={(e) => {
+              setEdit(true)
+              setDisplayEdit(false)
+              setDisplayDelete(true)
+            }} className="btn">Cancel</button>
+          </div>
         </form>
 
-        <button onClick={(e) => {
+        {/* <button onClick={(e) => {
           setEdit(true)
           setDisplayEdit(false)
-        }} className="btn">Cancel</button>
+        }} className="btn">Cancel</button> */}
       </>
     )
   }
@@ -160,9 +169,10 @@ const GetReviews = () => {
             </div>
 
             {/* Only display deleteBtn for a review by currentUser */}
-            <div id="review-row3">
+            <div id="review-form-container">
               {review.user_id === currentUser?.id ? editForm : null}
-
+            </div>
+            <div id="review-row3">
               {review.user_id === currentUser?.id && edit === true ?
                 <button
                   className="btn"
@@ -171,12 +181,13 @@ const GetReviews = () => {
                     setEditReviewId(e.target.value)
                     handleEdit(e)
                     setEdit(false)
+                    setDisplayDelete(false)
                   }}>
                   Edit
                 </button>
                 : null}
 
-              {review.user_id === currentUser?.id ?
+              {review.user_id === currentUser?.id && displayDelete ?
                 <button className="btn" id="deleteReviewBtn" onClick={(e) => {
                   handleDelete(e, review.id)
                 }} value={review.id}>Delete</button>

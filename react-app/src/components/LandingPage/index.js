@@ -78,7 +78,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"
                 alt="keyboardSwitchCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryA}`}>Switches</NavLink>
               </li>
             </div>
@@ -88,7 +88,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/pbt-chalk-keycaps-1.jpeg"
                 alt="keycapsCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryB}`}>Keycaps</NavLink>
               </li>
             </div>
@@ -98,7 +98,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-numpad-keyboard-4.jpeg"
                 alt="keyboardCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryC}`}>Keyboards</NavLink>
               </li>
             </div>
@@ -108,7 +108,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-diy-kit-2.jpeg"
                 alt="DIYkitsCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryD}`}>DIY kits</NavLink>
               </li>
             </div>
@@ -118,7 +118,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"
                 alt="saleCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/sale`}>Sale</NavLink>
               </li>
             </div>
