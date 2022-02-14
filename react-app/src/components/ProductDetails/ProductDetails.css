@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid orange;
 }
 
 .product-heading {
@@ -31,9 +30,8 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  /* flex-direction: row; */
-  /* justify-content: space-between; */
 }
+
 .product-price-details-top-left,
 .product-price-details-top-right {
   display: flex;

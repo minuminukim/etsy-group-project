@@ -11,12 +11,12 @@ const Footer = () => {
       <img src={logo3} id="row-img" />
       <div id='story-row'>
         <div className="story-row-inner">
-          <h1 id="footer-title">What is Qwerty</h1>
+          <h1 id="footer-title">What is Qwerty?</h1>
         </div>
         <div className="story-row-inner">
           <div>
             <p className="story-headers">A community doing good</p>
-            <p className="footer-stories">Qwerty is a global online marketplace, where people come together to make, sell, buy, and collect unique keyboards and accessories. We’re also a community pushing for positive change for small businesses, people, and the planet. <span className="underline-text">Here are some of the ways we’re making a positive impact, together.</span></p>
+            <p className="footer-stories">Qwerty is a global online marketplace, where people come together to make, sell, buy, and collect unique keyboards and accessories. We’re also a community pushing for positive change for small businesses, people, and the planet. <span className="underline-text-dark">Here are some of the ways we’re making a positive impact, together.</span></p>
           </div>
           <div>
             <p className="story-headers">Support independent creators</p>

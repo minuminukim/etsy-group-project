@@ -10,7 +10,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductListing from './components/ProductListing';
 import PageNotFound from './components/PageNotFound';
-import UserProfile from './components/UserProfile/User';
+import ReviewForm from './components/ReviewForm/ReviewForm';
+import UserProfile from './components/UserProfile/UserProfile';
 import Reviews from './components/Reviews/Reviews';
 import { authenticate } from './store/session';
 import SearchResult from './components/Search/SearchResult';
@@ -48,7 +49,7 @@ function App() {
           <LandingPage />
           <FooterHome />
         </Route>
-        <Route path='/mycart' exact={true} >
+        <Route path="/mycart" exact={true}>
           {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
         </Route>
         <Route path="/category/:category" exact={true}>
@@ -63,7 +64,7 @@ function App() {
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
+          <UserProfile />
         </ProtectedRoute>
         <Route exact path="/products/new">
           <ProductListingForm sessionUser={sessionUser} />
@@ -86,8 +87,8 @@ function App() {
         <Route>
           <PageNotFound />
         </Route>
-      </Switch >
-    </BrowserRouter >
+      </Switch>
+    </BrowserRouter>
   );
 }
 

@@ -3,10 +3,6 @@ import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
-  // TODO: Figure out what to do while images are loading
-  // right now they don't have fallback, so they error
-  // maybe build loading spinner component?
-
   const { id, title, price, discount, stock, user, rating, images } = product;
 
   const { original } = calculateOriginalPrice(price, discount);
