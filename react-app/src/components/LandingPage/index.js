@@ -13,7 +13,6 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const productsObject = useSelector((state) => state.products);
   const allProducts = Object.values(productsObject);
-  console.log('allProducts', allProducts);
   const sorted = sortByRating(allProducts);
 
   useEffect(() => {
@@ -22,13 +21,10 @@ const LandingPage = () => {
       .catch((response) => response);
   }, [dispatch]);
 
-  console.log('sorted', sorted);
-
   const categoryA = 'switches';
   const categoryB = 'keycaps';
   const categoryC = 'keyboards';
   const categoryD = 'diy_kits';
-  const categoryE = 'sale';
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionMessage;
@@ -78,7 +74,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"
                 alt="keyboardSwitchCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryA}`}>Switches</NavLink>
               </li>
             </div>
@@ -88,7 +84,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/pbt-chalk-keycaps-1.jpeg"
                 alt="keycapsCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryB}`}>Keycaps</NavLink>
               </li>
             </div>
@@ -98,7 +94,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-numpad-keyboard-4.jpeg"
                 alt="keyboardCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryC}`}>Keyboards</NavLink>
               </li>
             </div>
@@ -108,7 +104,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-diy-kit-2.jpeg"
                 alt="DIYkitsCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/${categoryD}`}>DIY kits</NavLink>
               </li>
             </div>
@@ -118,7 +114,7 @@ const LandingPage = () => {
                 src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"
                 alt="saleCategoryImage"
               />
-              <li>
+              <li className="landing-page-links">
                 <NavLink to={`/category/sale`}>Sale</NavLink>
               </li>
             </div>

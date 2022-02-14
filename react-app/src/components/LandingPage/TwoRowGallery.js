@@ -2,7 +2,26 @@ import ProductImage from '../ProductImage';
 import './TwoRowGallery.css';
 
 const TwoRowGallery = ({ products, isLoading }) => {
-  const isEven = (i) => i % 2 === 0;
+  const toLandscape = (i) => {
+    switch (i) {
+      case 0:
+        return true;
+      case 1:
+        return false;
+      case 2:
+        return true;
+      case 3:
+        return false;
+      case 4:
+        return false;
+      case 5:
+        return true;
+      case 6:
+        return false;
+      case 7:
+        return true;
+    }
+  };
 
   return (
     <div className="products-gallery">
@@ -11,11 +30,11 @@ const TwoRowGallery = ({ products, isLoading }) => {
         products.map((item, i) => (
           <ProductImage
             key={item.title}
-            shape={isEven(i) ? 'landscape' : 'square'}
+            shape={toLandscape(i) ? 'landscape' : 'square'}
             src={item.images[0]}
-            alt={item.title}
             price={item.price}
             id={item.id}
+            i={i}
           />
         ))}
     </div>

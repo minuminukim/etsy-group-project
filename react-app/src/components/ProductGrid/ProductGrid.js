@@ -1,5 +1,4 @@
 import ProductCard from '../ProductCard';
-import { Link } from 'react-router-dom';
 import './ProductGrid.css';
 
 const ProductGrid = ({ products }) => {
@@ -7,7 +6,9 @@ const ProductGrid = ({ products }) => {
     <div className="product-grid">
       {products &&
         products.length > 0 &&
-        products.map((product) => <ProductCard product={product} />)}
+        products.map((product) => (
+          <ProductCard key={product.title} product={product} />
+        ))}
     </div>
   );
 };

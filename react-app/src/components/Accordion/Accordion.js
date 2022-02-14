@@ -21,7 +21,7 @@ const Accordion = ({ label, content, list = false }) => {
   return (
     <div className="accordion">
       <Trigger label={label} visible={visible} onClick={toggleVisible} />
-      {visible && toList(content)}
+      {visible && content}
     </div>
   );
 };

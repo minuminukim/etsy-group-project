@@ -21,10 +21,9 @@ const GetReviews = () => {
   const [editReviewId, setEditReviewId] = useState(0)
   const [rerender, setRerender] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
-  const [userLeftReview, setUserLeftReview] = useState(true)
   const [errors, setErrors] = useState([])
-  const [work, setWork] = useState(false)
   const [hover, setHover] = useState(0);
+  const [displayDelete, setDisplayDelete] = useState(true)
   let { productId } = useParams()
 
 
@@ -33,7 +32,6 @@ const GetReviews = () => {
     e.preventDefault();
     dispatch(sessionActions.deleteReview(id))
     setTest(!test)
-    setUserLeftReview(false)
   }
 
   const handleEdit = (e) => {
@@ -45,9 +43,14 @@ const GetReviews = () => {
     e.preventDefault()
 
     setTest(!rerender)
-    setEdit(true)
 
-    if (body.length && rating > 0) setDisplayEdit(false)
+    if (body.length > 1 && rating > 0) {
+      setDisplayEdit(false)
+      setDisplayDelete(true)
+      setEdit(true)
+      setErrors([])
+
+    }
 
     const payload = {
       user_id: currentUser.id,
@@ -76,20 +79,18 @@ const GetReviews = () => {
 
 
           <div id="star-rating-container">
-            {[...Array(5)].map((star, index) => {
-              index += 1;
+            {[...Array(5)].map((s, i) => {
+              i += 1;
               return (
-                <button
-                  type="button"
-                  key={index}
-                  // highlight prev stars including hovered
-                  className={index <= (hover || rating) ? "on" : "off"}
-                  onClick={() => setRating(index)}
-                  onMouseEnter={() => setHover(index)}
+                <span
+                  key={i}
+                  className={i <= (hover || rating) ? "highlight" : "off"}
+                  onClick={() => setRating(i)}
+                  onMouseEnter={() => setHover(i)}
                   onMouseLeave={() => setHover(rating)}
                 >
                   <span className="stars">★</span>
-                </button>
+                </span>
               );
             })}
           </div>
@@ -109,14 +110,22 @@ const GetReviews = () => {
               setBody(e.target.value)
             }}
           ></textarea>
-          <button className="btn">Update</button>
-
+          <div id="edit-form-btns">
+            <button className="btn" onClick={(e) => {
+              setRerender(!rerender)
+            }}>Update</button>
+            <button onClick={(e) => {
+              setEdit(true)
+              setDisplayEdit(false)
+              setDisplayDelete(true)
+            }} className="btn">Cancel</button>
+          </div>
         </form>
 
-        <button onClick={(e) => {
+        {/* <button onClick={(e) => {
           setEdit(true)
           setDisplayEdit(false)
-        }} className="btn">Cancel</button>
+        }} className="btn">Cancel</button> */}
       </>
     )
   }
@@ -124,11 +133,11 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, work, edit])
+  }, [dispatch, test, rerender, edit, productId])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, work, edit])
+  }, [dispatch, test, rerender, edit, productId])
 
   return (
     <div id="reviews-main-container">
@@ -156,24 +165,25 @@ const GetReviews = () => {
             </div>
 
             {/* Only display deleteBtn for a review by currentUser */}
-            <div id="review-row3">
+            <div id="review-form-container">
               {review.user_id === currentUser?.id ? editForm : null}
-
+            </div>
+            <div id="review-row3">
               {review.user_id === currentUser?.id && edit === true ?
                 <button
                   className="btn"
-                  id="deleteReviewBtn"
                   value={review.id}
                   onClick={(e) => {
                     setEditReviewId(e.target.value)
                     handleEdit(e)
                     setEdit(false)
+                    setDisplayDelete(false)
                   }}>
                   Edit
                 </button>
                 : null}
 
-              {review.user_id === currentUser?.id ?
+              {review.user_id === currentUser?.id && displayDelete ?
                 <button className="btn" id="deleteReviewBtn" onClick={(e) => {
                   handleDelete(e, review.id)
                 }} value={review.id}>Delete</button>
