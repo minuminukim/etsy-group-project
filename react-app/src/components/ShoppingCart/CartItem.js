@@ -3,33 +3,14 @@ import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../store/shoppingCart';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
-import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const CartItem = ({ cartItem }) => {
   let session = useSelector((state) => state.session);
-  // let cartItemErrors = useSelector((state) => state.session.shoppingCart);
-  // const [hasLoadedCart, setHasLoadedCart] = useState(false)
-  // const [quantityError, setQuantityError] = useState(false)
-
-  // console.log(cartItemErrors, "fvdfvdf")
-
-
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setHasLoadedCart(true);
-  //   }, 100);
-  //   return () => clearTimeout(timer);
-  // });
 
   const dispatch = useDispatch();
 
-  let onSale;
 
-  if (parseInt(cartItem.product_discount, 10) > 0) {
-    onSale = cartItem.product_discount;
-  }
 
   const removeItem = () => {
     dispatch(deleteCartItems([cartItem.id]));
