@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FaCcMastercard } from 'react-icons/fa';
 import { FaCcVisa } from 'react-icons/fa';
 import { SiAmericanexpress } from 'react-icons/si';
@@ -7,13 +6,12 @@ import { SiKlarna } from 'react-icons/si';
 import { FaCcDiscover } from 'react-icons/fa';
 import Button from '../common/Button/Button';
 import { deleteCartItems } from '../../store/shoppingCart';
-import { useDispatch, useSelector } from 'react-redux';
-import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
+import { useDispatch } from 'react-redux';
 import { updateItemErrors } from '../../store/shoppingCart';
 
 const PurchaseCart = ({ cartItems, setWasPurchased }) => {
   const dispatch = useDispatch();
-  const [errors, setErrors] = useState({});
+
   let totalPrice = 0;
 
   for (let i = 0; i < cartItems.length; i++) {

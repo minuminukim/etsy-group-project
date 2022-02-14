@@ -25,77 +25,67 @@ const CategoryView = () => {
       <div className="category-header">
         <div className="header-elements">
           <ul className="header-elements-container">
-            <div>
-              <NavLink to={`/products/${products[2]?.id}`}> </NavLink>
+            <div><NavLink to={`/products/${products[2]?.id}`}>
               <li className="header-images">
-                <NavLink to={`/products/${products[0]?.id}`}>
                   <img
                     className="header-pic"
-                    src={products[0]?.images[0]}
-                    alt="switches"
+                    src={products[2]?.images[0]}
+                    alt={products[2]?.title}
                   />
-                </NavLink>
               </li>
               <div className="category-product-price">
                 ${products[2]?.price}
               </div>
-            </div>
+              </NavLink></div>
             <div>
-              <li className="header-images">
-                <NavLink to={`/products/${products[1]?.id}`}>
+                <NavLink to={`/products/${products[4]?.id}`}>
+                <li className="header-images">
                   <img
                     className="header-pic"
-                    src={products[1]?.images[0]}
-                    alt="keycaps"
+                    src={products[4]?.images[0]}
+                    alt={products[4]?.title}
                   />
-                </NavLink>
               </li>
               <div className="category-product-price">
                 ${products[4]?.price}
               </div>
-            </div>
-            <div>
-              <NavLink to={`/products/${products[6]?.id}`}>
-                <li className="header-images">
-                  <NavLink to={`/products/${products[2]?.id}`}>
-                    <img
-                      className="header-pic"
-                      src={products[2]?.images[0]}
-                      alt="keyboards"
-                    />
-                  </NavLink>
-                </li>
-                <div className="category-product-price">
-                  ${products[6]?.price}
-                </div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to={`/products/${products[8]?.id}`}>
-                <li className="header-images">
-                  <NavLink to={`/products/${products[3]?.id}`}>
-                    <img
-                      className="header-pic"
-                      src={products[3]?.images[0]}
-                      alt="DIY kits"
-                    />
-                  </NavLink>
-                </li>
-                <div className="category-product-price">
-                  ${products[8]?.price}
-                </div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to={`/products/${products[10]?.id}`}>
-                <li className="header-images">
-                  <img className="header-pic" src={products[10]?.images[0]} />
-                </li>
-                <div className="category-product-price">
-                  ${products[10]?.price}
-                </div>
-              </NavLink>
-            </div>
+              </NavLink></div>
+            <div><NavLink to={`/products/${products[6]?.id}`}>
+              <li className="header-images">
+                  <img
+                    className="header-pic"
+                    src={products[6]?.images[0]}
+                    alt={products[6]?.title}
+                  />
+              </li>
+              <div className="category-product-price">
+                ${products[6]?.price}
+              </div>
+            </NavLink></div>
+            <div><NavLink to={`/products/${products[8]?.id}`}>
+              <li className="header-images">
+                  <img
+                    className="header-pic"
+                    src={products[8]?.images[0]}
+                    alt={products[8]?.title}
+                  />
+              </li>
+              <div className="category-product-price">
+                ${products[8]?.price}
+              </div>
+            </NavLink></div>
+            <div><NavLink to={`/products/${products[10]?.id}`}>
+              <li className="header-images">
+                <img 
+                  className="header-pic" 
+                  src={products[10]?.images[0]}
+                  alt={products[10]?.title}
+                />
+              </li>
+              <div className="category-product-price">
+                ${products[10]?.price}
+              </div>
+            </NavLink></div>
           </ul>
         </div>
       </div>

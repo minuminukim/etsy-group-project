@@ -19,7 +19,7 @@ def seed_products():
         title="Cherry RGB Brown Switches (10 PCS)",
         description="Tactile, 45 cN operating force, 2.0 mm pre travel, 4.0 mm total travel, Plate mount 3pin, MX stem",
         price=4.00,
-        rating=9,
+        rating=4,
         stock=200,
         category="switches",
     )

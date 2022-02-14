@@ -243,9 +243,7 @@ const AuthModals = () => {
 
   return (
     <div>
-      <button id="signIn" id="sign-in" onClick={() => SetSigninModal(true)}>
-        Sign In
-      </button>
+      <button className="signIn" id="sign-in" onClick={() => SetSigninModal(true)}>Sign In</button>
       {SigninModal && (
         <Modal onClose={() => SetSigninModal(false)}>
           <SigninForm />

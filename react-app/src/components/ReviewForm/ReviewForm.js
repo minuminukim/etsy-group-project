@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import * as sessionActions from "../../store/review"
 import { useParams } from "react-router-dom";
-import { BsStarFill } from "react-icons/bs"
-import { AiOutlineStar } from "react-icons/ai"
 
 import "./ReviewForm.css"
 
@@ -70,11 +68,11 @@ const CreateReview = ({ setUserLeftReview }) => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
-  }, [dispatch, test])
+  }, [dispatch, test, productId])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId))
-  }, [dispatch, test])
+  }, [dispatch, test, productId])
 
 
   return (
