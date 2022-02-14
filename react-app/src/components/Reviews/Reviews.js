@@ -133,11 +133,11 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, edit, currentUser.id, productId])
+  }, [dispatch, test, rerender, edit, productId])
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, edit, currentUser.id, productId])
+  }, [dispatch, test, rerender, edit, productId])
 
   return (
     <div id="reviews-main-container">
