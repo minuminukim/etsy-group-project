@@ -1,65 +1,54 @@
 //constants
-const LOAD_CART = "shoppingCart/LOAD_CART"
-const SINGLE_DELETE = "shoppingCart/SINGLE_DELETE"
-const MULTIPLE_DELETE = "shoppingCart/MULTIPLE_DELETE"
-const ADD_TO_CART = "shoppingCart/ADD_TO_CART"
-const ITEM_ERRORS = "shoppingCart/ITEM_ERRORS"
+const LOAD_CART = 'shoppingCart/LOAD_CART';
+const SINGLE_DELETE = 'shoppingCart/SINGLE_DELETE';
+const MULTIPLE_DELETE = 'shoppingCart/MULTIPLE_DELETE';
+const ADD_TO_CART = 'shoppingCart/ADD_TO_CART';
+const ITEM_ERRORS = 'shoppingCart/ITEM_ERRORS';
+
 /*--------------------------------------------------------------------*/
 //Action Creators
 
 const loadCartItems = (cartItems) => ({
-    type: LOAD_CART,
-    payload: cartItems
-})
-
+  type: LOAD_CART,
+  payload: cartItems,
+});
 
 const deleteOneCartItem = (itemId) => ({
-    type: SINGLE_DELETE,
-    payload: itemId
-})
-
+  type: SINGLE_DELETE,
+  payload: itemId,
+});
 
 const deleteAllCartItems = () => ({
-    type: MULTIPLE_DELETE,
-})
-
+  type: MULTIPLE_DELETE,
+});
 
 const addToCart = (item) => ({
-    type: ADD_TO_CART,
-    payload: item
-})
+  type: ADD_TO_CART,
+  payload: item,
+});
 
 export const updateItemErrors = (itemErrors) => ({
-    type: ITEM_ERRORS,
-    payload: itemErrors
-})
+  type: ITEM_ERRORS,
+  payload: itemErrors,
+});
 
 /*--------------------------------------------------------------------*/
 //THUNKS
 
 export const get_cart_items = (id) => async (dispatch) => {
+  const response = await fetch(`/api/mycart/${id}`);
 
-    const response = await fetch(`/api/mycart/${id}`)
+  if (response.ok) {
+    const data = await response.json();
 
-    if (response.ok) {
+    dispatch(loadCartItems(data['cart_items'])); // dispatch action creator
 
-        const data = await response.json()
-
-
-
-        dispatch(loadCartItems(data["cart_items"])) // dispatch action creator
-
-
-        return data;
-    }
-
-}
-
+    return data;
+  }
+};
 
 export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
-
-
-    /*
+  /*
 
     pass in an object as body of request that looks like this
 
@@ -72,160 +61,121 @@ export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
     dispatch deleteAllCartItems
     */
 
-    const response = await fetch("/api/mycart/delete", {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            items: itemstoDelete
-        })
-    })
+  const response = await fetch('/api/mycart/delete', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      items: itemstoDelete,
+    }),
+  });
 
-
-
-    if (response.ok) {
-
-        if (itemstoDelete.length === 1) {
-            dispatch(deleteOneCartItem(itemstoDelete[0]))
-        } else if (itemstoDelete.length > 1) {
-            dispatch(deleteAllCartItems())
-        }
-
-
-    } else {
-        console.log("failed said face!!!")
+  if (response.ok) {
+    if (itemstoDelete.length === 1) {
+      dispatch(deleteOneCartItem(itemstoDelete[0]));
+    } else if (itemstoDelete.length > 1) {
+      dispatch(deleteAllCartItems());
     }
-}
+  } else {
+    return;
+  }
+};
 
-
-export const updateQuantity = (quantity, cartItemId, userId) => async (dispatch) => {
-
-
+export const updateQuantity =
+  (quantity, cartItemId, userId) => async (dispatch) => {
     const response = await fetch(`/api/mycart/${cartItemId}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            quantity: quantity
-        })
-    })
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        quantity: quantity,
+      }),
+    });
 
     if (response.ok) {
+      dispatch(get_cart_items(userId));
 
-        dispatch(get_cart_items(userId))
-
-
-        return "it should have worked"
-
+      return 'it should have worked';
     }
-}
+  };
 
-
-
-export const addToCartThunk = (productId, quantity, userId) => async (dispatch) => {
-
-    console.log(productId, quantity, userId)
-
+export const addToCartThunk =
+  (productId, quantity, userId) => async (dispatch) => {
     const response = await fetch(`/api/mycart/new`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            quantity: quantity,
-            user_id: userId,
-            product_id: productId
-        })
-    })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        quantity: quantity,
+        user_id: userId,
+        product_id: productId,
+      }),
+    });
 
-    const data = await response.json()
+    const data = await response.json();
 
     if (data.errors) {
-        console.log("you have some errors.")
-        return "you have some errors."
+      return 'you have some errors.';
     } else {
-        dispatch(addToCart(data))
+      dispatch(addToCart(data));
 
-        return "Success"
+      return 'Success';
     }
-
-
-}
-
-
-
-
-
-
-
+  };
 
 /*--------------------------------------------------------------------*/
 // REDUCER
 
-const initialState = {
-
-}
-
+const initialState = {};
 
 const shoppingCartReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_CART:
+      let newCart = {};
 
-    switch (action.type) {
-        case LOAD_CART:
+      action.payload.forEach((item) => {
+        newCart[item.id] = item;
+      });
 
-            let newCart = {}
+      return newCart;
 
-            action.payload.forEach(item => {
-                newCart[item.id] = item
-            })
+    case MULTIPLE_DELETE:
+      return {};
 
-            return newCart;
+    case SINGLE_DELETE:
+      const updateState = {
+        ...state,
+      };
 
-        case MULTIPLE_DELETE:
+      delete updateState[`${action.payload}`];
 
-            return {
+      return updateState;
 
-            }
+    case ADD_TO_CART:
+      const newState = { ...state };
 
-        case SINGLE_DELETE:
+      newState[action.payload.id] = action.payload;
 
-            const updateState = {
-                ...state
-            }
+      return newState;
 
-            delete updateState[`${action.payload}`]
+    case ITEM_ERRORS:
+      const newStateAgain = { ...state };
 
-            return updateState;
+      let oldObject = newStateAgain[`${action.payload[0]}`];
 
-        case ADD_TO_CART:
+      newStateAgain[`${action.payload[0]}`] = {
+        ...oldObject,
+        errors: action.payload[1],
+      };
 
-            const newState = { ...state }
+      return newStateAgain;
 
-            newState[action.payload.id] = action.payload
-
-            return newState
-
-        case ITEM_ERRORS:
-
-            const newStateAgain = { ...state }
-
-            // console.log(action.payload[0], "-------------")
-
-            let oldObject = newStateAgain[`${action.payload[0]}`]
-
-            newStateAgain[`${action.payload[0]}`] = {
-                ...oldObject,
-                errors: action.payload[1]
-            }
-
-            return newStateAgain
-
-        default:
-            return state;
-    }
-
-}
-
+    default:
+      return state;
+  }
+};
 
 export default shoppingCartReducer;

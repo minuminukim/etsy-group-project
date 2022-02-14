@@ -306,8 +306,8 @@ def seed_products():
 
     chinese_drum_keyboard = Product(
         user_id=1,
-        title="Chinese Characters Drum Keyboard",
-        description="Exclusive 500% Layout Chinese Character Drumpad Keyboard. One of One. Party Like A Rockstar 🤩",
+        title="Japanese Characters Drum Keyboard",
+        description="Exclusive 500% Layout Japanese Character Drumpad Keyboard. One of One. Party Like A Rockstar 🤩",
         price=9999.99,
         rating=5,
         stock=1,
