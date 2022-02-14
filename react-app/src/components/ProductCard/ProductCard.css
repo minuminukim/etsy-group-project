@@ -47,3 +47,22 @@
   color: #258635;
   margin-left: 3px;
 }
+
+
+
+
+.stars-1::after {
+  content:'★';
+}
+.stars-2::after {
+  content: '★★';
+}
+.stars-3::after {
+  content: '★★★';
+}
+.stars-4::after {
+  content: '★★★★';
+}
+.stars-5::after {
+  content: '★★★★★';
+}

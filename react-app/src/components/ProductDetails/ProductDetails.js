@@ -39,11 +39,6 @@ const ProductDetails = ({ product, sessionId }) => {
         <Link to={`/users/${userId}`} className={'seller-details-link'}>
           {user.username}
         </Link>
-        <div>
-          {/* TODO render stars for rating */}
-          <span>Rating</span>
-          {user.rating}
-        </div>
       </div>
       <div>
         <h1 className="product-heading">{title}</h1>
