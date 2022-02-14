@@ -3,7 +3,6 @@ import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../store/shoppingCart';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
-import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const CartItem = ({ cartItem }) => {
@@ -11,11 +10,7 @@ const CartItem = ({ cartItem }) => {
 
   const dispatch = useDispatch();
 
-  let onSale;
 
-  if (parseInt(cartItem.product_discount, 10) > 0) {
-    onSale = cartItem.product_discount;
-  }
 
   const removeItem = () => {
     dispatch(deleteCartItems([cartItem.id]));

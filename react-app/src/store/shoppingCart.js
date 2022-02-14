@@ -2,9 +2,9 @@
 const LOAD_CART = 'shoppingCart/LOAD_CART';
 const SINGLE_DELETE = 'shoppingCart/SINGLE_DELETE';
 const MULTIPLE_DELETE = 'shoppingCart/MULTIPLE_DELETE';
-const UPDATE_QUANTITY = 'shoppingCart/UPDATE_QUANTITY';
 const ADD_TO_CART = 'shoppingCart/ADD_TO_CART';
 const ITEM_ERRORS = 'shoppingCart/ITEM_ERRORS';
+
 /*--------------------------------------------------------------------*/
 //Action Creators
 
@@ -20,11 +20,6 @@ const deleteOneCartItem = (itemId) => ({
 
 const deleteAllCartItems = () => ({
   type: MULTIPLE_DELETE,
-});
-
-const updateCartQuantity = (quantity) => ({
-  type: UPDATE_QUANTITY,
-  payload: quantity,
 });
 
 const addToCart = (item) => ({

@@ -13,8 +13,31 @@ const AddToCart = ({ product }) => {
   const [isInStock, setIsInStock] = useState(false);
 
   useEffect(() => {
-    if (sessionUser) {
-      setIsSignedIn(true);
+
+        if (sessionUser) {
+            setIsSignedIn(true)
+        }
+
+        if (product.stock > 0) {
+            setIsInStock(true)
+        }
+    }, [sessionUser, product.stock])
+
+
+
+    const [selected, setSelected] = useState(1)
+
+    const {
+        id,
+        stock,
+    } = product;
+
+
+    console.log(product)
+
+    let quantityOptions = []
+    for (let i = 1; i <= parseInt(stock, 10); i++) {
+        quantityOptions.push(i)
     }
 
     if (product.stock > 0) {
