@@ -11,27 +11,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 import { updateItemErrors } from '../../store/shoppingCart';
 
-
 const PurchaseCart = ({ cartItems, setWasPurchased }) => {
-
-  console.log(cartItems, "fvdfvdfv")
-
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   let totalPrice = 0;
 
   for (let i = 0; i < cartItems.length; i++) {
-    totalPrice = totalPrice + parseFloat(cartItems[i].product_price * cartItems[i].quantity)
+    totalPrice =
+      totalPrice +
+      parseFloat(cartItems[i].product_price * cartItems[i].quantity);
   }
-
-
-
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
-
 
   /*
     onClick of pruchase button I dispatch a thunk that clears all items in cart only if
@@ -39,8 +33,6 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
 
     */
   const handleClick = () => {
-
-
     const postRequest = async () => {
       const response = await fetch(`/api/purchases/`, {
         method: 'POST',
@@ -51,31 +43,19 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
       const data = await response.json();
 
       if (data && data.errors) {
-        // TODO: error handling
-        console.log(data.errors)
-
-        dispatch(updateItemErrors([data.errors[0], data.errors[1]]))
-
+        dispatch(updateItemErrors([data.errors[0], data.errors[1]]));
       } else {
-
         // else dispatch clear cart
-        let cartItemIds = []
+        let cartItemIds = [];
 
         for (let i = 0; i < cartItems.length; i++) {
-          cartItemIds.push(cartItems[i].id)
-          console.log(cartItems[i].id)
+          cartItemIds.push(cartItems[i].id);
         }
-        dispatch(deleteCartItems(cartItemIds))
+        dispatch(deleteCartItems(cartItemIds));
 
-
-        setWasPurchased(true)
-
-
+        setWasPurchased(true);
       }
-
-
     };
-
 
     postRequest();
   };

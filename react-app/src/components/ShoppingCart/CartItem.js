@@ -8,20 +8,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 const CartItem = ({ cartItem }) => {
   let session = useSelector((state) => state.session);
-  // let cartItemErrors = useSelector((state) => state.session.shoppingCart);
-  // const [hasLoadedCart, setHasLoadedCart] = useState(false)
-  // const [quantityError, setQuantityError] = useState(false)
-
-  // console.log(cartItemErrors, "fvdfvdf")
-
-
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setHasLoadedCart(true);
-  //   }, 100);
-  //   return () => clearTimeout(timer);
-  // });
 
   const dispatch = useDispatch();
 
@@ -51,8 +37,10 @@ const CartItem = ({ cartItem }) => {
     );
   };
 
-
-  let discountInfo = calculateOriginalPrice(parseInt(cartItem.product_price, 10), parseInt(cartItem.product_discount, 10))
+  let discountInfo = calculateOriginalPrice(
+    parseInt(cartItem.product_price, 10),
+    parseInt(cartItem.product_discount, 10)
+  );
 
   // const checkErrors = () => {
 
@@ -60,7 +48,6 @@ const CartItem = ({ cartItem }) => {
   //     return <p>You got errors bro.</p>
   //   }
   // }
-
 
   return (
     <>
@@ -96,9 +83,6 @@ const CartItem = ({ cartItem }) => {
                     onChange={changeQuantity}
                   >
                     {quantityOptions().map((number) => {
-
-
-
                       return (
                         <option
                           key={uuidv4().toString()}
@@ -112,7 +96,12 @@ const CartItem = ({ cartItem }) => {
                 </div>
                 <div className="priceCartItemContainer">
                   ${cartItem.product_price}
-                  {parseInt(cartItem.product_discount, 10) > 0 ? <p>This item was ${discountInfo.original}. You Saved ${discountInfo.saving}</p> : null}
+                  {parseInt(cartItem.product_discount, 10) > 0 ? (
+                    <p>
+                      This item was ${discountInfo.original}. You Saved $
+                      {discountInfo.saving}
+                    </p>
+                  ) : null}
                 </div>
               </div>
               <div className="quantityAvailableText"></div>
