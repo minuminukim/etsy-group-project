@@ -32,7 +32,7 @@ function User() {
         <strong>Email</strong> {user.email}
       </li>
       <li>
-        <strong>Profile Pic</strong> <img src={user.profile_pic_url} />
+        <strong>Profile Pic</strong> <img src={user.profile_pic_url} alt="" />
       </li>
     </ul>
   );

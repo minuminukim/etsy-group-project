@@ -52,7 +52,7 @@ const SearchResult = () => {
       }
       }
       fetchData();
-    }, [query, descending, ascending, relevancy]);
+    }, [query, descending, ascending, relevancy, topRated, search]);
 
 
     useEffect(() => {
