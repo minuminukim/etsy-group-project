@@ -9,7 +9,7 @@ import CartFooter from "./CartFooter";
 import { v4 as uuidv4 } from 'uuid';
 import { AiOutlineClose } from "react-icons/ai"
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ setShoppingCartErrors}) => {
     let session = useSelector((state) => state.session);
 
     let [errors, setErrors] = useState(false)
@@ -56,10 +56,10 @@ const ShoppingCart = () => {
                             {valueArray.length} item(s) in your cart
                         </div>
                         {valueArray.map((item) => (
-                            <CartItem key={uuidv4().toString()} cartItem={item} />
+                            <CartItem setShoppingCartErrors={setShoppingCartErrors} key={uuidv4().toString()} cartItem={item} />
                         ))}
                     </div>
-                    <PurchaseCart cartItems={valueArray} setWasPurchased={setWasPurchased} />
+                    <PurchaseCart setShoppingCartErrors={setShoppingCartErrors} cartItems={valueArray} setWasPurchased={setWasPurchased} />
                 </div>
             </>
         );

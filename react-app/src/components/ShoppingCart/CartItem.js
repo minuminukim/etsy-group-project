@@ -5,7 +5,7 @@ import { updateQuantity } from '../../store/shoppingCart';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 import { v4 as uuidv4 } from 'uuid';
 
-const CartItem = ({ cartItem }) => {
+const CartItem = ({ cartItem, setShoppingCartErrors }) => {
   let session = useSelector((state) => state.session);
 
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const CartItem = ({ cartItem }) => {
 
   const removeItem = () => {
     dispatch(deleteCartItems([cartItem.id]));
+    setShoppingCartErrors(false)
   };
 
   let quantityOptions = () => {

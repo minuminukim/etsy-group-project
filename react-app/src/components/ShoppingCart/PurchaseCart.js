@@ -9,10 +9,12 @@ import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch } from 'react-redux';
 import { updateItemErrors } from '../../store/shoppingCart';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const PurchaseCart = ({ cartItems, setWasPurchased }) => {
+
+const PurchaseCart = ({ cartItems, setWasPurchased, setShoppingCartErrors }) => {
   const dispatch = useDispatch();
-
+  let shoppingCart = useSelector((state) => state.shoppingCart);
   let [errors, setErrors] = useState(false)
 
   let totalPrice = 0;
@@ -46,6 +48,7 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
       if (data && data.errors) {
         // dispatch(updateItemErrors([data.errors[0], data.errors[1]]));
         setErrors([data.errors[0], data.errors[1]])
+        setShoppingCartErrors([data.errors[0], data.errors[1]])
       } else {
         // else dispatch clear cart
         let cartItemIds = [];
@@ -56,6 +59,7 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
         dispatch(deleteCartItems(cartItemIds));
 
         setWasPurchased(true);
+        setShoppingCartErrors(false)
       }
     };
 
@@ -64,7 +68,7 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
 
   return (
     <>
-      {errors ? <div> {shoppingCart[`${errors[0]}`].product_title} {errors[1]}</div> : null}
+
       <div className="cartPurchaseContainer">
         <div className="paymentMethodContainer">
           <p className="howYouPayText"> How you'll Pay</p>
