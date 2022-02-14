@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login, signUp } from '../../store/session';
-import "./auth.css";
+import './auth.css';
 import { Modal } from '../../context/Modal';
 
-
 const AuthModals = () => {
-
-  const [SigninModal, SetSigninModal] = useState(false)
-  const [RegisterModal, SetRegisterModal] = useState(false)
+  const [SigninModal, SetSigninModal] = useState(false);
+  const [RegisterModal, SetRegisterModal] = useState(false);
 
   const SigninForm = () => {
     const [errors, setErrors] = useState([]);
@@ -18,10 +16,9 @@ const AuthModals = () => {
 
     const onLogin = async (e) => {
       e.preventDefault();
-      e.stopPropagation()
+      e.stopPropagation();
       const data = await dispatch(login(email, password));
       if (data) {
-        console.log(data, "1111111111111")
         setErrors(data);
       }
     };
@@ -34,16 +31,14 @@ const AuthModals = () => {
       setPassword(e.target.value);
     };
 
-
     const demoUserLogin = async (e) => {
       e.preventDefault();
-      const data = await dispatch(login("demo@aa.io", "demopassword"));
+      const data = await dispatch(login('demo@aa.io', 'demopassword'));
 
       if (data) {
-
         setErrors(data);
       }
-    }
+    };
 
     return (
       <form className="login-form" onSubmit={onLogin}>
@@ -53,43 +48,56 @@ const AuthModals = () => {
           ))}
         </div>
         <div className="signin-register-container">
-
           <div className="sign-in-font">Sign in</div>
           <div>
-            <button type="button" className="demoUserButton" onClick={demoUserLogin}>Demo User</button>
-            <button type="button" className="register-button" onClick={() => SetRegisterModal(true)}>Register</button>
+            <button
+              type="button"
+              className="demoUserButton"
+              onClick={demoUserLogin}
+            >
+              Demo User
+            </button>
+            <button
+              type="button"
+              className="register-button"
+              onClick={() => SetRegisterModal(true)}
+            >
+              Register
+            </button>
             {RegisterModal && (
-              <Modal onClose={() => {
-                SetRegisterModal(false)
-                SetSigninModal(false)
-              }} >
+              <Modal
+                onClose={() => {
+                  SetRegisterModal(false);
+                  SetSigninModal(false);
+                }}
+              >
                 <RegisterForm />
               </Modal>
             )}
           </div>
         </div>
         <div id="loginContainer">
-          <div className='loginLabelTextContainer'>
-            <label htmlFor='email'>Email address</label>
+          <div className="loginLabelTextContainer">
+            <label htmlFor="email">Email address</label>
           </div>
           <div>
             <input
-              name='email'
-              type='text'
-              placeholder='Email'
+              name="email"
+              type="text"
+              placeholder="Email"
               value={email}
               onChange={updateEmail}
               className="loginInputBar"
             />
           </div>
-          <div className='loginLabelTextContainer'>
-            <label htmlFor='password'>Password</label>
+          <div className="loginLabelTextContainer">
+            <label htmlFor="password">Password</label>
           </div>
           <div>
             <input
-              name='password'
-              type='password'
-              placeholder='Password'
+              name="password"
+              type="password"
+              placeholder="Password"
               value={password}
               onChange={updatePassword}
               className="loginInputBar"
@@ -97,11 +105,18 @@ const AuthModals = () => {
           </div>
         </div>
         <div>
-          <button className="login-button" type='submit'>Sign in</button>
+          <button className="login-button" type="submit">
+            Sign in
+          </button>
         </div>
         <hr></hr>
         <div>
-          <p className="signin-policy">By clicking Sign in, you agree to Qwerty's Terms of Use and Privacy Policy, which does not exist. Qwerty will not send you communications. We'll never post without your permission; in fact we'll never post anything, ever.</p>
+          <p className="signin-policy">
+            By clicking Sign in, you agree to Qwerty's Terms of Use and Privacy
+            Policy, which does not exist. Qwerty will not send you
+            communications. We'll never post without your permission; in fact
+            we'll never post anything, ever.
+          </p>
         </div>
       </form>
     );
@@ -117,17 +132,15 @@ const AuthModals = () => {
 
     const onSignUp = async (e) => {
       e.preventDefault();
-      e.stopPropagation()
+      e.stopPropagation();
       if (password === repeatPassword) {
-
         const data = await dispatch(signUp(username, email, password));
 
         if (data) {
-
-          setErrors(data)
+          setErrors(data);
         }
       } else {
-        setErrors(["Password and Confirm password must match."])
+        setErrors(['Password and Confirm password must match.']);
       }
     };
 
@@ -163,8 +176,8 @@ const AuthModals = () => {
             <label>First name</label>
           </div>
           <input
-            type='text'
-            name='username'
+            type="text"
+            name="username"
             onChange={updateUsername}
             value={username}
             required={true}
@@ -176,8 +189,8 @@ const AuthModals = () => {
             <label>Email address</label>
           </div>
           <input
-            type='text'
-            name='email'
+            type="text"
+            name="email"
             onChange={updateEmail}
             value={email}
             required={true}
@@ -189,8 +202,8 @@ const AuthModals = () => {
             <label>Password</label>
           </div>
           <input
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             onChange={updatePassword}
             value={password}
             required={true}
@@ -202,8 +215,8 @@ const AuthModals = () => {
             <label>Repeat Password</label>
           </div>
           <input
-            type='password'
-            name='repeat_password'
+            type="password"
+            name="repeat_password"
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
@@ -211,27 +224,35 @@ const AuthModals = () => {
           ></input>
         </div>
         <div>
-          <button className="signup-button" type='submit'>Register</button>
+          <button className="signup-button" type="submit">
+            Register
+          </button>
         </div>
         <hr></hr>
         <div>
-          <p className="signin-policy">By clicking Sign in, you agree to Qwerty's Terms of Use and Privacy Policy, which does not exist. Qwerty will not send you communications. We'll never post without your permission; in fact we'll never post anything, ever.</p>
+          <p className="signin-policy">
+            By clicking Sign in, you agree to Qwerty's Terms of Use and Privacy
+            Policy, which does not exist. Qwerty will not send you
+            communications. We'll never post without your permission; in fact
+            we'll never post anything, ever.
+          </p>
         </div>
       </form>
     );
   };
 
-
-
   return (
     <div>
-      <button id="signIn" id="sign-in" onClick={() => SetSigninModal(true)}>Sign In</button>
+      <button id="signIn" id="sign-in" onClick={() => SetSigninModal(true)}>
+        Sign In
+      </button>
       {SigninModal && (
-        <Modal onClose={() => SetSigninModal(false)}><SigninForm /></Modal>
+        <Modal onClose={() => SetSigninModal(false)}>
+          <SigninForm />
+        </Modal>
       )}
     </div>
   );
-
-}
+};
 
 export default AuthModals;
