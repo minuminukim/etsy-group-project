@@ -20,16 +20,16 @@ const SearchResult = () => {
       if (showFilter) return;
       setShowFilter(true);
     };
-  
+
     useEffect(() => {
       if (!showFilter) return;
-  
+
       const closeFilter= () => {
         setShowFilter(false);
       };
-  
+
       document.addEventListener('click', closeFilter);
-  
+
       return () => document.removeEventListener('click', closeFilter);
     }, [showFilter]);
 
@@ -94,9 +94,9 @@ const SearchResult = () => {
       setFilterName(" Top Customer Reviews");
     }
 
-    const isLoading = 
+    const isLoading =
     <div className="isLoading"></div>
-    
+
     const productNotFound = <div className="search-not-found">
       <div className="search-content">
         <h2>We couldn't find any results for {query}</h2>
@@ -114,14 +114,14 @@ const SearchResult = () => {
         <li className="filter-item" onClick={sortByRating}>Top Customer Reviews</li>
       </ul>
 
-    const loadPage = 
-    <> {(products.length>=1) ? 
-      <div className="search-page"> 
+    const loadPage =
+    <> {(products.length>=1) ?
+      <div className="search-page">
         <p className="results-text">Showing results for <strong>{query}</strong></p>
         <button className="filter-button" type="button" onClick={openFilter}>Sort by: <strong>{filterName}</strong></button>
         {showFilter && (SearchFilterMenu)}
         <div className="product-grid-search-page"><ProductGrid products={products}/></div>
-      </div> : 
+      </div> :
       productNotFound}
     </>
 

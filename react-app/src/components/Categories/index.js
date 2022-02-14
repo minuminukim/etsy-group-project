@@ -20,7 +20,6 @@ const CategoryView = () => {
 
   const CategoryTitle = category.split('_').join(' ');
 
-
   return (
     <div>
       <div className="category-header">
@@ -89,7 +88,7 @@ const CategoryView = () => {
             </NavLink></div>
           </ul>
         </div>
-      </div >
+      </div>
       <div className="category-content-header">
         <div className="content-container">
           <p className="by-interest">SHOP BY INTEREST</p>
@@ -102,7 +101,7 @@ const CategoryView = () => {
       <div className="grid-container">
         <ProductGrid products={products} />
       </div>
-    </div >
+    </div>
   );
 };
 
