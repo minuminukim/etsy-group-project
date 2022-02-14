@@ -28,7 +28,6 @@ const LandingPage = () => {
   const categoryB = 'keycaps';
   const categoryC = 'keyboards';
   const categoryD = 'diy_kits';
-  const categoryE = 'sale';
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionMessage;
