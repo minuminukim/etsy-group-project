@@ -70,9 +70,6 @@ const PurchaseCart = ({ cartItems, setWasPurchased }) => {
 
         setWasPurchased(true)
 
-        setTimeout(() => {
-          setWasPurchased(false)
-        }, 5000)
 
       }
 

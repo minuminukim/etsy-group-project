@@ -5,6 +5,9 @@ import { get_cart_items } from '../../store/shoppingCart';
 import CartItem from './CartItem';
 import PurchaseCart from './PurchaseCart';
 import { NavLink } from 'react-router-dom';
+import CartFooter from "./CartFooter";
+import { v4 as uuidv4 } from 'uuid';
+import { AiOutlineClose } from "react-icons/ai"
 
 const ShoppingCart = () => {
     let session = useSelector((state) => state.session);
@@ -31,7 +34,7 @@ const ShoppingCart = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoaded(true);
-        }, 100);
+        }, 300);
         return () => clearTimeout(timer);
     });
 
@@ -48,10 +51,10 @@ const ShoppingCart = () => {
                 <div className="CartItemsAndPurchaserContainer">
                     <div className="CartItemSectionContainer">
                         <div id="numberOfItemsText">
-                            {valueArray.length} items in your cart
+                            {valueArray.length} item(s) in your cart
                         </div>
                         {valueArray.map((item) => (
-                            <CartItem key={item.product_title} cartItem={item} />
+                            <CartItem key={uuidv4().toString()} cartItem={item} />
                         ))}
                     </div>
                     <PurchaseCart cartItems={valueArray} setWasPurchased={setWasPurchased} />
@@ -82,12 +85,29 @@ const ShoppingCart = () => {
         </>
     );
 
+    let thanksForPurchase = (
+
+        <>
+            <div id="thanksPurchaseDivSection">
+                <div className='thanksForPurchaseModalContainer'>
+
+                    <div id="thanksForPurchaseCloseButton"><AiOutlineClose id="closeModalButton" onClick={() => setWasPurchased(false)} /></div>
+
+                    <div className='thanksForPurchaseModal'>
+                        <div>Thanks for the purchase.</div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+
 
     return (
 
         <>
 
-            {wasPurchased ? <h1>Thanks for purchasing!!</h1> : <div className="ShoppingCart">{isLoaded ? cartItems : null}</div>}
+            {wasPurchased ? thanksForPurchase : <div className="ShoppingCart">{isLoaded ? cartItems : <div id='loadingCart' > Loading</div>}</div>}
+            <CartFooter />
 
         </>
     )
