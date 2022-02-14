@@ -12,7 +12,7 @@ const AddToCart = ({ product }) => {
     const sessionUser = useSelector((state) => state.session.user);
     const [isInStock, setIsInStock] = useState(false)
 
-    console.log(product, "kdbfvkdfbvhjdf")
+
 
 
 
@@ -25,7 +25,7 @@ const AddToCart = ({ product }) => {
         if (product.stock > 0) {
             setIsInStock(true)
         }
-    })
+    }, [sessionUser, product.stock])
 
 
 
@@ -33,10 +33,7 @@ const AddToCart = ({ product }) => {
 
     const {
         id,
-        title,
-        price,
         stock,
-        user,
     } = product;
 
 
