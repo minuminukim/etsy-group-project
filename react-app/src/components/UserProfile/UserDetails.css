@@ -1,6 +1,5 @@
 .user-details {
   display: flex;
-  border: 1px solid pink;
   align-items: flex-start;
 }
 

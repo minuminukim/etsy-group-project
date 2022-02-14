@@ -63,7 +63,6 @@ const ProductListingForm = ({
           history.push(`/products/${data.id}`);
         }
       })
-      // .then((data) => history.push(`/products/${data.id}/images/new`))
       .catch(async (res) => {
         const data = await res.json();
         setErrors(data.errors);

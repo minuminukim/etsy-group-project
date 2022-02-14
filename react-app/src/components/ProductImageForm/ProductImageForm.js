@@ -11,9 +11,6 @@ const ProductImageForm = ({ sessionUser }) => {
   const history = useHistory();
   const { productId } = useParams();
 
-  // TODO: error handling
-  // TODO: refactor render func to map, maybe set images def length to five
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();

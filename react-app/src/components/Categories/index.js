@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ProductGrid from '../ProductGrid';
-import ProductGridBlock from '../ProductCard';
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './Categories.css';
 import '../ButtonWithIcon/ButtonWithIcon.css';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 const CategoryView = () => {
   const [products, setProducts] = useState([]);
@@ -37,19 +35,30 @@ const CategoryView = () => {
     <div>
       <div className="category-header">
         <div className="header-elements">
-          {/* <div id="slideLeft" className="circle-btn circle-btn-medium"><AiOutlineArrowLeft/></div> */}
           <ul className="header-elements-container">
             <div><NavLink to={`/products/${products[2]?.id}`}>
               <li className="header-images">
-                  <img className="header-pic" src={products[2]?.images[0]} />
+                <NavLink to={`/products/${products[0]?.id}`}>
+                  <img
+                    className="header-pic"
+                    src={products[0]?.images[0]}
+                    alt="switches"
+                  />
+                </NavLink>
               </li>
               <div className="category-product-price">
                 ${products[2]?.price}
               </div>
-            </NavLink></div>
-            <div><NavLink to={`/products/${products[4]?.id}`}>
+            </div>
+            <div>
               <li className="header-images">
-                  <img className="header-pic" src={products[4]?.images[0]} />
+                <NavLink to={`/products/${products[1]?.id}`}>
+                  <img
+                    className="header-pic"
+                    src={products[1]?.images[0]}
+                    alt="keycaps"
+                  />
+                </NavLink>
               </li>
               <div className="category-product-price">
                 ${products[4]?.price}
@@ -57,7 +66,13 @@ const CategoryView = () => {
             </NavLink></div>
             <div><NavLink to={`/products/${products[6]?.id}`}>
               <li className="header-images">
-                  <img className="header-pic" src={products[6]?.images[0]} />
+                <NavLink to={`/products/${products[2]?.id}`}>
+                  <img
+                    className="header-pic"
+                    src={products[2]?.images[0]}
+                    alt="keyboards"
+                  />
+                </NavLink>
               </li>
               <div className="category-product-price">
                 ${products[6]?.price}
@@ -65,7 +80,13 @@ const CategoryView = () => {
             </NavLink></div>
             <div><NavLink to={`/products/${products[8]?.id}`}>
               <li className="header-images">
-                  <img className="header-pic" src={products[8]?.images[0]} />
+                <NavLink to={`/products/${products[3]?.id}`}>
+                  <img
+                    className="header-pic"
+                    src={products[3]?.images[0]}
+                    alt="DIY kits"
+                  />
+                </NavLink>
               </li>
               <div className="category-product-price">
                 ${products[8]?.price}
@@ -80,7 +101,6 @@ const CategoryView = () => {
               </div>
             </NavLink></div>
           </ul>
-          {/* <div id="slideRight" className="circle-btn circle-btn-medium"><AiOutlineArrowRight/></div> */}
         </div>
       </div>
       <div className="category-content-header">

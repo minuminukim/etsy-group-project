@@ -28,5 +28,4 @@ class LoginForm(FlaskForm):
     password = StringField('password', validators=[
                            DataRequired(), password_matches])
 
-# cart_items
-  
+
