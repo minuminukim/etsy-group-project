@@ -17,6 +17,7 @@ import LandingPage from './components/LandingPage';
 import DeleteWarning from './components/DeleteWarning';
 import NavBar from './components/NavBar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import FooterHome from './components/Footer/FooterHome';
 import Footer from './components/Footer';
 import SignInRequiredForCart from './components/ShoppingCart/signInRequiredForCart';
 
@@ -42,15 +43,18 @@ function App() {
       <Switch>
         <Route path="/" exact={true}>
           <LandingPage />
+          <FooterHome />
         </Route>
         <Route path="/mycart" exact={true}>
           {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />
+          <Footer />
         </Route>
         <Route path="/search" exact={true}>
           <SearchResult />
+          <Footer />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -63,6 +67,7 @@ function App() {
         </Route>
         <Route exact path="/products/:productId/edit">
           <ProductListingEdit sessionUser={sessionUser} />
+          <Footer />
         </Route>
         <Route exact path="/products/:productId/images/new">
           <ProductImageForm sessionUser={sessionUser} />
@@ -70,6 +75,7 @@ function App() {
         <Route exact path="/products/:productId">
           <ProductListing sessionId={sessionUser?.id} />
           <Reviews />
+          <Footer />
         </Route>
         <Route exact path="/testing">
           <DeleteWarning />
@@ -78,7 +84,6 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch>
-      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,3 +1,7 @@
+a {
+    color: black;
+}
+
 .category-page {
   display: flex;
 }
@@ -54,6 +58,7 @@
   box-shadow: 0 4px 20px rgb(34 34 34 / 20%);
   color: gray;
 }
+
 
 .category-content-header {
   position: absolute;

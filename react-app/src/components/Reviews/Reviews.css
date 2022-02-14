@@ -8,7 +8,7 @@
     /* margin: 15px 0 15px 0; */
     /* background-color: red; */
     margin: 25px auto 0px auto;
-    transform: translate(-40%);
+    transform: translate(-35%);
 }
 
 #reviews-title {
@@ -75,6 +75,11 @@
     justify-content: flex-end;
 }
 
+#review-form-container {
+    display: flex;
+    justify-content: center;
+}
+
 
 #review-author {
     font-size: 10px;
@@ -94,4 +99,20 @@
     font-size: 13px;
     color: #595959;
     border-bottom:none !important;
+}
+
+#deleteReviewBtn {
+    margin-left: 10px;
+}
+
+#edit-form-btns {
+    display: flex;
+}
+
+#edit-form-btns > * {
+    margin: 0 5px;
+}
+
+#review_form {
+    margin-bottom: 25px;
 }
