@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateQuantity } from '../../store/shoppingCart';
 import calculateOriginalPrice from '../../utils/calculateOriginalPrice';
 import { useEffect, useState } from 'react';
-
+import { v4 as uuidv4 } from 'uuid';
 
 const CartItem = ({ cartItem }) => {
   let session = useSelector((state) => state.session);
@@ -96,9 +96,12 @@ const CartItem = ({ cartItem }) => {
                     onChange={changeQuantity}
                   >
                     {quantityOptions().map((number) => {
+
+
+
                       return (
                         <option
-                          key={number.toString()}
+                          key={uuidv4().toString()}
                           value={number.toString()}
                         >
                           {number}

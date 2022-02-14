@@ -222,6 +222,7 @@ body {
   padding-bottom: 12px !important;
   padding-top: 12px !important;
   right: 10%;
+  z-index: 45;
 }
 
 .dropdown-containers {

@@ -17,8 +17,7 @@ const ProductCard = ({ product }) => {
           <h3 className="product-card-title">{title}</h3>
         </div>
         <div>
-          {/* TODO implement star ratings */}
-          <span>Rating: {rating}</span>
+          <span className={`stars-${rating}`}></span>
         </div>
         <div className="product-card-price-details">
           <p className="price-after-discount">{`$${price}`}</p>

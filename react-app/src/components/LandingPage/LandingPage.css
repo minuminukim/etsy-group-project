@@ -55,6 +55,10 @@
   cursor: pointer;
 }
 
+.landing-page-links >  a {
+    color: rgb(43, 43, 43);
+}
+
 .category-list-item:hover {
   border-bottom: 2px solid gray;
   color: gray;

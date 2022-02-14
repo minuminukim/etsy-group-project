@@ -4,7 +4,7 @@
     box-shadow: 0 6px 36px rgb(34 34 34 / 33%);
     background: transparent;
     border-radius: 24px;
-    height: 460px
+    height: 560px
 }
 
 .register-button {
@@ -114,7 +114,38 @@
     border-style: solid;
     border-color: #222222;
     width: 100%;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
+
+.signup-button {
+    cursor: pointer;
+    border-radius: 24px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    min-height: 48px;
+    min-width: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 10;
+    background-color: #222222;
+    color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #222222;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+
 
 .signin-policy {
     font-size: 13px;
@@ -141,4 +172,11 @@
     justify-content: flex-start;
     width: 320px;
     margin-bottom: 5px; 
+}
+
+
+.signupInout {
+    width: 320px;
+    height: 30px;
+    margin-bottom: 5px;
 }
