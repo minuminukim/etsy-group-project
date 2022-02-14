@@ -32,8 +32,10 @@ const CartItem = ({ cartItem }) => {
     );
   };
 
-
-  let discountInfo = calculateOriginalPrice(parseInt(cartItem.product_price, 10), parseInt(cartItem.product_discount, 10))
+  let discountInfo = calculateOriginalPrice(
+    parseInt(cartItem.product_price, 10),
+    parseInt(cartItem.product_discount, 10)
+  );
 
   // const checkErrors = () => {
 
@@ -41,7 +43,6 @@ const CartItem = ({ cartItem }) => {
   //     return <p>You got errors bro.</p>
   //   }
   // }
-
 
   return (
     <>
@@ -77,9 +78,6 @@ const CartItem = ({ cartItem }) => {
                     onChange={changeQuantity}
                   >
                     {quantityOptions().map((number) => {
-
-
-
                       return (
                         <option
                           key={uuidv4().toString()}
@@ -93,7 +91,12 @@ const CartItem = ({ cartItem }) => {
                 </div>
                 <div className="priceCartItemContainer">
                   ${cartItem.product_price}
-                  {parseInt(cartItem.product_discount, 10) > 0 ? <p>This item was ${discountInfo.original}. You Saved ${discountInfo.saving}</p> : null}
+                  {parseInt(cartItem.product_discount, 10) > 0 ? (
+                    <p>
+                      This item was ${discountInfo.original}. You Saved $
+                      {discountInfo.saving}
+                    </p>
+                  ) : null}
                 </div>
               </div>
               <div className="quantityAvailableText"></div>
