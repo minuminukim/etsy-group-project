@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FileInputWithPreview from './FileInputWithPreview';
 import Button from '../common/Button';
@@ -7,12 +7,9 @@ import './ProductImageForm.css';
 const ProductImageForm = ({ sessionUser }) => {
   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
-  const [imageLoading, setImageLoading] = useState(false);
+  const [_imageLoading, setImageLoading] = useState(false);
   const history = useHistory();
   const { productId } = useParams();
-
-  // TODO: error handling
-  // TODO: refactor render func to map, maybe set images def length to five
 
   const handleSubmit = async (e) => {
     e.preventDefault();

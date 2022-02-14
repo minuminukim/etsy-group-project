@@ -9,7 +9,6 @@ import splitStringToArray from '../../utils/splitStringToArray';
 import './ProductListing.css';
 import AddToCart from '../ShoppingCart/AddToCart';
 
-
 const ProductListing = ({ sessionId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
@@ -17,18 +16,12 @@ const ProductListing = ({ sessionId }) => {
   const history = useHistory();
   const { productId } = useParams();
 
-  console.log('product', product);
-  // TODO: product description component/seciton
-
-  // const list = splitStringToArray(product?.description, ',');
-
   useEffect(() => {
     return dispatch(getSingleProduct(productId))
       .then((res) => (res.archived ? history.push('/page-not-found') : res))
       .then((res) => setProduct(res))
       .then(() => setIsLoading(false))
       .catch(async (res) => {
-        console.log('res', res);
         const data = await res.json();
         if (data && data.errors) {
           history.push('/page-not-found');
@@ -47,7 +40,6 @@ const ProductListing = ({ sessionId }) => {
         <Accordion
           label="Description"
           content={splitStringToArray(product?.description, ',')}
-          // content={product.description}
           list={true}
         />
       </div>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ProductListingForm from '../ProductListingForm';
 import { getSingleProduct } from '../../store/productReducer';
 
 const ProductListingEdit = ({ sessionUser }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [_isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState({});
   const dispatch = useDispatch();
   const { productId } = useParams();
@@ -17,10 +17,10 @@ const ProductListingEdit = ({ sessionUser }) => {
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
-          console.log('errors', data.errors);
+          return data;
         }
       });
-  }, [dispatch]);
+  }, [dispatch, productId]);
 
   return (
     <ProductListingForm

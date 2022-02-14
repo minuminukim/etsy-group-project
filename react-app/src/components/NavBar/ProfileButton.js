@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory, NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
-import { HiUser } from 'react-icons/hi';
 import { MdOutlineSell } from 'react-icons/md';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { AiFillCaretDown } from 'react-icons/ai';
@@ -40,14 +38,14 @@ function ProfileButton({ user }) {
     <>
       <div className="logged-in-nav">
         <button id="logged-in-menu" onClick={openMenu}>
-          <img src={user.profile_pic_url} className="menu-icons" />
+          <img src={user.profile_pic_url} className="menu-icons" alt="profile pic url"/>
           <AiFillCaretDown />
         </button>
         {showMenu && (
           <ul className="profile-dropdown">
             <NavLink to={`/users/${user.id}`} className="dropdown-containers">
               <div>
-                <img src={user.profile_pic_url} className="dropdown-icons" />
+                <img src={user.profile_pic_url} className="dropdown-icons" alt="profile pic url"/>
               </div>
               <div>
                 <p>{user.username}</p>

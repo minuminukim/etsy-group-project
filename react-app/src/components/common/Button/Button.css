@@ -22,11 +22,6 @@
   border: 0;
 }
 
-/* .cancel-btn:hover,
-.delete-btn:hover {
-
-} */
-
 .btn.purchaseCart {
   height: 48px;
   width: 340px;
@@ -59,5 +54,5 @@
   font-size: 16px;
   cursor: pointer;
   background-color: #353434;
-   margin-top: 30px;
+  margin-top: 30px;
 }

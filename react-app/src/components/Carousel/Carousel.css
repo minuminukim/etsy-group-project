@@ -9,12 +9,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
-  border: 1px solid yellow;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   border-radius: 5px;
+  max-height: 635px;
+  min-height: 416px;
+  padding-top: 56.25%;
+  margin-right: 8px;
 }
 
 .carousel-slides {
@@ -27,4 +29,11 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  position: relative;
+  bottom: 190px;
+}
+
+.nav-btn {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }

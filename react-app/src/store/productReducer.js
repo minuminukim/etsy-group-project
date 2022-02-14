@@ -43,7 +43,6 @@ export const getAllProducts = () => async (dispatch) => {
   }
 
   const data = await response.json();
-  console.log('data in reducer', data);
   dispatch(loadProducts(data.products));
   return data;
 };
@@ -96,7 +95,6 @@ export const deleteProduct = (productId) => async (dispatch) => {
   });
 
   if (response.status >= 400) {
-    console.log('productId', productId);
     throw response;
   }
 

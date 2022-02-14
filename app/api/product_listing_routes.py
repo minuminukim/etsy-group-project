@@ -44,7 +44,7 @@ def get_product_images(id):
 
 
 @product_listing_routes.route("/<int:id>/product_images", methods=["POST"])
-# @login_required
+@login_required
 def upload_product_image(id):
     """
     Creates a new product image.
@@ -91,7 +91,6 @@ def add_product():
     """
     form = ProductListingForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print("@@@@@@@@@@@@@@@@", form.data)
 
     if form.validate_on_submit():
         product = Product.create(
@@ -112,7 +111,7 @@ def add_product():
 
 
 @product_listing_routes.route("/<int:id>", methods=["PUT"])
-# @login_required
+@login_required
 def update_product(id):
     """
     Updates a product listing's information
@@ -140,14 +139,12 @@ def update_product(id):
 
 
 @product_listing_routes.route("/<int:id>", methods=["DELETE"])
-# @login_required
+@login_required
 def delete_product(id):
     """
     'Deletes', or rather, archives a product listing.
     """
     product = Product.get_by_id(id)
-
-    # TODO: implement error handling
 
     if product:
         archived = Product.archive(product)

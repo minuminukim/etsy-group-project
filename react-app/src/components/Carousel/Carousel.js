@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ProductThumbnail from '../ProductThumbnail';
 import './Carousel.css';
 import ButtonWithIcon from '../ButtonWithIcon';

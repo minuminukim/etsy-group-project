@@ -1,76 +1,80 @@
 #review_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    /* background-color: aliceblue; */
-    width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 550px;
 }
 
 #review_body {
-    border:none;
-    border-bottom: solid 1px lightgray;
-    height: 25px;
-    margin: 20px 0;
-    min-height: 20px;
-    overflow: hidden;
-    resize: none;
-    width: 500px;
+  border: none;
+  border-bottom: solid 1px lightgray;
+  height: 25px;
+  margin: 20px 0;
+  min-height: 20px;
+  overflow: hidden;
+  resize: none;
+  width: 500px;
 }
 
 #review_body:focus {
-    /* remove default outline */
-    outline: none !important;
-    border-bottom: 1px solid black;
+
+  /* remove default outline */
+  outline: none !important;
+  border-bottom: 1px solid black;
 }
 
 .review-btn {
-    align-self: flex-end !important;
-    margin: 10px;
+  align-self: flex-end !important;
+  margin: 10px;
 }
 
 #review_btn_container {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 #review-pic {
-    display: flex;
-    align-items: center;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
 
 }
 
 .profile-pic {
-    height: 30px;
-    margin: 0;
-    padding: 0;
+  height: 30px;
+  margin: 0;
+  padding: 0;
 }
 
-  .stars-1::after {
-    content:'★';
-  }
-  .stars-2::after {
-    content: '★★';
-  }
-  .stars-3::after {
-    content: '★★★';
-  }
-  .stars-4::after {
-    content: '★★★★';
-  }
-  .stars-5::after {
-    content: '★★★★★';
-  }
+.stars-1::after {
+  content: '★';
+}
+.stars-2::after {
+  content: '★★';
+}
+.stars-3::after {
+  content: '★★★';
+}
+.stars-4::after {
+  content: '★★★★';
+}
+.stars-5::after {
+  content: '★★★★★';
+}
 
-  #star-rating-container > button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  .highlight {
-    color: black;
-  }
-  .off {
-    color: lightgray;
-  }
+
+#star-rating-container > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+/* star highligh color not working */
+.highlight {
+  color: rgb(53, 53, 53);
+}
+.off {
+  color: lightgray;
+}

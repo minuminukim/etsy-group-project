@@ -1,0 +1,40 @@
+.user-details {
+  display: flex;
+  align-items: flex-start;
+}
+
+.user-details-right {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin-left: 12px;
+}
+
+.user-details-username {
+  margin: 0;
+  padding: 0;
+}
+
+.user-details-bio {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.user-details-username {
+  font-family: 'Neuton', Cambria, Cochin, Georgia, Times, 'Times New Roman',
+    serif;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.user-details-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-details-bio {
+  font-size: 13px;
+  font-weight: 300;
+}
