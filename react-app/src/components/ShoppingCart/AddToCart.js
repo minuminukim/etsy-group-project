@@ -11,6 +11,7 @@ const AddToCart = ({ product }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const [isInStock, setIsInStock] = useState(false);
+  const [isOwner, setIsOwner] = useState(false)
 
   useEffect(() => {
     if (sessionUser) {
@@ -19,6 +20,11 @@ const AddToCart = ({ product }) => {
     if (product.stock > 0) {
       setIsInStock(true);
     }
+
+    if (product.user_id === sessionUser.id) {
+      setIsOwner(true)
+    }
+
   }, [sessionUser, product.stock]);
 
   const [selected, setSelected] = useState(1);
@@ -100,22 +106,27 @@ const AddToCart = ({ product }) => {
     </>
   );
 
+  // console.log(product)
+
   return (
     <>
-      {isInStock ? (
-        productIsInStock
-      ) : (
-        <div
-          style={{
-            marginTop: '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '20px',
-          }}
-        >
-          Out of Stock.
-        </div>
-      )}
+      {!isOwner && <>
+        {isInStock ? (
+          productIsInStock
+        ) : (
+          <div
+            style={{
+              marginTop: '20px',
+              display: 'flex',
+              justifyContent: 'center',
+              marginBottom: '20px',
+            }}
+          >
+            Out of Stock.
+          </div>
+        )}
+      </>
+      }
     </>
   );
 };
