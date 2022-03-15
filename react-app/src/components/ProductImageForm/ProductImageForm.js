@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FileInputWithPreview from './FileInputWithPreview';
 import Button from '../common/Button';
-import './ProductImageForm.css';
+import "./ProductImageForm.css"
 
 const ProductImageForm = ({ sessionUser }) => {
   const [images, setImages] = useState([]);
@@ -48,7 +48,7 @@ const ProductImageForm = ({ sessionUser }) => {
   };
 
   return (
-    <div className="container">
+    <div className="photosContainer">
       <h1 className="page-heading">Add a new listing</h1>
       <form onSubmit={handleSubmit} className="product-image-form">
         <h2 className="form-heading">Photos</h2>

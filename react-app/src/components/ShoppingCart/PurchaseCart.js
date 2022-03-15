@@ -35,6 +35,8 @@ const PurchaseCart = ({ cartItems, setWasPurchased, setShoppingCartErrors }) => 
     the quantity for the item is still available and the item is still being sold.
 
     */
+
+
   const handleClick = () => {
     const postRequest = async () => {
       const response = await fetch(`/api/purchases/`, {
