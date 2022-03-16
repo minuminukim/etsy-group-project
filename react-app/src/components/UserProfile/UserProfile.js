@@ -16,7 +16,8 @@ const UserProfile = () => {
       // waits until the request completes...
       const data = await response.json();
       setUser(data);
-      setProducts(data.products);
+      const filtered = data.products.filter((item) => !item.archived);
+      setProducts(filtered);
       setIsLoaded(true);
     }
 

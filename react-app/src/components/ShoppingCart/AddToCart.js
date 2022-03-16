@@ -6,17 +6,17 @@ import { useState, useEffect } from 'react';
 import AuthModals from '../auth/AuthModals';
 
 const AddToCart = ({ product }) => {
-<<<<<<< HEAD
   const history = useHistory();
   const dispatch = useDispatch();
   const [isSignedIn, setIsSignedIn] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const [isInStock, setIsInStock] = useState(false);
+  const [isOwner, setIsOwner] = useState(false)
 
   useEffect(() => {
     if (sessionUser) {
       setIsSignedIn(true);
-=======
+
     const history = useHistory()
     const dispatch = useDispatch();
     const [isSignedIn, setIsSignedIn] = useState(false)
@@ -53,17 +53,21 @@ const AddToCart = ({ product }) => {
     let quantityOptions = []
     for (let i = 1; i <= parseInt(stock, 10); i++) {
         quantityOptions.push(i)
->>>>>>> main
-    }
 
+    }
     if (product.stock > 0) {
       setIsInStock(true);
     }
-  });
+
+    if (product.user_id === sessionUser.id) {
+      setIsOwner(true)
+    }
+
+  }, [sessionUser, product.stock]);
 
   const [selected, setSelected] = useState(1);
 
-  const { id, title, price, stock, user } = product;
+  const { id, stock } = product;
 
   let quantityOptions = [];
   for (let i = 1; i <= parseInt(stock, 10); i++) {
@@ -140,22 +144,27 @@ const AddToCart = ({ product }) => {
     </>
   );
 
+  // console.log(product)
+
   return (
     <>
-      {isInStock ? (
-        productIsInStock
-      ) : (
-        <div
-          style={{
-            marginTop: '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '20px',
-          }}
-        >
-          Out of Stock.
-        </div>
-      )}
+      {!isOwner && <>
+        {isInStock ? (
+          productIsInStock
+        ) : (
+          <div
+            style={{
+              marginTop: '20px',
+              display: 'flex',
+              justifyContent: 'center',
+              marginBottom: '20px',
+            }}
+          >
+            Out of Stock.
+          </div>
+        )}
+      </>
+      }
     </>
   );
 };
