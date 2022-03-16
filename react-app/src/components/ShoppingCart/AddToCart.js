@@ -21,7 +21,7 @@ const AddToCart = ({ product }) => {
       setIsInStock(true);
     }
 
-    if (product.user_id === sessionUser.id) {
+    if (product.user_id === sessionUser?.id) {
       setIsOwner(true)
     }
 
