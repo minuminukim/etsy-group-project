@@ -49,13 +49,10 @@ export const get_cart_items = (id) => async (dispatch) => {
 
 export const deleteCartItems = (itemstoDelete) => async (dispatch) => {
   /*
-
     pass in an object as body of request that looks like this
-
     {
         items: [1, 3, 5]
     }
-
     if itemstoDelete.length is equal to 1, then dispatch deleteOneCartItem
     else:
     dispatch deleteAllCartItems
