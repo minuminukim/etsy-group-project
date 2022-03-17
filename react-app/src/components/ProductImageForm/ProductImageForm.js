@@ -110,7 +110,6 @@ const ProductImageForm = ({ sessionUser }) => {
               onChange={updateImages}
               onClick={handleDelete}
             />
-            {/* <input value={test} onChange={(e) => setTest(e.target.value)}></input> */}
           </div>
         </div>
         <Button label="Submit" className="submit-button" type="submit" />
