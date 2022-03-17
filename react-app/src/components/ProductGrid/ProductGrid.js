@@ -7,7 +7,7 @@ const ProductGrid = ({ products }) => {
       {products &&
         products.length > 0 &&
         products.map((product) => (
-          <ProductCard key={product.title} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
     </div>
   );
