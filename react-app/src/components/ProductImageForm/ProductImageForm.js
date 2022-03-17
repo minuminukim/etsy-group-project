@@ -46,6 +46,7 @@ const ProductImageForm = ({ sessionUser }) => {
   const updateImages = (e) => {
     if (e.target.files[0] === undefined || e.target.files[0] === null) return;
     setImages([...images, e.target.files[0]]);
+    e.target.value = '';
   };
 
   const handleDelete = (e, i) => {
@@ -109,6 +110,7 @@ const ProductImageForm = ({ sessionUser }) => {
               onChange={updateImages}
               onClick={handleDelete}
             />
+            {/* <input value={test} onChange={(e) => setTest(e.target.value)}></input> */}
           </div>
         </div>
         <Button label="Submit" className="submit-button" type="submit" />

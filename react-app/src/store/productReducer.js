@@ -1,7 +1,7 @@
 const LOAD_PRODUCTS = 'product/loadProducts';
 const ADD_PRODUCT = 'product/addProduct';
 const EDIT_PRODUCT = 'product/editProduct';
-const REMOVE_PRODUCT = 'product/removeProduct';
+const ARCHIVE_PRODUCT = 'product/archiveProduct';
 
 const loadProducts = (products) => ({
   type: LOAD_PRODUCTS,
@@ -18,8 +18,8 @@ const editProduct = (product) => ({
   product,
 });
 
-const removeProduct = (productId) => ({
-  type: REMOVE_PRODUCT,
+const archiveProduct = (productId) => ({
+  type: ARCHIVE_PRODUCT,
   productId,
 });
 
@@ -98,7 +98,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
     throw response;
   }
 
-  dispatch(deleteProduct(productId));
+  dispatch(archiveProduct(productId));
   return response;
 };
 
@@ -109,24 +109,33 @@ const productReducer = (state = {}, action) => {
         acc[p.id] = p;
         return acc;
       });
+
       return {
         ...state,
         ...productsObject,
       };
+
     case ADD_PRODUCT:
       return {
         ...state,
         [action.product.id]: action.product,
       };
+
     case EDIT_PRODUCT:
       return {
         ...state,
         [action.product.id]: action.product,
       };
-    case REMOVE_PRODUCT:
-      const newState = { ...state };
-      delete newState[action.productId];
-      return newState;
+
+    case ARCHIVE_PRODUCT:
+      return {
+        ...state,
+        [action.productId]: {
+          ...state[action.productId],
+          archived: true,
+        },
+      };
+
     default:
       return state;
   }
