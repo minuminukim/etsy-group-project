@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css"
 import { BsGlobe } from "react-icons/bs"
 import logo from './footer-img.PNG'
@@ -6,14 +6,25 @@ import logo2 from './footer-img2.PNG'
 import logo3 from './footer-img3.PNG'
 
 const Footer = () => {
+  const [displayPopUp2, setDisplayPopUp2] = useState(false)
+
+  let electricity
+  electricity = (
+    <p id="popup2" className="popup">Qwerty’s 100% renewable electricity commitment includes the electricity used by the data centers that host Qwerty.com, as well as the electricity that powers Qwerty’s global offices and employees working remotely from home in the US.</p>
+  )
+
   return (
     <footer>
       <img src={logo3} id="row-img" alt="footer-bg" />
       <img src={logo2} id="row-img" alt="footer-bg" />
       <img src={logo} id="row-img" alt="footer-bg" />
       <div id="row2">
+        {displayPopUp2 ? electricity : null}
         <BsGlobe size={23} />
-        <p className="underline-text">
+        <p className="underline-text"
+          onMouseEnter={() => setDisplayPopUp2(true)}
+          onMouseLeave={() => setDisplayPopUp2(false)}
+        >
           Qwerty is powered by 100% renewable electricity.
         </p>
       </div>
