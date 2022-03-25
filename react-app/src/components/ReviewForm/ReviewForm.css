@@ -64,7 +64,7 @@
 }
 
 
-#star-rating-container > button {
+#star-rating-container > span {
   background-color: transparent;
   border: none;
   outline: none;
@@ -77,4 +77,23 @@
 }
 .off {
   color: lightgray;
+}
+
+
+.popup {
+  border-radius: 20px;
+  width: 300px;
+  background-color: white;
+  position:absolute;
+  margin-top:  -70px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 20px 30px;
+  color: black;
+  box-shadow: rgba(145, 145, 145, 0.815) 1px 1px 5px 1px;
+}
+
+#popup2 {
+  margin-top:  -225px;
 }

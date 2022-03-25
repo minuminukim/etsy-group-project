@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 import { BsGlobe } from 'react-icons/bs';
 import logo from './footer-img.PNG';
@@ -6,22 +6,44 @@ import logo2 from './footer-img2.PNG';
 import logo3 from './footer-img3.PNG';
 
 const Footer = () => {
+  const [displayPopUp1, setDisplayPopUp1] = useState(false)
+  const [displayPopUp2, setDisplayPopUp2] = useState(false)
+
+  let community
+  community = (
+    <ul className="popup">
+      <li>Your purchases on Qwerty in 2020 generated nearly $4 billion in income for small businesses.</li>
+      <li>We advocate for policy—at the global and local level—that benefits creative entrepreneurs and helps small businesses grow and thrive.</li>
+      <li>We are deepening our commitment to a sustainable future and are working towards a new goal to reach net zero emissions by 2030.</li>
+    </ul>
+  )
+
+  let electricity
+  electricity = (
+    <p id="popup2" className="popup">Qwerty’s 100% renewable electricity commitment includes the electricity used by the data centers that host Qwerty.com, as well as the electricity that powers Qwerty’s global offices and employees working remotely from home in the US.</p>
+  )
+
+
   return (
     <footer>
-      <img src={logo3} id="row-img" alt="footer-bg"/>
+      <img src={logo3} id="row-img" alt="footer-bg" />
       <div id="story-row">
         <div className="story-row-inner">
           <h1 id="footer-title">What is Qwerty?</h1>
         </div>
         <div className="story-row-inner">
           <div>
+            {displayPopUp1 ? community : null}
             <p className="story-headers">A community doing good</p>
             <p className="footer-stories">
               Qwerty is a global online marketplace, where people come together
               to make, sell, buy, and collect unique keyboards and accessories.
               We’re also a community pushing for positive change for small
               businesses, people, and the planet.{' '}
-              <span className="underline-text-dark">
+              <span className="underline-text-dark"
+                onMouseEnter={() => setDisplayPopUp1(true)}
+                onMouseLeave={() => setDisplayPopUp1(false)}
+              >
                 Here are some of the ways we’re making a positive impact,
                 together.
               </span>
@@ -45,11 +67,15 @@ const Footer = () => {
           </div>
         </div>
       </div>
-        <img src={logo2} id="row-img" alt="footer-bg"/>
-        <img src={logo} id="row-img" alt="footer-bg"/>
+      <img src={logo2} id="row-img" alt="footer-bg" />
+      <img src={logo} id="row-img" alt="footer-bg" />
       <div id="row2">
+        {displayPopUp2 ? electricity : null}
         <BsGlobe size={23} />
-        <p className="underline-text">
+        <p className="underline-text"
+          onMouseEnter={() => setDisplayPopUp2(true)}
+          onMouseLeave={() => setDisplayPopUp2(false)}
+        >
           Qwerty is powered by 100% renewable electricity.
         </p>
       </div>
