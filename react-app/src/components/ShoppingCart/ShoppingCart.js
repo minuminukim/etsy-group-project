@@ -26,17 +26,9 @@ const ShoppingCart = () => {
 
 
     useEffect(() => {
-        dispatch(get_cart_items(session.user.id));
+        dispatch(get_cart_items(session.user.id)).then(() => setIsLoaded(true));
 
     }, [dispatch, session.user.id]);
-
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoaded(true);
-        }, 300);
-        return () => clearTimeout(timer);
-    });
 
     if (valueArray.length > 0) {
         areThereCartItems = true;
@@ -102,11 +94,13 @@ const ShoppingCart = () => {
     )
 
 
+    if (!isLoaded) return null
+
     return (
 
         <>
 
-            {wasPurchased ? thanksForPurchase : <div className="ShoppingCart">{isLoaded ? cartItems : <div id='loadingCart' > Loading</div>}</div>}
+            {wasPurchased ? thanksForPurchase : <div className="ShoppingCart">{cartItems}</div>}
             <CartFooter />
 
         </>
