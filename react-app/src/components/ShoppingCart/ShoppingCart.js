@@ -9,7 +9,7 @@ import CartFooter from "./CartFooter";
 import { v4 as uuidv4 } from 'uuid';
 import { AiOutlineClose } from "react-icons/ai"
 
-const ShoppingCart = ({ setShoppingCartErrors}) => {
+const ShoppingCart = ({ setShoppingCartErrors }) => {
     let session = useSelector((state) => state.session);
 
     let [errors, setErrors] = useState(false)
@@ -28,7 +28,18 @@ const ShoppingCart = ({ setShoppingCartErrors}) => {
 
 
     useEffect(() => {
-        dispatch(get_cart_items(session.user.id)).then(() => setIsLoaded(true));
+        // let totalPrice = 0;
+        dispatch(get_cart_items(session.user.id)).then((cartItems) => {
+
+            console.log(cartItems)
+
+            // for (let i = 0; i < cartItems.length; i++) {
+            //     totalPrice =
+            //         totalPrice +
+            //         parseFloat(+cartItems[i].product_price * cartItems[i].quantity);
+            // }
+            setIsLoaded(true)
+        });
 
     }, [dispatch, session.user.id]);
 

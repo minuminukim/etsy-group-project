@@ -7,23 +7,29 @@ import { FaCcDiscover } from 'react-icons/fa';
 import Button from '../common/Button/Button';
 import { deleteCartItems } from '../../store/shoppingCart';
 import { useDispatch } from 'react-redux';
-import { updateItemErrors } from '../../store/shoppingCart';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import { useEffect } from 'react';
 
 const PurchaseCart = ({ cartItems, setWasPurchased, setShoppingCartErrors }) => {
   const dispatch = useDispatch();
   let shoppingCart = useSelector((state) => state.shoppingCart);
-  let [errors, setErrors] = useState(false)
-
+  let itemsInCart = Object.values(shoppingCart)
+  const [totalPriceItems, setTotalPriceItems] = useState(0)
   let totalPrice = 0;
 
-  for (let i = 0; i < cartItems.length; i++) {
+
+  for (let i = 0; i < itemsInCart.length; i++) {
     totalPrice =
       totalPrice +
-      parseFloat(cartItems[i].product_price * cartItems[i].quantity);
+      parseFloat(+itemsInCart[i].product_price * itemsInCart[i].quantity);
   }
+
+
+
+
+
+
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -48,11 +54,8 @@ const PurchaseCart = ({ cartItems, setWasPurchased, setShoppingCartErrors }) => 
       const data = await response.json();
 
       if (data && data.errors) {
-        // dispatch(updateItemErrors([data.errors[0], data.errors[1]]));
-        setErrors([data.errors[0], data.errors[1]])
         setShoppingCartErrors([data.errors[0], data.errors[1]])
       } else {
-        // else dispatch clear cart
         let cartItemIds = [];
 
         for (let i = 0; i < cartItems.length; i++) {
@@ -67,6 +70,9 @@ const PurchaseCart = ({ cartItems, setWasPurchased, setShoppingCartErrors }) => 
 
     postRequest();
   };
+
+
+  console.log(itemsInCart)
 
   return (
     <>

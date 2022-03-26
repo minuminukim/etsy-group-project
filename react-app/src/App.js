@@ -35,25 +35,17 @@ function App() {
     })();
   }, [dispatch]);
 
-
-
+  let shoppingCartAndErrors = (
+    <>
+      <div style={{ color: "red", height: "40px", paddingTop: "30px", marginLeft: "50px" }}> {shoppingCart[`${shoppingCartErrors[0]}`]?.product_title} {shoppingCartErrors[1]}</div>
+      <ShoppingCart setShoppingCartErrors={setShoppingCartErrors} />
+    </>
+  )
 
   if (!loaded) {
     return null;
   }
 
-  // let noshoppingErrors = () => {
-  //   setShoppingCartErrors(false)
-
-  //   return null
-  // }
-
-  let shoppingCartAndErrors = (
-    <>
-      {shoppingCartErrors ? <div> {shoppingCart[`${shoppingCartErrors[0]}`]?.product_title} {shoppingCartErrors[1]}</div> : null}
-      <ShoppingCart setShoppingCartErrors={setShoppingCartErrors} />
-    </>
-  )
   return (
     <>
       <NavBar />

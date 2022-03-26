@@ -43,7 +43,7 @@ export const get_cart_items = (id) => async (dispatch) => {
 
     dispatch(loadCartItems(data['cart_items'])); // dispatch action creator
 
-    return data;
+    return data['cart_items'];
   }
 };
 
