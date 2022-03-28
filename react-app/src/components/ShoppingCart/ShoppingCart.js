@@ -9,8 +9,10 @@ import CartFooter from "./CartFooter";
 import { v4 as uuidv4 } from 'uuid';
 import { AiOutlineClose } from "react-icons/ai"
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ setShoppingCartErrors }) => {
     let session = useSelector((state) => state.session);
+
+    let [errors, setErrors] = useState(false)
 
 
     const [wasPurchased, setWasPurchased] = useState(false)
@@ -26,7 +28,18 @@ const ShoppingCart = () => {
 
 
     useEffect(() => {
-        dispatch(get_cart_items(session.user.id)).then(() => setIsLoaded(true));
+        // let totalPrice = 0;
+        dispatch(get_cart_items(session.user.id)).then((cartItems) => {
+
+            console.log(cartItems)
+
+            // for (let i = 0; i < cartItems.length; i++) {
+            //     totalPrice =
+            //         totalPrice +
+            //         parseFloat(+cartItems[i].product_price * cartItems[i].quantity);
+            // }
+            setIsLoaded(true)
+        });
 
     }, [dispatch, session.user.id]);
 
@@ -46,10 +59,10 @@ const ShoppingCart = () => {
                             {valueArray.length} item(s) in your cart
                         </div>
                         {valueArray.map((item) => (
-                            <CartItem key={uuidv4().toString()} cartItem={item} />
+                            <CartItem setShoppingCartErrors={setShoppingCartErrors} key={uuidv4().toString()} cartItem={item} />
                         ))}
                     </div>
-                    <PurchaseCart cartItems={valueArray} setWasPurchased={setWasPurchased} />
+                    <PurchaseCart setShoppingCartErrors={setShoppingCartErrors} cartItems={valueArray} setWasPurchased={setWasPurchased} />
                 </div>
             </>
         );

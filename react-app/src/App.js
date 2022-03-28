@@ -25,6 +25,8 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const [shoppingCartErrors, setShoppingCartErrors] = useState(false)
+  let shoppingCart = useSelector((state) => state.shoppingCart);
 
   useEffect(() => {
     (async () => {
@@ -32,6 +34,13 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
+
+  let shoppingCartAndErrors = (
+    <>
+      <div style={{ color: "red", height: "40px", paddingTop: "30px", marginLeft: "50px" }}> {shoppingCart[`${shoppingCartErrors[0]}`]?.product_title} {shoppingCartErrors[1]}</div>
+      <ShoppingCart setShoppingCartErrors={setShoppingCartErrors} />
+    </>
+  )
 
   if (!loaded) {
     return null;
@@ -46,7 +55,7 @@ function App() {
           <FooterHome />
         </Route>
         <Route path="/mycart" exact={true}>
-          {sessionUser ? <ShoppingCart /> : <SignInRequiredForCart />}
+          {sessionUser ? shoppingCartAndErrors : <SignInRequiredForCart />}
         </Route>
         <Route path="/category/:category" exact={true}>
           <CategoryView />

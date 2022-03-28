@@ -138,7 +138,7 @@ const AuthModals = () => {
 
         if (data) {
           setErrors(data);
-        }
+        } 
       } else {
         setErrors(['Password and Confirm password must match.']);
       }
