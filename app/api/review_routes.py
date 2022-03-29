@@ -90,6 +90,3 @@ def delete_review(id):
     db.session.commit()
 
     return {'IN': 'DELETE'}
-
-
-

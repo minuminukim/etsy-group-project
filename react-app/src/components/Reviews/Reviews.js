@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import * as sessionActions from "../../store/review"
+import * as sessionActions from "../../store/reviewReducer"
 // import { BsStarFill } from "react-icons/bs"
 // import { AiOutlineStar } from "react-icons/ai"
 import "./Reviews.css"
@@ -11,8 +11,14 @@ import ReviewForm from '../ReviewForm/ReviewForm'
 const GetReviews = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
-  const reviews = useSelector(state => state.review.reviews);
-  const userExists = useSelector(state => state.review.reviewExists);
+  let reviewsObj = useSelector(state => state.reviews);
+  let reviewsArray = Object.values(reviewsObj);
+  console.log(reviewsArray)
+  // const reviewsArray = Object.values(reviews);
+  // console.log(?)
+  // console.log(Object.values(reviews))
+  reviewsArray.forEach(review => console.log(review))
+  const userExists = false;
   // TODO - rename state hooks
   const [test, setTest] = useState(false)
   const [edit, setEdit] = useState(true)
@@ -133,72 +139,73 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, edit, productId])
+  }, [dispatch])
 
-  useEffect(() => {
-    dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, edit, productId])
+  // useEffect(() => {
+  //   dispatch(sessionActions.getReviews(productId, currentUser?.id))
+  // }, [dispatch, test, rerender, edit, productId])
 
   return (
-    <div id="reviews-main-container">
-      <div id="reviews-title">
-        <p>Reviews for this item <span id="total-reviews-num">{reviews?.reviews?.length}</span></p>
-      </div>
-      {/* Review Form Component */}
-      <div id="review-form-container">
-        {userExists ? null : <ReviewForm />}
-      </div>
+    <h1>alsldjfl</h1>
+    // <div id="reviews-main-container">
+    //   <div id="reviews-title">
+    //     <p>Reviews for this item <span id="total-reviews-num">{reviewsArray?.length}</span></p>
+    //   </div>
+    //   {/* Review Form Component */}
+    //   <div id="review-form-container">
+    //     {userExists ? null : <ReviewForm />}
+    //   </div>
 
-      {/* All reviews for currently display listing */}
-      <div id="reviews-container">
-        {reviews?.reviews?.map(review => (
-          <div id="review-container" key={`review-container-${review?.id}`}>
-            <div id="review-row1">
-              <img className="profile-pic review-pic" src={review.profile_picture_url} alt={`${review.username}-profile-pic`} />
-              <div key={review.user} id="review-author">{review.username}</div>
-              <div key={review.updated_at} id="review-date">{`${review.updated_at.split(' ')[2]} ${review.updated_at.split(' ')[1]}, ${review.updated_at.split(' ')[3]}`}</div>
-            </div>
+    //   {/* All reviews for currently display listing */}
+      // <div id="reviews-container">
+      //   {reviewsArray?.forEach(review => (
+      //     <div id="review-container" key={`review-container-${review?.id}`}>
+      //       <div id="review-row1">
+      //         <img className="profile-pic review-pic" src={review.profile_picture_url} alt={`${review.username}-profile-pic`} />
+      //         <div key={review.user} id="review-author">{review.username}</div>
+      //         <div key={review.updated_at} id="review-date">{`${review.updated_at.split(' ')[2]} ${review.updated_at.split(' ')[1]}, ${review.updated_at.split(' ')[3]}`}</div>
+      //       </div>
 
-            <div id="review-row2">
-              <span className={`stars stars-${review.rating}`}></span>
-              <div id="review" key={review.body}>{review.body}</div>
-            </div>
+      //       <div id="review-row2">
+      //         <span className={`stars stars-${review.rating}`}></span>
+      //         <div id="review" key={review.body}>{review.body}</div>
+      //       </div>
 
-            {/* Only display deleteBtn for a review by currentUser */}
-            <div id="review-form-container">
-              {review.user_id === currentUser?.id ? editForm : null}
-            </div>
-            <div id="review-row3">
-              {review.user_id === currentUser?.id && edit === true ?
-                <button
-                  className="btn"
-                  value={review.id}
-                  onClick={(e) => {
-                    setEditReviewId(e.target.value)
-                    handleEdit(e)
-                    setEdit(false)
-                    setDisplayDelete(false)
-                  }}>
-                  Edit
-                </button>
-                : null}
+      //       {/* Only display deleteBtn for a review by currentUser */}
+      //       <div id="review-form-container">
+      //         {review.user_id === currentUser?.id ? editForm : null}
+      //       </div>
+      //       <div id="review-row3">
+      //         {review.user_id === currentUser?.id && edit === true ?
+      //           <button
+      //             className="btn"
+      //             value={review.id}
+      //             onClick={(e) => {
+      //               setEditReviewId(e.target.value)
+      //               handleEdit(e)
+      //               setEdit(false)
+      //               setDisplayDelete(false)
+      //             }}>
+      //             Edit
+      //           </button>
+      //           : null}
 
-              {review.user_id === currentUser?.id && displayDelete ?
-                <button className="btn" id="deleteReviewBtn" onClick={(e) => {
-                  handleDelete(e, review.id)
-                }} value={review.id}>Delete</button>
-                : null}
-            </div>
-
-
-
-          </div>
-        ))}
-      </div>
+      //         {review.user_id === currentUser?.id && displayDelete ?
+      //           <button className="btn" id="deleteReviewBtn" onClick={(e) => {
+      //             handleDelete(e, review.id)
+      //           }} value={review.id}>Delete</button>
+      //           : null}
+      //       </div>
 
 
 
-    </div>
+      //     </div>
+      //   ))}
+      // </div>
+
+
+
+    // </div>
   )
 }
 
