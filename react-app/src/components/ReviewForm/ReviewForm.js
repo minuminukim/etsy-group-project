@@ -7,15 +7,15 @@ import "./ReviewForm.css"
 
 const CreateReview = ({ setUserLeftReview }) => {
   const dispatch = useDispatch()
+  let { productId } = useParams()
   const currentUser = useSelector(state => state.session.user);
+  const userReviewed = useSelector(state => state.reviews.reviewExists);
   // const reviews = useSelector(state => state.review.reviews);
   const [rating, setRating] = useState(0)
   const [body, setBody] = useState("")
   const [displayBtn, setDisplayBtn] = useState(false)
   const [errors, setErrors] = useState([])
-  const [test, setTest] = useState(false)
   const [displayReviewForm, setDisplayReviewForm] = useState(true)
-  let { productId } = useParams()
   const [hover, setHover] = useState(0);
   const [displayStars, setDisplayStars] = useState(false)
 
@@ -28,26 +28,15 @@ const CreateReview = ({ setUserLeftReview }) => {
       product_id: productId,
       rating,
       body,
-
     }
 
-    const data = await dispatch(sessionActions.newReview(payload));
-    console.log(data)
-
-
-  //   dispatch(sessionActions.newReview(payload)).catch(async (res) => {
-
-  //     const data = await res.json();
-  //     if (data.errors) {
-  //       return setErrors(data.errors);
-  //     }
-  //   }
-  //   )
-  //   if (body && rating > 0) {
-  //     setDisplayReviewForm(false)
-  //   }
-  //   setTest(!test)
-  }
+    dispatch(sessionActions.newReview(payload)).catch(async (res) => {
+      const data = await res.json();
+      if (data.errors) {
+        return setErrors(data.errors);
+      };
+    });
+  };
 
   let btn;
   if (displayBtn) {
@@ -60,6 +49,7 @@ const CreateReview = ({ setUserLeftReview }) => {
             setDisplayBtn(false)
             setDisplayStars(false)
           }}>Cancel</button>
+
         <button className="review-btn btn">Submit</button>
       </div>
 
@@ -69,10 +59,6 @@ const CreateReview = ({ setUserLeftReview }) => {
       null
     )
   }
-
-  // useEffect(() => {
-  //   dispatch(sessionActions.getReviews(productId))
-  // }, [dispatch, test, productId])
 
 
 

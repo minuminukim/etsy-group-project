@@ -13,11 +13,10 @@ const GetReviews = () => {
   const currentUser = useSelector(state => state.session.user);
   let reviewsObj = useSelector(state => state.reviews);
   let reviewsArray = Object.values(reviewsObj);
-  console.log(reviewsArray)
-  // const reviewsArray = Object.values(reviews);
-  // console.log(?)
-  // console.log(Object.values(reviews))
-  reviewsArray.forEach(review => console.log)
+  // console.log(reviewsArray)
+  console.log(reviewsObj)
+  // console.log(useSelector(state => state.reviews.all))
+
   const userExists = false;
   // TODO - rename state hooks
   const [test, setTest] = useState(false)
@@ -141,9 +140,6 @@ const GetReviews = () => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
   }, [dispatch, productId])
 
-  // useEffect(() => {
-  //   dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  // }, [dispatch, test, rerender, edit, productId])
 
   return (
     <div id="reviews-main-container">
@@ -171,7 +167,6 @@ const GetReviews = () => {
               <div id="review" key={review?.body}>{review?.body}</div>
             </div>
 
-            {/* Only display deleteBtn for a review by currentUser */}
             <div id="review-form-container">
               {review?.user_id === currentUser?.id ? editForm : null}
             </div>
@@ -206,7 +201,7 @@ const GetReviews = () => {
 
 
 
-    // </div>
+     </div>
   )
 }
 

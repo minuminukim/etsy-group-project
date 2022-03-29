@@ -24,7 +24,6 @@ const updateReview = (id) => ({
   payload: id
 })
 
-const initialState = { reviews: null };
 
 
 export const newReview = (payload) => async (dispatch) => {
@@ -105,12 +104,15 @@ export const deleteReview = (review_id) => async (dispatch) => {
   }
 }
 
+const initialState = {
+  // all: {},
+  // reviewExists: false
+};
 
 export default function reviewsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_REVIEWS:
       const reviews = {};
-
       action.payload.reviews.forEach(review => {
         reviews[review.id] = review;
       })
@@ -123,17 +125,14 @@ export default function reviewsReducer(state = initialState, action) {
     case DELETE_REVIEW:
       const one = { ...state }
 
-       delete one[action.payload];
+      delete one[action.payload];
 
 
       return one
     case EDIT_REVIEW: {
       const newState = { ...state };
-      newState.reviews.reviews.forEach((review, i, arr) => {
-        if (review.id === action.payload.id) {
-          arr[i] = action.payload
-        }
-      })
+      newState[action.payload.id] = action.payload;
+
       return newState;
     }
     default:
