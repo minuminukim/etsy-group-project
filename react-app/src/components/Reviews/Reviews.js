@@ -17,7 +17,7 @@ const GetReviews = () => {
   // const reviewsArray = Object.values(reviews);
   // console.log(?)
   // console.log(Object.values(reviews))
-  reviewsArray.forEach(review => console.log(review))
+  reviewsArray.forEach(review => console.log)
   const userExists = false;
   // TODO - rename state hooks
   const [test, setTest] = useState(false)
@@ -139,69 +139,70 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch])
+  }, [dispatch, test, rerender, edit, productId])
 
   // useEffect(() => {
   //   dispatch(sessionActions.getReviews(productId, currentUser?.id))
   // }, [dispatch, test, rerender, edit, productId])
 
   return (
-    <h1>alsldjfl</h1>
-    // <div id="reviews-main-container">
-    //   <div id="reviews-title">
-    //     <p>Reviews for this item <span id="total-reviews-num">{reviewsArray?.length}</span></p>
-    //   </div>
-    //   {/* Review Form Component */}
-    //   <div id="review-form-container">
-    //     {userExists ? null : <ReviewForm />}
-    //   </div>
+    <div id="reviews-main-container">
+      <div id="reviews-title">
+        <p>Reviews for this item <span id="total-reviews-num">{reviewsArray?.length}</span></p>
+      </div>
+      {/* Review Form Component */}
+      <div id="review-form-container">
+        {userExists ? null : <ReviewForm />}
+      </div>
 
-    //   {/* All reviews for currently display listing */}
-      // <div id="reviews-container">
-      //   {reviewsArray?.forEach(review => (
-      //     <div id="review-container" key={`review-container-${review?.id}`}>
-      //       <div id="review-row1">
-      //         <img className="profile-pic review-pic" src={review.profile_picture_url} alt={`${review.username}-profile-pic`} />
-      //         <div key={review.user} id="review-author">{review.username}</div>
-      //         <div key={review.updated_at} id="review-date">{`${review.updated_at.split(' ')[2]} ${review.updated_at.split(' ')[1]}, ${review.updated_at.split(' ')[3]}`}</div>
-      //       </div>
+     {/* All reviews for currently display listing */}
+      <div id="reviews-container">
+        { reviewsArray?.map(review => (
 
-      //       <div id="review-row2">
-      //         <span className={`stars stars-${review.rating}`}></span>
-      //         <div id="review" key={review.body}>{review.body}</div>
-      //       </div>
+          <div id="review-container" key={`review-container-${review?.id}`}>
+            <div id="review-row1">
+              <img className="profile-pic review-pic" src={review?.profile_picture_url} alt={`${review?.username}-profile-pic`} />
+              <div key={review?.user} id="review-author">{review?.username}</div>
+              <div key={review?.updated_at} id="review-date">{`${review?.updated_at.split(' ')[2]} ${review?.updated_at.split(' ')[1]}, ${review?.updated_at.split(' ')[3]}`}</div>
+            </div>
 
-      //       {/* Only display deleteBtn for a review by currentUser */}
-      //       <div id="review-form-container">
-      //         {review.user_id === currentUser?.id ? editForm : null}
-      //       </div>
-      //       <div id="review-row3">
-      //         {review.user_id === currentUser?.id && edit === true ?
-      //           <button
-      //             className="btn"
-      //             value={review.id}
-      //             onClick={(e) => {
-      //               setEditReviewId(e.target.value)
-      //               handleEdit(e)
-      //               setEdit(false)
-      //               setDisplayDelete(false)
-      //             }}>
-      //             Edit
-      //           </button>
-      //           : null}
+            <div id="review-row2">
+              <span className={`stars stars-${review?.rating}`}></span>
+              <div id="review" key={review?.body}>{review?.body}</div>
+            </div>
 
-      //         {review.user_id === currentUser?.id && displayDelete ?
-      //           <button className="btn" id="deleteReviewBtn" onClick={(e) => {
-      //             handleDelete(e, review.id)
-      //           }} value={review.id}>Delete</button>
-      //           : null}
-      //       </div>
+            {/* Only display deleteBtn for a review by currentUser */}
+            <div id="review-form-container">
+              {review?.user_id === currentUser?.id ? editForm : null}
+            </div>
+
+            <div id="review-row3">
+              {review?.user_id === currentUser?.id && edit === true ?
+                <button
+                  className="btn"
+                  value={review?.id}
+                  onClick={(e) => {
+                    setEditReviewId(e.target.value)
+                    handleEdit(e)
+                    setEdit(false)
+                    setDisplayDelete(false)
+                  }}>
+                  Edit
+                </button>
+                : null}
+
+              {review?.user_id === currentUser?.id && displayDelete ?
+                <button className="btn" id="deleteReviewBtn" onClick={(e) => {
+                  handleDelete(e, review.id)
+                }} value={review?.id}>Delete</button>
+                : null}
+            </div>
 
 
 
-      //     </div>
-      //   ))}
-      // </div>
+          </div>
+        ))}
+      </div>
 
 
 
