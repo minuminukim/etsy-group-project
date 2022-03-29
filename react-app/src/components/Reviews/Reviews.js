@@ -198,9 +198,6 @@ const GetReviews = () => {
           </div>
         ))}
       </div>
-
-
-
      </div>
   )
 }
