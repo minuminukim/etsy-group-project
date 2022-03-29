@@ -31,18 +31,22 @@ const CreateReview = ({ setUserLeftReview }) => {
 
     }
 
-    dispatch(sessionActions.newReview(payload)).catch(async (res) => {
+    const data = await dispatch(sessionActions.newReview(payload));
+    console.log(data)
 
-      const data = await res.json();
-      if (data.errors) {
-        return setErrors(data.errors);
-      }
-    }
-    )
-    if (body && rating > 0) {
-      setDisplayReviewForm(false)
-    }
-    setTest(!test)
+
+  //   dispatch(sessionActions.newReview(payload)).catch(async (res) => {
+
+  //     const data = await res.json();
+  //     if (data.errors) {
+  //       return setErrors(data.errors);
+  //     }
+  //   }
+  //   )
+  //   if (body && rating > 0) {
+  //     setDisplayReviewForm(false)
+  //   }
+  //   setTest(!test)
   }
 
   let btn;
@@ -66,13 +70,10 @@ const CreateReview = ({ setUserLeftReview }) => {
     )
   }
 
-  useEffect(() => {
-    dispatch(sessionActions.getReviews(productId))
-  }, [dispatch, test, productId])
+  // useEffect(() => {
+  //   dispatch(sessionActions.getReviews(productId))
+  // }, [dispatch, test, productId])
 
-  useEffect(() => {
-    dispatch(sessionActions.getReviews(productId))
-  }, [dispatch, test, productId])
 
 
   return (

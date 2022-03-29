@@ -118,12 +118,14 @@ export default function reviewsReducer(state = initialState, action) {
       return reviews;
     case CREATE_REVIEW:
       const newState = { ...state };
-      newState.reviews.reviews.unshift(action.payload)
+      newState[action.payload.id] = action.payload;
       return newState
     case DELETE_REVIEW:
       const one = { ...state }
-      const newReviews = one.reviews.reviews.filter(review => review.id !== +action.payload)
-      one.reviews.reviews = newReviews;
+
+       delete one[action.payload];
+
+
       return one
     case EDIT_REVIEW: {
       const newState = { ...state };

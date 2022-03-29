@@ -139,7 +139,7 @@ const GetReviews = () => {
 
   useEffect(() => {
     dispatch(sessionActions.getReviews(productId, currentUser?.id))
-  }, [dispatch, test, rerender, edit, productId])
+  }, [dispatch, productId])
 
   // useEffect(() => {
   //   dispatch(sessionActions.getReviews(productId, currentUser?.id))
