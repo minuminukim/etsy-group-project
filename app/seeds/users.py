@@ -1,7 +1,8 @@
 import os
 from app.models import db, User
 
-seed_password = os.environ.get("SEED_PASSWORD")
+seed_password = "demopassword"
+# seed_password = os.environ.get("SEED_PASSWORD")
 
 
 # Adds a demo user, you can add other users here if you want

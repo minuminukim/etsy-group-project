@@ -71,7 +71,7 @@ const LandingPage = () => {
             <div className="category-list-item" onClick={categoryAClick}>
               <img
                 className="category-image"
-                src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"
+                src="https://qwerty-project-bucket.s3.us-west-1.amazonaws.com/product_images/22.jpg"
                 alt="keyboardSwitchCategoryImage"
               />
               <li className="landing-page-links">
@@ -81,7 +81,7 @@ const LandingPage = () => {
             <div className="category-list-item" onClick={categoryBClick}>
               <img
                 className="category-image"
-                src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/pbt-chalk-keycaps-1.jpeg"
+                src="https://qwerty-project-bucket.s3.us-west-1.amazonaws.com/product_images/33.jpg"
                 alt="keycapsCategoryImage"
               />
               <li className="landing-page-links">
@@ -91,7 +91,7 @@ const LandingPage = () => {
             <div className="category-list-item" onClick={categoryCClick}>
               <img
                 className="category-image"
-                src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-numpad-keyboard-4.jpeg"
+                src="https://qwerty-project-bucket.s3.us-west-1.amazonaws.com/product_images/36.PNG"
                 alt="keyboardCategoryImage"
               />
               <li className="landing-page-links">
@@ -101,7 +101,7 @@ const LandingPage = () => {
             <div className="category-list-item" onClick={categoryDClick}>
               <img
                 className="category-image"
-                src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/kbdpad-diy-kit-2.jpeg"
+                src="https://qwerty-project-bucket.s3.us-west-1.amazonaws.com/product_images/18.jpg"
                 alt="DIYkitsCategoryImage"
               />
               <li className="landing-page-links">
@@ -111,7 +111,7 @@ const LandingPage = () => {
             <div className="category-list-item" onClick={saleClick}>
               <img
                 className="category-image"
-                src="https://qwerty-project-bucket.s3.amazonaws.com/product_images/cherry-red-switches-1.jpeg"
+                src="https://qwerty-project-bucket.s3.us-west-1.amazonaws.com/product_images/34.jpg"
                 alt="saleCategoryImage"
               />
               <li className="landing-page-links">
