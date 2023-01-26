@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(1000), nullable=False)
     profile_picture_url = db.Column(
         db.Text,
-        default="https://qwerty-project-bucket.s3.amazonaws.com/outline_face_black_24dp.png",
+        default="https://qwerty-project-bucket.s3.us-west-1.amazonaws.com/product_images/Sample_User_Icon.png",
     )
     bio = db.Column(
         db.String(2000),

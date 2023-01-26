@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import * as sessionActions from "../../store/review"
 import { useParams } from "react-router-dom";
 
 import "./ReviewForm.css"
 
-const CreateReview = ({ setUserLeftReview }) => {
+const CreateReview = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user);
-  // const reviews = useSelector(state => state.review.reviews);
+  const { productId } = useParams()
+  const [displayReviewForm, setDisplayReviewForm] = useState(true)
   const [rating, setRating] = useState(0)
   const [body, setBody] = useState("")
   const [displayBtn, setDisplayBtn] = useState(false)
   const [errors, setErrors] = useState([])
   const [test, setTest] = useState(false)
-  const [displayReviewForm, setDisplayReviewForm] = useState(true)
-  let { productId } = useParams()
   const [hover, setHover] = useState(0);
   const [displayStars, setDisplayStars] = useState(false)
 
@@ -28,11 +27,9 @@ const CreateReview = ({ setUserLeftReview }) => {
       product_id: productId,
       rating,
       body,
-
     }
 
     dispatch(sessionActions.newReview(payload)).catch(async (res) => {
-
       const data = await res.json();
       if (data.errors) {
         return setErrors(data.errors);
@@ -66,13 +63,23 @@ const CreateReview = ({ setUserLeftReview }) => {
     )
   }
 
-  useEffect(() => {
-    dispatch(sessionActions.getReviews(productId))
-  }, [dispatch, test, productId])
+  const ratingBtn = (
 
-  useEffect(() => {
-    dispatch(sessionActions.getReviews(productId))
-  }, [dispatch, test, productId])
+    <div id="star-rating-container">
+      {[...Array(5)].map((s, i) => (
+      <span
+
+        key={i}
+        className={i <= (hover || rating) ? "highlight" : "off"}
+        onClick={() => setRating(i)}
+        onMouseEnter={() => setHover(i)}
+        onMouseLeave={() => setHover(rating)}
+      >
+        <span className="stars">★</span>
+      </span>
+      ))}
+    </div>
+  )
 
 
   return (
@@ -95,26 +102,10 @@ const CreateReview = ({ setUserLeftReview }) => {
 
 
 
-          {displayStars ?
+          {/* {displayBtn ?
 
-            <div id="star-rating-container">
-              {[...Array(5)].map((s, i) => {
-                i += 1;
-                return (
-                  <span
-
-                    key={i}
-                    className={i <= (hover || rating) ? "highlight" : "off"}
-                    onClick={() => setRating(i)}
-                    onMouseEnter={() => setHover(i)}
-                    onMouseLeave={() => setHover(rating)}
-                  >
-                    <span className="stars">★</span>
-                  </span>
-                );
-              })}
-            </div>
-            : null}
+            { ratingBtn }
+            : null} */}
 
 
 
